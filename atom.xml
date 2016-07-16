@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ZhiHui Blog</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2016-07-11T02:44:15.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>ZhiHui Lei</name>
+    <email>hy04150829@gmail.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>欢迎使用Hexo</title>
+    <link href="http://yoursite.com/2016/07/11/hexo%E7%AC%AC%E4%B8%80%E6%AD%A5/"/>
+    <id>http://yoursite.com/2016/07/11/hexo第一步/</id>
+    <published>2016-07-11T02:23:22.000Z</published>
+    <updated>2016-07-11T02:44:15.000Z</updated>
+    
+    <content type="html">&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
