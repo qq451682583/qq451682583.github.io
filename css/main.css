@@ -1663,7 +1663,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #de2b75;
+  background: #ffff7f;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2226,7 +2226,7 @@ a.search-result {
   overflow: hidden;
 }
 body {
-  background: url("/images/background.jpg");
+  background: url("/images/background1.jpg");
 }
 h1,
 h2,
