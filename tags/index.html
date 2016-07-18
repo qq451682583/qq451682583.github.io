@@ -86,13 +86,16 @@
 
 
 
+<meta name="description" content="唯一的不同 是处处不同">
 <meta property="og:type" content="website">
 <meta property="og:title" content="tags">
 <meta property="og:url" content="http://yoursite.com/tags/index.html">
 <meta property="og:site_name" content="ZhiHui Blog">
-<meta property="og:updated_time" content="2016-07-16T05:29:44.000Z">
+<meta property="og:description" content="唯一的不同 是处处不同">
+<meta property="og:updated_time" content="2016-07-17T13:42:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tags">
+<meta name="twitter:description" content="唯一的不同 是处处不同">
 
 
 
@@ -100,7 +103,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    sidebar: {"position":"left","display":"always"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -119,7 +122,7 @@
   
 
   
-    tags | ZhiHui Blog
+    标签 | ZhiHui Blog
   
 </title>
 </head>
@@ -194,16 +197,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -220,6 +213,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            留言
           </a>
         </li>
       
@@ -253,7 +256,14 @@
   <div id="posts" class="posts-expand">
     
     
-      
+      <div class="tag-cloud">
+        <div class="tag-cloud-title">
+            目前共计 3 个标签
+        </div>
+        <div class="tag-cloud-tags">
+          <a href="/tags/Dialog/" style="font-size: 12px; color: #ccc">Dialog</a> <a href="/tags/Hexo/" style="font-size: 12px; color: #ccc">Hexo</a> <a href="/tags/PopWindow/" style="font-size: 12px; color: #ccc">PopWindow</a>
+        </div>
+      </div>
     
   </div>
 
@@ -263,14 +273,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="tags/index.html"
-           data-title="tags" data-url="http://yoursite.com/tags/index.html">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -297,18 +299,32 @@
                src="/images/zhihui.png"
                alt="ZhiHui Lei" />
           <p class="site-author-name" itemprop="name">ZhiHui Lei</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+          <p class="site-description motion-element" itemprop="description">唯一的不同 是处处不同</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
@@ -324,9 +340,26 @@
 
         <div class="links-of-author motion-element">
           
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qq451682583" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
         </div>
 
         
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+            </a>
+          </div>
         
 
         

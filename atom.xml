@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-07-11T02:44:15.000Z</updated>
+  <updated>2016-07-17T13:24:24.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,51 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>欢迎使用Hexo</title>
-    <link href="http://yoursite.com/2016/07/11/hexo%E7%AC%AC%E4%B8%80%E6%AD%A5/"/>
-    <id>http://yoursite.com/2016/07/11/hexo第一步/</id>
-    <published>2016-07-11T02:23:22.000Z</published>
-    <updated>2016-07-11T02:44:15.000Z</updated>
+    <title>记一次透明Dialog的实现</title>
+    <link href="http://yoursite.com/2016/07/17/%E8%AE%B0%E4%B8%80%E6%AC%A1%E9%80%8F%E6%98%8EDialog%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
+    <id>http://yoursite.com/2016/07/17/记一次透明Dialog的实现/</id>
+    <published>2016-07-17T13:21:13.000Z</published>
+    <updated>2016-07-17T13:24:24.000Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
+    
+      <category term="Dialog" scheme="http://yoursite.com/tags/Dialog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>优雅的使用PopWindow</title>
+    <link href="http://yoursite.com/2016/07/17/%E4%BC%98%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8PopWindow/"/>
+    <id>http://yoursite.com/2016/07/17/优雅的使用PopWindow/</id>
+    <published>2016-07-17T13:16:21.000Z</published>
+    <updated>2016-07-17T13:24:26.000Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+    
+    
+      <category term="PopWindow" scheme="http://yoursite.com/tags/PopWindow/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GitHub+Hexo+Next开始你的博客之旅</title>
+    <link href="http://yoursite.com/2016/07/15/hexo%E7%AC%AC%E4%B8%80%E6%AD%A5/"/>
+    <id>http://yoursite.com/2016/07/15/hexo第一步/</id>
+    <published>2016-07-15T04:16:21.000Z</published>
+    <updated>2016-07-17T13:25:04.000Z</updated>
     
     <content type="html">&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 </content>
@@ -32,6 +72,10 @@
     
     </summary>
     
+      <category term="这货不是博客" scheme="http://yoursite.com/categories/%E8%BF%99%E8%B4%A7%E4%B8%8D%E6%98%AF%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
   </entry>
   
