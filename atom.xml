@@ -31,9 +31,9 @@
       <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="Dialog" scheme="http://yoursite.com/tags/Dialog/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
   </entry>
   
@@ -53,9 +53,9 @@
       <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
     
     
-      <category term="PopWindow" scheme="http://yoursite.com/tags/PopWindow/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="PopWindow" scheme="http://yoursite.com/tags/PopWindow/"/>
     
   </entry>
   
@@ -64,7 +64,7 @@
     <link href="http://yoursite.com/2016/07/15/hexo%E7%AC%AC%E4%B8%80%E6%AD%A5/"/>
     <id>http://yoursite.com/2016/07/15/hexo第一步/</id>
     <published>2016-07-15T04:16:21.000Z</published>
-    <updated>2016-07-19T03:57:14.000Z</updated>
+    <updated>2016-07-19T04:03:53.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;扯淡&quot;&gt;&lt;a href=&quot;#扯淡&quot; class=&quot;headerlink&quot; title=&quot; 扯淡&quot;&gt;&lt;/a&gt; &lt;strong&gt;扯淡&lt;/strong&gt;&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;hexo是一款基于Node.js的静态博客框架,&lt;a href=&quot;https://github.com/hexojs/hexo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hexo github链接&lt;/a&gt;&lt;p&gt;&lt;/p&gt;&lt;/li&gt;
