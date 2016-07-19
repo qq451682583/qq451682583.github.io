@@ -31,9 +31,9 @@
       <category term="Android" scheme="http://qq451682583.github.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://qq451682583.github.io/tags/Android/"/>
-    
       <category term="Dialog" scheme="http://qq451682583.github.io/tags/Dialog/"/>
+    
+      <category term="Android" scheme="http://qq451682583.github.io/tags/Android/"/>
     
   </entry>
   
@@ -53,9 +53,9 @@
       <category term="Android" scheme="http://qq451682583.github.io/categories/Android/"/>
     
     
-      <category term="PopWindow" scheme="http://qq451682583.github.io/tags/PopWindow/"/>
-    
       <category term="Android" scheme="http://qq451682583.github.io/tags/Android/"/>
+    
+      <category term="PopWindow" scheme="http://qq451682583.github.io/tags/PopWindow/"/>
     
   </entry>
   
@@ -64,9 +64,10 @@
     <link href="http://qq451682583.github.io/2016/07/15/hexo%E7%AC%AC%E4%B8%80%E6%AD%A5/"/>
     <id>http://qq451682583.github.io/2016/07/15/hexo第一步/</id>
     <published>2016-07-15T04:16:21.000Z</published>
-    <updated>2016-07-19T07:43:09.000Z</updated>
+    <updated>2016-07-19T07:48:17.000Z</updated>
     
-    <content type="html">&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+    <content type="html">&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;&amp;#x626F;&amp;#x6DE1;&quot;&gt;&lt;a href=&quot;#&amp;#x626F;&amp;#x6DE1;&quot; class=&quot;headerlink&quot; title=&quot;&amp;#x626F;&amp;#x6DE1;&quot;&gt;&lt;/a&gt;&lt;strong&gt;&amp;#x626F;&amp;#x6DE1;&lt;/strong&gt;&lt;/h2&gt;&lt;hr&gt;
 &lt;ul&gt;
 &lt;li&gt;hexo&amp;#x662F;&amp;#x4E00;&amp;#x6B3E;&amp;#x57FA;&amp;#x4E8E;Node.js&amp;#x7684;&amp;#x9759;&amp;#x6001;&amp;#x535A;&amp;#x5BA2;&amp;#x6846;&amp;#x67B6;,&lt;a href=&quot;https://github.com/hexojs/hexo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hexo github&amp;#x94FE;&amp;#x63A5;&lt;/a&gt;&lt;p&gt;&lt;/p&gt;&lt;/li&gt;
@@ -133,8 +134,8 @@
     
     <summary type="html">
     
-      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;&amp;#x626F;&amp;#x6DE1;&quot;&gt;&lt;a href=&quot;#&amp;#x626F;&amp;#x6DE1;&quot; class=&quot;headerlink&quot; title=&quot;&amp;#x626F;&amp;#x6DE1;&quot;&gt;&lt;/a&gt;&lt;strong&gt;&amp;#x626F;&amp;#x6
+      &lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
