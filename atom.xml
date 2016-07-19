@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://qq451682583.github.io/"/>
   <updated>2016-07-19T02:24:55.000Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://qq451682583.github.io/</id>
   
   <author>
     <name>ZhiHui Lei</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>记一次透明Dialog的实现</title>
-    <link href="http://yoursite.com/2016/07/17/%E8%AE%B0%E4%B8%80%E6%AC%A1%E9%80%8F%E6%98%8EDialog%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
-    <id>http://yoursite.com/2016/07/17/记一次透明Dialog的实现/</id>
+    <link href="http://qq451682583.github.io/2016/07/17/%E8%AE%B0%E4%B8%80%E6%AC%A1%E9%80%8F%E6%98%8EDialog%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
+    <id>http://qq451682583.github.io/2016/07/17/记一次透明Dialog的实现/</id>
     <published>2016-07-17T13:21:13.000Z</published>
     <updated>2016-07-19T02:24:55.000Z</updated>
     
@@ -28,19 +28,19 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://qq451682583.github.io/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://qq451682583.github.io/tags/Android/"/>
     
-      <category term="Dialog" scheme="http://yoursite.com/tags/Dialog/"/>
+      <category term="Dialog" scheme="http://qq451682583.github.io/tags/Dialog/"/>
     
   </entry>
   
   <entry>
     <title>优雅的使用PopWindow</title>
-    <link href="http://yoursite.com/2016/07/17/%E4%BC%98%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8PopWindow/"/>
-    <id>http://yoursite.com/2016/07/17/优雅的使用PopWindow/</id>
+    <link href="http://qq451682583.github.io/2016/07/17/%E4%BC%98%E9%9B%85%E7%9A%84%E4%BD%BF%E7%94%A8PopWindow/"/>
+    <id>http://qq451682583.github.io/2016/07/17/优雅的使用PopWindow/</id>
     <published>2016-07-17T13:16:21.000Z</published>
     <updated>2016-07-19T02:24:39.000Z</updated>
     
@@ -50,19 +50,19 @@
     
     </summary>
     
-      <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
+      <category term="Android" scheme="http://qq451682583.github.io/categories/Android/"/>
     
     
-      <category term="PopWindow" scheme="http://yoursite.com/tags/PopWindow/"/>
+      <category term="PopWindow" scheme="http://qq451682583.github.io/tags/PopWindow/"/>
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+      <category term="Android" scheme="http://qq451682583.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
     <title>GitHub+Hexo+Next开始你的博客之旅</title>
-    <link href="http://yoursite.com/2016/07/15/hexo%E7%AC%AC%E4%B8%80%E6%AD%A5/"/>
-    <id>http://yoursite.com/2016/07/15/hexo第一步/</id>
+    <link href="http://qq451682583.github.io/2016/07/15/hexo%E7%AC%AC%E4%B8%80%E6%AD%A5/"/>
+    <id>http://qq451682583.github.io/2016/07/15/hexo第一步/</id>
     <published>2016-07-15T04:16:21.000Z</published>
     <updated>2016-07-19T05:09:42.000Z</updated>
     
@@ -109,7 +109,7 @@
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;hexo new&amp;quot;postName&amp;quot; #新建文章&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;hexo new page&amp;quot;pageName&amp;quot; #新建页面&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000002632530&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;传送门&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;Next主题&quot;&gt;&lt;a href=&quot;#Next主题&quot; class=&quot;headerlink&quot; title=&quot;Next主题&quot;&gt;&lt;/a&gt;&lt;strong&gt;Next主题&lt;/strong&gt;&lt;/h2&gt;&lt;hr&gt;
-&lt;p&gt;网站部署好了,没个高大上的主题是我们绝对不能容忍的.如题Next主题是你的不二之选,&lt;a href=&quot;https://qq451682583.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;终于有机会推广了,预览&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;网站部署好了,没个高大上的主题是我们绝对不能容忍的.如题Next主题是你的不二之选,&lt;a href=&quot;https://qq451682583.github.io&quot;&gt;终于有机会推广了,预览&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&quot;安装Next主题&quot;&gt;&lt;a href=&quot;#安装Next主题&quot; class=&quot;headerlink&quot; title=&quot;安装Next主题&quot;&gt;&lt;/a&gt;安装Next主题&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;cd your-hexo-site&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git clone https://github.com/iissnan/hexo-theme-next themes/next&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h4 id=&quot;启用主题&quot;&gt;&lt;a href=&quot;#启用主题&quot; class=&quot;headerlink&quot; title=&quot;启用主题&quot;&gt;&lt;/a&gt;启用主题&lt;/h4&gt;&lt;p&gt;和所有的主题启动一样,打开_config.yml,找到theme字段,修改为next&lt;/p&gt;
 &lt;p&gt;之后我们可以hexo g ,hexo s,localhost:4000本地浏览一下&lt;/p&gt;
@@ -140,16 +140,16 @@
     
     </summary>
     
-      <category term="这货不是博客" scheme="http://yoursite.com/categories/%E8%BF%99%E8%B4%A7%E4%B8%8D%E6%98%AF%E5%8D%9A%E5%AE%A2/"/>
+      <category term="这货不是博客" scheme="http://qq451682583.github.io/categories/%E8%BF%99%E8%B4%A7%E4%B8%8D%E6%98%AF%E5%8D%9A%E5%AE%A2/"/>
     
     
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://qq451682583.github.io/tags/Hexo/"/>
     
-      <category term="GitHub" scheme="http://yoursite.com/tags/GitHub/"/>
+      <category term="GitHub" scheme="http://qq451682583.github.io/tags/GitHub/"/>
     
-      <category term="Next" scheme="http://yoursite.com/tags/Next/"/>
+      <category term="Next" scheme="http://qq451682583.github.io/tags/Next/"/>
     
-      <category term="Atom" scheme="http://yoursite.com/tags/Atom/"/>
+      <category term="Atom" scheme="http://qq451682583.github.io/tags/Atom/"/>
     
   </entry>
   
