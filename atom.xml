@@ -31,9 +31,9 @@
       <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
     
     
-      <category term="Dialog" scheme="http://yoursite.com/tags/Dialog/"/>
-    
       <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Dialog" scheme="http://yoursite.com/tags/Dialog/"/>
     
   </entry>
   
@@ -53,9 +53,9 @@
       <category term="Android" scheme="http://yoursite.com/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
-    
       <category term="PopWindow" scheme="http://yoursite.com/tags/PopWindow/"/>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
     
   </entry>
   
@@ -64,26 +64,30 @@
     <link href="http://yoursite.com/2016/07/15/hexo%E7%AC%AC%E4%B8%80%E6%AD%A5/"/>
     <id>http://yoursite.com/2016/07/15/hexo第一步/</id>
     <published>2016-07-15T04:16:21.000Z</published>
-    <updated>2016-07-19T04:03:53.000Z</updated>
+    <updated>2016-07-19T05:09:42.000Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;扯淡&quot;&gt;&lt;a href=&quot;#扯淡&quot; class=&quot;headerlink&quot; title=&quot; 扯淡&quot;&gt;&lt;/a&gt; &lt;strong&gt;扯淡&lt;/strong&gt;&lt;/h2&gt;&lt;ul&gt;
+    <content type="html">&lt;h2 id=&quot;扯淡&quot;&gt;&lt;a href=&quot;#扯淡&quot; class=&quot;headerlink&quot; title=&quot;扯淡&quot;&gt;&lt;/a&gt;&lt;strong&gt;扯淡&lt;/strong&gt;&lt;/h2&gt;&lt;hr&gt;
+&lt;ul&gt;
 &lt;li&gt;hexo是一款基于Node.js的静态博客框架,&lt;a href=&quot;https://github.com/hexojs/hexo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;hexo github链接&lt;/a&gt;&lt;p&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;作为新时代的有为青年,高逼格的个人博客必须是标配,因此一款简洁大方,使用方便,更重要的是免费的博客框架hexo出现在我们眼前&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;&lt;strong&gt;准备工作&lt;/strong&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;&lt;strong&gt;准备工作&lt;/strong&gt;&lt;/h2&gt;&lt;hr&gt;
+&lt;ul&gt;
 &lt;li&gt;GitHub账号(必须,后期博客提交,hexo部署,网站构建都需要关联git,SSH Key最好可以配置上,这样就避免了你每次提交的时候都需要输入用户名密码,&lt;a href=&quot;http://blog.sina.com.cn/s/blog_6e572cd60101qls0.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;配置教程&lt;/a&gt;)&lt;p&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;安转Node.js(必须,&lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Node.js官网&lt;/a&gt;下载相应平台的最新版本，然后你懂得 next next next ~)&lt;p&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;安装Git(必须,把本地的hexo内容提交到github上去.安转了xcode就自带了git,没有的话appstore下载一个xcode或者直接下载&lt;a href=&quot;https://git-scm.com/download&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;git&lt;/a&gt;)&lt;p&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;Atom编辑器(非必须),Atom谁用谁知道,不多说.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;开始安转Hexo&quot;&gt;&lt;a href=&quot;#开始安转Hexo&quot; class=&quot;headerlink&quot; title=&quot;开始安转Hexo&quot;&gt;&lt;/a&gt;&lt;strong&gt;开始安转Hexo&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt; Node.js和Git都安装好后,首先创建一个文件夹,如blog,用户自定义的hexo安装文件夹,然后cd进入blog目录里安装Hexo。&lt;/p&gt;
+&lt;h2 id=&quot;开始安转Hexo&quot;&gt;&lt;a href=&quot;#开始安转Hexo&quot; class=&quot;headerlink&quot; title=&quot;开始安转Hexo&quot;&gt;&lt;/a&gt;&lt;strong&gt;开始安转Hexo&lt;/strong&gt;&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt; Node.js和Git都安装好后,首先创建一个文件夹,如blog,用户自定义的hexo安装文件夹,然后cd进入blog目录里安装Hexo。&lt;/p&gt;
 &lt;p&gt; 执行如下命令安装Hexo：&lt;/p&gt;
  &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt; cd 你的Hexo安装目录(blog) 执行&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo npm install-g hexo&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt; 然后初始化hexo,命令:&lt;/p&gt;
 &lt;p&gt; &lt;code&gt;hexo init&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt; OK，至此，全部安装工作已经完成！blog就是你的博客根目录，所有的操作都在里面进行.之后的操作都需要cd 到你的blog目录.&lt;/p&gt;
-&lt;h2 id=&quot;静态页面&quot;&gt;&lt;a href=&quot;#静态页面&quot; class=&quot;headerlink&quot; title=&quot; 静态页面&quot;&gt;&lt;/a&gt; &lt;strong&gt;静态页面&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt; 上一步我们已经安装了hexo,生成了blog.&lt;/p&gt;&lt;p&gt;&lt;br&gt; 之后在blog目录,找到_config.yml文件,这就是我们的站点配置文件,可以在此文件中修改我们的配置信息.修改配置文件的教程不多说&lt;a href=&quot;https://hexo.io/docs/configuration.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;传送门&lt;/a&gt;英文看不懂,请自行百度.&lt;/p&gt;
+&lt;h2 id=&quot;静态页面&quot;&gt;&lt;a href=&quot;#静态页面&quot; class=&quot;headerlink&quot; title=&quot;静态页面&quot;&gt;&lt;/a&gt;&lt;strong&gt;静态页面&lt;/strong&gt;&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt; 上一步我们已经安装了hexo,生成了blog.&lt;/p&gt;&lt;p&gt;&lt;br&gt; 之后在blog目录,找到_config.yml文件,这就是我们的站点配置文件,可以在此文件中修改我们的配置信息.修改配置文件的教程不多说&lt;a href=&quot;https://hexo.io/docs/configuration.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;传送门&lt;/a&gt;英文看不懂,请自行百度.&lt;/p&gt;
 &lt;p&gt; 修改的差不多,就可以本地预览下我们的网站了:&lt;/p&gt;
 &lt;p&gt; 生成静态页:&lt;/p&gt;
 &lt;p&gt; &lt;code&gt;hexo generate&lt;/code&gt;(简写hexo g)&lt;/p&gt;
@@ -91,7 +95,8 @@
 &lt;p&gt; &lt;code&gt;hexo server&lt;/code&gt;(简写hexo s)&lt;/p&gt;
 &lt;p&gt; 浏览器输入(localhost:4000),预览我们的博客了,如果打不开,有可能端口被占用了,这时候我们可以指定端口号,命令如下:&lt;/p&gt;
 &lt;p&gt; &lt;code&gt;hexo s -p 4001&lt;/code&gt;(根据指定的端口号浏览博客)&lt;/p&gt;
-&lt;h2 id=&quot;部署到GitHub上&quot;&gt;&lt;a href=&quot;#部署到GitHub上&quot; class=&quot;headerlink&quot; title=&quot; 部署到GitHub上&quot;&gt;&lt;/a&gt; &lt;strong&gt;部署到GitHub上&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;上一步我们已经可以本地预览我们的blog了,当然本地看到是远远不够,现在开始关联github让我们的blog可以分享给更多的小伙伴.&lt;/p&gt;
+&lt;h2 id=&quot;部署到GitHub上&quot;&gt;&lt;a href=&quot;#部署到GitHub上&quot; class=&quot;headerlink&quot; title=&quot;部署到GitHub上&quot;&gt;&lt;/a&gt;&lt;strong&gt;部署到GitHub上&lt;/strong&gt;&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;上一步我们已经可以本地预览我们的blog了,当然本地看到是远远不够,现在开始关联github让我们的blog可以分享给更多的小伙伴.&lt;/p&gt;
 &lt;h4 id=&quot;建立GitHub仓库&quot;&gt;&lt;a href=&quot;#建立GitHub仓库&quot; class=&quot;headerlink&quot; title=&quot;建立GitHub仓库&quot;&gt;&lt;/a&gt;建立GitHub仓库&lt;/h4&gt;&lt;p&gt;进入github账号,创建与你用户名对应的仓库，仓库名必须为[your_user_name.github.io]，固定写法不可修改&lt;/p&gt;
 &lt;p&gt;之后修改我们的配置文件_config.yml,翻到最下面,增加github配置:&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;deploy:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;     type: git&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;     repo: 你自己的仓库地址(配置了SSH的,此处写SSH仓库地址)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;     branch: master&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -100,9 +105,11 @@
 &lt;p&gt;最后执行:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;hexo deploy&lt;/code&gt;(博客部署,提交到仓库)&lt;/p&gt;
 &lt;p&gt;之后我们就可以在浏览器输入[your_user_name.github.io],好了赶快撰写文章,分享你的blog吧.&lt;/p&gt;
-&lt;h2 id=&quot;Hexo常用命令&quot;&gt;&lt;a href=&quot;#Hexo常用命令&quot; class=&quot;headerlink&quot; title=&quot;Hexo常用命令&quot;&gt;&lt;/a&gt;&lt;strong&gt;Hexo常用命令&lt;/strong&gt;&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;hexo new&amp;quot;postName&amp;quot; #新建文章&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;hexo new page&amp;quot;pageName&amp;quot; #新建页面&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;Hexo常用命令&quot;&gt;&lt;a href=&quot;#Hexo常用命令&quot; class=&quot;headerlink&quot; title=&quot;Hexo常用命令&quot;&gt;&lt;/a&gt;&lt;strong&gt;Hexo常用命令&lt;/strong&gt;&lt;/h2&gt;&lt;hr&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;hexo new&amp;quot;postName&amp;quot; #新建文章&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;hexo new page&amp;quot;pageName&amp;quot; #新建页面&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000002632530&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;传送门&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Next主题&quot;&gt;&lt;a href=&quot;#Next主题&quot; class=&quot;headerlink&quot; title=&quot;Next主题&quot;&gt;&lt;/a&gt;&lt;strong&gt;Next主题&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;网站部署好了,没个高大上的主题是我们绝对不能容忍的.如题Next主题是你的不二之选,&lt;a href=&quot;https://qq451682583.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;终于有机会推广了,预览&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Next主题&quot;&gt;&lt;a href=&quot;#Next主题&quot; class=&quot;headerlink&quot; title=&quot;Next主题&quot;&gt;&lt;/a&gt;&lt;strong&gt;Next主题&lt;/strong&gt;&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;网站部署好了,没个高大上的主题是我们绝对不能容忍的.如题Next主题是你的不二之选,&lt;a href=&quot;https://qq451682583.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;终于有机会推广了,预览&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&quot;安装Next主题&quot;&gt;&lt;a href=&quot;#安装Next主题&quot; class=&quot;headerlink&quot; title=&quot;安装Next主题&quot;&gt;&lt;/a&gt;安装Next主题&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;cd your-hexo-site&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git clone https://github.com/iissnan/hexo-theme-next themes/next&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h4 id=&quot;启用主题&quot;&gt;&lt;a href=&quot;#启用主题&quot; class=&quot;headerlink&quot; title=&quot;启用主题&quot;&gt;&lt;/a&gt;启用主题&lt;/h4&gt;&lt;p&gt;和所有的主题启动一样,打开_config.yml,找到theme字段,修改为next&lt;/p&gt;
 &lt;p&gt;之后我们可以hexo g ,hexo s,localhost:4000本地浏览一下&lt;/p&gt;
@@ -126,7 +133,8 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;扯淡&quot;&gt;&lt;a href=&quot;#扯淡&quot; class=&quot;headerlink&quot; title=&quot; 扯淡&quot;&gt;&lt;/a&gt; &lt;strong&gt;扯淡&lt;/strong&gt;&lt;/h2&gt;&lt;ul&gt;
+      &lt;h2 id=&quot;扯淡&quot;&gt;&lt;a href=&quot;#扯淡&quot; class=&quot;headerlink&quot; title=&quot;扯淡&quot;&gt;&lt;/a&gt;&lt;strong&gt;扯淡&lt;/strong&gt;&lt;/h2&gt;&lt;hr&gt;
+&lt;ul&gt;
 &lt;li&gt;hexo是一款基于Node.js的静态博客框架,&lt;a href=&quot;https://github.com/hexojs/hexo&quot;&gt;hexo github链接&lt;/a&gt;&lt;p&gt;&lt;/li&gt;
 &lt;li&gt;作为新时代的有为青年,高逼格的个人博客必须是标配,因此一款简洁大方,使用方便,更重要的是免费的博客框架hexo出现在我们眼前
     
