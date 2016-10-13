@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ZhiHui, Blog" />
+  <meta name="keywords" content="技术细节," />
 
 
 
@@ -86,15 +86,19 @@
 
 
 
-<meta name="description" content="唯一的不同 是处处不同">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ZhiHui Blog">
-<meta property="og:url" content="http://qq451682583.github.io/index.html">
+<meta name="description" content="&amp;#x603B;&amp;#x7ED3;&amp;#x4E00;&amp;#x4E0B;&amp;#xFF1A;
+&amp;#x4E0D;&amp;#x7BA1;&amp;#x6709;&amp;#x6728;&amp;#x6709;&amp;#x51FA;&amp;#x73B0;&amp;#x5F02;&amp;#x5E38;&amp;#xFF0C;finally&amp;#x5757;&amp;#x4E2D;&amp;#x4EE3;&amp;#x7801;&amp;#x90FD;&amp;#x4F1A;&amp;#x6267;&amp;#x884C;&amp;#xFF1B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有return的情况下try catch finally的执行顺序">
+<meta property="og:url" content="http://qq451682583.github.io/2016/10/13/有return的情况下try-catch-finally的执行顺序/index.html">
 <meta property="og:site_name" content="ZhiHui Blog">
-<meta property="og:description" content="唯一的不同 是处处不同">
+<meta property="og:description" content="&amp;#x603B;&amp;#x7ED3;&amp;#x4E00;&amp;#x4E0B;&amp;#xFF1A;
+&amp;#x4E0D;&amp;#x7BA1;&amp;#x6709;&amp;#x6728;&amp;#x6709;&amp;#x51FA;&amp;#x73B0;&amp;#x5F02;&amp;#x5E38;&amp;#xFF0C;finally&amp;#x5757;&amp;#x4E2D;&amp;#x4EE3;&amp;#x7801;&amp;#x90FD;&amp;#x4F1A;&amp;#x6267;&amp;#x884C;&amp;#xFF1B">
+<meta property="og:updated_time" content="2016-10-13T10:50:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ZhiHui Blog">
-<meta name="twitter:description" content="唯一的不同 是处处不同">
+<meta name="twitter:title" content="有return的情况下try catch finally的执行顺序">
+<meta name="twitter:description" content="&amp;#x603B;&amp;#x7ED3;&amp;#x4E00;&amp;#x4E0B;&amp;#xFF1A;
+&amp;#x4E0D;&amp;#x7BA1;&amp;#x6709;&amp;#x6728;&amp;#x6709;&amp;#x51FA;&amp;#x73B0;&amp;#x5F02;&amp;#x5E38;&amp;#xFF0C;finally&amp;#x5757;&amp;#x4E2D;&amp;#x4EE3;&amp;#x7801;&amp;#x90FD;&amp;#x4F1A;&amp;#x6267;&amp;#x884C;&amp;#xFF1B">
 
 
 
@@ -115,9 +119,9 @@
 
 
 
-  <link rel="canonical" href="http://qq451682583.github.io/"/>
+  <link rel="canonical" href="http://qq451682583.github.io/2016/10/13/有return的情况下try-catch-finally的执行顺序/"/>
 
-  <title> ZhiHui Blog </title>
+  <title> 有return的情况下try catch finally的执行顺序 | ZhiHui Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -138,9 +142,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,9 +249,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -269,10 +271,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/10/13/有return的情况下try-catch-finally的执行顺序/" itemprop="url">
-                  有return的情况下try catch finally的执行顺序
-                </a>
+                有return的情况下try catch finally的执行顺序
               
             
           </h1>
@@ -338,9 +337,7 @@
       
 
       
-        
-          
-            <a id="more"></a>
+        <a id="more"></a>
 <h3 id="&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#xFF1A;"><a href="#&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#xFF1A;" class="headerlink" title="&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#xFF1A;"></a>&#x603B;&#x7ED3;&#x4E00;&#x4E0B;&#xFF1A;</h3><ol>
 <li><p>&#x4E0D;&#x7BA1;&#x6709;&#x6728;&#x6709;&#x51FA;&#x73B0;&#x5F02;&#x5E38;&#xFF0C;finally&#x5757;&#x4E2D;&#x4EE3;&#x7801;&#x90FD;&#x4F1A;&#x6267;&#x884C;&#xFF1B;</p>
 </li>
@@ -361,522 +358,99 @@
 </ol>
 <p>&#x7A76;&#x5176;&#x672C;&#x8D28; &#x57FA;&#x672C;&#x7C7B;&#x578B;&#x5728;&#x6808;&#x4E2D;&#x5B58;&#x50A8;,&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x771F;&#x5B9E;&#x7684;&#x503C;,&#x800C;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x5176;&#x6D45;&#x62F7;&#x8D1D;&#x5806;&#x5730;&#x5740;.&#x6240;&#x4EE5;&#x624D;&#x4F1A;&#x6539;&#x53D8;~,&#x4F46;&#x662F;&#xFF0C;&#x7ECF;&#x6D4B;&#x8BD5;date&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#x4E5F;&#x662F;&#x4E0D;&#x53D7;&#x5F71;&#x54CD;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;date&#x7C7B;&#x5B9E;&#x73B0;&#x4E86;serializable&#x5E8F;&#x5217;&#x5316;&#x63A5;&#x53E3;&#xFF0C;&#x5229;&#x7528;&#x5BF9;&#x8C61;&#x5E8F;&#x5217;&#x5316;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5BF9;&#x8C61;&#x7684;&#x201D;&#x6DF1;&#x590D;&#x5236;&#x201D;&#xFF0C;&#x5373;&#x590D;&#x5236;&#x5BF9;&#x8C61;&#x672C;&#x8EAB;&#x53CA;&#x5F15;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x672C;&#x8EAB;&#x3002;&#x6240;&#x4EE5;&#x548C;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x7C7B;&#x4F3C;&#xFF0C;try&#x4E2D;&#x526F;&#x672C;&#x7684;&#x5730;&#x5740;&#x548C;&#x4E4B;&#x540E;&#x5728;finally&#x4E2D;&#x4FEE;&#x6539;&#x7684;&#x503C;&#x5F97;&#x5730;&#x5740;&#x4E0D;&#x540C;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;&#x3002;</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="ZhiHui Lei WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="ZhiHui Lei Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
     </div>
+  </div>
 
-    <div>
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/01/拆轮子之ButterKnife-Dagger-2/" itemprop="url">
-                  拆轮子之ButterKnife & Dagger 2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-01T19:36:16+08:00" content="2016-09-01">
-              2016-09-01
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/拆轮子系列/" itemprop="url" rel="index">
-                    <span itemprop="name">拆轮子系列</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/01/拆轮子之ButterKnife-Dagger-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/01/拆轮子之ButterKnife-Dagger-2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/技术细节/" rel="tag">#技术细节</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+              <a href="/2016/09/01/拆轮子之ButterKnife-Dagger-2/" rel="next" title="拆轮子之ButterKnife & Dagger 2">
+                <i class="fa fa-chevron-left"></i> 拆轮子之ButterKnife & Dagger 2
+              </a>
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/24/拒绝糟糕的代码/" itemprop="url">
-                  拒绝糟糕的代码
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-24T10:21:44+08:00" content="2016-08-24">
-              2016-08-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/代码习惯/" itemprop="url" rel="index">
-                    <span itemprop="name">代码习惯</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/24/拒绝糟糕的代码/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/24/拒绝糟糕的代码/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&#x8F6C;&#x8F7D;&#x8BF7;&#x6CE8;&#x660E;&#x51FA;&#x5904;:<a href="https://qq451682583.github.io/">https://qq451682583.github.io/</a><br></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/24/拒绝糟糕的代码/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/23/创建和销毁对象/" itemprop="url">
-                  创建和销毁对象
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-23T21:09:56+08:00" content="2016-08-23">
-              2016-08-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Effective-Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Effective Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/23/创建和销毁对象/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/23/创建和销毁对象/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/07/17/记一次透明Dialog的实现/" itemprop="url">
-                  记一次透明Dialog的实现
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-17T21:21:13+08:00" content="2016-07-17">
-              2016-07-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/07/17/记一次透明Dialog的实现/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/17/记一次透明Dialog的实现/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="http://i1.piimg.com/4851/1e3dc5fac642f07b.png" alt=""><br></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/17/记一次透明Dialog的实现/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/10/13/有return的情况下try-catch-finally的执行顺序/"
+     data-title="有return的情况下try catch finally的执行顺序"
+     data-content=""
+     data-url="http://qq451682583.github.io/2016/10/13/有return的情况下try-catch-finally的执行顺序/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
 
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
@@ -884,6 +458,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/13/有return的情况下try-catch-finally的执行顺序/"
+           data-title="有return的情况下try catch finally的执行顺序" data-url="http://qq451682583.github.io/2016/10/13/有return的情况下try-catch-finally的执行顺序/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -903,8 +485,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/head.jpg"
@@ -992,6 +583,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结一下："><span class="nav-number">1.</span> <span class="nav-text">总结一下：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需要注意的是："><span class="nav-number">2.</span> <span class="nav-text">需要注意的是：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论："><span class="nav-number">3.</span> <span class="nav-text">结论：</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1088,6 +690,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
