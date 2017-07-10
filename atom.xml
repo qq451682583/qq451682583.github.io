@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qq451682583.github.io/"/>
-  <updated>2016-12-01T07:32:19.000Z</updated>
+  <updated>2017-07-10T09:05:44.000Z</updated>
   <id>http://qq451682583.github.io/</id>
   
   <author>
@@ -14,6 +14,295 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android编码规范</title>
+    <link href="http://qq451682583.github.io/2017/07/07/Android%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/"/>
+    <id>http://qq451682583.github.io/2017/07/07/Android编码规范/</id>
+    <published>2017-07-07T11:45:55.000Z</published>
+    <updated>2017-07-10T09:05:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>&#x8F6C;&#x8F7D;&#x8BF7;&#x6CE8;&#x660E;&#x51FA;&#x5904;:<a href="http://leizh.online/" target="_blank" rel="external">http://leizh.online/</a><br><a id="more"></a></p>
+<h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a><strong>&#x524D;&#x8A00;</strong></h2><hr>
+<p>&#x5728;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x4E00;&#x4E2A;&#x826F;&#x597D;&#x7684;&#x5F00;&#x53D1;&#x4E60;&#x60EF;&#x4EE5;&#x53CA;&#x4E00;&#x4E2A;&#x5F00;&#x53D1;&#x89C4;&#x8303;&#x53EF;&#x80FD;&#x4F1A;&#x8BA9;&#x4F60;&#x5C11;&#x8D70;&#x5F88;&#x591A;&#x5F2F;&#x8DEF;&#xFF0C;&#x4E5F;&#x4F1A;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x7684;&#x63D0;&#x9AD8;&#x4EE3;&#x7801;&#x7684;&#x53EF;&#x8BFB;&#x6027;&#xFF0C;&#x53EF;&#x7EF4;&#x62A4;&#x6027;&#x548C;&#x53EF;&#x62D3;&#x5C55;&#x6027;&#x3002;&#x5F53;&#x968F;&#x7740;&#x9700;&#x6C42;&#x7684;&#x4E0D;&#x65AD;&#x53D8;&#x66F4;&#xFF0C;&#x9700;&#x8981;&#x7EF4;&#x62A4;&#x9879;&#x76EE;&#x7684;&#x65F6;&#x5019;&#x3002;&#x5F53;&#x968F;&#x7740;&#x9879;&#x76EE;&#x7684;&#x4EE3;&#x7801;&#x91CF;&#x7684;&#x63D0;&#x5347;&#xFF0C;&#x9700;&#x8981;&#x91CD;&#x6784;&#x7684;&#x65F6;&#x5019;&#x3002;&#x4F60;&#x4F1A;&#x660E;&#x767D;&#x4E00;&#x4E2A;&#x597D;&#x7684;&#x5F00;&#x53D1;&#x89C4;&#x8303;&#x591A;&#x4E48;&#x591A;&#x4E48;&#x7684;&#x91CD;&#x8981;&#x3002;</p>
+<h2 id="&#x547D;&#x540D;&#x89C4;&#x8303;"><a href="#&#x547D;&#x540D;&#x89C4;&#x8303;" class="headerlink" title="&#x547D;&#x540D;&#x89C4;&#x8303;"></a><strong>&#x547D;&#x540D;&#x89C4;&#x8303;</strong></h2><hr>
+<h4 id="&#x5305;&#x540D;"><a href="#&#x5305;&#x540D;" class="headerlink" title="&#x5305;&#x540D;"></a>&#x5305;&#x540D;</h4><ul>
+<li>&#x5305;&#x540D;&#x5168;&#x90E8;&#x91C7;&#x7528;&#x5C0F;&#x5199;&#xFF0C;&#x4E0D;&#x7528;&#x4E0B;&#x5212;&#x7EBF;&#x533A;&#x5206;&#x5355;&#x8BCD;</li>
+<li>&#x901A;&#x7528;&#x529F;&#x80FD;&#x5B50;&#x5305;&#x540D;&#x91C7;&#x7528;[&#x4E3B;&#x5305;&#x540D;].[&#x901A;&#x7528;&#x540D;&#x79F0;]&#x7684;&#x547D;&#x540D;&#x65B9;&#x5F0F;</li>
+<li>&#x4E00;&#x822C;&#x529F;&#x80FD;&#x5B50;&#x5305;&#x540D;&#x91C7;&#x7528;[&#x4E3B;&#x5305;&#x540D;].[&#x6A21;&#x5757;&#x540D;&#x79F0;].[&#x5B50;&#x6A21;&#x5757;&#x540D;&#x79F0;]&#x7684;&#x547D;&#x540D;&#x65B9;&#x5F0F;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x624B;&#x673A;&#x52A9;&#x624B;&#x7684;&#x95F9;&#x949F;&#x6A21;&#x5757;&#x5305;&#x540D; edu.feicui.assistant.alarm</li>
+<li>&#x53EA;&#x9700;&#x5BFC;&#x5165;&#x7528;&#x5230;&#x7684;&#x7C7B;&#xFF0C;&#x4E0D;&#x5F97;&#x7528;*&#x5BFC;&#x5165;&#x5305;&#x4E0B;&#x6240;&#x6709;&#x7C7B;</li>
+<li>&#x5BFC;&#x5165;&#x7C7B;&#x65F6;&#xFF0C;&#x7CFB;&#x7EDF;&#x7C7B;&#x5728;&#x4E0A;&#x65B9;&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x5728;&#x4E0B;&#x65B9;</li>
+</ul>
+<h4 id="&#x4EE3;&#x7801;"><a href="#&#x4EE3;&#x7801;" class="headerlink" title="&#x4EE3;&#x7801;"></a>&#x4EE3;&#x7801;</h4><ul>
+<li>&#x4EE3;&#x7801;&#x4E3B;&#x8981;&#x91C7;&#x7528;&#x5927;/&#x5C0F;&#x9A7C;&#x5CF0;&#x547D;&#x540D;&#x6CD5;&#xFF0C;&#x5373;&#x9664;&#x9996;&#x5B57;&#x6BCD;&#x5916;&#xFF0C;&#x6BCF;&#x4E2A;&#x5355;&#x8BCD;&#x9996;&#x5B57;&#x6BCD;&#x5927;&#x5199;&#xFF0C;&#x6574;&#x4F53;&#x9996;&#x5B57;&#x6BCD;&#x5927;&#x5C0F;&#x6839;&#x636E;&#x5176;&#x5B83;&#x89C4;&#x8303;&#x51B3;&#x5B9A;</li>
+<li>&#x7C7B;&#x540D;&#x3001;&#x63A5;&#x53E3;&#x540D;&#x3001;&#x679A;&#x4E3E;&#x540D;&#x7B49;&#x9996;&#x5B57;&#x6BCD;&#x5927;&#x5199;&#xFF0C;&#x82E5;&#x7531;&#x591A;&#x4E2A;&#x5355;&#x8BCD;&#x7EC4;&#x6210;&#xFF0C;&#x5219;&#x5176;&#x540E;&#x6BCF;&#x4E2A;&#x5355;&#x8BCD;&#x9996;&#x5B57;&#x6BCD;&#x5927;&#x5199;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;class ConfigManager{}</li>
+<li>&#x7EE7;&#x627F;&#x81EA;&#x5B89;&#x5353;&#x7EC4;&#x4EF6;&#x7684;&#x7C7B;&#xFF0C;&#x91C7;&#x7528;&#x7236;&#x7C7B;&#x540D;&#x4F5C;&#x4E3A;&#x540E;&#x7F00;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;class LoginActivity extends Activity{}</li>
+<li>&#x81EA;&#x5B9A;&#x4E49;&#x5F02;&#x5E38;&#x5FC5;&#x987B;&#x4EE5;Exception&#x7ED3;&#x5C3E;</li>
+<li>&#x9664;for&#x5FAA;&#x73AF;&#x53D8;&#x91CF;&#x5916;&#xFF0C;&#x4E00;&#x5F8B;&#x4E0D;&#x5F97;&#x4F7F;&#x7528;i&#x3001;j&#x3001;k&#x7B49;&#x5355;&#x5B57;&#x7B26;&#x4F5C;&#x4E3A;&#x53D8;&#x91CF;&#x540D;</li>
+<li>&#x5B9A;&#x4E49;&#x6570;&#x7EC4;&#x65F6;&#x65B9;&#x62EC;&#x53F7;&#x7D27;&#x968F;&#x5728;&#x539F;&#x59CB;&#x7C7B;&#x578B;&#x4E4B;&#x540E;&#xFF0C;&#x6570;&#x7EC4;&#x540D;&#x79F0;&#x4E00;&#x822C;&#x4F7F;&#x7528;&#x590D;&#x6570;&#x5F62;&#x5F0F;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;int[] arrays;</li>
+<li>&#x5E38;&#x91CF;&#x3001;&#x679A;&#x4E3E;&#x7B49;&#x5747;&#x91C7;&#x7528;&#x5927;&#x5199;&#x5F62;&#x5F0F;&#xFF0C;&#x7528;&#x4E0B;&#x5212;&#x7EBF;&#x533A;&#x5206;&#x5404;&#x5355;&#x8BCD;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;final static int DIALOG_ID_ALARM = 1;enum Season{SPRING, SUMMER, AUTUMN, WINTER};</li>
+<li>&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x6DFB;&#x52A0;&#x6240;&#x6709;&#x8005;&#x524D;&#x7F00;&#xFF1A;&#x5B9E;&#x4F8B;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x524D;&#x7F00;m&#xFF08;&#x8868;&#x793A;member&#xFF09;&#xFF0C;&#x7C7B;&#x9759;&#x6001;&#x53D8;&#x91CF;&#x524D;&#x7F00;s&#xFF08;&#x8868;&#x793A;static&#xFF09;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;mRun &#x7C7B;&#x9759;&#x6001;&#x53D8;&#x91CF;sInstance</li>
+<li>&#x63A7;&#x4EF6;&#x53D8;&#x91CF;&#x6DFB;&#x52A0;&#x7EC4;&#x4EF6;&#x524D;&#x7F00;&#xFF0C;&#x987A;&#x5E8F;&#x5728;&#x6240;&#x6709;&#x8005;&#x524D;&#x7F00;&#x4E4B;&#x540E;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x5168;&#x5C40;&#x540D;&#x79F0;mBtnNext  &#x5C40;&#x90E8;&#x540D;&#x79F0;btnNext</li>
+<li>&#x9664;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x5916;&#x4E00;&#x822C;&#x4E0D;&#x5F97;&#x4F7F;&#x7528;&#x9759;&#x6001;&#x53D8;&#x91CF;</li>
+<li>&#x5E38;&#x91CF;&#x4E00;&#x822C;&#x4F7F;&#x7528;final static&#x4FEE;&#x9970;&#xFF0C;&#x6839;&#x636E;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x53EF;&#x89C1;&#x6027;&#x4FEE;&#x9970;&#x7B26;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;public static final int VISIBLE = 0x00000000;</li>
+<li>&#x4E00;&#x822C;&#x65B9;&#x6CD5;&#x540D;&#x9996;&#x5B57;&#x6BCD;&#x5C0F;&#x5199;&#xFF0C;&#x82E5;&#x7531;&#x591A;&#x4E2A;&#x5355;&#x8BCD;&#x7EC4;&#x6210;&#xFF0C;&#x5219;&#x5176;&#x540E;&#x6BCF;&#x4E2A;&#x5355;&#x8BCD;&#x9996;&#x5B57;&#x6BCD;&#x5927;&#x5199;</li>
+<li>&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x91C7;&#x7528;&#x9012;&#x589E;&#x65B9;&#x5F0F;&#xFF08;&#x53C2;&#x6570;&#x591A;&#x7684;&#x5199;&#x5728;&#x540E;&#x9762;&#xFF09;</li>
+<li>&#x5B9E;&#x4F53;&#x7C7B;&#x4E2D;&#x56FA;&#x5B9A;&#x503C;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x53EF;&#x8BBE;&#x7F6E;&#x6210;final&#xFF0C;&#x5E76;&#x901A;&#x8FC7;&#x6784;&#x9020;&#x51FD;&#x6570;&#x521D;&#x59CB;&#x5316;</li>
+<li>&#x5B9E;&#x4F53;&#x7C7B;&#x4E2D;&#x4E0D;&#x5F97;&#x968F;&#x610F;&#x4FEE;&#x6539;&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x53EF;&#x6DFB;&#x52A0;&#x4E0B;&#x5212;&#x7EBF;&#x524D;&#x7F00;&#x4EE5;&#x4F5C;&#x533A;&#x522B;,&#x4F8B;&#x5982;&#xFF1A;class User{public int_id;}</li>
+<li>&#x4E00;&#x822C;&#x4E0D;&#x4F7F;&#x7528;System.out&#x8F93;&#x51FA;&#xFF0C;&#x800C;&#x662F;&#x4F7F;&#x7528;Log&#x4E2D;&#x7684;&#x65B9;&#x6CD5;</li>
+<li>&#x4F7F;&#x7528;BuildConfig.DEBUG&#x6807;&#x8BB0;&#x5BF9;Log&#x8FDB;&#x884C;&#x5C01;&#x88C5;&#xFF0C;&#x53EA;&#x5728;&#x8C03;&#x8BD5;&#x65F6;&#x8F93;&#x51FA;&#x91CD;&#x8981;&#x4FE1;&#x606F;&#xFF0C;&#x6B63;&#x5F0F;&#x7248;&#x4E0D;&#x8F93;&#x51FA;</li>
+<li>&#x4E00;&#x822C;try&#x2026;&#x2026;catch&#x53EA;&#x6355;&#x83B7;&#x9700;&#x8981;&#x7684;&#x5F02;&#x5E38;</li>
+<li>catch&#x5757;&#x4E0D;&#x5F97;&#x4E3A;&#x7A7A;&#xFF0C;&#x81F3;&#x5C11;&#x5E94;&#x5F53;&#x5C06;&#x5F02;&#x5E38;&#x4FE1;&#x606F;&#x8F93;&#x51FA;</li>
+</ul>
+<h4 id="&#x8D44;&#x6E90;"><a href="#&#x8D44;&#x6E90;" class="headerlink" title="&#x8D44;&#x6E90;"></a>&#x8D44;&#x6E90;</h4><ul>
+<li>&#x8D44;&#x6E90;&#x547D;&#x540D;&#x5168;&#x90E8;&#x91C7;&#x7528;&#x5C0F;&#x5199;&#xFF0C;&#x5404;&#x5355;&#x8BCD;&#x95F4;&#x4EE5;&#x4E0B;&#x5212;&#x7EBF;&#x533A;&#x5206;</li>
+<li>&#x5E03;&#x5C40;&#x6587;&#x4EF6;&#x91C7;&#x7528;[&#x524D;&#x7F00;]&#x4E0B;&#x5212;&#x7EBF;[&#x529F;&#x80FD;&#x6A21;&#x5757;].xml&#x7684;&#x547D;&#x540D;&#x65B9;&#x5F0F;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;MainActivity&#x7684;&#x5E03;&#x5C40;activity_main.xml</li>
+<li>&#x56FE;&#x7247;&#x91C7;&#x7528;[&#x6027;&#x8D28;&#x524D;&#x7F00;][&#x529F;&#x80FD;&#x6A21;&#x5757;] [&#x5C5E;&#x6027;&#x540E;&#x7F00;].[&#x6269;&#x5C55;&#x540D;]&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x4E3B;&#x80CC;&#x666F;&#x56FE;&#x7247;bg_main.png  &#x786E;&#x5B9A;&#x6309;&#x94AE;&#x6309;&#x4E0B;btn_ok_presssed.png</li>
+<li>values&#x76EE;&#x5F55;&#x4E0B;&#x6587;&#x4EF6;&#x540D;&#x79F0;&#x8F83;&#x56FA;&#x5B9A;&#xFF0C;&#x4E0D;&#x5F97;&#x968F;&#x610F;&#x66F4;&#x6539;</li>
+</ul>
+<h2 id="&#x6CE8;&#x91CA;"><a href="#&#x6CE8;&#x91CA;" class="headerlink" title="&#x6CE8;&#x91CA;"></a><strong>&#x6CE8;&#x91CA;</strong></h2><ul>
+<li><p>&#x7C7B;&#x5B9A;&#x4E49;&#x4E00;&#x822C;&#x9700;&#x8981;&#x5199;&#x7C7B;&#x6CE8;&#x91CA;&#xFF0C;&#x63A5;&#x53E3;&#x4E00;&#x822C;&#x9700;&#x8981;&#x5199;&#x63A5;&#x53E3;&#x6CE8;&#x91CA;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x6587;&#x4EF6;&#x6CE8;&#x91CA;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x5728;&#x7C7B;&#x6CE8;&#x91CA;&#x548C;&#x63A5;&#x53E3;&#x6CE8;&#x91CA;&#x4E2D;&#x6807;&#x51FA;&#x4F5C;&#x8005;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">    * Root of the ION tree, provides the access to the   document&apos;s data.</div><div class="line">    * &lt;p&gt;</div><div class="line">    * Subclass of {@link Node}, Since elements, comments, etc. cannot exist</div><div class="line">    * outside the context of a Document, the Document also contains the</div><div class="line">    * factory methods needed to create these objects.</div><div class="line">    * &lt;/p&gt;</div><div class="line">    *</div><div class="line">    * @author Mr. Zhang</div><div class="line">    */</div><div class="line">    class Document {}</div></pre></td></tr></table></figure>
+</li>
+<li><p>&#x6210;&#x5458;&#x53D8;&#x91CF;&#x3001;&#x9759;&#x6001;&#x53D8;&#x91CF;&#x3001;&#x5E38;&#x91CF;&#x7B49;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#x6CE8;&#x91CA;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/** This view is invisible. */</div><div class="line">  public static final int INVISIBLE = 0x00000004;</div></pre></td></tr></table></figure>
+</li>
+<li><p>&#x5173;&#x8054;&#x6027;&#x8F83;&#x5927;&#x7684;&#x591A;&#x4E2A;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x7B49;&#x53EF;&#x4EE5;&#x5171;&#x7528;&#x540C;&#x4E00;&#x6761;&#x6CE8;&#x91CA;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/** The width and height of View. */</div><div class="line">   private int mWidth, mHeight;</div></pre></td></tr></table></figure>
+</li>
+<li><p>public&#x548C;protected&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x6DFB;&#x52A0;&#x65B9;&#x6CD5;&#x6CE8;&#x91CA;&#xFF0C;default&#x548C;private&#x65B9;&#x6CD5;&#x5EFA;&#x8BAE;&#x6DFB;&#x52A0;&#x65B9;&#x6CD5;&#x6CE8;&#x91CA;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">    * Writes {@code count} characters starting at {@code offset}     in {@code buf}</div><div class="line">    * to the target.</div><div class="line">    *</div><div class="line">    * @param buf</div><div class="line">    *            the non-null character array to write.</div><div class="line">    * @param offset</div><div class="line">    *            the index of the first character in {@code buf} to write.</div><div class="line">    * @param count</div><div class="line">    *            the maximum number of characters to write.</div><div class="line">    * @return {@code true} if success, otherwise {@code false}</div><div class="line">    * @throws IndexOutOfBoundsException</div><div class="line">    *             if {@code offset &lt; 0} or {@code count &lt; 0}, or if {@code</div><div class="line">    *             offset + count} is greater than the size of {@code buf}.</div><div class="line">    * @throws IOException</div><div class="line">    *             if this writer is closed or another I/O error occurs.</div><div class="line">    */</div><div class="line">     public abstract boolean write(char[] buf, int offset, int count) throws IndexOutOfBoundsException, IOException;</div></pre></td></tr></table></figure>
+</li>
+<li><p>&#x82E5;&#x8986;&#x76D6;&#x57FA;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x4E0D;&#x5199;&#x65B9;&#x6CD5;&#x6CE8;&#x91CA;&#xFF0C;&#x4F46;&#x5FC5;&#x987B;&#x7528;@Override&#x6807;&#x51FA;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">   protected void onCreate(Bundle savedInstanceState) {}</div></pre></td></tr></table></figure>
+</li>
+<li><p>&#x4E0D;&#x5EFA;&#x8BAE;&#x7EE7;&#x7EED;&#x4F7F;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#x7528;@Deprecated&#x6807;&#x51FA;</p>
+</li>
+<li><p>switch&#x2026;&#x2026;case&#x7684;&#x6BCF;&#x4E2A;&#x6761;&#x4EF6;&#x4E00;&#x822C;&#x6DFB;&#x52A0;&#x7B80;&#x77ED;&#x8BF4;&#x660E;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">switch (type) {</div><div class="line">   case 1:// Android apps</div><div class="line">         break;</div><div class="line">   case 2:// Android games</div><div class="line">         break;</div><div class="line">   case 3:// iOS apps</div><div class="line">         break;</div><div class="line">   default:// Not a valid package</div><div class="line">         break;</div><div class="line">   }</div></pre></td></tr></table></figure>
+</li>
+<li><p>&#x5982;&#x679C;if&#x7684;&#x6761;&#x4EF6;&#x5927;&#x4E8E;2&#x4E2A;&#xFF0C;&#x5219;&#x5FC5;&#x987B;&#x5199;&#x6CE8;&#x91CA;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if (isBluetooth // If Bluetooth network is on</div><div class="line">               || isWifi // If WLAN network is on</div><div class="line">               || is3g // if 3g network is on</div><div class="line">     ) {}</div></pre></td></tr></table></figure>
+</li>
+<li><p>&#x5BF9;&#x4E8E;&#x672A;&#x5B8C;&#x6210;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x7528;TODO&#x52A0;&#x4EE5;&#x6807;&#x8BB0;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">void write(byte[] buf, File file) {</div><div class="line">    // TODO: Write buf to file</div><div class="line">  }</div></pre></td></tr></table></figure>
+</li>
+<li><p>&#x82E5;&#x529F;&#x80FD;&#x5DF2;&#x5B8C;&#x6210;&#xFF0C;&#x4F46;&#x5B58;&#x5728;&#x6548;&#x7387;&#x7B49;&#x6F5C;&#x5728;&#x95EE;&#x9898;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;XXX&#x52A0;&#x4EE5;&#x6807;&#x8BB0;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">void parseXML(File file) {</div><div class="line">       // XXX: Maybe SAX is better</div><div class="line">       DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();</div><div class="line">       Document doc = builder.parse(file);</div><div class="line">   }</div></pre></td></tr></table></figure>
+</li>
+<li><p>&#x82E5;&#x4EE3;&#x7801;&#x5B58;&#x5728;&#x4E25;&#x91CD;&#x95EE;&#x9898;&#x6216;&#x4EC5;&#x7528;&#x4E8E;&#x8C03;&#x8BD5;&#xFF0C;&#x4F7F;&#x7528;FIXME&#x52A0;&#x4EE5;&#x6807;&#x8BB0;&#xFF08;&#x6CE8;&#xFF1A;&#x5B58;&#x5728;FIXME&#x6807;&#x8BB0;&#x7684;&#x4EE3;&#x7801;&#x4E0D;&#x80FD;&#x4F5C;&#x4E3A;&#x6B63;&#x5F0F;&#x7248;&#x53D1;&#x5E03;&#xFF09;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">boolean login(String name, String pwd) {</div><div class="line">        //FIXME: Remove this line before publishing</div><div class="line">        System.out.println(&quot;name=&quot; + name + &quot;, password=&quot; + pwd);</div><div class="line">        if (users.containsKey(name) &amp;&amp; users.get(name).equals(pwd))</div><div class="line">        return true;</div><div class="line">        return false;</div><div class="line">   }</div></pre></td></tr></table></figure>
+</li>
+<li><p>&#x5982;&#x679C;for&#x3001;while&#x7B49;&#x4EE3;&#x7801;&#x5757;&#x8FC7;&#x957F;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x7ED3;&#x5C3E;&#x5904;&#x6807;&#x8BB0;&#x5FAA;&#x73AF;&#x53D8;&#x91CF;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">for (int position = 0; position &lt; 10; position++) {</div><div class="line">          &#x2026;&#x2026;</div><div class="line">  }// end for: position</div><div class="line">  while(mRun){</div><div class="line">          &#x2026;&#x2026;</div><div class="line">  }// end while: mRun</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="&#x4EE3;&#x7801;&#x63D0;&#x4EA4;&#x89C4;&#x8303;"><a href="#&#x4EE3;&#x7801;&#x63D0;&#x4EA4;&#x89C4;&#x8303;" class="headerlink" title="&#x4EE3;&#x7801;&#x63D0;&#x4EA4;&#x89C4;&#x8303;"></a><strong>&#x4EE3;&#x7801;&#x63D0;&#x4EA4;&#x89C4;&#x8303;</strong></h2><p>&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;&#x65E0;&#x8BBA;&#x662F;git&#xFF0C;&#x8FD8;&#x662F;svn&#x90FD;&#x9700;&#x8981;&#x9075;&#x5B88;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#x89C4;&#x8303;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;git&#x3002;</p>
+<ul>
+<li>&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#x8981;&#x53CA;&#x65F6;&#x66F4;&#x65B0;&#xFF0C;&#x4E0D;&#x8981;&#x548C;&#x670D;&#x52A1;&#x5668;&#x6709;&#x592A;&#x5927;&#x7684;&#x5DEE;&#x522B;</li>
+<li>&#x63D0;&#x4EA4;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x51FA;&#x73B0;&#x51B2;&#x7A81;&#xFF0C;&#x5FC5;&#x987B;&#x4ED4;&#x7EC6;&#x5206;&#x6790;&#x89E3;&#x51B3;&#xFF0C;&#x4E0D;&#x53EF;&#x4EE5;&#x5F3A;&#x884C;&#x63D0;&#x4EA4;</li>
+<li>&#x63D0;&#x4EA4;&#x4EE3;&#x7801;&#x4E4B;&#x524D;&#x5148;&#x5728;&#x672C;&#x5730;&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#xFF0C;&#x786E;&#x4FDD;&#x9879;&#x76EE;&#x80FD;&#x7F16;&#x8BD1;&#x901A;&#x8FC7;&#xFF0C;&#x4E14;&#x80FD;&#x591F;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#xFF0C;&#x4E0D;&#x53EF;&#x76F2;&#x76EE;&#x63D0;&#x4EA4;</li>
+<li>&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;&#x7248;&#x672C;&#x662F;&#x6B63;&#x786E;&#x7684;&#xFF0C;&#x9879;&#x76EE;&#x6709;&#x9519;&#x8BEF;&#x65F6;&#xFF0C;&#x4E0D;&#x8981;&#x8FDB;&#x884C;&#x63D0;&#x4EA4;</li>
+<li>&#x63D0;&#x4EA4;&#x4E4B;&#x524D;&#x5148;&#x66F4;&#x65B0;</li>
+<li>&#x63D0;&#x4EA4;&#x65F6;&#x6CE8;&#x610F;&#x4E0D;&#x8981;&#x63D0;&#x4EA4;&#x672C;&#x5730;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x6BD4;&#x5982;&#x6211;&#x4EEC;Android Studio&#x9879;&#x76EE;&#x4E2D;&#x7684; idea,build&#x6587;&#x4EF6;&#x5939;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x63D0;&#x4EA4;&#x7684;&#x3002;</li>
+<li>&#x4E0D;&#x8981;&#x63D0;&#x4EA4;&#x81EA;&#x5DF1;&#x4E0D;&#x660E;&#x767D;&#x7684;&#x4EE3;&#x7801;</li>
+<li>&#x63D0;&#x524D;&#x534F;&#x8C03;&#x597D;&#x9879;&#x76EE;&#x7EC4;&#x6210;&#x5458;&#x7684;&#x5DE5;&#x4F5C;&#x8BA1;&#x5212;&#xFF0C;&#x51CF;&#x5C11;&#x51B2;&#x7A81;</li>
+<li>&#x5BF9;&#x63D0;&#x4EA4;&#x7684;&#x4FE1;&#x606F;&#x91C7;&#x7528;&#x660E;&#x6670;&#x7684;&#x6807;&#x6CE8;&#xFF08;&#x5199;&#x6CE8;&#x91CA;&#xFF09;</li>
+<li>&#x5F00;&#x53D1;&#x65B0;&#x4EFB;&#x52A1;&#x7684;&#x65F6;&#x5019;&#x8981;&#x5F00;&#x65B0;&#x7684;&#x5206;&#x652F;&#xFF0C;&#x5206;&#x652F;&#x547D;&#x540D;&#x8868;&#x9762;&#x4EFB;&#x52A1;&#x9700;&#x6C42;</li>
+<li>&#x5206;&#x652F;&#x5F00;&#x53D1;&#x5B8C;&#x540E;&#xFF0C;&#x8981;&#x5148;&#x62C9;&#x53BB;&#x4E3B;&#x5206;&#x652F;&#x4EE3;&#x7801;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x4E3B;&#x5206;&#x652F;&#x4EE3;&#x7801;&#x5408;&#x5E76;&#x5230;&#x81EA;&#x5DF1;&#x7684;&#x5206;&#x652F;&#x4E0A;&#xFF0C;&#x5408;&#x5E76;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x5728;&#x5207;&#x6362;&#x5230;&#x4E3B;&#x5206;&#x652F;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x5206;&#x652F;&#x518D;&#x5408;&#x5E76;&#x5230;&#x4E3B;&#x5206;&#x652F; &#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x907F;&#x514D;&#x4E86;&#x81EA;&#x5DF1;&#x7684;&#x5206;&#x652F;&#x76F4;&#x63A5;&#x5408;&#x5E76;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x5BF9;&#x4E3B;&#x5206;&#x652F;&#x9020;&#x6210;&#x5F71;&#x54CD;</li>
+</ul>
+<p>&#x4F7F;&#x7528;git&#x4EE5;&#x53CA;github&#xFF0C;&#x76F8;&#x4FE1;stormzhang&#x7684;&#x4ECE;<a href="https://zhuanlan.zhihu.com/p/21113342?refer=stormzhang" target="_blank" rel="external">0&#x5F00;&#x59CB;&#x5B66;&#x4E60; GitHub</a> &#x7CFB;&#x5217;&#x4F1A;&#x5BF9;&#x4F60;&#x6709;&#x5F88;&#x5927;&#x7684;&#x5E2E;&#x52A9;&#x3002;</p>
+<h2 id="&#x67B6;&#x6784;&#x89C4;&#x8303;"><a href="#&#x67B6;&#x6784;&#x89C4;&#x8303;" class="headerlink" title="&#x67B6;&#x6784;&#x89C4;&#x8303;"></a><strong>&#x67B6;&#x6784;&#x89C4;&#x8303;</strong></h2><p>&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://www.jianshu.com/nb/3767449" target="_blank" rel="external">&#x4ECE;&#x96F6;&#x5F00;&#x59CB;&#x642D;&#x5EFA;android&#x6846;&#x67B6;&#x7CFB;&#x5217;</a></p>
+<h4 id="&#x67B6;&#x6784;&#x65B9;&#x5F0F;"><a href="#&#x67B6;&#x6784;&#x65B9;&#x5F0F;" class="headerlink" title="&#x67B6;&#x6784;&#x65B9;&#x5F0F;"></a>&#x67B6;&#x6784;&#x65B9;&#x5F0F;</h4><p>&#x662F;&#x9009;&#x62E9;MVP&#xFF0C;MVC&#xFF0C;MVVM &#xFF0C;Flux&#x8FD8;&#x662F;clean &#x67B6;&#x6784;&#xFF1F;&#xFF0C;+dagger2&#xFF1F;+rxjava&#xFF1F;+Retrofit/okhtttp?+loader&#xFF1F;+databinding&#xFF1F;+contentProvider?&#x8C37;&#x6B4C;&#x5B98;&#x65B9;&#x67B6;&#x6784;&#x793A;&#x4F8B;<a href="https://github.com/googlesamples/android-architecture" target="_blank" rel="external">android-architecture</a></p>
+<h4 id="&#x5F00;&#x6E90;&#x5E93;&#x7684;&#x9009;&#x53D6;"><a href="#&#x5F00;&#x6E90;&#x5E93;&#x7684;&#x9009;&#x53D6;" class="headerlink" title="&#x5F00;&#x6E90;&#x5E93;&#x7684;&#x9009;&#x53D6;"></a>&#x5F00;&#x6E90;&#x5E93;&#x7684;&#x9009;&#x53D6;</h4><p>&#x5BF9;&#x5F00;&#x6E90;&#x5E93;&#x7684;&#x9009;&#x53D6;&#xFF0C;&#x4E00;&#x822C;&#x90FD;&#x9700;&#x8981;&#x9009;&#x62E9;&#x6BD4;&#x8F83;&#x7A33;&#x5B9A;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x8FD8;&#x6709;&#x4F5C;&#x8005;&#x5728;&#x7EF4;&#x62A4;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x6BD4;&#x5982;&#x8FD9;&#x91CC;&#x5728;github&#x641C;&#x7D22;image&#xFF0C;&#x51FA;&#x73B0;&#x7684;&#x5B89;&#x5353;&#x4E2D;&#x7684;&#x56FE;&#x7247;&#x52A0;&#x8F7D;&#x5E93;&#x3002;&#x9664;&#x4E86;&#x8003;&#x8651;star&#xFF0C;&#x8FD8;&#x8981;&#x8003;&#x8651;&#x4F5C;&#x8005;&#x5BF9;issue&#x7684;&#x89E3;&#x51B3;&#xFF0C;&#x4EE5;&#x53CA;&#x5F00;&#x53D1;&#x8005;&#x7684;&#x77E5;&#x540D;&#x5EA6;&#x7B49;&#x5404;&#x65B9;&#x9762;&#x3002;</p>
+<h4 id="&#x67B6;&#x6784;&#x63D0;&#x793A;"><a href="#&#x67B6;&#x6784;&#x63D0;&#x793A;" class="headerlink" title="&#x67B6;&#x6784;&#x63D0;&#x793A;"></a>&#x67B6;&#x6784;&#x63D0;&#x793A;</h4><ul>
+<li><p>&#x62BD;&#x8C61;&#x5C42;&#x9762;&#x4E0A;&#xFF1A;</p>
+<p>&#x63D0;&#x9AD8;&#x67B6;&#x6784;&#x7684;&#x62D3;&#x5C55;&#x6027;&#x662F;&#x6709;&#x5FC5;&#x8981;&#x7684;&#x3002;<br>&#x4EE5;&#x524D;&#x7684;&#x6846;&#x67B6;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x529F;&#x80FD;&#x4E0D;&#x8DB3;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x4F46;&#x662F;&#x56E0;&#x4E3A;&#x8FD9;&#x70B9;&#x662F;&#x4E0D;&#x53EF;&#x9884;&#x89C1;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9009;&#x62E9;&#x6846;&#x67B6;&#x65F6;&#x4E00;&#x5B9A;&#x8981;&#x4E86;&#x89E3;&#x597D;&#x6846;&#x67B6;&#x672C;&#x8EAB;&#x7684;&#x6269;&#x5C55;&#x6027;&#x5982;&#x4F55;&#xFF0C;&#x6216;&#x8005;&#x5BF9;&#x6846;&#x67B6;&#x6709;&#x8F83;&#x6DF1;&#x7684;&#x7406;&#x89E3;&#xFF0C;&#x80FD;&#x591F;&#x81EA;&#x5DF1;&#x6269;&#x5C55;&#x6846;&#x67B6;&#xFF0C;<br>&#x63D0;&#x9AD8;&#x67B6;&#x6784;&#x7684;&#x7A33;&#x5B9A;&#x6027;<br>&#x67B6;&#x6784;&#x7684;&#x6587;&#x6863;&#x4E5F;&#x662F;&#x5FC5;&#x4E0D;&#x53EF;&#x5C11;&#x7684;&#x3002;</p>
+</li>
+<li><p>&#x5177;&#x4F53;&#x64CD;&#x4F5C;&#x65F6;&#xFF1A;</p>
+<p>activity&#x548C;fragment&#x91CC;&#x9762;&#x90FD;&#x4F1A;&#x6709;&#x8BB8;&#x591A;&#x91CD;&#x590D;&#x7684;&#x64CD;&#x4F5C;&#x4EE5;&#x53CA;&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x90FD;&#x9700;&#x8981;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;BaseActivity&#x548C;BaseFragment&#xFF0C;&#x8BA9;&#x6240;&#x6709;&#x7684;activity&#x548C;fragment&#x90FD;&#x7EE7;&#x627F;&#x8FD9;&#x4E2A;&#x57FA;&#x7C7B;&#x3002;</p>
+</li>
+<li><p>&#x5FC5;&#x8981;&#x7684;&#x6CE8;&#x91CA;&#x771F;&#x7684;&#x4F1A;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x7684;&#x964D;&#x4F4E;&#x4F60;&#x7684;&#x5DE5;&#x4F5C;&#x91CF;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x63D0;&#x9AD8;&#x3002;&#x6BD4;&#x5982;&#x8BF4;&#x6211;&#x4F7F;&#x7528;Rxjava&#x505A;&#x52A0;&#x8F7D;&#x6570;&#x636E;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x8FD9;&#x91CC;&#x9762;&#x7684;&#x6D41;&#x7A0B;&#x53EF;&#x80FD;&#x7A0D;&#x663E;&#x590D;&#x6742;&#xFF0C;&#x4F46;&#x662F;&#x80FD;&#x591F;step1&#xFF0C; step2&#x7684;&#x5199;&#x5728;&#x4E0A;&#x9762;&#xFF0C;&#x80FD;&#x591F;&#x8BA9;&#x522B;&#x4EBA;&#x770B;&#x61C2;&#xFF0C;&#x81EA;&#x5DF1;&#x7EF4;&#x62A4;&#x4E5F;&#x65B9;&#x4FBF;&#x3002;</p>
+</li>
+<li><p>&#x591A;&#x7528;&#x7EC4;&#x5408;, &#x5C11;&#x7528;&#x7EE7;&#x627F;</p>
+</li>
+<li>&#x63D0;&#x53D6;&#x65B9;&#x6CD5;, &#x53BB;&#x9664;&#x91CD;&#x590D;&#x4EE3;&#x7801;&#x3002;</li>
+<li>&#x4E0D;&#x8981;&#x4F7F;&#x7528;&#x9B54;&#x9B3C;&#x6570;&#x5B57;/&#x5B57;&#x7B26;&#x4E32;/&#x5C3A;&#x5BF8;&#x503C;/&#x989C;&#x8272;&#x503C;&#xFF0C;&#x6B63;&#x786E;&#x7684;&#x547D;&#x540D;&#x7B49;</li>
+<li>&#x5F15;&#x5165;Dagger2 &#x51CF;&#x5C11;&#x6A21;&#x5757;&#x4E4B;&#x95F4;&#x7684;&#x8026;&#x5408;&#x6027;<br>Dagger2 &#x662F;&#x4E00;&#x4E2A;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x6846;&#x67B6;&#xFF0C;&#x4F7F;&#x7528;&#x4EE3;&#x7801;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x521B;&#x5EFA;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x9700;&#x8981;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x51CF;&#x5C11;&#x5F88;&#x591A;&#x6A21;&#x677F;&#x5316;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x66F4;&#x6613;&#x4E8E;&#x6D4B;&#x8BD5;&#xFF0C;&#x964D;&#x4F4E;&#x8026;&#x5408;&#xFF0C;&#x521B;&#x5EFA;&#x53EF;&#x590D;&#x7528;&#x53EF;&#x4E92;&#x6362;&#x7684;&#x6A21;&#x5757;&#x3002;<br>&#x53C2;&#x8003;&#x4E4B;&#x524D;&#x7684;&#x6587;&#x7AE0; <a href="http://www.jianshu.com/p/01d3c014b0b1" target="_blank" rel="external">Google&#x5B98;&#x65B9;MVP+Dagger2&#x67B6;&#x6784;&#x8BE6;&#x89E3;</a></li>
+<li>&#x4E3A;&#x4F60;&#x7684;&#x9879;&#x76EE;&#x5F15;&#x5165;Rxjava+RxAndroid&#x8FD9;&#x4E9B;&#x54CD;&#x5E94;&#x5F0F;&#x7F16;&#x7A0B;&#x5427;&#x3002;&#x6781;&#x5927;&#x7684;&#x51CF;&#x5C11;&#x903B;&#x8F91;&#x4EE3;&#x7801;&#xFF0C;&#x8BA9;&#x4F60;&#x7231;&#x4E0A;&#x5199;&#x4EE3;&#x7801;&#x505C;&#x4E0D;&#x4E0B;&#x6765;&#x3002;</li>
+<li>&#x901A;&#x8FC7;&#x5F15;&#x5165; Event Bus&#xFF08;&#x4E8B;&#x4EF6;&#x603B;&#x7EBF;&#xFF0C;&#x8FD9;&#x4E2A;&#x9879;&#x76EE;&#x4F7F;&#x7528;&#x7684;&#x662F;otto&#xFF09;&#x3002;&#x5B83;&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x5728;Data Layer&#x4E2D;&#x53D1;&#x9001;&#x4E8B;&#x4EF6;&#xFF0C;&#x4EE5;&#x4FBF;View Layer&#x4E2D;&#x7684;&#x591A;&#x4E2A;&#x7EC4;&#x4EF6;&#x90FD;&#x80FD;&#x591F;&#x8BA2;&#x9605;&#x5230;&#x8FD9;&#x4E9B;&#x4E8B;&#x4EF6;&#x3002;&#x6BD4;&#x5982;DataManager&#x4E2D;&#x7684;&#x9000;&#x51FA;&#x767B;&#x5F55;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;&#x8BA2;&#x9605;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x7684;&#x591A;&#x4E2A;Activity&#x5728;&#x63A5;&#x6536;&#x5230;&#x8BE5;&#x4E8B;&#x4EF6;&#x540E;&#x5C31;&#x80FD;&#x591F;&#x66F4;&#x6539;&#x5B83;&#x4EEC;&#x7684;UI&#x89C6;&#x56FE;&#xFF0C;&#x4ECE;&#x800C;&#x663E;&#x793A;&#x4E00;&#x4E2A;&#x767B;&#x51FA;&#x72B6;&#x6001;&#x3002;<br>&#x5F53;&#x7136;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x6709;&#x5F88;&#x591A;&#x7684;&#x9009;&#x62E9;&#xFF0C;EventBus&#xFF0C;Otto&#xFF0C;&#x81EA;&#x5B9A;&#x4E49;RxBus&#x7B49;&#x3002;&#x51CF;&#x5C11;&#x56DE;&#x8C03;&#x3002;</li>
+<li>&#x6DFB;&#x52A0;&#x65E5;&#x5FD7;&#x6253;&#x5370;&#xFF0C;&#x7528;&#x4E8E;&#x67E5;&#x627E;&#x9519;&#x8BEF;&#x7B49;&#x3002;<br><a href="https://github.com/orhanobut/logger" target="_blank" rel="external">Logger</a></li>
+</ul>
+<h2 id="&#x79D2;&#x554A;&#x9879;&#x76EE;&#x7ED3;&#x6784;"><a href="#&#x79D2;&#x554A;&#x9879;&#x76EE;&#x7ED3;&#x6784;" class="headerlink" title="&#x79D2;&#x554A;&#x9879;&#x76EE;&#x7ED3;&#x6784;"></a><strong>&#x79D2;&#x554A;&#x9879;&#x76EE;&#x7ED3;&#x6784;</strong></h2><table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5305;&#x540D;</th>
+<th style="text-align:right">&#x542B;&#x4E49;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">app</td>
+<td style="text-align:right">Application&#x57FA;&#x7840;&#x7C7B;</td>
+</tr>
+<tr>
+<td style="text-align:left">base</td>
+<td style="text-align:right">Activity Fragment&#x516C;&#x5171;&#x57FA;&#x7840;&#x7C7B;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">BaseActivity</td>
+<td>Activity&#x57FA;&#x7C7B;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">BaseFragment</td>
+<td>Fragment&#x57FA;&#x7C7B;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">BaseFragmentAdapter</td>
+<td>FragmentAdapter</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">BaseModel</td>
+<td>&#x63A5;&#x53E3;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x57FA;&#x672C;&#x5904;&#x7406;&#x7C7B;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">BasePresenter</td>
+<td>presenter&#x57FA;&#x7C7B;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">CommonAdapter</td>
+<td>listview&#x901A;&#x7528;&#x7684;adapter</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">ViewHolder</td>
+<td>&#x901A;&#x7528;&#x7684;viewholder</td>
+</tr>
+<tr>
+<td style="text-align:left">jpush</td>
+<td style="text-align:right">&#x673A;&#x5173;&#x63A8;Receiver</td>
+</tr>
+<tr>
+<td style="text-align:left">net</td>
+<td style="text-align:right">&#x7F51;&#x7EDC;&#x5904;&#x7406;&#x76F8;&#x5173;&#x7C7B;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">CommonParamsInterceptor</td>
+<td>okhtttp&#x53C2;&#x6570;&#x62E6;&#x622A;&#x5668;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">CookieInterceptor</td>
+<td>session&#x6301;&#x4E45;&#x5316;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">HttpLoggingInterceptor</td>
+<td>okhtttp&#x63A5;&#x53E3;&#x65E5;&#x5FD7;&#x62E6;&#x622A;&#x5668;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">HttpsFactroy</td>
+<td>https&#x76F8;&#x5173;&#x5904;&#x7406;&#x7C7B;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">NetConst</td>
+<td>&#x57FA;&#x7840;&#x5E38;&#x91CF;&#x914D;&#x7F6E;&#x7C7B;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">OkHttpHelper</td>
+<td>okhtttp&#x5B9E;&#x4F8B;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">RequestCallBack</td>
+<td>retrofit&#x56DE;&#x8C03;&#x5904;&#x7406;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">RequestNormalApi</td>
+<td>&#x670D;&#x52A1;&#x5668;&#x63A5;&#x53E3;&#x7533;&#x660E;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">RequestNormalService</td>
+<td>Retrofit&#x63A5;&#x53E3;service</td>
+</tr>
+<tr>
+<td style="text-align:left">onekeyshare</td>
+<td style="text-align:right">ShareSdk&#x5206;&#x4EAB;&#x76F8;&#x5173;&#x7C7B;</td>
+</tr>
+<tr>
+<td style="text-align:left">permission</td>
+<td style="text-align:right">&#x6743;&#x9650;&#x7BA1;&#x7406;&#x7C7B;</td>
+</tr>
+<tr>
+<td style="text-align:left">ui</td>
+<td style="text-align:right">UI&#x76F8;&#x5173;&#x7684;&#x7C7B;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">activity</td>
+<td>&#x4E1A;&#x52A1;&#x76F8;&#x5173;activity</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">adapter</td>
+<td>&#x9700;&#x8981;&#x7684;&#x9002;&#x914D;&#x5668;&#x76F8;&#x5173;&#x7C7B;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">fragment</td>
+<td>&#x4E1A;&#x52A1;&#x76F8;&#x5173;&#x7684;fragment</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">model</td>
+<td>&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x5BF9;&#x5E94;&#x7684;javaBean</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">presenter</td>
+<td>MVP&#x67B6;&#x6784;&#x4E2D;&#x7684;P&#x5C42;</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:right">view</td>
+<td>MVP&#x4E2D;&#x7684;view&#x5C42;</td>
+</tr>
+<tr>
+<td style="text-align:left">widget</td>
+<td style="text-align:right">&#x81EA;&#x5B9A;&#x4E49;&#x63A7;&#x4EF6;</td>
+</tr>
+<tr>
+<td style="text-align:left">wxapi</td>
+<td style="text-align:right">&#x5FAE;&#x4FE1;&#x652F;&#x4ED8;&#x76F8;&#x5173;</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    
+    <summary type="html">
+    
+      初稿
+    
+    </summary>
+    
+      <category term="编程习惯" scheme="http://qq451682583.github.io/categories/%E7%BC%96%E7%A8%8B%E4%B9%A0%E6%83%AF/"/>
+    
+    
+      <category term="Android" scheme="http://qq451682583.github.io/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title>Activity启动模式,IntentFilter匹配规则</title>
