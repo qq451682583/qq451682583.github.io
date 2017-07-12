@@ -1,0 +1,758 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="热修复," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZhiHui Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x8F6C;&amp;#x8F7D;&amp;#x8BF7;&amp;#x6CE8;&amp;#x660E;&amp;#x51FA;&amp;#x5904;:http://leizh.net/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="热修复原理学习，AndFix/Tinker源码学习">
+<meta property="og:url" content="http://qq451682583.github.io/2017/07/10/热修复学习，AndFix-Tinker源码学习/index.html">
+<meta property="og:site_name" content="ZhiHui Blog">
+<meta property="og:description" content="&amp;#x8F6C;&amp;#x8F7D;&amp;#x8BF7;&amp;#x6CE8;&amp;#x660E;&amp;#x51FA;&amp;#x5904;:http://leizh.net/">
+<meta property="og:updated_time" content="2017-07-12T10:22:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="热修复原理学习，AndFix/Tinker源码学习">
+<meta name="twitter:description" content="&amp;#x8F6C;&amp;#x8F7D;&amp;#x8BF7;&amp;#x6CE8;&amp;#x660E;&amp;#x51FA;&amp;#x5904;:http://leizh.net/">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'ZhiHui'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://qq451682583.github.io/2017/07/10/热修复学习，AndFix-Tinker源码学习/"/>
+
+  <title> 热修复原理学习，AndFix/Tinker源码学习 | ZhiHui Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZhiHui Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                热修复原理学习，AndFix/Tinker源码学习
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-10T17:27:18+08:00" content="2017-07-10">
+              2017-07-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/拆轮子系列/" itemprop="url" rel="index">
+                    <span itemprop="name">拆轮子系列</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/07/10/热修复学习，AndFix-Tinker源码学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/10/热修复学习，AndFix-Tinker源码学习/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#x8F6C;&#x8F7D;&#x8BF7;&#x6CE8;&#x660E;&#x51FA;&#x5904;:<a href="http://leizh.net/" target="_blank" rel="external">http://leizh.net/</a><br><a id="more"></a></p>
+<h2 id="&#x4EE3;&#x7801;&#x4FEE;&#x590D;"><a href="#&#x4EE3;&#x7801;&#x4FEE;&#x590D;" class="headerlink" title="&#x4EE3;&#x7801;&#x4FEE;&#x590D;"></a><strong>&#x4EE3;&#x7801;&#x4FEE;&#x590D;</strong></h2><p>&#x4EE3;&#x7801;&#x4FEE;&#x590D;&#x6709;&#x4E24;&#x5927;&#x4E3B;&#x8981;&#x65B9;&#x6848;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x963F;&#x91CC;&#x7CFB;&#x7684;&#x5E95;&#x5C42;&#x66FF;&#x6362;&#x65B9;&#x6848;&#xFF0C;&#x53E6;&#x4E00;&#x79CD;&#x662F;&#x817E;&#x8BAF;&#x7CFB;&#x7684;&#x7C7B;&#x52A0;&#x8F7D;&#x65B9;&#x6848;&#x3002;</p>
+<p>  &#x8FD9;&#x4E24;&#x7C7B;&#x65B9;&#x6848;&#x5404;&#x6709;&#x4F18;&#x52A3;&#xFF1A;</p>
+<pre><code>- &#x5E95;&#x5C42;&#x66FF;&#x6362;&#x65B9;&#x6848;&#x9650;&#x5236;&#x9887;&#x591A;&#xFF0C;&#x4F46;&#x65F6;&#x6548;&#x6027;&#x6700;&#x597D;&#xFF0C;&#x52A0;&#x8F7D;&#x8F7B;&#x5FEB;&#xFF0C;&#x7ACB;&#x5373;&#x89C1;&#x6548;&#x3002;
+- &#x7C7B;&#x52A0;&#x8F7D;&#x65B9;&#x6848;&#x65F6;&#x6548;&#x6027;&#x5DEE;&#xFF0C;&#x9700;&#x8981;&#x91CD;&#x65B0;&#x51B7;&#x542F;&#x52A8;&#x624D;&#x80FD;&#x89C1;&#x6548;&#xFF0C;&#x4F46;&#x4FEE;&#x590D;&#x8303;&#x56F4;&#x5E7F;&#xFF0C;&#x9650;&#x5236;&#x5C11;&#x3002;
+</code></pre><h3 id="&#x5E95;&#x5C42;&#x70ED;&#x66FF;&#x6362;&#x539F;&#x7406;"><a href="#&#x5E95;&#x5C42;&#x70ED;&#x66FF;&#x6362;&#x539F;&#x7406;" class="headerlink" title="&#x5E95;&#x5C42;&#x70ED;&#x66FF;&#x6362;&#x539F;&#x7406;"></a>&#x5E95;&#x5C42;&#x70ED;&#x66FF;&#x6362;&#x539F;&#x7406;</h3><p>  &#x5728;app&#x8FD0;&#x884C;&#x5230;&#x4E00;&#x534A;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6240;&#x6709;&#x9700;&#x8981;&#x53D1;&#x751F;&#x53D8;&#x66F4;&#x7684;&#x5206;&#x7C7B;&#x5DF2;&#x7ECF;&#x88AB;&#x52A0;&#x8F7D;&#x8FC7;&#x4E86;&#xFF0C;&#x5728;Android&#x4E0A;&#x662F;&#x65E0;&#x6CD5;&#x5BF9;&#x4E00;&#x4E2A;&#x5206;&#x7C7B;&#x8FDB;&#x884C;&#x5378;&#x8F7D;&#x7684;&#xFF0C;Tinker&#x662F;&#x8BA9;Classloader&#x53BB;&#x52A0;&#x8F7D;&#x65B0;&#x7684;&#x7C7B;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x91CD;&#x542F;&#xFF0C;&#x539F;&#x6765;&#x7684;&#x7C7B;&#x8FD8;&#x5728;&#x865A;&#x62DF;&#x673A;&#x4E2D;&#xFF0C;&#x5C31;&#x65E0;&#x6CD5;&#x52A0;&#x8F7D;&#x65B0;&#x7C7B;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x4E0B;&#x6B21;&#x91CD;&#x542F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5728;&#x8FD8;&#x6CA1;&#x8D70;&#x5230;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x4E4B;&#x524D;&#x62A2;&#x5148;&#x52A0;&#x8F7D;&#x8865;&#x4E01;&#x4E2D;&#x7684;&#x65B0;&#x7C7B;&#xFF0C;&#x8FD9;&#x6837;&#x540E;&#x7EED;&#x8BBF;&#x95EE;&#x8FD9;&#x4E2A;&#x7C7B;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;Resolve&#x3002;&#x4ECE;&#x800C;&#x8FBE;&#x5230;&#x70ED;&#x4FEE;&#x590D;&#x7684;&#x76EE;&#x7684;&#x3002;</p>
+<p>  Andfix&#x91C7;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#xFF0C;&#x5728;&#x5DF2;&#x7ECF;&#x52A0;&#x8F7D;&#x4E86;&#x7684;&#x7C7B;&#x4E2D;&#x76F4;&#x63A5;&#x5728;native&#x5C42;&#x66FF;&#x6362;&#x6389;&#x539F;&#x6709;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5B9E;&#x5728;&#x539F;&#x6765;&#x7C7B;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x7684;&#x3002;</p>
+<p>  &#x5176;&#x6838;&#x5FC3;&#x5728;&#x4E8E;replaceMethod &#x51FD;&#x6570;<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@Andfix/src/com/alipay/euler/andfix/AndFix.java</div><div class="line"></div><div class="line">private static native void replaceMethod(Method src,Method dest);</div></pre></td></tr></table></figure></p>
+<p>  &#x8FD9;&#x662F;&#x4E00;&#x4E2A;native&#x65B9;&#x6CD5;&#xFF0C;&#x5B83;&#x7684;&#x53C2;&#x6570;&#x5B9E;&#x5728;java&#x5C42;&#x901A;&#x8FC7;&#x53CD;&#x5C04;&#x673A;&#x5236;&#x5F97;&#x5230;&#x7684;Method&#x5BF9;&#x8C61;&#x6240;&#x5BF9;&#x5E94;&#x7684;jobject&#x3002;src&#x5BF9;&#x5E94;&#x7684;&#x662F;&#x9700;&#x8981;&#x88AB;&#x66FF;&#x6362;&#x7684;&#x539F;&#x6709;&#x65B9;&#x6CD5;&#xFF0C;&#x800C;dest&#x5BF9;&#x5E94;&#x7684;&#x5C31;&#x662F;&#x65B0;&#x65B9;&#x6CD5;&#xFF0C;&#x65B0;&#x65B9;&#x6CD5;&#x5B58;&#x5728;&#x4E8E;&#x8865;&#x4E01;&#x5305;&#x7684;&#x65B0;&#x7C7B;&#x4E2D;&#xFF0C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8865;&#x4E01;&#x65B9;&#x6CD5;&#x3002;<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@AndFix/jni/andfix.cpp</div><div class="line"></div><div class="line">static void replaceMethod(JNIEnv* env,jclass clazz,jobject src , jobject dest){</div><div class="line"></div><div class="line">  if(isArt){</div><div class="line">    art_replaceMethod(env,src,dest);</div><div class="line">  }else {</div><div class="line">    dalvik_replaceMethod(env,src,dest);</div><div class="line">  }</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure></p>
+<h3 id="&#x7A81;&#x7834;&#x5E95;&#x5C42;&#x7ED3;&#x6784;&#x5DEE;&#x5F02;"><a href="#&#x7A81;&#x7834;&#x5E95;&#x5C42;&#x7ED3;&#x6784;&#x5DEE;&#x5F02;" class="headerlink" title="&#x7A81;&#x7834;&#x5E95;&#x5C42;&#x7ED3;&#x6784;&#x5DEE;&#x5F02;"></a>&#x7A81;&#x7834;&#x5E95;&#x5C42;&#x7ED3;&#x6784;&#x5DEE;&#x5F02;</h3><p>&#x4F20;&#x7EDF;&#x7684;native&#x5C42;&#x9762;&#x66FF;&#x6362;&#x601D;&#x8DEF;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x66FF;&#x6362;ArtMethod&#x7684;&#x6240;&#x6709;&#x6210;&#x5458;&#xFF0C;&#x4E3A;&#x4E86;&#x89C4;&#x907F;&#x5404;&#x79CD;&#x517C;&#x5BB9;&#x6027;&#x95EE;&#x9898;&#xFF0C;&#x5404;&#x5927;&#x5382;&#x5546;&#x5BF9;ArtMethod&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x4E4B;&#x540E;&#x6F14;&#x8FDB;&#x51FA;&#x4E00;&#x79CD;&#x66F4;&#x597D;&#x7684;&#x529E;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x6784;&#x9020;&#x51FA;ArtMethod&#x5177;&#x4F53;&#x7684;&#x5404;&#x4E2A;&#x6210;&#x5458;&#x5B57;&#x6BB5;&#xFF0C;&#x53EA;&#x8981;&#x628A;ArtMethod&#x7684;&#x4F5C;&#x4E3A;&#x6574;&#x4F53;&#x8FDB;&#x884C;&#x66FF;&#x6362;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4E86; &#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//&#x53EF;&#x4EE5;&#x6D53;&#x7F29;&#x4E3A;&#xFF1A;</div><div class="line">memcpy(smeth,dmeth,sizeof(ArtMethod));</div></pre></td></tr></table></figure>
+<h2 id="Tinker"><a href="#Tinker" class="headerlink" title="Tinker"></a><strong>Tinker</strong></h2><p>tinker&#x5C06;old.apk&#x548C;new.apk&#x505A;&#x4E86;diff&#xFF0C;&#x62FF;&#x5230;patch.dex&#xFF0C;&#x7136;&#x540E;&#x5C06;patch.dex&#x4E0E;&#x672C;&#x673A;&#x4E2D;apk&#x7684;classes.dex&#x505A;&#x4E86;&#x5408;&#x5E76;&#xFF0C;&#x751F;&#x6210;&#x65B0;&#x7684;classes.dex&#xFF0C;&#x8FD0;&#x884C;&#x65F6;&#x901A;&#x8FC7;&#x53CD;&#x5C04;&#x5C06;&#x5408;&#x5E76;&#x540E;&#x7684;dex&#x6587;&#x4EF6;&#x653E;&#x7F6E;&#x5728;&#x52A0;&#x8F7D;&#x7684;dexElements&#x6570;&#x7EC4;&#x7684;&#x524D;&#x9762;&#x3002;</p>
+<p>&#x8FD0;&#x884C;&#x65F6;&#x66FF;&#x4EE3;&#x7684;&#x539F;&#x7406;&#xFF0C;&#x5176;&#x5B9E;&#x548C;Qzone&#x7684;&#x65B9;&#x6848;&#x5DEE;&#x4E0D;&#x591A;&#xFF0C;&#x90FD;&#x662F;&#x53BB;&#x53CD;&#x5C04;&#x4FEE;&#x6539;dexElements&#x3002;</p>
+<p>&#x4E24;&#x8005;&#x7684;&#x5DEE;&#x5F02;&#x662F;&#xFF1A;Qzone&#x662F;&#x76F4;&#x63A5;&#x5C06;patch.dex&#x63D2;&#x5230;&#x6570;&#x7EC4;&#x7684;&#x524D;&#x9762;&#xFF1B;&#x800C;tinker&#x662F;&#x5C06;patch.dex&#x4E0E;app&#x4E2D;&#x7684;classes.dex&#x5408;&#x5E76;&#x540E;&#x7684;&#x5168;&#x91CF;dex&#x63D2;&#x5728;&#x6570;&#x7EC4;&#x7684;&#x524D;&#x9762;&#x3002;</p>
+<p>tinker&#x8FD9;&#x4E48;&#x505A;&#x7684;&#x76EE;&#x7684;&#x8FD8;&#x662F;&#x56E0;&#x4E3A;Qzone&#x65B9;&#x6848;&#x4E2D;&#x63D0;&#x5230;&#x7684;CLASS_ISPREVERIFIED&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x5B58;&#x5728;&#x95EE;&#x9898;&#xFF1B;&#x800C;tinker&#x76F8;&#x5F53;&#x4E8E;&#x6362;&#x4E2A;&#x601D;&#x8DEF;&#x89E3;&#x51B3;&#x4E86;&#x8BE5;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C31;&#x4ECE;&#x4EE3;&#x7801;&#x4E2D;&#x53BB;&#x9A8C;&#x8BC1;&#x8BE5;&#x539F;&#x7406;&#x3002;</p>
+<p>&#x672C;&#x7247;&#x6587;&#x7AE0;&#x6E90;&#x7801;&#x5206;&#x6790;&#x7684;&#x4E24;&#x6761;&#x7EBF;&#xFF1A;</p>
+<ul>
+<li>&#x5E94;&#x7528;&#x542F;&#x52A8;&#x65F6;&#xFF0C;&#x4ECE;&#x9ED8;&#x8BA4;&#x76EE;&#x5F55;&#x52A0;&#x8F7D;&#x5408;&#x5E76;&#x540E;&#x7684;classes.dex</li>
+<li>patch&#x4E0B;&#x53D1;&#x540E;&#xFF0C;&#x5408;&#x6210;classes.dex&#x81F3;&#x76EE;&#x6807;&#x76EE;&#x5F55;</li>
+</ul>
+<h3 id="&#x6E90;&#x7801;&#x5206;&#x6790;"><a href="#&#x6E90;&#x7801;&#x5206;&#x6790;" class="headerlink" title="&#x6E90;&#x7801;&#x5206;&#x6790;"></a>&#x6E90;&#x7801;&#x5206;&#x6790;</h3><h4 id="&#x52A0;&#x8F7D;path"><a href="#&#x52A0;&#x8F7D;path" class="headerlink" title="&#x52A0;&#x8F7D;path"></a>&#x52A0;&#x8F7D;path</h4><p>&#x52A0;&#x8F7D;&#x7684;&#x4EE3;&#x7801;&#x5B9E;&#x9645;&#x4E0A;&#x5728;&#x751F;&#x6210;&#x7684;Application&#x4E2D;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x5176;&#x7236;&#x7C7B;&#x4E3A;TinkerApplication&#xFF0C;&#x5728;&#x5176;attachBaseContext&#x4E2D;&#x8F97;&#x8F6C;&#x4F1A;&#x8C03;&#x7528;&#x5230;loadTinker()&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x8BE5;&#x65B9;&#x6CD5;&#x5185;&#x90E8;&#xFF0C;&#x53CD;&#x5C04;&#x8C03;&#x7528;&#x4E86;TinkerLoader&#x7684;tryLoad&#x65B9;&#x6CD5;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public Intent tryLoad(TinkerApplication app, int tinkerFlag, boolean tinkerLoadVerifyFlag) {</div><div class="line">    Intent resultIntent = new Intent();</div><div class="line"></div><div class="line">    long begin = SystemClock.elapsedRealtime();</div><div class="line">    tryLoadPatchFilesInternal(app, tinkerFlag, tinkerLoadVerifyFlag, resultIntent);</div><div class="line">    long cost = SystemClock.elapsedRealtime() - begin;</div><div class="line">    ShareIntentUtil.setIntentPatchCostTime(resultIntent, cost);</div><div class="line">    return resultIntent;</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>tryLoadPatchFilesInternal&#x4E2D;&#x4F1A;&#x8C03;&#x7528;&#x5230;loadTinkerJars&#x65B9;&#x6CD5;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">private void tryLoadPatchFilesInternal(TinkerApplication app, int tinkerFlag, boolean tinkerLoadVerifyFlag, Intent resultIntent) {</div><div class="line">    // &#x7701;&#x7565;&#x5927;&#x91CF;&#x5B89;&#x5168;&#x6027;&#x6821;&#x9A8C;&#x4EE3;&#x7801;</div><div class="line"></div><div class="line">    if (isEnabledForDex) {</div><div class="line">        //tinker/patch.info/patch-641e634c/dex</div><div class="line">        boolean dexCheck = TinkerDexLoader.checkComplete(patchVersionDirectory, securityCheck, resultIntent);</div><div class="line">        if (!dexCheck) {</div><div class="line">            //file not found, do not load patch</div><div class="line">            Log.w(TAG, &quot;tryLoadPatchFiles:dex check fail&quot;);</div><div class="line">            return;</div><div class="line">        }</div><div class="line">    }</div><div class="line"></div><div class="line">    //now we can load patch jar</div><div class="line">    if (isEnabledForDex) {</div><div class="line">        boolean loadTinkerJars = TinkerDexLoader.loadTinkerJars(app, tinkerLoadVerifyFlag, patchVersionDirectory, resultIntent, isSystemOTA);</div><div class="line">        if (!loadTinkerJars) {</div><div class="line">            Log.w(TAG, &quot;tryLoadPatchFiles:onPatchLoadDexesFail&quot;);</div><div class="line">            return;</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>TinkerDexLoader.checkComplete&#x4E3B;&#x8981;&#x662F;&#x7528;&#x4E8E;&#x68C0;&#x67E5;&#x4E0B;&#x53D1;&#x7684;meta&#x6587;&#x4EF6;&#x4E2D;&#x8BB0;&#x5F55;&#x7684;dex&#x4FE1;&#x606F;&#xFF08;meta&#x6587;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x751F;&#x6210;patch&#x7684;&#x4EA7;&#x7269;&#xFF0C;&#x5728;assets/dex-meta.txt&#xFF09;&#xFF0C;&#x68C0;&#x67E5;meta&#x6587;&#x4EF6;&#x4E2D;&#x8BB0;&#x5F55;&#x7684;dex&#x6587;&#x4EF6;&#x4FE1;&#x606F;&#x5BF9;&#x5E94;&#x7684;dex&#x6587;&#x4EF6;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x5E76;&#x628A;&#x503C;&#x5B58;&#x5728;TinkerDexLoader&#x7684;&#x9759;&#x6001;&#x53D8;&#x91CF;dexList&#x4E2D;&#x3002;</p>
+<p>TinkerDexLoader.loadTinkerJars&#x4F20;&#x5165;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5206;&#x522B;&#x4E3A;application&#xFF0C;tinkerLoadVerifyFlag&#xFF08;&#x6CE8;&#x89E3;&#x4E0A;&#x58F0;&#x660E;&#x7684;&#x503C;&#xFF0C;&#x4F20;&#x5165;&#x4E3A;false&#xFF09;&#xFF0C;patchVersionDirectory&#x5F53;&#x524D;version&#x7684;patch&#x6587;&#x4EF6;&#x5939;&#xFF0C;intent&#xFF0C;&#x5F53;&#x524D;patch&#x662F;&#x5426;&#x4EC5;&#x9002;&#x7528;&#x4E8E;art&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)</div><div class="line">public static boolean loadTinkerJars(Application application, boolean tinkerLoadVerifyFlag,</div><div class="line">    String directory, Intent intentResult, boolean isSystemOTA) {</div><div class="line">        PathClassLoader classLoader = (PathClassLoader) TinkerDexLoader.class.getClassLoader();</div><div class="line"></div><div class="line">        String dexPath = directory + &quot;/&quot; + DEX_PATH + &quot;/&quot;;</div><div class="line">        File optimizeDir = new File(directory + &quot;/&quot; + DEX_OPTIMIZE_PATH);</div><div class="line"></div><div class="line">        ArrayList&lt;File&gt; legalFiles = new ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">        final boolean isArtPlatForm = ShareTinkerInternals.isVmArt();</div><div class="line">        for (ShareDexDiffPatchInfo info : dexList) {</div><div class="line">            //for dalvik, ignore art support dex</div><div class="line">            if (isJustArtSupportDex(info)) {</div><div class="line">                continue;</div><div class="line">            }</div><div class="line">            String path = dexPath + info.realName;</div><div class="line">            File file = new File(path);</div><div class="line"></div><div class="line">            legalFiles.add(file);</div><div class="line">        }</div><div class="line">        // just for art</div><div class="line">        if (isSystemOTA) {</div><div class="line">            parallelOTAResult = true;</div><div class="line">            parallelOTAThrowable = null;</div><div class="line">            Log.w(TAG, &quot;systemOTA, try parallel oat dexes!!!!!&quot;);</div><div class="line"></div><div class="line">            TinkerParallelDexOptimizer.optimizeAll(</div><div class="line">                legalFiles, optimizeDir,</div><div class="line">                new TinkerParallelDexOptimizer.ResultCallback() {</div><div class="line">                }</div><div class="line">            );</div><div class="line"></div><div class="line">        SystemClassLoaderAdder.installDexes(application, classLoader, optimizeDir, legalFiles);</div><div class="line">        return true;</div><div class="line">    }</div></pre></td></tr></table></figure>
+<p>&#x627E;&#x51FA;&#x4EC5;&#x652F;&#x6301;art&#x7684;dex&#xFF0C;&#x4E14;&#x5F53;&#x524D;patch&#x662F;&#x5426;&#x4EC5;&#x9002;&#x7528;&#x4E8E;art&#x65F6;&#xFF0C;&#x5E76;&#x884C;&#x53BB;loadDex&#x3002;</p>
+<p>&#x5173;&#x952E;&#x662F;&#x6700;&#x540E;&#x7684;installDexes&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">@SuppressLint(&quot;NewApi&quot;)</div><div class="line">public static void installDexes(Application application, PathClassLoader loader, File dexOptDir, List&lt;File&gt; files)</div><div class="line">    throws Throwable {</div><div class="line"></div><div class="line">    if (!files.isEmpty()) {</div><div class="line">        ClassLoader classLoader = loader;</div><div class="line">        if (Build.VERSION.SDK_INT &gt;= 24) {</div><div class="line">            classLoader = AndroidNClassLoader.inject(loader, application);</div><div class="line">        }</div><div class="line">        //because in dalvik, if inner class is not the same classloader with it wrapper class.</div><div class="line">        //it won&apos;t fail at dex2opt</div><div class="line">        if (Build.VERSION.SDK_INT &gt;= 23) {</div><div class="line">            V23.install(classLoader, files, dexOptDir);</div><div class="line">        } else if (Build.VERSION.SDK_INT &gt;= 19) {</div><div class="line">            V19.install(classLoader, files, dexOptDir);</div><div class="line">        } else if (Build.VERSION.SDK_INT &gt;= 14) {</div><div class="line">            V14.install(classLoader, files, dexOptDir);</div><div class="line">        } else {</div><div class="line">            V4.install(classLoader, files, dexOptDir);</div><div class="line">        }</div><div class="line">        //install done</div><div class="line">        sPatchDexCount = files.size();</div><div class="line">        Log.i(TAG, &quot;after loaded classloader: &quot; + classLoader + &quot;, dex size:&quot; + sPatchDexCount);</div><div class="line"></div><div class="line">        if (!checkDexInstall(classLoader)) {</div><div class="line">            //reset patch dex</div><div class="line">            SystemClassLoaderAdder.uninstallPatchDex(classLoader);</div><div class="line">            throw new TinkerRuntimeException(ShareConstants.CHECK_DEX_INSTALL_FAIL);</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x91CC;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x6839;&#x636E;&#x4E0D;&#x540C;&#x7684;&#x7CFB;&#x7EDF;&#x7248;&#x672C;&#xFF0C;&#x53BB;&#x53CD;&#x5C04;&#x5904;&#x7406;dexElements&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x770B;&#x4E00;&#x4E0B;V19&#x7684;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">private static final class V19 {</div><div class="line"></div><div class="line">    private static void install(ClassLoader loader, List&lt;File&gt; additionalClassPathEntries,</div><div class="line">                                File optimizedDirectory)</div><div class="line">        throws IllegalArgumentException, IllegalAccessException,</div><div class="line">        NoSuchFieldException, InvocationTargetException, NoSuchMethodException, IOException {</div><div class="line"></div><div class="line">        Field pathListField = ShareReflectUtil.findField(loader, &quot;pathList&quot;);</div><div class="line">        Object dexPathList = pathListField.get(loader);</div><div class="line">        ArrayList&lt;IOException&gt; suppressedExceptions = new ArrayList&lt;IOException&gt;();</div><div class="line">        ShareReflectUtil.expandFieldArray(dexPathList, &quot;dexElements&quot;, makeDexElements(dexPathList,</div><div class="line">            new ArrayList&lt;File&gt;(additionalClassPathEntries), optimizedDirectory,</div><div class="line">            suppressedExceptions));</div><div class="line">        if (suppressedExceptions.size() &gt; 0) {</div><div class="line">            for (IOException e : suppressedExceptions) {</div><div class="line">                Log.w(TAG, &quot;Exception in makeDexElement&quot;, e);</div><div class="line">                throw e;</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<ol>
+<li>&#x627E;&#x5230;PathClassLoader&#xFF08;BaseDexClassLoader&#xFF09;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;pathList&#x5BF9;&#x8C61;</li>
+<li>&#x6839;&#x636E;pathList&#x5BF9;&#x8C61;&#x627E;&#x5230;&#x5176;&#x4E2D;&#x7684;makeDexElements&#x65B9;&#x6CD5;&#xFF0C;&#x4F20;&#x5165;patch&#x76F8;&#x5173;&#x7684;&#x5BF9;&#x5E94;&#x7684;&#x5B9E;&#x53C2;&#xFF0C;&#x8FD4;&#x56DE;Element[]&#x5BF9;&#x8C61;</li>
+<li>&#x62FF;&#x5230;pathList&#x5BF9;&#x8C61;&#x4E2D;&#x539F;&#x672C;&#x7684;dexElements&#x65B9;&#x6CD5;</li>
+<li>&#x6B65;&#x9AA4;2&#x4E0E;&#x6B65;&#x9AA4;3&#x4E2D;&#x7684;Element[]&#x6570;&#x7EC4;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#xFF0C;&#x5C06;patch&#x76F8;&#x5173;&#x7684;dex&#x653E;&#x5728;&#x6570;&#x7EC4;&#x7684;&#x524D;&#x9762;</li>
+<li>&#x6700;&#x540E;&#x5C06;&#x5408;&#x5E76;&#x540E;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x8BBE;&#x7F6E;&#x7ED9;pathList</li>
+</ol>
+<h4 id="&#x5408;&#x6210;path"><a href="#&#x5408;&#x6210;path" class="headerlink" title="&#x5408;&#x6210;path"></a>&#x5408;&#x6210;path</h4><p>&#x8FD9;&#x91CC;&#x7684;&#x5165;&#x53E3;&#x4E3A;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">TinkerInstaller.onReceiveUpgradePatch(getApplicationContext(),</div><div class="line">                Environment.getExternalStorageDirectory().getAbsolutePath() + &quot;/patch_signed.apk&quot;);</div></pre></td></tr></table></figure>
+<p>&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x4F1A;&#x8C03;&#x7528;DefaultPatchListener&#x4E2D;&#x7684;onPatchReceived&#x65B9;&#x6CD5;:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"># DefaultPatchListener</div><div class="line">@Override</div><div class="line">public int onPatchReceived(String path) {</div><div class="line"></div><div class="line">    int returnCode = patchCheck(path);</div><div class="line"></div><div class="line">    if (returnCode == ShareConstants.ERROR_PATCH_OK) {</div><div class="line">        TinkerPatchService.runPatchService(context, path);</div><div class="line">    } else {</div><div class="line">        Tinker.with(context).getLoadReporter().onLoadPatchListenerReceiveFail(new File(path), returnCode);</div><div class="line">    }</div><div class="line">    return returnCode;</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x9996;&#x5148;&#x5BF9;tinker&#x7684;&#x76F8;&#x5173;&#x914D;&#x7F6E;&#xFF08;isEnable&#xFF09;&#x4EE5;&#x53CA;patch&#x7684;&#x5408;&#x6CD5;&#x6027;&#x8FDB;&#x884C;&#x68C0;&#x6D4B;&#xFF0C;&#x5982;&#x679C;&#x5408;&#x6CD5;&#xFF0C;&#x5219;&#x8C03;&#x7528;TinkerPatchService.runPatchService(context, path);&#x3002;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public static void runPatchService(Context context, String path) {</div><div class="line">    try {</div><div class="line">        Intent intent = new Intent(context, TinkerPatchService.class);</div><div class="line">        intent.putExtra(PATCH_PATH_EXTRA, path);</div><div class="line">        intent.putExtra(RESULT_CLASS_EXTRA, resultServiceClass.getName());</div><div class="line">        context.startService(intent);</div><div class="line">    } catch (Throwable throwable) {</div><div class="line">        TinkerLog.e(TAG, &quot;start patch service fail, exception:&quot; + throwable);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>TinkerPatchService&#x662F;IntentService&#x7684;&#x5B50;&#x7C7B;&#xFF0C;&#x8FD9;&#x91CC;&#x901A;&#x8FC7;intent&#x8BBE;&#x7F6E;&#x4E86;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;patch&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;resultServiceClass&#xFF0C;&#x8BE5;&#x503C;&#x662F;&#x8C03;&#x7528;Tinker.install&#x7684;&#x65F6;&#x5019;&#x8BBE;&#x7F6E;&#x7684;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;DefaultTinkerResultService.class&#x3002;&#x7531;&#x4E8E;&#x662F;IntentService&#xFF0C;&#x76F4;&#x63A5;&#x770B;onHandleIntent&#x5373;&#x53EF;.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onHandleIntent(Intent intent) {</div><div class="line">    final Context context = getApplicationContext();</div><div class="line">    Tinker tinker = Tinker.with(context);</div><div class="line"></div><div class="line"></div><div class="line">    String path = getPatchPathExtra(intent);</div><div class="line"></div><div class="line">    File patchFile = new File(path);</div><div class="line"></div><div class="line">    boolean result;</div><div class="line"></div><div class="line">    increasingPriority();</div><div class="line">    PatchResult patchResult = new PatchResult();</div><div class="line"></div><div class="line">    result = upgradePatchProcessor.tryPatch(context, path, patchResult);</div><div class="line"></div><div class="line">    patchResult.isSuccess = result;</div><div class="line">    patchResult.rawPatchFilePath = path;</div><div class="line">    patchResult.costTime = cost;</div><div class="line">    patchResult.e = e;</div><div class="line"></div><div class="line">    AbstractResultService.runResultService(context, patchResult, getPatchResultExtra(intent));</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x6BD4;&#x8F83;&#x6E05;&#x6670;&#xFF0C;&#x4E3B;&#x8981;&#x5173;&#x6CE8;upgradePatchProcessor.tryPatch&#x65B9;&#x6CD5;&#xFF0C;&#x8C03;&#x7528;&#x7684;&#x662F;UpgradePatch.tryPatch&#x3002;ps:&#x8FD9;&#x91CC;&#x6709;&#x4E2A;&#x6709;&#x610F;&#x601D;&#x7684;&#x5730;&#x65B9;increasingPriority()&#xFF0C;&#x5176;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x4E3A;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">private void increasingPriority() {</div><div class="line">    TinkerLog.i(TAG, &quot;try to increase patch process priority&quot;);</div><div class="line">    try {</div><div class="line">        Notification notification = new Notification();</div><div class="line">        if (Build.VERSION.SDK_INT &lt; 18) {</div><div class="line">            startForeground(notificationId, notification);</div><div class="line">        } else {</div><div class="line">            startForeground(notificationId, notification);</div><div class="line">            // start InnerService</div><div class="line">            startService(new Intent(this, InnerService.class));</div><div class="line">        }</div><div class="line">    } catch (Throwable e) {</div><div class="line">        TinkerLog.i(TAG, &quot;try to increase patch process priority error:&quot; + e);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x4F60;&#x5BF9;&#x201C;&#x4FDD;&#x6D3B;&#x201D;&#x8FD9;&#x4E2A;&#x8BDD;&#x9898;&#x6BD4;&#x8F83;&#x5173;&#x6CE8;&#xFF0C;&#x90A3;&#x4E48;&#x5BF9;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x4E00;&#x5B9A;&#x4E0D;&#x964C;&#x751F;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x5229;&#x7528;&#x7CFB;&#x7EDF;&#x7684;&#x4E00;&#x4E2A;&#x6F0F;&#x6D1E;&#x6765;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x524D;&#x53F0;Service&#x3002;&#x5982;&#x679C;&#x6709;&#x5174;&#x8DA3;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x6B64;&#x6587;&#xFF1A;<a href="http://www.jianshu.com/p/63aafe3c12af" target="_blank" rel="external">&#x5173;&#x4E8E; Android &#x8FDB;&#x7A0B;&#x4FDD;&#x6D3B;&#xFF0C;&#x4F60;&#x6240;&#x9700;&#x8981;&#x77E5;&#x9053;&#x7684;&#x4E00;&#x5207;&#x3002;</a></p>
+<p>&#x4E0B;&#x9762;&#x7EE7;&#x7EED;&#x56DE;&#x5230;tryPatch&#x65B9;&#x6CD5;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"># UpgradePatch</div><div class="line">@Override</div><div class="line">public boolean tryPatch(Context context, String tempPatchPath, PatchResult patchResult) {</div><div class="line">    Tinker manager = Tinker.with(context);</div><div class="line"></div><div class="line">    final File patchFile = new File(tempPatchPath);</div><div class="line"></div><div class="line">    //it is a new patch, so we should not find a exist</div><div class="line">    SharePatchInfo oldInfo = manager.getTinkerLoadResultIfPresent().patchInfo;</div><div class="line">    String patchMd5 = SharePatchFileUtil.getMD5(patchFile);</div><div class="line"></div><div class="line">    //use md5 as version</div><div class="line">    patchResult.patchVersion = patchMd5;</div><div class="line">    SharePatchInfo newInfo;</div><div class="line"></div><div class="line">    //already have patch</div><div class="line">    if (oldInfo != null) {</div><div class="line">        newInfo = new SharePatchInfo(oldInfo.oldVersion, patchMd5, Build.FINGERPRINT);</div><div class="line">    } else {</div><div class="line">        newInfo = new SharePatchInfo(&quot;&quot;, patchMd5, Build.FINGERPRINT);</div><div class="line">    }</div><div class="line"></div><div class="line">    //check ok, we can real recover a new patch</div><div class="line">    final String patchDirectory = manager.getPatchDirectory().getAbsolutePath();</div><div class="line">    final String patchName = SharePatchFileUtil.getPatchVersionDirectory(patchMd5);</div><div class="line">    final String patchVersionDirectory = patchDirectory + &quot;/&quot; + patchName;</div><div class="line"></div><div class="line">    //copy file</div><div class="line">    File destPatchFile = new File(patchVersionDirectory + &quot;/&quot; + SharePatchFileUtil.getPatchVersionFile(patchMd5));</div><div class="line">    // check md5 first</div><div class="line">    if (!patchMd5.equals(SharePatchFileUtil.getMD5(destPatchFile))) {</div><div class="line">        SharePatchFileUtil.copyFileUsingStream(patchFile, destPatchFile);</div><div class="line">    }</div><div class="line"></div><div class="line">    //we use destPatchFile instead of patchFile, because patchFile may be deleted during the patch process</div><div class="line">    if (!DexDiffPatchInternal.tryRecoverDexFiles(manager, signatureCheck, context, patchVersionDirectory,</div><div class="line">                destPatchFile)) {</div><div class="line">        TinkerLog.e(TAG, &quot;UpgradePatch tryPatch:new patch recover, try patch dex failed&quot;);</div><div class="line">        return false;</div><div class="line">    }</div><div class="line"></div><div class="line">    return true;</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x62F7;&#x8D1D;patch&#x6587;&#x4EF6;&#x62F7;&#x8D1D;&#x81F3;&#x79C1;&#x6709;&#x76EE;&#x5F55;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528;DexDiffPatchInternal.tryRecoverDexFiles&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">protected static boolean tryRecoverDexFiles(Tinker manager, ShareSecurityCheck checker, Context context,</div><div class="line">                                                String patchVersionDirectory, File patchFile) {</div><div class="line">    String dexMeta = checker.getMetaContentMap().get(DEX_META_FILE);</div><div class="line">    boolean result = patchDexExtractViaDexDiff(context, patchVersionDirectory, dexMeta, patchFile);</div><div class="line">    return result;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x76F4;&#x63A5;&#x770B;patchDexExtractViaDexDiff<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">private static boolean patchDexExtractViaDexDiff(Context context, String patchVersionDirectory, String meta, final File patchFile) {</div><div class="line">    String dir = patchVersionDirectory + &quot;/&quot; + DEX_PATH + &quot;/&quot;;</div><div class="line"></div><div class="line">    if (!extractDexDiffInternals(context, dir, meta, patchFile, TYPE_DEX)) {</div><div class="line">        TinkerLog.w(TAG, &quot;patch recover, extractDiffInternals fail&quot;);</div><div class="line">        return false;</div><div class="line">    }</div><div class="line"></div><div class="line">    final Tinker manager = Tinker.with(context);</div><div class="line"></div><div class="line">    File dexFiles = new File(dir);</div><div class="line">    File[] files = dexFiles.listFiles();</div><div class="line"></div><div class="line">    ...files&#x904D;&#x5386;&#x6267;&#x884C;&#xFF1A;DexFile.loadDex</div><div class="line">     return true;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x6838;&#x5FC3;&#x4EE3;&#x7801;&#x4E3B;&#x8981;&#x5728;extractDexDiffInternals&#x4E2D;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">private static boolean extractDexDiffInternals(Context context, String dir, String meta, File patchFile, int type) {</div><div class="line">    //parse meta</div><div class="line">    ArrayList&lt;ShareDexDiffPatchInfo&gt; patchList = new ArrayList&lt;&gt;();</div><div class="line">    ShareDexDiffPatchInfo.parseDexDiffPatchInfo(meta, patchList);</div><div class="line"></div><div class="line">    File directory = new File(dir);</div><div class="line">    //I think it is better to extract the raw files from apk</div><div class="line">    Tinker manager = Tinker.with(context);</div><div class="line">    ZipFile apk = null;</div><div class="line">    ZipFile patch = null;</div><div class="line"></div><div class="line">    ApplicationInfo applicationInfo = context.getApplicationInfo();</div><div class="line"></div><div class="line">    String apkPath = applicationInfo.sourceDir; //base.apk</div><div class="line">    apk = new ZipFile(apkPath);</div><div class="line">    patch = new ZipFile(patchFile);</div><div class="line"></div><div class="line">    for (ShareDexDiffPatchInfo info : patchList) {</div><div class="line"></div><div class="line">        final String infoPath = info.path;</div><div class="line">        String patchRealPath;</div><div class="line">        if (infoPath.equals(&quot;&quot;)) {</div><div class="line">            patchRealPath = info.rawName;</div><div class="line">        } else {</div><div class="line">            patchRealPath = info.path + &quot;/&quot; + info.rawName;</div><div class="line">        }</div><div class="line"></div><div class="line">        File extractedFile = new File(dir + info.realName);</div><div class="line"></div><div class="line">        ZipEntry patchFileEntry = patch.getEntry(patchRealPath);</div><div class="line">        ZipEntry rawApkFileEntry = apk.getEntry(patchRealPath);</div><div class="line"></div><div class="line">        patchDexFile(apk, patch, rawApkFileEntry, patchFileEntry, info, extractedFile);</div><div class="line">    }</div><div class="line"></div><div class="line">    return true;</div><div class="line">}</div></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x91CC;&#x7684;&#x4EE3;&#x7801;&#x6BD4;&#x8F83;&#x5173;&#x952E;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x9996;&#x5148;&#x89E3;&#x6790;&#x4E86;meta&#x91CC;&#x9762;&#x7684;&#x4FE1;&#x606F;&#xFF0C;meta&#x4E2D;&#x5305;&#x542B;&#x4E86;patch&#x4E2D;&#x6BCF;&#x4E2A;dex&#x7684;&#x76F8;&#x5173;&#x6570;&#x636E;&#x3002;&#x7136;&#x540E;&#x901A;&#x8FC7;Application&#x62FF;&#x5230;sourceDir&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x672C;&#x673A;apk&#x7684;&#x8DEF;&#x5F84;&#x4EE5;&#x53CA;patch&#x6587;&#x4EF6;&#xFF1B;&#x6839;&#x636E;mate&#x4E2D;&#x7684;&#x4FE1;&#x606F;&#x5F00;&#x59CB;&#x904D;&#x5386;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x53D6;&#x51FA;&#x5BF9;&#x5E94;&#x7684;dex&#x6587;&#x4EF6;&#xFF0C;&#x6700;&#x540E;&#x901A;&#x8FC7;patchDexFile&#x5BF9;&#x4E24;&#x4E2A;dex&#x6587;&#x4EF6;&#x505A;&#x5408;&#x5E76;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">private static void patchDexFile(</div><div class="line">            ZipFile baseApk, ZipFile patchPkg, ZipEntry oldDexEntry, ZipEntry patchFileEntry,</div><div class="line">            ShareDexDiffPatchInfo patchInfo,  File patchedDexFile) throws IOException {</div><div class="line">    InputStream oldDexStream = null;</div><div class="line">    InputStream patchFileStream = null;</div><div class="line"></div><div class="line">    oldDexStream = new BufferedInputStream(baseApk.getInputStream(oldDexEntry));</div><div class="line">    patchFileStream = (patchFileEntry != null ? new BufferedInputStream(patchPkg.getInputStream(patchFileEntry)) : null);</div><div class="line"></div><div class="line">    new DexPatchApplier(oldDexStream, patchFileStream).executeAndSaveTo(patchedDexFile);</div><div class="line"></div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x901A;&#x8FC7;ZipFile&#x62FF;&#x5230;&#x5176;&#x5185;&#x90E8;&#x6587;&#x4EF6;&#x7684;InputStream&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x8BFB;&#x53D6;&#x672C;&#x5730;apk&#x5BF9;&#x5E94;&#x7684;dex&#x6587;&#x4EF6;&#xFF0C;&#x4EE5;&#x53CA;patch&#x4E2D;&#x5BF9;&#x5E94;dex&#x6587;&#x4EF6;&#xFF0C;&#x5BF9;&#x4E8C;&#x8005;&#x7684;&#x901A;&#x8FC7;executeAndSaveTo&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#x81F3;patchedDexFile&#xFF0C;&#x5373;patch&#x7684;&#x76EE;&#x6807;&#x79C1;&#x6709;&#x76EE;&#x5F55;&#x3002;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="ZhiHui Lei WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="ZhiHui Lei Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/热修复/" rel="tag">#热修复</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/07/Android编码规范/" rel="next" title="Android编码规范">
+                <i class="fa fa-chevron-left"></i> Android编码规范
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/07/10/热修复学习，AndFix-Tinker源码学习/"
+     data-title="热修复原理学习，AndFix/Tinker源码学习"
+     data-content=""
+     data-url="http://qq451682583.github.io/2017/07/10/热修复学习，AndFix-Tinker源码学习/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/07/10/热修复学习，AndFix-Tinker源码学习/"
+           data-title="热修复原理学习，AndFix/Tinker源码学习" data-url="http://qq451682583.github.io/2017/07/10/热修复学习，AndFix-Tinker源码学习/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head.jpg"
+               alt="ZhiHui Lei" />
+          <p class="site-author-name" itemprop="name">ZhiHui Lei</p>
+          <p class="site-description motion-element" itemprop="description">唯一的不同 是处处不同</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qq451682583" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.uugty.com/" title="UU客-遇见你想要的旅行" target="_blank">UU客-遇见你想要的旅行</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://sjs.miaoa.com/" title="秒啊-时间交易，就上秒啊" target="_blank">秒啊-时间交易，就上秒啊</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码修复"><span class="nav-number">1.</span> <span class="nav-text">代码修复</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#底层热替换原理"><span class="nav-number">1.1.</span> <span class="nav-text">底层热替换原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#突破底层结构差异"><span class="nav-number">1.2.</span> <span class="nav-text">突破底层结构差异</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tinker"><span class="nav-number">2.</span> <span class="nav-text">Tinker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#源码分析"><span class="nav-number">2.1.</span> <span class="nav-text">源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#加载path"><span class="nav-number">2.1.1.</span> <span class="nav-text">加载path</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合成path"><span class="nav-number">2.1.2.</span> <span class="nav-text">合成path</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZhiHui Lei</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ZhiHui"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
