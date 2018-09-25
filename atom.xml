@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>ZhiHui Blog</title>
+  <title>布链财经</title>
   
   <link href="/atom.xml" rel="self"/>
   
@@ -9,7 +9,7 @@
   <id>http://qq451682583.github.io/</id>
   
   <author>
-    <name>ZhiHui Lei</name>
+    <name>BLCJ</name>
     <email>hy04150829@gmail.com</email>
   </author>
   
