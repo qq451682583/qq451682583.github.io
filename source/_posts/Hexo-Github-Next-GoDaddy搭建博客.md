@@ -25,7 +25,7 @@ categories: 工具
 - <font size=4>GitHub(创建仓库,SSH,pages关联hexo,仓库分支)[配置教程](http://blog.sina.com.cn/s/blog_6e572cd60101qls0.html))<p>
   -注：Github Pages的Repository名字是特定的(github账号.github.io)。
  - <font size=4>安转Node.js([Node.js官网](https://nodejs.org/en/)下载相应平台的最新版本)<p>
- - <font size=4>安装Git(把本地的hexo内容提交到github上去.安转了xcode就自带了git,没有的话appstore下载一个xcode或者直接下载[git](https://git-scm.com/download))<p>
+ - <font size=4>安装[Git](https://git-scm.com/download)<p>
  - <font size=4>Atom等MD编辑器.
  ## **开始安装Hexo**
  ---
@@ -45,6 +45,7 @@ sudo npm install-g hexo
  `hexo init`
 
  <font size=4>OK，至此，全部安装工作已经完成！blog就是你的博客根目录，所有的操作都在里面进行.之后的操作都需要cd 到你的blog目录.
+
 
  ## **静态页面**
  ---
@@ -95,6 +96,44 @@ deploy:
 最后执行:
 
 `hexo deploy`(博客部署,提交到仓库)
+
+#### Hexo目录结构
+```
+.
+├── .deploy_git：#将public文件夹的内容提交到Github后生成，内容与public文件夹基本一致
+├── node_modules：#用来存储已安装的各类依赖包
+├── public  #将source文件夹里的Markdown文档，转换成index.html。再结合主题进行渲染，就是我们最终看到的博客
+├── scaffolds #模板文件夹,当您新建文章时，根据 scaffold生成文件,包含page，post，draft三种模板，分别对应 页面、要发布的文章、草稿
+├── source  #资源文件夹,用来存放图片、Markdown文档（文章、草稿）、各种页面（分类、关于页面等）
+|   └── _posts #博客文章目录
+└── themes #主题 
+├── _config.yml   #网站的配置信息。标题、网站名称等
+├── db.json：#source解析所得到的
+├── package.json  # 用来查看Hexo的版本以及相关依赖包的版本
+```
+#### source ， public 和 .deploy_git
+
+```
+这三者的关系大致是：source -> public -> .deploy_git
+
+执行hexo generate，根据source，更新 public。
+执行hexo deploy，根据public，更新 .deploy_git。
+```
+
+[Hexo配置](https://hexo.io/zh-cn/docs/configuration)
+
+### Hexo会默认安装
+
+- hexo：主程序
+- hexo-deployer-git：实现git部署方式
+- hexo-generator-archive：存档页面生成器
+- hexo-generator-category：分类页面生成器
+- hexo-generator-index：index生成器
+- hexo-generator-tag：标签页面生成器
+- hexo-renderer-ejs：支持EJS渲染
+- hexo-renderer-marked：Markdown引擎
+- hexo-renderer-stylus：支持stylus渲染
+- hexo-server：支持本地预览，默认地址 localhost:4000
 
 之后我们就可以在浏览器输入[your_user_name.github.io],好了赶快撰写文章,分享你的blog吧.
 
@@ -148,3 +187,17 @@ Scheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多�
  - 设置语言  `language: zh-Hans`<p>
  - 修改背景色 next->source->css->_schemes(启用哪个类型选哪个文件夹)->Mist->index.styl 最上边第一行加`body { background:url(/images/background.jpg)(图片路径,或者#ffffff颜色);}`<p>
  - 等等修改[官网教程](http://theme-next.iissnan.com/getting-started.html)<p>
+
+
+ #### MarkDown语法简单介绍
+
+![MarkDown](https://user-images.githubusercontent.com/11883853/68834565-10fb2180-06f1-11ea-9af1-d977ac74aee7.png)
+
+<blockquote class="blockquote-center">参考链接</blockquote>
+
+- [Hexo中文文档](https://hexo.io/zh-cn/docs/)
+- [绑定github个人博客到GoDaddy](https://segmentfault.com/a/1190000002632530)
+- [超详细Hexo+Github Page搭建技术博客教程](https://segmentfault.com/a/1190000017986794)
+- [利用Hexo在多台电脑上提交和更新github pages博客](https://www.jianshu.com/p/0b1fccce74e0)
+- [Themes](https://github.com/hexojs/hexo/wiki)
+- [GoDaddy](https://dcc.godaddy.com/manage/lzhblog.site/dns)

@@ -133,11 +133,11 @@ social_icons:
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
 # Social links
 social:
-  #GitHub: https://github.com/qq451682583
-  #Twitter: https://twitter.com/your-user-name
-  #微博: http://weibo.com/u/5446495923/home?wvr=5
-  #豆瓣: http://douban.com/people/your-user-name
-  #知乎: http://www.zhihu.com/people/your-user-name
+  GitHub: https://github.com/qq451682583
+  Twitter: https://twitter.com/your-user-name
+  微博: http://weibo.com/u/5446495923/home?wvr=5
+  豆瓣: http://douban.com/people/your-user-name
+  知乎: http://www.zhihu.com/people/your-user-name
   # 等等
 #social:
   #LinkLabel: Link
@@ -216,8 +216,7 @@ custom_logo:
 # Available value:
 #    normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
-
+highlight_theme: night
 
 # Automatically scroll page to section which is under <!-- more --> mark.
 scroll_to_more: true
@@ -261,20 +260,28 @@ mathjax:
 #duoshuo_shortname:
 
 # Disqus
-#disqus_shortname:
+disqus_shortname: LZHBlog
+disqus:
+  enable: true
+  shortname: LZHBlog
+  count: true
 
 # Baidu Share
 # Available value:
 #    button | slide
-#baidushare:
+baidushare: true
 ##  type: button
 
 # Share
-#jiathis:
+jiathis: true
 #add_this_id:
 
 # Share
 duoshuo_share: true
+
+# Local search
+local_search:
+  enable: true
 
 # Google Webmaster tools verification setting
 # See: https://www.google.com/webmasters/
