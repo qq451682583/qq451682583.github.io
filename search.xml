@@ -1,0 +1,1127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>FrieBase调研</title>
+    <url>/2020/02/12/FrieBase%E8%B0%83%E7%A0%94/</url>
+    <content><![CDATA[<p>[TOC]<br><a id="more"></a></p>
+<p><strong>Firebase简介</strong></p>
+<ul>
+<li><a href="https://firebase.google.cn/docs/android/setup" target="_blank" rel="external">将 Firebase 添加到您的 Android 项目</a></li>
+<li><a href="https://firebase.google.cn/docs/reference/android/packages" target="_blank" rel="external">FireBase Packges</a> </li>
+</ul>
+<p>Firebase是谷歌旗下的一个强大的工具，使用Firebase需要翻墙。Firebase提供了以下几大功能：</p>
+<p><strong>app埋点：Analytics</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">应用内数据上报，帮助分析用户在app内的行为</div></pre></td></tr></table></figure></p>
+<p><strong>云消息推送：Firebase Cloud Message</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">即：FCM，帮助app推送通知</div></pre></td></tr></table></figure></p>
+<p><strong>身份验证：Authentication</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">方便的实现google登录，facebook登录，twitter登录，github登录，邮箱登录，电话登录以及自定义验证登录</div></pre></td></tr></table></figure></p>
+<p><strong>实时数据库：Database和最新的Firestore</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">无需搭建服务器就能拥有一个实时的数据库，可以用来保存自己想要保存的任何数据。</div></pre></td></tr></table></figure></p>
+<p><strong>云仓库：Cloud Storage</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">无需搭建服务器就能拥有一个云仓库，可以用来保存文件，如图片、音频、视频。不过免费版最多保存1个G的文件。</div></pre></td></tr></table></figure></p>
+<p><strong>app崩溃报告：Firebase Crashlytics</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">自动记录应用内崩溃信息，只需简单的几步，就可以将Firebase Crashlytics添加到安卓工程中，然后Firebase Crashlytics就会自动的收集应用内崩溃信息，包括错误类型，代码定位等等，非常的方便实用</div></pre></td></tr></table></figure></p>
+<p><strong>Firebase远程配置：Remote Config</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">相当于在服务器上设置几个key-value字段，我们在应用内可以请求这几个字段，通过value值设置我们的app。</div><div class="line"></div><div class="line">比如：将app页面的背景色放在远程配置中，启动app时拉取远程配置，根据远程配置中的value值设置页面背景色。这样就实现了动态配置app的背景色。</div><div class="line">读者可能会疑惑：使用实时数据库是不是也一样能实现这个功能？只要在数据库里设置几个用于app配置的字段就可以了。或者使用云仓库是不是也能实现这个功能？保存一个用于app配置的文件，每次打开app拉取此文件，然后根据读取的内容动态配置app就可以了?</div><div class="line"></div><div class="line">是的，这两种方法一样可以实现远程配置。只是用Firebase远程配置实现的话，对app的性能影响最低，实现起来也更优雅。</div></pre></td></tr></table></figure></p>
+<p><strong>A/B测试</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">通过Firebase远程配置的A/B测试，帮助了解哪种配置用户更喜欢。</div><div class="line"></div><div class="line">比如：如果你想了解用户更喜欢红色风格的充值页面还是绿色风格的充值页面，那么你就可以使用A/B测试，在远程配置中设置A方案：红色和B方案：绿色，并设置A方案和B方案的比例，比如各占50%。这样用户拉取配置的时候，50%的用户会拉取到红色，50%的用户会拉取到绿色。再配合在用户充值时埋点，分析出红色页面和绿色页面的充值比例。这样你就可以选出更好的方案，获得更多的收益。</div></pre></td></tr></table></figure></p>
+<p><strong>动态链接：Dynamic Link</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">生成一个根据不同的场景响应不同行为的链接。</div><div class="line"></div><div class="line">比如：你想要为app添加一个房间内邀请好友的功能，如果好友也安装了此app，点击分享链接就进入此房间，如果好友没有安装此app，那就跳转到Google Play下载页面（或者你自定义的任何页面），如果好友没有安装此app，而且他是苹果手机，那就跳转到苹果商店的应用下载页面。这个功能就可以使用Firebase的动态链接实现。</div></pre></td></tr></table></figure></p>
+<p><strong>邀请：Firebase invites</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">邀请好友，基于Firebase动态链接。使用邀请功能让用户邀请好友下载或打开app更加的方便。</div></pre></td></tr></table></figure></p>
+<p><strong>AdWords</strong><br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">帮助投放app，就是给钱让谷歌给你打广告。主要有以下几种渠道：</div><div class="line"></div><div class="line"><span class="number">1</span>. 买关键词</div><div class="line"></div><div class="line">平时我们用搜索引擎的时候，搜索的结果中一般都有几条广告。这就是广告主买关键词的作用。广告主买一些关键词，当用户用谷歌搜索这些关键词的时候，就展示你的app下载链接。</div><div class="line"></div><div class="line">买个Google Play关键词，用户一搜Google Play就搜到你的应用了，是不是很舒服。当然，没有这么简单，你想得到别人也想得到。买Google Play关键词的人非常多，Google的策略大致就是价高者得。所以越火的关键词就会越贵，想要赚钱就需要权衡广告投入成本和应用的收益。</div><div class="line"></div><div class="line"><span class="number">2</span>. 买应用内广告或网页广告</div><div class="line"></div><div class="line">访问一些app或者网站时，边边角角会有一些广告弹出，这也是广告主买的。</div></pre></td></tr></table></figure></p>
+<p><strong>AdMob</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">在自己的app里面打广告，赚取收益。和AdWords对应着看，举个例子：你用AdWords买一个广告位，展示一千次自己app的广告给了谷歌1美元，再使用AdMob展示别人的广告赚取收益，展示了一千次赚取了0.1美元。</div><div class="line"></div><div class="line">以上只是Firebase的大部分功能，Firebase还有机器学习套件，网页托管等等功能。</div></pre></td></tr></table></figure></p>
+<h2 id="接入Firebase-Crashlytics"><a href="#接入Firebase-Crashlytics" class="headerlink" title="接入Firebase Crashlytics"></a><strong>接入Firebase Crashlytics</strong></h2><p><a href="https://github.com/firebase/quickstart-android" target="_blank" rel="external">官方Demo</a></p>
+<p><a href="https://firebase.google.com/docs/crashlytics/?hl=zh-CN" target="_blank" rel="external">官方文档</a></p>
+<p><a href="https://console.firebase.google.com/project/_/crashlytics" target="_blank" rel="external">Firebase 控制台</a></p>
+<h4 id="一、配置Android应用并下载google-service-json文件"><a href="#一、配置Android应用并下载google-service-json文件" class="headerlink" title="一、配置Android应用并下载google-service.json文件"></a>一、配置Android应用并下载google-service.json文件</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">在Firebase控制台新建项目（需要使用Google账户登录），配置好Android应用后下载google-service.json文件，将google-service.json文件添加到项目的app目录下即可。</div></pre></td></tr></table></figure>
+<ul>
+<li>添加项目</li>
+<li>添加Android应用</li>
+<li>下载google-service.json文件加入项目</li>
+</ul>
+<h4 id="二、集成Crashlytics-SDK"><a href="#二、集成Crashlytics-SDK" class="headerlink" title="二、集成Crashlytics SDK"></a>二、集成Crashlytics SDK</h4><ul>
+<li>项目级 build.gradle：添加classpath和maven</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line"><span class="keyword">buildscript</span> &#123;</div><div class="line">    <span class="keyword">repositories</span> &#123;</div><div class="line">        ...</div><div class="line">        maven &#123; url <span class="string">'https://maven.google.com'</span>  &#125;</div><div class="line">        maven &#123; url <span class="string">'https://maven.fabric.io/public'</span> &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">dependencies</span> &#123;</div><div class="line">        <span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:3.1.3'</span></div><div class="line">        <span class="keyword">classpath</span> <span class="string">'com.google.gms:google-services:4.1.0'</span></div><div class="line">        <span class="keyword">classpath</span> <span class="string">'io.fabric.tools:gradle:1.25.1'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">allprojects</span> &#123;</div><div class="line">    <span class="keyword">repositories</span> &#123;</div><div class="line">        ...</div><div class="line">        maven &#123; url <span class="string">'https://maven.google.com'</span> &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">...</div></pre></td></tr></table></figure>
+<ul>
+<li>应用级 build.gradle(&lt;项目&gt;/&lt;应用模块&gt;/build.gradle)，添加implementation和apply plugin</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">...</div><div class="line"><span class="comment">//Twitter将Fabric卖给Google了</span></div><div class="line">apply plugin: <span class="string">'io.fabric'</span></div><div class="line">android&#123;</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">    ...</div><div class="line">    implementation <span class="string">'com.google.firebase:firebase-core:16.0.3'</span></div><div class="line">    implementation <span class="string">'com.crashlytics.sdk.android:crashlytics:2.9.5'</span></div><div class="line">&#125;</div><div class="line">apply plugin: <span class="string">'com.google.gms.google-services'</span></div></pre></td></tr></table></figure>
+<p>做完这一步后，就可以启动app并制造一个crash，到Firebase 控制台中的 Crashlytics页面查看是否有数据上报即可。Firebase的数据上报实时性很高，尤其是新建的项目，数据量很少，出现crash后几秒钟就能在Firebase Crashlytics的平台上看到了。</p>
+<p>建议在debug模式下添加 ext.alwaysUpdateBuildId = false标志来阻止 Crashlytics 不断更新其构建 ID，优化日常开发的编译速度。</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">android &#123;</div><div class="line">  ...</div><div class="line">  buildTypes &#123;</div><div class="line">    debug &#123;</div><div class="line">      ext.alwaysUpdateBuildId = <span class="keyword">false</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>（可选） Crashlytics SDK NDK Crash监控</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><div class="line">Firebase Crashlytics的官方文档只列出来了Java代码的Crash监控使用方式，并没有提及NDK Crash的监控。</div><div class="line">对于大部分Android开发者来说，NDK的Crash也确实没有监控的必要，但是考拉这边用了很多第三方so库，这些so库也是有必要监控起来的。</div><div class="line">Firebase Crashlytics是由Firebase收购Fabric而来的项目，技术方案也几乎没有变化，所以可以用Fabric监控NDK Crash的使用方式使用Firebase Crashlytics。</div><div class="line">Fabric NDK Crash Reporting</div><div class="line"></div><div class="line">在应用级 build.gradle 中，添加 Crashlytics NDK Crash Reporting 相关配置</div><div class="line"></div><div class="line">apply plugin: <span class="string">'com.android.application'</span></div><div class="line">apply plugin: <span class="string">'io.fabric'</span></div><div class="line"></div><div class="line"><span class="comment">// set NDK Crash Reporting enable</span></div><div class="line">crashlytics &#123;</div><div class="line">    enableNdk <span class="keyword">true</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">    implementation <span class="string">'com.google.firebase:firebase-core:16.0.6'</span></div><div class="line"></div><div class="line">    implementation <span class="string">'com.crashlytics.sdk.android:crashlytics:2.9.8'</span></div><div class="line">    <span class="comment">// Add ndk dependency</span></div><div class="line">    implementation <span class="string">'com.crashlytics.sdk.android:crashlytics-ndk:2.0.5'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在manifest中声明Crashlytics手动初始化</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!--手动初始化firebase Crashlytics sdk--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta-data</span></span></div><div class="line">    <span class="attr">android:name</span>=<span class="string">"firebase_crashl</span></div><div class="line">        ytics_collection_enabled"</div><div class="line">    <span class="attr">android:value</span>=<span class="string">"false"</span>/&gt;</div></pre></td></tr></table></figure>
+<p>根据自身app启动流程，选择合适时机手动初始化Crashlytics<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">configureCrashReporting</span><span class="params">()</span> </span>&#123;</div><div class="line">        CrashlyticsCore crashlyticsCore = <span class="keyword">new</span> CrashlyticsCore.Builder()</div><div class="line">                .disabled(BuildConfig.DEBUG)</div><div class="line">                .build();</div><div class="line">        Fabric.with(<span class="keyword">this</span>, <span class="keyword">new</span> Crashlytics.Builder().core(crashlyticsCore).build());</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>如果是本地源码编译的so而不是直接使用第三方提供的so，可以生成并上传符号表来辅助分析crash信息，执行 ./gradlew crashlyticsUploadSymbolsRelease即可上传符号表。</p>
+<h4 id="三、错误数据上报分析"><a href="#三、错误数据上报分析" class="headerlink" title="三、错误数据上报分析"></a>三、错误数据上报分析</h4><p><img src="https://img-blog.csdn.net/20180906100828240?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0FscGluaXN0V2FuZw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="错误面板"></p>
+<p>通过以上步骤的配置，现在Firebase Crashlytics已经可以正常工作了。并且还附带了发生Crash的时间，机型，系统版本，应用版本等信息以供分析。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190127174334220.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpbmdjaGVueHVhbmZlbmc=,size_16,color_FFFFFF,t_70" alt=""></p>
+<p>除了这些基础信息，我们可以自定义添加更多数据,比如:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//用户id</span></div><div class="line">Crashlytics.setUserIdentifier(builder.getUserId());</div><div class="line"><span class="comment">//用户渠道</span></div><div class="line">Crashlytics.setString(<span class="string">"Channel"</span>, builder.getChannelInfo());</div><div class="line"><span class="comment">//用户补丁版本</span></div><div class="line">Crashlytics.setString(<span class="string">"Version"</span>, builder.getUserTag());</div><div class="line"><span class="comment">//用户当前WebView UA</span></div><div class="line">Crashlytics.setString(<span class="string">"WebView UA"</span>, WebViewSettings.getUserAgent());</div><div class="line"><span class="comment">//打包机名称</span></div><div class="line">Crashlytics.setString(<span class="string">"BuildHost"</span>, BuildInfo.BUILD_HOST);</div><div class="line"><span class="comment">//打包时间</span></div><div class="line">Crashlytics.setString(<span class="string">"BuildTime"</span>, BuildInfo.BUILD_TIME);</div><div class="line"><span class="comment">//最新提交commit id</span></div><div class="line">Crashlytics.setString(<span class="string">"GitLog"</span>, BuildInfo.BUILD_GIT_LOG);</div></pre></td></tr></table></figure>
+<p>这些自定义的数据可以在，Firebase Crashlytics的“键”选项卡下面看到。<br><img src="https://img-blog.csdnimg.cn/20190127175450347.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpbmdjaGVueHVhbmZlbmc=,size_16,color_FFFFFF,t_70" alt=""></p>
+<p>通过<a href="">setUserIdentifier</a>所设置的用户Id还可以用于搜索。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190127175929869.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpbmdjaGVueHVhbmZlbmc=,size_16,color_FFFFFF,t_70" alt=""></p>
+<p>还可以通过<a href="">Crashlytics.log</a>方法，打入自定义日志用于分析。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190127180206168.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpbmdjaGVueHVhbmZlbmc=,size_16,color_FFFFFF,t_70" alt=""></p>
+<p>开发过程中，还会遇到通过<a href="">try catch</a>捕获了异常，不造成崩溃，但是又希望能够统计上报该异常的情况。这个时候，可以使用<a href="">Crashlytics.logException(throwable)</a>方法将异常统计上来。<br>在Firebase的过滤条件中选择，不严重的事件类型，即可过滤该异常。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190127180623407.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpbmdjaGVueHVhbmZlbmc=,size_16,color_FFFFFF,t_70" alt=""></p>
+<p>如果之前的项目使用的是Fabric Crashlytics，那你可以直接使用<a href="https://fabric.io/firebase_migration" target="_blank" rel="external">Fabric迁移流程</a>来快速迁移到Firebase Crashlytics。</p>
+<h2 id="Firebase比较有用的地方"><a href="#Firebase比较有用的地方" class="headerlink" title="Firebase比较有用的地方"></a><strong>Firebase比较有用的地方</strong></h2><ul>
+<li><p>支持对每个用户设置唯一标识，我们可以用服务传递回来的用户id 或者 手机号码，然后再排查问题的时候通过这个唯一标识去定位，很方便。</p>
+<p>  <a href="">Crashlytics.setUserIdentifier(“user123456789”);</a></p>
+</li>
+<li><p>添加自定义日志消息</p>
+<p>  <a href="">Crashlytics.log(Log.DEBUG, “customCrashLog” , e.toString());</a></p>
+<p>  第一个参数int 类型，可以填info，debug，error ；我们可以通过这些 类型，区分日志的重要程度；第二个参数为 自定义 key。</p>
+<p>  要为导致崩溃的事件提供更多背景信息，您可以向您的应用添加自定义 Crashlytics 日志。Crashlytics 会将日志与您的崩溃数据相关联，并在 <a href="https://console.firebase.google.com/project/_/crashlytics" target="_blank" rel="external">Firebase 控制台</a>中显示这些日志。</p>
+<p>  在 Android 上，请使用 Crashlytics.log 来帮助查明问题。Crashlytics.log 既可以将日志写入崩溃报告并执行 Log.println()，也可以仅继续写入下一个崩溃报告：</p>
+<ul>
+<li>崩溃报告和 Log.println：Crashlytics.log(Log.DEBUG, “tag”, “message”);</li>
+<li>仅崩溃报告：Crashlytics.log(“message”);</li>
+</ul>
+</li>
+<li><p>记录非严重异常</p>
+<p>  除了自动报告您的应用中出现的崩溃，Crashlytics 还可让您记录非严重异常。</p>
+<p>  在 Android 上，这意味着您可以在应用的 catch 块中记录已捕获到的异常：</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    methodThatThrows();</div><div class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">    Crashlytics.logException(e);</div><div class="line">    <span class="comment">// handle your exception here</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  所有记录的异常在 Firebase 控制台中均显示为非严重问题。问题摘要中会包含您通常从崩溃中可以获得的所有状态信息，以及按 Android 版本和硬件设备细分的数据。</p>
+<p>  Crashlytics 在一个专用的后台线程中处理异常，所以对您的应用性能的影响极小。为了减少用户的网络流量，Crashlytics 会将已记录的异常汇集到一起，并在下次应用启动时批量发送这些异常。</p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>SonarQube gradle plugin for Android</title>
+    <url>/2020/01/16/SonarQube-gradle-plugin-for-Android/</url>
+    <content><![CDATA[<p>[TOC]<br><a id="more"></a></p>
+<blockquote>
+<p><a href="https://github.com/SonarSource/sonar-scanner-gradle" target="_blank" rel="external">User documentation</a></p>
+</blockquote>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文包含了官方SonarQube Plugin介绍、自定义适合多组件plugin、官方SonarQube Plugin实现多组件等内容，你可以直接使用tech-sonar plugin来实现多组件工程sonar统计。其中，tech-sonar插件是基于<a href="https://github.com/SonarSource/sonar-scanner-gradle" target="_blank" rel="external">官方SonarQube plugin</a>二次开发的。</p>
+<h1 id="1、SonarQube-Plugin如何工作"><a href="#1、SonarQube-Plugin如何工作" class="headerlink" title="1、SonarQube Plugin如何工作"></a>1、SonarQube Plugin如何工作</h1><p>当将插件应用于项目时，他将向该项目添加sonarqube task，它还将添加到项目及其所有子项目SonarQube extension。对于多模块项目，该插件仅适用于调用它的第一个项目。建议：在<code>subprojects {}</code>中添加sonar配置对所有子module生效！</p>
+<ul>
+<li><p>SonarQube Extension</p>
+<p>  SonarQube扩展可以使用DSL轻松配置项目，你可以在DSL里设置自定义属性，详细使用属性请看<a href="https://docs.sonarqube.org/latest/analysis/analysis-parameters/" target="_blank" rel="external">这里</a>。</p>
+</li>
+<li><p>SonarQube Task </p>
+<p>  SonarQube task的名称为<code>sonarqube</code>，因此可以通过调用<code>./gradlew sonarqube</code>来执行。他从项目及其所有子项目中收集信息，生成分析属性。然后，它使用所有这些属性运行SonarQube分析。task依赖于于所有项目的compile和test task（跳过的项目除外）。如果跳过所有项目（通过向sonarqube DSL添加skipProject = true），则不会执行分析。</p>
+</li>
+</ul>
+<h1 id="2、tech-sonar-plugin"><a href="#2、tech-sonar-plugin" class="headerlink" title="2、tech-sonar plugin"></a>2、tech-sonar plugin</h1><p>对于目前多组件结构的Android工程，官方SonarQube Plugin插件只能实现项目整体统计，不能单独生成某个模块的报告。因此，在官方plugin基础上开发了适合多组件的tech-sonar 插件。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="1-添加依赖和配置"><a href="#1-添加依赖和配置" class="headerlink" title="1. 添加依赖和配置"></a>1. 添加依赖和配置</h3><p>根project build.gradle 文件</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    classpath <span class="string">'xxxx'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">sonarConfig &#123;</div><div class="line">    onlyFullReport = findProperty(<span class="string">'sonarOnlyFull'</span>) ?: <span class="keyword">false</span> </div><div class="line">    hostUrl = <span class="string">'xxxx'</span></div><div class="line">    login = <span class="string">'xxx'</span></div><div class="line">    projectKey = <span class="string">'xxx'</span></div><div class="line">    projectName = <span class="string">'xxxx'</span></div><div class="line">    projectVersion = VERSION_NAME</div><div class="line">    ignoredProjects = [<span class="string">'xxxx'</span>, <span class="string">'xxxx'</span>]</div><div class="line">    enableTestTask = <span class="keyword">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>字段说明：</p>
+<ul>
+<li>onlyFullReport：一个标记，用来指示tech-sonar plugin内部来执行task使用</li>
+<li>hostUrl：服务端url</li>
+<li>login：登录签名</li>
+<li>projectKey：总工程key，子模块的key默认为 「rootProjectName:moduleName」</li>
+<li>projectName：总工程name，子模块的name默认为 「rootProjectName:moduleName」</li>
+<li>projectVersion：项目版本号</li>
+<li>ignoredProjects：要忽略的模块</li>
+<li>enableTestTask：是否要执行测试任务</li>
+</ul>
+<h3 id="2-执行"><a href="#2-执行" class="headerlink" title="2. 执行"></a>2. 执行</h3><ul>
+<li>./gradlew sonarqube -PsonarOnlyFull=true 生成项目sonar总报告，但不包含所有module sonar总报告</li>
+<li>./gradlew sonarFullReport 生成所有module的sonar报告，但不包含项目总报告</li>
+<li>./gradlew :moduleName:sonarqube 生成单个module的sonar报告</li>
+</ul>
+<h3 id="3-Jenkins配置"><a href="#3-Jenkins配置" class="headerlink" title="3. Jenkins配置"></a>3. Jenkins配置</h3><p>项目-&gt; Configure -&gt; Build -&gt; 执行 shell 添加如下command即可</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">./gradlew clean &amp; ./gradlew sonarqube -PsonarOnlyFull=<span class="keyword">true</span> &amp; ./gradlew sonarFullReport</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="3、官方SonarQube实现多模块方案"><a href="#3、官方SonarQube实现多模块方案" class="headerlink" title="3、官方SonarQube实现多模块方案"></a>3、官方SonarQube实现多模块方案</h1><p><em>提示：这部分内容只是为了展示官方插件实现多组件工程统计，实现起来比较丑陋，如果不感兴趣，可以忽略这部分！</em></p>
+<h2 id="3-1、单个module"><a href="#3-1、单个module" class="headerlink" title="3.1、单个module"></a>3.1、单个module</h2><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 当要生成2.3项目总sonar结果，需要去掉这个依赖plugin，在根module的build.gradle中添加一次即可！</span></div><div class="line">apply plugin: <span class="string">'org.sonarqube'</span></div><div class="line"></div><div class="line"><span class="comment">// List of modules that skip by sonarqube plugin</span></div><div class="line">def ignoredBySonar = [</div><div class="line">        <span class="string">'app'</span></div><div class="line">]</div><div class="line"></div><div class="line">sonarqube &#123;</div><div class="line">    properties &#123;</div><div class="line">        property <span class="string">"sonar.host.url"</span>, <span class="string">"xxx"</span></div><div class="line">        property <span class="string">"sonar.login"</span>, <span class="string">"xxx"</span></div><div class="line">        property <span class="string">"sonar.language"</span>, <span class="string">"java"</span></div><div class="line">        <span class="comment">// 工程名：根工程:module名称</span></div><div class="line">        property <span class="string">"sonar.projectName"</span>, <span class="string">"$&#123;rootProject.name&#125;:$&#123;project.name&#125;"</span></div><div class="line">        property <span class="string">"sonar.projectKey"</span>, <span class="string">"$&#123;rootProject.name&#125;:$&#123;project.name&#125;"</span></div><div class="line">        <span class="comment">// 项目版本号</span></div><div class="line">        property <span class="string">"sonar.projectVersion"</span>, <span class="string">'1.0.0'</span></div><div class="line"></div><div class="line">        <span class="comment">// Defines where the java files are</span></div><div class="line">        property <span class="string">"sonar.sourceEncoding"</span>, <span class="string">"UTF-8"</span></div><div class="line">        <span class="comment">//property "sonar.sources", "src/main/java"</span></div><div class="line">        properties[<span class="string">"sonar.sources"</span>] = android.sourceSets.main.java.srcDirs</div><div class="line"></div><div class="line">        <span class="comment">// Analyze tests classes</span></div><div class="line">        property <span class="string">"sonar.exclusions"</span>, <span class="string">"src/test/java, src/androidTest/java"</span></div><div class="line">        property <span class="string">"sonar.java.test.binaries"</span>, <span class="string">"build/intermediates/classes/debug"</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    skipProject = ignoredBySonar.contains(project.name)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// disable all test task for sub project</span></div><div class="line">project.afterEvaluate &#123;</div><div class="line">    project.tasks.all &#123; task -&gt;</div><div class="line">        def ignoreTask = task.name.contains(<span class="string">"test"</span>) || task.name.contains(<span class="string">"Test"</span>)</div><div class="line">        <span class="keyword">if</span> (ignoreTask) &#123;</div><div class="line">            <span class="comment">//println "disable test task  : + $&#123;task.name&#125;"</span></div><div class="line">            task.setEnabled <span class="keyword">false</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">task <span class="title">sonarExec</span><span class="params">(dependsOn: [<span class="string">'sonarqube'</span>])</span> </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">gradle.ext.ignoredBySonar = ignoredBySonar</div></pre></td></tr></table></figure>
+<p>以上配置可以单独写到一个xx.gradle文件（如android-sonarqube.gradle），并依赖到root project build.gradle的subprojects中。即可生成单个module的sonar结果，如：<code>./gradlew :moduleOne:sonarqube</code>。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">subprojects &#123;</div><div class="line">    apply from: rootProject.getRootDir().getAbsolutePath() + <span class="string">"/scripts/sonar/android-sonarqube.gradle"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-2、一次所有单个module"><a href="#3-2、一次所有单个module" class="headerlink" title="3.2、一次所有单个module"></a>3.2、一次所有单个module</h2><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">apply plugin: <span class="string">'org.sonarqube'</span></div><div class="line"></div><div class="line"><span class="function">task <span class="title">sonarFullReport</span><span class="params">()</span> </span>&#123;</div><div class="line">    group = <span class="string">'Reporting'</span></div><div class="line">    description = <span class="string">'Generates an aggregate report from all subprojects'</span></div><div class="line"></div><div class="line">    <span class="comment">// Get list of projects which should be included in the report</span></div><div class="line">    def projects = []</div><div class="line">    subprojects.each &#123; prj -&gt;</div><div class="line">        <span class="keyword">if</span> (!gradle.ignoredBySonar.contains(prj.name)) &#123;</div><div class="line">            projects.add(prj)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//noinspection GrUnresolvedAccess</span></div><div class="line">    dependsOn(projects.sonarExec)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上配置可以单独写到一个xx.gradle文件（如android-sonarqube-full.gradle），并依赖到root project build.gradle中。即可一次生成所有单个module的sonar结果，等同于分开执行<code>./gradlew moduleOne:sonarqube</code>，<code>./gradlew moduleTwo:sonarqube</code>…</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">apply from: <span class="string">'scripts/sonar/android-sonarqube-full.gradle'</span></div></pre></td></tr></table></figure>
+<h2 id="3-3、汇总"><a href="#3-3、汇总" class="headerlink" title="3.3、汇总"></a>3.3、汇总</h2><p>Generates an aggregate report from all subprojects</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">apply plugin: <span class="string">'org.sonarqube'</span></div><div class="line">subprojects &#123;</div><div class="line">    <span class="comment">// 配置所有子module sonar DSL</span></div><div class="line">    apply from: rootProject.getRootDir().getAbsolutePath() + <span class="string">"/scripts/sonar/android-sonarqube.gradle"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Generates an aggregate report from all subprojects.</div><div class="line"> */</div><div class="line">sonarqube &#123;</div><div class="line">    properties &#123;</div><div class="line">        property <span class="string">"sonar.host.url"</span>, <span class="string">"xxxx"</span></div><div class="line">        property <span class="string">"sonar.login"</span>, <span class="string">"xxx"</span></div><div class="line">        property <span class="string">"sonar.language"</span>, <span class="string">"java"</span></div><div class="line">        property <span class="string">"sonar.projectName"</span>, <span class="string">"xxx"</span></div><div class="line">        property <span class="string">"sonar.projectKey"</span>, <span class="string">"xxx"</span></div><div class="line">        property <span class="string">"sonar.projectVersion"</span>, VERSION_NAME</div><div class="line"></div><div class="line">        property <span class="string">"sonar.sourceEncoding"</span>, <span class="string">"UTF-8"</span></div><div class="line">        property <span class="string">"sonar.sources"</span>, <span class="string">"src/main/java"</span></div><div class="line">        property <span class="string">"sonar.exclusions"</span>, <span class="string">"src/test/java, src/androidTest/java"</span></div><div class="line">        property <span class="string">"sonar.java.test.binaries"</span>, <span class="string">"build/intermediates/classes/debug"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>生成项目sonar总报告，需要为所有module和根module配置sonar DSL，在根module的build.gradle配置，执行<code>./gradlew sonarqube</code>即可生成当前项目sonar总报告。</p>
+<h1 id="4、问题"><a href="#4、问题" class="headerlink" title="4、问题"></a>4、问题</h1><ul>
+<li>Q：<code>Cannot add extension with name &#39;sonarqube&#39;, as there is an extension already registered with that name.</code></li>
+</ul>
+<blockquote>
+<p>由于sonarqube plugin插件只能在工程中apply一次，所以上面抽取的2个文件android-sonarqube.gradl和android-sonarqube-full.gradle都关联了插件，会报错。目前还不能同时要统计2.2、2.3，这个问题目前还在研究中。。。也可以在Stack Overflow上关注这个 <a href="https://stackoverflow.com/questions/48866378/make-sonarqube-gradle-plugin-available-in-root-project-and-subprojects" target="_blank" rel="external">问题</a>！<br>「后续」：这个问题已经通过tech-sonar plugin解决！！！</p>
+</blockquote>
+<h1 id="5、参考"><a href="#5、参考" class="headerlink" title="5、参考"></a>5、参考</h1><ul>
+<li><a href="https://github.com/sogilis/sonarqube-for-android-example/blob/master/android-sonarqube.gradle" target="_blank" rel="external">sample-android-sonarqube</a></li>
+<li><a href="https://github.com/SonarSource/sonarqube" target="_blank" rel="external">SonarSource/sonarqube</a></li>
+<li><a href="https://github.com/SonarSource/sonar-scanner-gradle" target="_blank" rel="external">SonarSource/sonar-scanner-gradle</a></li>
+<li><a href="https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Gradle" target="_blank" rel="external">User documentation</a></li>
+<li><a href="https://docs.sonarqube.org/latest/analysis/analysis-parameters/" target="_blank" rel="external">SonarQubeExtension-analysis properties</a></li>
+<li><a href="https://github.com/weikipeng/Android-SonarQube-MultiProject/blob/master/build.gradle" target="_blank" rel="external">weikipeng/Android-SonarQube-MultiProject</a></li>
+<li><a href="https://github.com/hallatech/gradle-sonar-multi-atg-project/blob/master/sonar.gradle" target="_blank" rel="external">sonar.gradle</a></li>
+<li><a href="https://github.com/sogilis/sonarqube-for-android-example/blob/master/android-app/build.gradle" target="_blank" rel="external">android-app/build.gradle</a></li>
+<li><a href="https://github.com/hallatech/gradle-sonar-multi-atg-project/blob/master/sonar.gradle" target="_blank" rel="external">sonar.gradle</a></li>
+<li><a href="https://medium.com/@nielsz/android-quality-with-sonarqube-bf907e614aed" target="_blank" rel="external">Medium/Android quality with SonarQube</a></li>
+<li><a href="https://github.com/hallatech/gradle-sonar-multi-atg-project/blob/master/README.md" target="_blank" rel="external">hallatech/gradle-sonar-multi-atg-project</a></li>
+</ul>
+<h1 id="6、联系我"><a href="#6、联系我" class="headerlink" title="6、联系我"></a>6、联系我</h1><ul>
+<li>Email: hy04150829@gmail.com</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Plugin</category>
+      </categories>
+      <tags>
+        <tag>Gradle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>性能优化之内存优化-操作篇</title>
+    <url>/2019/12/30/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96-%E6%93%8D%E4%BD%9C%E7%AF%87/</url>
+    <content><![CDATA[<p>[TOC]<br><a id="more"></a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><p>内存泄漏的排查我们主要结合以下两个工具:</p>
+<ul>
+<li>Memory Profiler</li>
+<li><a href="https://github.com/Tencent/matrix" target="_blank" rel="external">Matrix</a> &amp; <a href="https://www.eclipse.org/downloads/download.php?file=/mat/1.9.1/rcp/MemoryAnalyzer-1.9.1.20190826-macosx.cocoa.x86_64.zip" target="_blank" rel="external">MAT</a></li>
+</ul>
+<h2 id="Memory-Profiler使用"><a href="#Memory-Profiler使用" class="headerlink" title="Memory Profiler使用"></a><strong>Memory Profiler使用</strong></h2><ul>
+<li><p>如何打开Memory Profiler？</p>
+<p>  Android Studio -&gt; View -&gt; Tool Windows -&gt; Profiler</p>
+<p>  <a href="https://imgchr.com/i/lsU8iD" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/06/lsU8iD.md.jpg" alt="lsU8iD.md.jpg"></a></p>
+<p>  最后进入Memory Profiler</p>
+<p>  <a href="https://imgchr.com/i/lsUJRH" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/06/lsUJRH.md.jpg" alt="lsUJRH.md.jpg"></a></p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><div class="line">为什么要去观察应用内存的使用情况？</div><div class="line"></div><div class="line">之前也提到了内存泄漏和抖动,会触发频繁的GC，导致应用卡顿，anr，oom问题</div><div class="line"></div><div class="line">在Android系统内存管理上，它是提供一套内存回收机制去</div><div class="line"></div><div class="line">回收无用的对象，其实就是Dalvik虚拟机的垃圾回收器，</div><div class="line"></div><div class="line">当垃圾回收器启动回收机制的时候，其实会对应用的运行产</div><div class="line"></div><div class="line">生一点影响，但是这种影响来说一般微乎其微，察觉不到。</div><div class="line"></div><div class="line">但是如果你的内存分配比垃圾回收快很多，这种情况可能导</div><div class="line"></div><div class="line">致垃圾回收器回收内存不及时，从而导致应用出现卡顿的现</div><div class="line"></div><div class="line">象.(这其实就是内存抖动所产生的影响). 另外一个问题就</div><div class="line"></div><div class="line">是内存泄漏，内存的持续泄漏可能导致内存溢出，从而app</div><div class="line"></div><div class="line">运行出现outofmem异常。</div><div class="line"></div><div class="line">Memory Profiler通过以下方面防治上面出现的问题：</div><div class="line"></div><div class="line"><span class="number">1</span>，观察不必要的内存分配。（这种内存分配导致效率降低）</div><div class="line"></div><div class="line"><span class="number">2</span>，Dump the Java heap 去观察指定时间对象的在内存中</div><div class="line"></div><div class="line">的分配情况，若干次Dump能够帮助你发现内存泄漏</div><div class="line"></div><div class="line"><span class="number">3</span>，测试极端的用户交互情况下的内存分配（比如说狂点某个</div><div class="line"></div><div class="line">请求按钮），看看内存使用情况如何，是否出现内存抖动.</div></pre></td></tr></table></figure>
+</li>
+<li><p>Memory Profiler主面板介绍</p>
+<p>  <a href="https://imgchr.com/i/lsUGJe" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/06/lsUGJe.md.jpg" alt="lsUGJe.md.jpg"></a></p>
+<ol>
+<li><p>添加需要观察的线程</p>
+</li>
+<li><p>开始／停止记录内存分配情况</p>
+</li>
+<li>强制内存回收按钮</li>
+<li>Dump the Java heap (获取内存快照)</li>
+<li>缩小／放大时间线</li>
+<li>实时播放内存分配情况（这个按钮点下试试便清楚了）</li>
+<li>发生一些事件的记录(如Activity的跳转，事件的输入，屏幕的旋转)</li>
+<li><p>内存使用时间线包含多少内存被使用（左边的y轴），还有顶上的颜色标记内存的类型，<br>右边的y轴表明分配对象的个数,另外出现垃圾回收事件会有一个小图标.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">关于顶部的几种内存类型介绍：</div><div class="line"></div><div class="line">Java : java代码分配的内存</div><div class="line"></div><div class="line">Native:c/c++代码分配的内存(有时候其实并没有使用到c/c++代码,但还是会有Native的内存分配，因为Android Framework会去通过java代码访问一些需要使用Native的资源，如图像资源Bitmap)</div><div class="line"></div><div class="line">Graphics:图像缓存等，包括GL surfaces, GL textures等.</div><div class="line"></div><div class="line">Stack:栈内存（包括java和c/c++）</div><div class="line"></div><div class="line">Code:代码的内存分配（例如代码，资源，libs等等）</div><div class="line"></div><div class="line">Other:这个是连系统都不知道是什么类型的内存，放在这里.</div><div class="line"></div><div class="line">Allocated: java分配的对象个数 (在Android7.1和以下的设备，这个计数是在设备连接后开始，所以并不是app启动时候的计数。Android8.0或更高，在系统里面内置的Profiler工具，所以无论什么时候连接，都是app启动时候的计数)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>如何观察对象分配的情况？</p>
+<p>  我们需要关注如下信息：</p>
+<ol>
+<li><p>什么类型对象被分配，分配了多大的空间</p>
+</li>
+<li><p>对象分配的栈调用，是在哪个线程中调用的</p>
+</li>
+<li><p>对象的释放时间</p>
+<p><a href="https://imgchr.com/i/lsyHpV" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/06/lsyHpV.md.jpg" alt="lsyHpV.md.jpg"></a></p>
+<p>下面是重头戏，查看对象分配情况，也就是我们前面提到需要关注什么类型对象被分配，分配了多大的空间。</p>
+<ol>
+<li>在Class Name列看一下有没有异常分配的对象，个数很多，占用内存比较大。点击头部Class Name进行一个按字母排序操作，点击Class Name面板下面的类名可以看到Instance View面板详细的对象信息.</li>
+</ol>
+</li>
+<li><p>点击Instance View面板中的对象，可以看到调用栈信息和调用的线程.</p>
+</li>
+<li>在Call Stack中点击可以跳转到实际的代码.<br>以上是捕获一段时间的内存分配情况，如果想捕获一瞬间的内存分配需要用到heap dump.</li>
+</ol>
+</li>
+<li><p>捕获一个heap dump</p>
+<p>  捕获一个heap dump观察某一个时间点的对象分配情况，注<br>  意之前介绍是一个时间段，而这里是时间点。它有助于帮助我<br>  们分析内存泄漏，比如当我应用使用一段时候后，捕获了一个<br>  heap dump，这个heap dump里面发现了并不应该存在的对<br>  象分配情况，这说明是存在内存泄漏的。通过一个heap<br>  dump你可以看到以下内容：</p>
+<ol>
+<li><p>你的app分配了什么样的对象类型，每个类型分配了多少个数和大小。</p>
+</li>
+<li><p>使用了多少内存</p>
+</li>
+<li>每个对象在代码中的使用位置</li>
+<li><p>对象分配的调用栈情况</p>
+<p>捕获一个heap dump在工具栏中点击之前面板介绍中的按钮<br>4，稍等一会儿便能够看到类似于之前记录内存分配后的面板弹出。</p>
+<p><a href="https://imgchr.com/i/lsWU6P" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/06/lsWU6P.md.png" alt="lsWU6P.md.png"></a></p>
+<p>在上面图片中可以看到如下列：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Class Name : 这个很好理解，就是类名</div><div class="line"></div><div class="line">Alloc Count : 对象个数</div><div class="line"></div><div class="line">Native Size : c/c++层内存大小(bytes)</div><div class="line"></div><div class="line">Shallow Size : java层内存大小(bytes)</div><div class="line"></div><div class="line">Retained Size : 这个是这个类中所引用到的对象的总大小 * 该类对象的个数</div></pre></td></tr></table></figure>
+<p>当点击app heap下拉列表会出现3个选项</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Default heap: 默认堆</div><div class="line"></div><div class="line">App heap: app中的堆分配</div><div class="line"></div><div class="line">Image heap: 图像的堆分配</div><div class="line"></div><div class="line">Zygote heap: 这个按照官方的解释是来自安卓系统fork进程的地方产生的写数据备份</div></pre></td></tr></table></figure>
+<p>当点击Arrange by class下拉列表会出现3个选项</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Arrange by class:根据类名进行分组</div><div class="line"></div><div class="line">Arrange by package:根据包名进行分组</div><div class="line"></div><div class="line">Arrange by callstack:根据调用栈进行分配</div></pre></td></tr></table></figure>
+<p>当我们点击其中一个类的时候会弹出一个新的Instance View面板，见上图:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">每列中包括以下：</div><div class="line"></div><div class="line">Depth: GC root到达该实例的最短跳数.</div><div class="line"></div><div class="line">Native Size: c/c++层中内存的大小(bytes)</div><div class="line"></div><div class="line">Shallow Size:java层内存大小(bytes)</div><div class="line"></div><div class="line">Retained Size:这个类中所引用到的对象的总大小(bytes)</div><div class="line"></div><div class="line">另外补充一下，heap dump是看不到调用栈信息的.也就是时间段图中的Call Stack面板.</div><div class="line"></div><div class="line">分析你的heap,按照一下步骤.</div><div class="line"></div><div class="line">1,浏览Class Name列表,看看有没有大量对象存在，并且</div><div class="line">这些对象你认为是不应该存在的，可能存在内存泄漏的情况. 点击类名可以看到详细的对象信息.</div><div class="line"></div><div class="line">2,在这个Instance View面板中，点击一个实例References面板就会显示出来，里面都是使用该Instance的Reference，点击剪头可以看到引用它的所有区域。点击鼠标右键可以选择go to instance去看到引用该引用的引用，或者jump to source去看调用的源代码.</div><div class="line"></div><div class="line">另外heap dump也是可以保存成为HPROF文件的,点击上图左侧Heap Dump按钮即可保存起来，用于以后分析，或用作其它工具分析(MAT).</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="MAT的使用"><a href="#MAT的使用" class="headerlink" title="MAT的使用"></a><strong>MAT的使用</strong></h2><p>heap dump生成的hprof文件并不是标准的，还需要将它转换为标<br>准的hprof文件，这样才会被MAT识别从而进行分析，可以使用<br>SDK自带的hprof-conv进行转换，它的路径在sdk/<br>platform-tools中，进入到该路径执行以下语句即可：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hprof-conv before.hprof after.hprof</div></pre></td></tr></table></figure>
+<p><a href="https://imgchr.com/i/lc3nFe" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/07/lc3nFe.md.jpg" alt="lc3nFe.md.jpg"></a></p>
+<p>Histogram</p>
+<ul>
+<li>列出内存中的对象，对象的个数以及大小，并支持正则表达式查找</li>
+</ul>
+<p>Dominator Tree</p>
+<ul>
+<li>列出最大的对象以及其依赖存活的Object （大小是以Retained Heap为标准排序的）。</li>
+</ul>
+<p>Top Consumers</p>
+<ul>
+<li>通过图形列出最大的object。</li>
+</ul>
+<p>Duplicate Classes</p>
+<ul>
+<li>检测由多个类加载器加载的类。</li>
+</ul>
+<p>Shallow heap</p>
+<ul>
+<li>Shallow size就是对象本身占用内存的大小，不<br>包含其引用的对象。针对非数组类型的对象，它的大小就是对象与<br>它所有的成员变量大小的总和。当然这里面还会包括一些java语言<br>特性的数据存储单元。针对数组类型的对象，它的大小是数组元素对象的大小总和。</li>
+</ul>
+<p>Retained Heap</p>
+<ul>
+<li>是当前对象大小与当前对象可直接或间接引用到的对象大小总和，包括被递归释放的。也可以理解为，Retained Size就是当前对象被GC后，从Heap上总共能释放掉的内存大小。</li>
+</ul>
+<p>我们常用Histogram来分析内存，点击Histogram:</p>
+<p><a href="https://imgchr.com/i/lcJvc9" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/07/lcJvc9.md.png" alt="lcJvc9.md.png"></a></p>
+<p>然后输入您需要定位的Activity页面的名字，查看该Activity所发生的内存泄漏的源头页面</p>
+<p>选中并作这样的操作，就能够看到具体发生内存泄漏的位置，<br>查看GC引用链，显示距GC Roots最短的路径，并排除虚引用，<br>弱引用及软引用</p>
+<p><a href="https://imgchr.com/i/lcNbAP" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/07/lcNbAP.md.png" alt="lcNbAP.md.png"></a></p>
+<p>最后得到这样的结果</p>
+<p><a href="https://imgchr.com/i/lcaeG8" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/07/lcaeG8.md.png" alt="lcaeG8.md.png"></a></p>
+<p>然后结合代码分析并解决问题。</p>
+<h2 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a><strong>案例分析</strong></h2><p><a href="https://imgchr.com/i/lcdbA1" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/07/lcdbA1.md.jpg" alt="lcdbA1.md.jpg"></a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//com.cars.crm.tech.cache.util.FileUtil</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getStringFromLocal</span><span class="params">(File cache)</span> </span>&#123;</div><div class="line">        ObjectInputStream ois;</div><div class="line">        FileInputStream fis;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            fis = <span class="keyword">new</span> FileInputStream(cache);</div><div class="line">            ois = <span class="keyword">new</span> ObjectInputStream(fis);</div><div class="line">            Object mObject = ois.readObject();</div><div class="line">            <span class="keyword">if</span> (mObject != <span class="keyword">null</span> &amp;&amp; mObject <span class="keyword">instanceof</span> String) &#123;</div><div class="line">                <span class="keyword">return</span> (String) mObject;</div><div class="line">            &#125;</div><div class="line">            ois.close();</div><div class="line">            fis.close();</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">//修改</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getStringFromLocal</span><span class="params">(File cache)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> (FileInputStream fis = <span class="keyword">new</span> FileInputStream(cache);</div><div class="line">             ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(fis)) &#123;</div><div class="line">            Object mObject = ois.readObject();</div><div class="line">            <span class="keyword">if</span> (mObject != <span class="keyword">null</span> &amp;&amp; mObject <span class="keyword">instanceof</span> String) &#123;</div><div class="line">                <span class="keyword">return</span> (String) mObject;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//com.cars.crm.scaffold.webview.ResourceManager(72)</span></div><div class="line"><span class="function">WebResourceResponse <span class="title">fetchResource</span><span class="params">(<span class="keyword">final</span> String mime, <span class="keyword">final</span> String code, String url)</span> </span>&#123;</div><div class="line">        Request request = <span class="keyword">new</span> Request.Builder().get().url(url).build();</div><div class="line">        <span class="keyword">final</span> Call call = mHttpClient.newCall(request);</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            Callable&lt;WebResourceResponse&gt; mCallable = <span class="keyword">new</span> Callable&lt;WebResourceResponse&gt;() &#123;</div><div class="line">                <span class="meta">@Override</span></div><div class="line">                <span class="function"><span class="keyword">public</span> WebResourceResponse <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">                    Response rep = call.execute();</div><div class="line">                    <span class="keyword">if</span> (rep.isSuccessful() &amp;&amp; rep.body() != <span class="keyword">null</span>) &#123;</div><div class="line">                        InputStream is = rep.body().byteStream();</div><div class="line">                        <span class="keyword">return</span> <span class="keyword">new</span> WebResourceResponse(mime, code, is);</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;;</div><div class="line">            Future&lt;WebResourceResponse&gt; future = mExecutorService.submit(mCallable);</div><div class="line">            WebResourceResponse webRes = future.get(RESOURCE_WAIT_TIME, TimeUnit.MILLISECONDS);</div><div class="line">            Log.d(<span class="string">"ResourceManager"</span>, <span class="string">"load success url:"</span> + url);</div><div class="line">            <span class="keyword">return</span> webRes;</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        Log.d(<span class="string">"ResourceManager"</span>, <span class="string">"load fail url:"</span> + url);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p><a href="https://imgchr.com/i/lcDiNR" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/07/lcDiNR.md.png" alt="lcDiNR.md.png"></a></p>
+<p>利用didi工具，在沙盒中找到cache-&gt;matrix_resource目录中找到泄漏的文件，导入到电脑后转换为MAT识别的标注格式分析。</p>
+<p><a href="https://imgchr.com/i/l2HExf" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/08/l2HExf.md.jpg" alt="l2HExf.md.jpg"></a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//VMRecycleAdapterHelp.registerItemLisenter </span></div><div class="line"><span class="comment">//注册adapter持有外部引用</span></div><div class="line">mVMRecycleAdapterHelp.registerItemLisenter(<span class="keyword">new</span> VMRecycleAdapterHelp.ListViewEventListener() &#123;&#125;</div><div class="line"></div><div class="line"><span class="comment">//解决</span></div><div class="line"><span class="comment">//ItemViewModel中释放</span></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onViewDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">    unregisterItemLisenter();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="https://imgchr.com/i/lWGWdI" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/09/lWGWdI.md.png" alt="lWGWdI.md.png"></a></p>
+<p><a href="https://imgchr.com/i/lWG4FP" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/09/lWG4FP.md.png" alt="lWG4FP.md.png"></a></p>
+]]></content>
+      <categories>
+        <category>优化</category>
+      </categories>
+      <tags>
+        <tag>性能优化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>性能优化之内存优化-实践篇</title>
+    <url>/2019/12/04/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96-%E5%AE%9E%E8%B7%B5%E7%AF%87/</url>
+    <content><![CDATA[<p>[TOC]<br><a id="more"></a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><p>如果在内存泄漏发生后再去找原因并修复会增加开发成本，最好是在编写代码时就能够很好地考虑到内存问题，写出更高质量的代码。内存优化主要包含两个方面:</p>
+<ul>
+<li>避免内存泄漏</li>
+<li>优化内存空间</li>
+</ul>
+<h2 id="避免内存泄漏"><a href="#避免内存泄漏" class="headerlink" title="避免内存泄漏"></a><strong>避免内存泄漏</strong></h2><h3 id="资源对象未关闭"><a href="#资源对象未关闭" class="headerlink" title="资源对象未关闭"></a><strong>资源对象未关闭</strong></h3><hr>
+<p>对于使用了BraodcastReceiver，ContentObserver，File，Cursor，Stream，Bitmap等资源的代码，应该在Activity销毁时及时关闭或者注销，否则这些资源将不会被回收，造成内存泄漏。</p>
+<h3 id="监听器没有注销造成的内存泄漏"><a href="#监听器没有注销造成的内存泄漏" class="headerlink" title="监听器没有注销造成的内存泄漏"></a><strong>监听器没有注销造成的内存泄漏</strong></h3><hr>
+<p>在Android程序里面存在很多需要register与unregister的监听器，我们需要确保及时unregister监听器。</p>
+<h3 id="监听器没有注销造成的内存泄漏-1"><a href="#监听器没有注销造成的内存泄漏-1" class="headerlink" title="监听器没有注销造成的内存泄漏"></a><strong>监听器没有注销造成的内存泄漏</strong></h3><hr>
+<p>我们通常把一些对象的引用加入到了集合容器（比如ArrayList）中，当我们不需要该对象时，<br>并没有把它的引用从集合中清理掉，这样这个集合就会越来越大。如果这个集合是static的话，那情况就更严重了。<br>所以要在退出程序之前，将集合里的东西clear，然后置为null，再退出程序。</p>
+<h3 id="持有Context造成的内存泄漏"><a href="#持有Context造成的内存泄漏" class="headerlink" title="持有Context造成的内存泄漏"></a><strong>持有Context造成的内存泄漏</strong></h3><hr>
+<p>在Android中有两种context对象:Activity和Application.当我们给一个类传递context的时候经常使用第一种,而这样就导致了改类持有对Activity的全部引用,当Activity关闭的时候因为被其他类持有,而导致无法正常被回收,而导致内存泄漏</p>
+<p><strong>解决方案:</strong></p>
+<p>在给其他给传递context的时候使用Application对象,这个对象的生命周期和共存亡,而不依赖activity的声明周期.<br>而对context的引用不要超过他本身的生命周期,谨慎对context使用static关键字.</p>
+<h3 id="使用单利模式造成的内存泄漏"><a href="#使用单利模式造成的内存泄漏" class="headerlink" title="使用单利模式造成的内存泄漏"></a><strong>使用单利模式造成的内存泄漏</strong></h3><hr>
+<p>在我们使用单利模式的时候如果使用不当也会造成内存泄漏.因为单利模式的静态特征使得单利模式的生命周期和应用一样的长,这说明了当一个对象不需要使用了,而单利对象还存在该对象的引用,那么这个对象就不能正常的被回收,就造成了内存泄漏</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//这句代码默认传入的是Activity的Context,而Activity是间接继承自Context的,当Activity退出之后,单例对象还持有他的引用</span></div><div class="line">XXUtils.getInstance(<span class="keyword">this</span>);</div></pre></td></tr></table></figure>
+<p><strong>解决方案:</strong><br>在单例中通过传入的context获取到全局的上下文对象,而不使用Activity的Context就解决了这个问题.<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="title">XXUtils</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        mContext = context.getApplicationContext();</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="类的静态变量持有大数据对象"><a href="#类的静态变量持有大数据对象" class="headerlink" title="类的静态变量持有大数据对象"></a><strong>类的静态变量持有大数据对象</strong></h3><hr>
+<p>静态变量长期维持对象的引用，阻止垃圾回收，如果静态变量持有大的数据对象，如Bitmap等，就很容易引起内存不足的问题。</p>
+<h3 id="WebView内存泄漏"><a href="#WebView内存泄漏" class="headerlink" title="WebView内存泄漏"></a><strong>WebView内存泄漏</strong></h3><hr>
+<p>Android中的WebView不仅仅存在很大的兼容性问题，不同Android系统版本中的WebView会有较大的差异，加上不同厂商定制的ROM中的WebView也存在差异，更严重的是WebView都存在内存泄漏的问题，在应用中只要使用一个WebView，内存就不会被释放掉。通常解决这个问题的办法就是为WebView开启独立的一个进程，使用AIDL与应用的主进程进行通信，WebView所在的进程可以更具业务的需要选择合适的时机进行销毁，达到正常释放内存的目的。</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/aa5a99b565e7" target="_blank" rel="external">webview内存泄漏终极解决方案</a></p>
+</blockquote>
+<h3 id="内部类造成的内存泄漏"><a href="#内部类造成的内存泄漏" class="headerlink" title="内部类造成的内存泄漏"></a><strong>内部类造成的内存泄漏</strong></h3><hr>
+<ul>
+<li>举个例子<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> str = <span class="string">"hello"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methed1</span><span class="params">()</span></span>&#123;</div><div class="line">            System.out.println(str);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  <span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methed1</span><span class="params">()</span></span>&#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>同样这是一个简单的内部类，B为静态的内部类，使用jad反编译后可以看到如下代码：<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span></span></div><div class="line">    &#123;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methed1</span><span class="params">()</span></span></div><div class="line">        &#123;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">B</span><span class="params">()</span></span></div><div class="line">        &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span></div><div class="line">    &#123;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methed1</span><span class="params">()</span></span></div><div class="line">        &#123;</div><div class="line">            System.out.println(str);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">final</span> MyClass <span class="keyword">this</span>$<span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">A</span><span class="params">()</span></span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">this</span>$<span class="number">0</span> = MyClass.<span class="keyword">this</span>;</div><div class="line">            <span class="keyword">super</span>();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyClass</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        str = <span class="string">"hello"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String str;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到非静态的内部类会默认持有外部类的引用，这也是为什么内部类可以访问外部类的私有成员，而静态的内部类ClassB则不会有外部类的引用，所以不会造成内存泄漏。</p>
+<h4 id="同样的原理，类似的问题还会发生在"><a href="#同样的原理，类似的问题还会发生在" class="headerlink" title="同样的原理，类似的问题还会发生在:"></a>同样的原理，类似的问题还会发生在:</h4><ul>
+<li>Runnable</li>
+<li>Handler</li>
+<li>TimerTask</li>
+<li>AsyncTask</li>
+</ul>
+<p>等类似的情况，所以我们平常使用的时候一定要在避免直接使用内部类，推荐的做法是使用静态内部类+弱应用去处理。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> MESSAGECODE = <span class="number">1</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Handler handler;<span class="comment">//静态</span></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        <span class="comment">/** 创建Handler */</span></div><div class="line">        handler = <span class="keyword">new</span> MyHandler(<span class="keyword">this</span>);</div><div class="line">        <span class="comment">/** 创建线程并且启动线程 */</span></div><div class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> MyRunnable()).start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">/** 1、避免Handler引用activity造成的内存泄漏：使用静态内部类+ 使用弱引用 */</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">        WeakReference&lt;MyActivity&gt; weakReference;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyHandler</span><span class="params">(MyActivity activity)</span> </span>&#123;</div><div class="line">            weakReference = <span class="keyword">new</span> WeakReference&lt;MyActivity&gt;(activity);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>.handleMessage(msg);</div><div class="line">            <span class="keyword">if</span> (weakReference.get() != <span class="keyword">null</span>) &#123;</div><div class="line">                <span class="comment">// update android ui</span></div><div class="line">                Log.d(<span class="string">"GLog"</span>, <span class="string">"handler "</span> + msg.what);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/** 2、避免非静态Runnable内部类引用activity造成的内存泄漏 */</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            handler.sendEmptyMessage(MESSAGECODE);</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                Thread.sleep(<span class="number">8000</span>);</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">            handler.sendEmptyMessage(MESSAGECODE);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        <span class="comment">/** 3、如果参数为null的话，会将所有的Callbacks和Messages全部清除掉。 */</span></div><div class="line">        handler.removeCallbacksAndMessages(<span class="keyword">null</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="如何找到项目中存在的内存泄漏"><a href="#如何找到项目中存在的内存泄漏" class="headerlink" title="如何找到项目中存在的内存泄漏"></a>如何找到项目中存在的内存泄漏</h4><p>1、确定是否存在内存泄漏</p>
+<ul>
+<li><p>Android Monitors分析内存</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">记录动作发生之前GC完的内存大小，然后记录动作发生之后GC完后的内存大小，两个比较大小，如果内存变大的话，则可能存在内存泄漏。</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用MAT内存分析工具</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MAT分析heap的总内存占用大小来初步判断是否存在内存泄漏</div><div class="line">Heap视图中有一个Type叫data object,即数据对象，也就是我们程序中大量存在的类型的对象。</div><div class="line">在data object中有一项“Total Size”，其值就是当前进程中所有Java数据对象的内存总来过。</div><div class="line">进行操作前和操作后的内存的大小比较。正常情况下Total Size值都会稳定在一个有限的范围内，</div><div class="line">也就是没有内存泄漏。如果值不断增大，则可以初步判断这个操作导致了内存泄漏。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>2、先找到怀疑对象（哪些对象属于泄漏的）<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MAT对比操作前后的hprof来定位内存泄漏了什么数据对象。（这样做可以排除一些对象，不用后面去查看所有被引用的对象是否有嫌疑）。</div><div class="line">快速定位到操作前后所持有的对象哪些是增加了的（GC后还是比之前多出来的对象就可能是内存泄漏的源头）。</div><div class="line">技巧：Histogram中还可以对对象进行Grpup By Package更方便查看自己包里的对象信息。</div></pre></td></tr></table></figure></p>
+<p>3、MAT分析hprof来定位内存泄漏的原因（哪个对象持有了上面怀疑出来的发生泄漏的对象）</p>
+<ul>
+<li><p>Dump出内存泄露“当时”的内存镜像hprof，分析怀疑泄露的类；</p>
+</li>
+<li><p>把上面2得出的这些嫌疑犯一个一个排查个遍。</p>
+</li>
+<li><p>hprof-conv D:\before.hprof D:\after.hprof</p>
+</li>
+</ul>
+<h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ol>
+<li><p>进入Histogram，过滤出某一个嫌疑对象类</p>
+</li>
+<li><p>然后分析持有此类对象引用的外部对象（在该类上面点击右键List Objects—&gt;with incoming references）</p>
+</li>
+<li><p>再过滤掉一些弱引用、软引用、虚引用，因为它们迟早可以被GC干掉不属于内存泄露(在类上面点击右键Merge Shortest Paths to GC Roots—&gt;exclude all phantom/soft etc.references)</p>
+</li>
+<li><p>逐个分析每个对象的GC路径是否正常</p>
+</li>
+</ol>
+<h4 id="退出app后，GC后，产看系统进程里的所有的View和Activity对象是否为0"><a href="#退出app后，GC后，产看系统进程里的所有的View和Activity对象是否为0" class="headerlink" title="退出app后，GC后，产看系统进程里的所有的View和Activity对象是否为0"></a>退出app后，GC后，产看系统进程里的所有的View和Activity对象是否为0</h4><p>Android Monitors–System Information–Memory Usage查看</p>
+<h2 id="优化内存空间"><a href="#优化内存空间" class="headerlink" title="优化内存空间"></a><strong>优化内存空间</strong></h2><p>没有内存泄漏，并不意味着内存就不需要优化了，再移动设备上，由于物理设备的存储空间有限，Android系统对每个应用进程也都分配了有限的堆内存，因此使用最小内存的对象或者资源可以减少内存开销，同时让GC能更高效的回收不在需要使用的对象，让应用堆内存保持充足的可用内存，使应用更稳定高效的运行。</p>
+<h3 id="对象引用"><a href="#对象引用" class="headerlink" title="对象引用"></a><strong>对象引用</strong></h3><hr>
+<p>在JDK1.2之前，“引用”的解释为：如果reference类型的数据中储存的数值代表的是另外一块内存的起始地址，就称这个数据代表着一个引用。在JDK1.2之后，Java对引用的概念进行了扩充，将引用分为强引用、软引用、弱引用、虚引用。</p>
+<p>无论是引用计数法还是可达性分析算法，判断对象的存活与否都与“引用”有关。</p>
+<p>从以上我们知道不同的引用类型，在GC时的策略是不同的，因此根据业务需求合理使用不同引用，以提高内存的使用效率。</p>
+<h3 id="注解代替枚举"><a href="#注解代替枚举" class="headerlink" title="注解代替枚举"></a><strong>注解代替枚举</strong></h3><hr>
+<ul>
+<li>举个例子</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Number &#123;</div><div class="line">    One,</div><div class="line">    Two,</div><div class="line">    Three,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这是一个简单的枚举类，javac编译Number后生成字节码， 我们看看Numbers.class到底有什么，因为字节码比较晦涩难懂，我们用jad反编译成Java来看看<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.</span></div><div class="line"><span class="comment">// Jad home page: http://www.kpdus.com/jad.html</span></div><div class="line"><span class="comment">// Decompiler options: packimports(3) </span></div><div class="line"><span class="comment">// Source File Name:   Number.java</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Number</span> <span class="keyword">extends</span> <span class="title">Enum</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Number[] values()</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> (Number[])$VALUES.clone();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Number <span class="title">valueOf</span><span class="params">(String s)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> (Number)Enum.valueOf(Number, s);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Number</span><span class="params">(String s, <span class="keyword">int</span> i)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">super</span>(s, i);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Number One;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Number Two;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Number Three;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Number $VALUES[];</div><div class="line"></div><div class="line">    <span class="keyword">static</span> </div><div class="line">    &#123;</div><div class="line">        One = <span class="keyword">new</span> Number(<span class="string">"One"</span>, <span class="number">0</span>);</div><div class="line">        Two = <span class="keyword">new</span> Number(<span class="string">"Two"</span>, <span class="number">1</span>);</div><div class="line">        Three = <span class="keyword">new</span> Number(<span class="string">"Three"</span>, <span class="number">2</span>);</div><div class="line">        $VALUES = (<span class="keyword">new</span> Number[] &#123;</div><div class="line">            One, Two, Three</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>从上面得到如下结论：</p>
+<ul>
+<li><p>枚举类是继承于java.lang.Enum的类。</p>
+</li>
+<li><p>枚举值是类对象， 且是静态常量(被static final修饰)。</p>
+</li>
+<li><p>静态代码块内实例化枚举值，由于静态代码块的语法特性，该代码块只执行一次；</p>
+</li>
+<li><p>默认值0、1、2是在编译时生成的。</p>
+</li>
+<li><p>枚举类比常量更占内存， 因为一个Java对象至少占16个字节，  而Number包含了3个Java对象；而使用3个整型替换的话，只占用4 * 3即12个字节。</p>
+</li>
+<li><p>枚举的构造函数是私有的， 防止new出对象。</p>
+</li>
+</ul>
+<p>下面改用注解实现， Android提供了IntDef和StringDef注解，用于编译期的类型检查。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Number</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ONE = <span class="number">1</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TWO = <span class="number">2</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> THREE = <span class="number">3</span>;</div><div class="line"> </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String STR_ONE = <span class="string">"ONE"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String STR_TWO = <span class="string">"TWO"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String STR_THREE = <span class="string">"THREE"</span>;</div><div class="line"> </div><div class="line">    <span class="meta">@IntDef</span>(&#123;ONE, TWO, THREE&#125;)</div><div class="line">    <span class="meta">@Retention</span>(RetentionPolicy.SOURCE)</div><div class="line">    <span class="keyword">public</span> <span class="meta">@interface</span> NumberInt &#123;</div><div class="line"> </div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="meta">@StringDef</span>(&#123;STR_ONE, STR_TWO, STR_THREE&#125;)</div><div class="line">    <span class="meta">@Retention</span>(RetentionPolicy.SOURCE)</div><div class="line">    <span class="keyword">public</span> <span class="meta">@interface</span> NumberString &#123;</div><div class="line"> </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="减少不必要的内存开销"><a href="#减少不必要的内存开销" class="headerlink" title="减少不必要的内存开销"></a><strong>减少不必要的内存开销</strong></h3><hr>
+<h4 id="AutoBoxing-自动装箱"><a href="#AutoBoxing-自动装箱" class="headerlink" title="AutoBoxing(自动装箱)"></a>AutoBoxing(自动装箱)</h4><p>Java 中的变量分为两种：原始型与引用型。</p>
+<p>为了在泛型集合中使用基础类型的功能，Java 提供了对应的对象版本，提供了与基础整型相同的功能，但可以使用于泛型集合。</p>
+<p>一共存在8个原始型变量以及与各个原始变量对应的8个引用变量(包装类)。</p>
+<p>自动拆装箱的目的就是自动地将基础类型与它们的对象版本相互转化，这样你就不用操心你代码中的这些转化了。例如 Integer value = 0 当中，将整型的 0 自动的转化为 Integer 的对象。</p>
+<p>举个例子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Integer total = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">  total += i;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看起来不需要写多余的代码就把事情完成了，事实上，第二个版本是这样子的：<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Integer total = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">  total += <span class="keyword">new</span> Integer(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到每次加上之前都要创建新的整数对象，将这个和第一个基础版本相比有着双重影响。</p>
+<ul>
+<li><p>第一，这占用更多的内存，因为整形只有 4 字节，整数对象有 16 字节；</p>
+</li>
+<li><p>第二，创建对象需要耗费更多性能。不仅在循环中会出现这样的问题，当你在集合中使用基础类型时，也会出现这样的问题，特别地，对于 HashMap 这样的容器，只要你使用了基础类型，在进行插入、编辑或检索时就会产生一个基础类型和装箱对象。</p>
+</li>
+</ul>
+<p>为了避免 HashMap 的自动装箱行为，Android 系统提供了 SparseBoolArray，SparseIntArray，SparseLongArray，LongSparseArray 等容器，可减少运行时间开支，减少内存使用。</p>
+<h4 id="内存复用"><a href="#内存复用" class="headerlink" title="内存复用"></a>内存复用</h4><ul>
+<li><p>有效利用系统自带的资源。<br>Android系统本身内置了大量的资源，比如一些通用的字符串、颜色定义、常用Icon图片，还有些动画和页面的样式以及简单布局。</p>
+</li>
+<li><p>视图复用。<br>出现大量重复子组件，而子组件是大量重复的，可以使用ViewHolder实现ConvertView复用，这基本上是所有容器控件的处理方式，如ListView、RecycleView、GridView等。</p>
+</li>
+<li><p>对象池。<br>可以在设计程序时显示地在程序中创建对象池，然后实现复用逻辑，对相同的类型数据使用同一块内存空间，也可以利用系统框架既有的具有复用特性的组件减少对象的重复创建，从而减少内存的分配与回收。</p>
+<ul>
+<li>SynchronizedPool</li>
+<li><p>Message</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">public</span> String id;</div><div class="line"></div><div class="line">  <span class="keyword">public</span> String name;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> SynchronizedPool&lt;User&gt; sPool = <span class="keyword">new</span> SynchronizedPool&lt;User&gt;(</div><div class="line">      <span class="number">10</span>);</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> User <span class="title">obtain</span><span class="params">()</span> </span>&#123;</div><div class="line">  User instance = sPool.acquire();</div><div class="line">  <span class="keyword">return</span> (instance != <span class="keyword">null</span>) ? instance : <span class="keyword">new</span> User();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">recycle</span><span class="params">()</span> </span>&#123;</div><div class="line">      sPool.release(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们在申请实例化时调用</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//从对象池中获取，第一次对象池没有，会直接new一个,如果有会复用</span></div><div class="line">User user = User.obtain();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Bitmap对象的复用。<br>利用Bitmap中的inBitmap的高级特性，提高Android系统在Bitmap的分配与释放效率，不仅可以达到内存复用，还提高了读写速度。</p>
+</li>
+</ul>
+<p>使用inBitmap属性可以告知Bitmap解码器去尝试使用已经存在的内存区域，新解码的Bitmap会尝试去使用之前那张Bitmap在Heap中所 占据的pixel data内存区域，而不是去问内存重新申请一块区域来存放Bitmap。利用这种特性，即使是上千张的图片，也只会仅仅只需要占用屏幕所能够显示的图片数量的内存大小</p>
+<h3 id="图片内存优化"><a href="#图片内存优化" class="headerlink" title="图片内存优化"></a><strong>图片内存优化</strong></h3><hr>
+<ul>
+<li><p>设置位图规格</p>
+<p>  |  Format    | Bit Per Pixel  |<br>  |  :—-:    | :—-:         |<br>  | ARGB_8888  | 32             |<br>  | RGB_565    | 16             |<br>  | ARGB_4444  | 16             |<br>  | ALPHA_8    | 8              |</p>
+<p>  除了大图模式，一般都可以使用，并且几乎看不出差别。只要满足以下其中一点就可以考虑使用RGB_565：</p>
+<ul>
+<li><p>显示局部图片，比如列表中的小图片</p>
+</li>
+<li><p>小屏幕手机或者对图片质量要求不高，不需要Alpha通道的场景，可以使用RGB_565。</p>
+<p>如果需要更小的格式，但又需要透明通道，可以尝试ARGB_444图像格式。它减少了一半的数据，但保留了透明通道，视觉差异变化较大，一般用于用户头像，特别是圆角的头像，可以尝试使用ARGB_4444看看效果。</p>
+<p>Alpha_8格式主要用于Alpha通道模板，相当于做一个染色。图像要渲染两次，虽然减少内存，但增加了绘制的开销。</p>
+<p>在Android的基本文件结构中不支持PNG、JPEG、WEBP格式，因此，需要解码后的位图功能，通过设置inPreferredConfig参数来实现不同的位图规格，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">BitmapFactory.Options options = <span class="keyword">new</span> BitmapFactory.Options();</div><div class="line">options.inPreferredConfig = Bitmap.Config.RGB_565;</div><div class="line">BitmapFactory.decodeStream(is, <span class="keyword">null</span>, options);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>inSampleSize</p>
+</li>
+</ul>
+<p>如果内存中的图片大于屏幕显示出的图片大小，或者大于指定屏幕区域的大小，这些高分辨率图片会占用内存堆中的大量空间，使应用空间变小，然后重置这些图片大小，让它们符合实际显示的大小，既能减少内存的开销，也能提高显示的效率，这样载入内存的图片规格符合实际显示规格，而不是完整的分辨率。位图功能对象中的inSampleSize属性实现了位图的缩放功能，<br>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">BitmapFactory.Options options = <span class="keyword">new</span> BitmapFactory.Options();</div><div class="line">options.inSampleSize = <span class="number">4</span>;</div><div class="line">BitmapFactory.decodeStream(is, <span class="keyword">null</span>, options);</div></pre></td></tr></table></figure>
+<p>将这个属性设置为1时，可以在不加载完整大小的前提下，生成一张只有原始图片部分大小的新图片，如inSampleSize为2时获得只有1/2大小的图片，同理设置为4就是1/4大小的图片。</p>
+<ul>
+<li>inScaled，inDensity和inTargetDensity</li>
+</ul>
+<p>虽然inSampleSize可以实现图片的缩放，都是指数幂的缩放，如果想更细地缩放图片，就需要使用位图的inScaled、inDensity和inTargetDensity功能，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">BitmapFactory.Options options = <span class="keyword">new</span> BitmapFactory.Options();</div><div class="line">options.inScaled = <span class="keyword">true</span>;</div><div class="line">options.inDensity = srcWidth; <span class="comment">//inDensity为资源文件夹对应的像素密度</span></div><div class="line">options.inTargetDensity = dstWidth; <span class="comment">//inTargetDensity为设备的像素密度</span></div><div class="line">BitmapFactory.decodeStream(is, <span class="keyword">null</span>, options);</div><div class="line"><span class="comment">//目标设备上图片的像素数的计算公式：(pixWidth / inDensity * inTargetDensity) * (pixHeight / inDensity * inTargetDensity)</span></div></pre></td></tr></table></figure>
+<ul>
+<li>inBitmap</li>
+</ul>
+<p>Android 3.0（API level 11）引进了BitmapFactory.Options.inBitmap字段，如果设置了该属性，那么当使用了带有该Options参数的decode方法加载内容时，decode方法会尝试重用一个已经存在的位图。这就意味着位图内存已经被重用了，从而改善了性能，并且没有内存的分配和释放过程。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//首先以原尺寸加载图片a，这里图片a和图片b的尺寸相同</span></div><div class="line">BitmapFactory.Options options = <span class="keyword">new</span> BitmapFactory.Options();</div><div class="line">options.inMutable = <span class="keyword">true</span>;</div><div class="line">options.inDensity = <span class="number">160</span>;</div><div class="line">options.inTargetDensity = <span class="number">160</span>;</div><div class="line">Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.a, options);</div><div class="line">Log.i(TAG, <span class="string">"bitmap = "</span> + bitmap);</div><div class="line">Log.i(TAG, <span class="string">"bitmap.size = "</span> + bitmap.getByteCount());</div><div class="line">Log.i(TAG, <span class="string">"bitmap.allocSize = "</span> + bitmap.getAllocationByteCount());</div><div class="line"></div><div class="line"><span class="comment">//然后复用a图片，解码b图片。</span></div><div class="line">options.inBitmap = bitmap;</div><div class="line"><span class="comment">//注意这里解码得到的图片宽高为原始尺寸的一半</span></div><div class="line">options.inDensity = <span class="number">160</span>;</div><div class="line">options.inTargetDensity = <span class="number">80</span>;</div><div class="line">options.inMutable = <span class="keyword">true</span>;</div><div class="line">options.inSampleSize = <span class="number">1</span>;</div><div class="line">Bitmap bitmapAIO = BitmapFactory.decodeResource(getResources(), R.drawable.b, options);</div><div class="line">Log.i(TAG, <span class="string">"bitmapAIO = "</span> + bitmapAIO);</div><div class="line">Log.i(TAG, <span class="string">"bitmap.size = "</span> + bitmap.getByteCount());</div><div class="line">Log.i(TAG, <span class="string">"bitmap.allocSize = "</span> + bitmap.getAllocationByteCount());</div><div class="line">Log.i(TAG, <span class="string">"bitmapAIO.size = "</span> + bitmapAIO.getByteCount());</div><div class="line">Log.i(TAG, <span class="string">"bitmapAIO.allocSize = "</span> + bitmapAIO.getAllocationByteCount());</div><div class="line"></div><div class="line">输出：</div><div class="line">bitmap = android.graphics.Bitmap@<span class="number">9f</span>b5d09</div><div class="line">bitmap.size = <span class="number">8294400</span></div><div class="line">bitmap.allocSize = <span class="number">8294400</span></div><div class="line"></div><div class="line">bitmapAIO = android.graphics.Bitmap@<span class="number">9f</span>b5d09</div><div class="line">bitmap.size = <span class="number">2073600</span></div><div class="line">bitmap.allocSize = <span class="number">8294400</span></div><div class="line">bitmapAIO.size = <span class="number">2073600</span></div><div class="line">bitmapAIO.allocSize = <span class="number">8294400</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://blog.csdn.net/showdy/article/details/54378637" target="_blank" rel="external">浅谈BitmapFactory.Options</a></p>
+</blockquote>
+<h3 id="使用最优的数据类型"><a href="#使用最优的数据类型" class="headerlink" title="使用最优的数据类型"></a><strong>使用最优的数据类型</strong></h3><hr>
+<p>使用ArrayMap/SparseArray来代替HashMap，ArrayMap/SparseArray是专门为移动设备设计的高效的数据结构。</p>
+<ul>
+<li><p>HashMap缺点</p>
+<ul>
+<li><p>HashMap内部使用一个默认容量为16的数组来存储数据，采用拉链法解决hash冲突（数组+链表），就算没有数据，也需要分配默认16个元素的数组</p>
+</li>
+<li><p>一旦数据量达到Hashmap限定容量的75%，就将按两倍扩容</p>
+</li>
+</ul>
+</li>
+<li><p>SparseArray</p>
+<ul>
+<li>支持int类型，避免自动装箱，但是也只支持int类型的key</li>
+<li>内部通过两个数组来进行数据存储的，一个存储key，另外一个存储value</li>
+<li>因为key是int，在查找时，采用二分查找，效率高，SparseArray存储的元素都是按元素的key值从小到大排列好的。 （Hashmap通过遍历Entry数组来获取对象）</li>
+<li>默认初始size为0，每次增加元素，size++</li>
+</ul>
+</li>
+<li><p>ArrayMap</p>
+<ul>
+<li><p>跟SparseArray一样，内部两个数组，但是第一个存key的hash值，一个存value，对象按照key的hash值排序，二分查找也是按照hash</p>
+</li>
+<li><p>查找index时，传入key，计算出hash，通过二分查找hash数组，确定index</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="避免在onDraw方法里面执行对象的创建"><a href="#避免在onDraw方法里面执行对象的创建" class="headerlink" title="避免在onDraw方法里面执行对象的创建"></a><strong>避免在onDraw方法里面执行对象的创建</strong></h3><hr>
+<p>类似onDraw等频繁调用的方法，一定需要注意避免在这里做创建对象的操作，因为他会迅速增加内存的使用，而且很容易引起频繁的gc，甚至是内存抖动。</p>
+<h3 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a><strong>StringBuilder</strong></h3><hr>
+<p>在有些时候，代码中会需要使用到大量的字符串拼接的操作，这种时候有必要考虑使用StringBuilder来替代频繁的“+”。</p>
+]]></content>
+      <categories>
+        <category>优化</category>
+      </categories>
+      <tags>
+        <tag>性能优化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>性能优化之内存优化-理论篇</title>
+    <url>/2019/12/03/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96-%E7%90%86%E8%AE%BA%E7%AF%87/</url>
+    <content><![CDATA[<p>[TOC]<br><a id="more"></a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><p>Android应用都是在Android的虚拟机上运行，应用程序的内存分配与垃圾回收都是有虚拟机完成的。在Android系统，虚拟机有两种运行模式:Dalvik和ART。</p>
+<p>这里简单介绍下Dalvik和ART在垃圾回收机制上的区别:</p>
+<h3 id="首先介绍下dalvik的GC的过程。主要有有四个过程"><a href="#首先介绍下dalvik的GC的过程。主要有有四个过程" class="headerlink" title="首先介绍下dalvik的GC的过程。主要有有四个过程:"></a>首先介绍下dalvik的GC的过程。主要有有四个过程:</h3><ul>
+<li><p>当gc被触发时候，其会去查找所有活动的对象，这个时候整个程序与虚拟机内部的所有线程就会挂起，这样目的是在较少的堆栈里找到所引用的对象；注意：这个回收动作和应用程序非并发；</p>
+</li>
+<li><p>gc对符合条件的对象进行标记；</p>
+</li>
+<li><p>gc对标记的对象进行回收；</p>
+</li>
+<li><p>恢复所有线程的执行现场继续运行。</p>
+</li>
+</ul>
+<p>dalvik这么做的好处是，当pause了之后，GC势必是相当快速的。但是如果出现GC频繁并且内存吃紧势必会导致UI卡顿、掉帧、操作不流畅等。</p>
+<h3 id="ART改善了这种GC方式，-主要的改善点在将其非并发过程改成了部分并发，还有就是对内存的重新分配管理。"><a href="#ART改善了这种GC方式，-主要的改善点在将其非并发过程改成了部分并发，还有就是对内存的重新分配管理。" class="headerlink" title="ART改善了这种GC方式， 主要的改善点在将其非并发过程改成了部分并发，还有就是对内存的重新分配管理。"></a>ART改善了这种GC方式， 主要的改善点在将其非并发过程改成了部分并发，还有就是对内存的重新分配管理。</h3><p>当ART GC发生时:</p>
+<ul>
+<li><p>GC将会锁住Java堆，扫描并进行标记；</p>
+</li>
+<li><p>标记完毕释放掉Java堆的锁，并且挂起所有线程；</p>
+</li>
+<li><p>GC对标记的对象进行回收；</p>
+</li>
+<li><p>恢复所有线程的执行现场继续运行；</p>
+</li>
+<li><p>重复2-4直到结束。</p>
+</li>
+</ul>
+<p>可以看出整个过程做到了部分并发使得时间缩短。据官方测试数据说GC效率提高2倍。</p>
+<p>虽然ART做了很多优化，但是如果出现GC频繁并且内存吃紧势必会导致UI卡顿、掉帧、操作不流畅等。</p>
+<p>另一方面大量的内存消耗，最后也会导致OOM，这里我们以dalvik虚拟机描述：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">我们知道，Heap(堆)内存是由程序员控制的，用C/C++申请的内存空间在native heap中，</div><div class="line"></div><div class="line">而java申请的内存空间则在dalvik heap中.</div><div class="line"></div><div class="line">那么为什么会出现OOM的情况呢？</div><div class="line"></div><div class="line">这个是因为Android系统对dalvik虚拟机的heap大小作了硬性限制，当java进程申请的空间超过这个阈值时，就会抛出OOM异（这个阈值可以是48M、24M、16M等，视机型而定）。</div><div class="line"></div><div class="line">也就是说，程序发生OMM并不表示RAM不足，而是因为程序申请的java heap对象超过了dalvik vm heapgrowthlimit。也就是说，在RAM充足的情况下，也可能发生OOM。</div><div class="line"></div><div class="line">这样设计的目的是为了让Android系统能同时让比较多的进程常驻内存(RAM)，这样程序启动时就不用每次都重新加载到内存，能够给用户更快的响应。</div><div class="line"></div><div class="line">迫使每个应用程序使用较小的内存，移动设备非常有限的RAM就能使比较多的app常驻其中。</div><div class="line"></div><div class="line">java程序发生OMM并不是表示RAM不足，如果RAM真的不足，Android的memory killer会起作用，当RAM所剩不多时，</div><div class="line"></div><div class="line">memory killer会杀死一些优先级比较低的进程来释放物理内存，让高优先级程序得到更多的内存。</div></pre></td></tr></table></figure></p>
+<h3 id="注-不同版本dalvik虚拟机对堆内存的区别"><a href="#注-不同版本dalvik虚拟机对堆内存的区别" class="headerlink" title="注: 不同版本dalvik虚拟机对堆内存的区别"></a>注: 不同版本dalvik虚拟机对堆内存的区别</h3><ul>
+<li><p>ActivityManager.getMemoryClass()可以查询当前APP的Heap Size阈值，单位是MB。</p>
+</li>
+<li><p>在3.x以前，Bitmap分配在Native heap中，而在4.x之后，Bitmap分配在Dalvik或ART的Java heap中。</p>
+</li>
+<li><p>Android 2.x系统，当dalvik allocated + native allocated + 新分配的大小 &gt;= dalvik heap 最大值时候就会发生OOM，也就是说在2.x系统中，考虑native heap对每个进程的内存限制。</p>
+</li>
+<li><p>Android 4.x系统，废除了native的计数器，类似bitmap的分配改到dalvik的java heap中申请，只要allocated + 新分配的内存 &gt;= dalvik heap 最大值的时候就会发生OOM（art运行环境的统计规则还是和dalvik保持一致），也就是说在4.x系统中，不考虑native heap对每个进程的内存限制，native heap只会收到本机总内存（包括RAM以及SWAP区或分页文件）的限制。</p>
+</li>
+</ul>
+<p>基于这两方面，内存优化在我们平时的开发中是非常值得重视的。</p>
+<p>下面首先我们先了解一下Java对象的生命周期。</p>
+<h2 id="Java对象生命周期"><a href="#Java对象生命周期" class="headerlink" title="Java对象生命周期"></a><strong>Java对象生命周期</strong></h2><p>在Android应用程序中，大部分是Java程序，而Java对象被创建的Java类字节码(编译后的.class文件)需要从文件系统加载到虚拟机。Java对象在虚拟机上运行有7个阶段，也就是对象的生命周期:</p>
+<ul>
+<li><p>创建阶段(Created)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">创建Java对象阶段的具体步骤如下：</div><div class="line"></div><div class="line">1. 为对象分配存储空间</div><div class="line"></div><div class="line">2. 构造对象</div><div class="line"></div><div class="line">3. 从父类到子类对static成员进行初始化，类的static成员的初始化再ClassLoader加载该类时进行。</div><div class="line"></div><div class="line">4. 父类成员变量按顺序初始化，递归调用父类的构造方法。</div><div class="line"></div><div class="line">5. 子类成员变量按顺序初始化，一旦对象被创建，子类构造方法就调用该对象并为某些变量赋值，完成后这个对象的状态就切换到了应用阶段</div></pre></td></tr></table></figure>
+</li>
+<li><p>应用阶段(InUse)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">对象至少被一个强引用(Strong Reference)持有，除非在系统中显示地使用了</div><div class="line"></div><div class="line">软引用(Soft Reference)、弱引用(Weak Reference)或虚引用(Phantom Reference).</div></pre></td></tr></table></figure>
+</li>
+<li><p>不可见阶段(Invisible)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">处于不可见阶段的对象在虚拟机的对象引用根集合中再也找不到直接或间接的强引用，</div><div class="line"></div><div class="line">这些对象一般是所有线程栈中的临时变量。所有已经装载的静态变量或者是对本地代码接口的引用。</div><div class="line"></div><div class="line">当一个对象处于不可见阶段时，说明程序本身不再持有该对象的任何强引用，虽然对象仍然是存在的。</div><div class="line"></div><div class="line">简单的例子就是程序的执行已经超出了该对象的作用域了，改对象仍有可能被虚拟机下的某些已经装载的</div><div class="line"></div><div class="line">静态变量线程或JNI等强引用持有，这些特殊强引用称为Gc Root。存在这些GC Root会导致对象的内存泄漏，无法被回收。</div></pre></td></tr></table></figure>
+</li>
+<li><p>不可达阶段(Unreadchable)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">对象处于不可达阶段是指该对象不再被任何强引用持有，回收器发现该对象已经不可达。</div></pre></td></tr></table></figure>
+</li>
+<li><p>收集阶段(Collected)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">当垃圾回收器发现该对象已经处于&quot;不可达阶段&quot;并且垃圾回收器已经对该对象的内存空间重新分配做好准备时，对象进入&quot;收集阶段&quot;。</div><div class="line"></div><div class="line">如果该对象已经重写了finalize()方法,则执行该方法的操作。</div></pre></td></tr></table></figure>
+</li>
+<li><p>终结阶段(Finalized)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">当对象执行完成finalized()方法后仍然处于不可达状态时，该对象进入终结阶段，等待垃圾回收器回收该对象空间。</div></pre></td></tr></table></figure>
+</li>
+<li><p>对象空间重新分配阶段(Deallocated)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">若垃圾回收器对该对象占用的内存空间进行回收或者再分配，则该对象彻底消失，这个阶段称为&quot;对象重新分配阶段&quot;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意：</p>
+<p>创建对象后，在确定不需要使用对象时，使对象置空，这样更符号垃圾回收标准。比如Object = null，</p>
+<p>可以提高内存使用效率，并且不要采用过深的继承层次。访问本地变量优于访问类中的变量。</p>
+<h2 id="JVM内存分配"><a href="#JVM内存分配" class="headerlink" title="JVM内存分配"></a><strong>JVM内存分配</strong></h2><p>平时我们对于Java内存都有一个比较粗略的概念，就是分堆和栈，但实际上还是复杂得多，以下给出完整内存模型：</p>
+<p><img src="https://user-images.githubusercontent.com/11883853/70790060-3b62fc00-1dcf-11ea-912f-9eeea722bf96.png" alt="image"></p>
+<h3 id="程序计数器PC"><a href="#程序计数器PC" class="headerlink" title="程序计数器PC"></a>程序计数器PC</h3><ul>
+<li><p>这一区域不会出现OOM（Out Of Memory）错误的情况</p>
+</li>
+<li><p>属于线程私有，因为每一个线程都有自己的一个程序计数器，来表示当前线程执行的字节码行号</p>
+</li>
+<li><p>标识Java方法的字节码地址，而不是Native方法</p>
+</li>
+<li><p>处于CPU上，我们无法直接操作这块区域</p>
+</li>
+</ul>
+<h3 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h3><p>这个区域也是我们平时口中说的堆栈的栈，关于这个块区域有如下要点：</p>
+<ul>
+<li><p>属于线程私有，与线程的生命周期相同</p>
+</li>
+<li><p>每一个java方法被执行的时候，这个区域会生成一个栈帧</p>
+</li>
+<li><p>栈帧中存放的局部变量有8种基本数据类型，以及引用类型（对象的内存地址）</p>
+</li>
+<li><p>java方法的运行过程就是栈帧在虚拟机栈中入栈和出栈的过程</p>
+</li>
+<li><p>当线程请求的栈的深度超出了虚拟机栈允许的深度时，会抛出StackOverFlow的错误</p>
+</li>
+<li><p>当Java虚拟机动态扩展到无法申请足够内存时会抛出OutOfMemory的错误</p>
+</li>
+</ul>
+<h3 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h3><ul>
+<li><p>这个区域，属于线程私有，顾名思义，区别于虚拟机栈，这里是用来处理Native方法（Java本地方法）的，而虚拟机栈是处理Java方法的。对于Native方法，Object中就有不少的Native的方法，hashCode,wait等，这些方法的执行很多时候都是借助于操作系统。</p>
+</li>
+<li><p>这一区域也有可能抛出StackOverFlowError 和 OutOfMemoryError</p>
+</li>
+</ul>
+<h3 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h3><p>我们平时说得最多，关注得最多的一个区域，就是他了。我们后期进行的性能优化主要针对这部分内存，GC的主战场，这个地方存放的几乎所有的对象实例和数组数据。这里我大概进行了如下概括：</p>
+<ul>
+<li><p>Java堆属于线程共享区域，所有的线程共享这一块内存区域</p>
+</li>
+<li><p>从内存回收角度，Java堆可被分为新生代和老年代，这样分能够更快的回收内存</p>
+</li>
+<li><p>从内存分配角度，Java堆可划分出线程私有的分配缓存区（Thread Local Allocation Buffer,TLAB）,这样能够更快的分配内存</p>
+</li>
+<li><p>当Java虚拟机动态扩展到无法申请足够内存时会抛出OutOfMemory的错误</p>
+</li>
+</ul>
+<blockquote>
+<p>新生代<br> <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">新生代存储新创建的对象。新生代由Eden和两块大小相同的Survivor space组成（又叫S0、S1或者From、To）构成，Eden和S0、S1的比例一般为8：1，具体大小细节以及分配原因，将在后面的垃圾回收机制里面介绍。</div></pre></td></tr></table></figure></p>
+<p>老年代<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">老年代一般存储经历了多次新生代GC还未被回收的对象。老年代的内存区域一般都比较大，主要是为了减少老年代的GC（major GC）的次数（该种类型的GC比较耗时），同时为了防止OOM。</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>方法区主要存放的是已被虚拟机加载的类信息、常量、静态变量、编译器编译后的代码等数据。GC在该区域出现的比较少。概括如下：</p>
+<ul>
+<li><p>也称为“永久代”</p>
+</li>
+<li><p>方法区属于线程共享区域</p>
+</li>
+<li><p>垃圾回收很少光顾这个区域，不过也是需要回收的，主要针对常量池回收，类型卸载</p>
+</li>
+<li><p>常量池用于存放编译期生成的各种字节码和符号引用，常量池具有一定的动态性，里面可以存放编译期生成的常量</p>
+</li>
+<li><p>运行期间的常量也可以添加进入常量池中，比如string的intern()方法。</p>
+</li>
+</ul>
+<h3 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h3><p>运行时常量池也是方法区的一部分，用于存放编译器生成的各种字面量和符号引用。单独拿出来说明一下，是因为我们平时使用String比较多，涉及到这一块的知识，但这一块区域不会抛出OutOfMemoryError</p>
+<h3 id="Dalvik堆"><a href="#Dalvik堆" class="headerlink" title="Dalvik堆"></a>Dalvik堆</h3><p>Dalvik VM的堆结构相对于JVM的堆结构有所区别，只而主要体现在Dalvik将堆分成了Active堆和Zygote堆。</p>
+<p>Zygote是一个虚拟机进程，同时也是一个虚拟机实例的孵化器——那么同样的，zygote堆是Zygote进程在启动时的预加载的类、资源和对象；除此之外所有的对象,包括我们在代码中创建的实例、静态域和数组，都是储存在Active堆里边的。
+  </p>
+<p>为什么要把Dalvik堆分成Zygote堆和Active堆？</p>
+<p>这主要是因为Android通过fork方法创建一个新的zygote进程，为了尽可能的避免父进程和子进程之间的数据拷贝，fork方法使用写时拷贝技术，简单讲就是fork的时候不立即拷贝父进程的数据到子进程中，而是在子进程或者父进程对内存进行写操作时才对内容进行复制。
+  </p>
+<p>Dalvik的Zygote堆存放的预加载类都是Android核心类和Java运行时库，这部分很少被修改，大多数情况下父进程和子进程共享这块区域，因此没有必要对这部分类进行垃圾回收之类的修改，直接复制即可。而Active堆作为我们程序代码中创建实例对象的存放堆，是垃圾回收的重点区域，因此将两个堆分开。</p>
+<h2 id="内存回收"><a href="#内存回收" class="headerlink" title="内存回收"></a><strong>内存回收</strong></h2><p>说起内存回收，我们考虑以下几件事情。</p>
+<ol>
+<li>内存回收的区域?</li>
+<li>哪些内存需要回收?</li>
+<li>如何回收?</li>
+</ol>
+<h3 id="内存回收的区域"><a href="#内存回收的区域" class="headerlink" title="内存回收的区域"></a>内存回收的区域</h3><ul>
+<li><p>程序计数器、本地方法栈、虚拟机栈：这几块内存都是随线程而生，随线程而灭。栈中的栈帧，随着方法的调用入栈和出栈，栈帧的内存大小在编译器就已经可知了，因此内存的分配和回收是确定的，故不需要参加GC。</p>
+</li>
+<li><p>堆：内存回收的主力区域，对象和数组都保存在此区域。</p>
+</li>
+<li><p>方法区 ：无用的类型信息以及常量都是回收的目标，但是一般进行GC的概率不大，主要是性价比不高。</p>
+</li>
+</ul>
+<h3 id="哪些内存需要回收"><a href="#哪些内存需要回收" class="headerlink" title="哪些内存需要回收"></a>哪些内存需要回收</h3><p>要确定哪些内存需要回收，目前有以下几种判定方案:</p>
+<h4 id="引用计数算法"><a href="#引用计数算法" class="headerlink" title="引用计数算法"></a><strong>引用计数算法</strong></h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">给对象添加一个引用计数器，每当有一个地方引用它的时候，</div><div class="line"></div><div class="line">计数器的值就加1；当引用失效的时候，计数器的值就减1；任何时刻计数器为0的对象是不可能再被引用的。</div><div class="line"></div><div class="line">  这种方法实现简单，判断效率也很高；但是该算法有一个致命的缺点就是难以解决对象相互引用的问题：</div><div class="line"></div><div class="line">试想有两个对象，相互持有对方的引用，而没有别的对象引用到这两者，那么这两个对象就是无用的对象，</div><div class="line"></div><div class="line">理应被回收，但是由于他们互相持有对方的引用，因此他们的引用计数器不为0，因此他们不能被回收。</div></pre></td></tr></table></figure>
+<h4 id="可达性分析算法"><a href="#可达性分析算法" class="headerlink" title="可达性分析算法"></a><strong>可达性分析算法</strong></h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">为了解决上面循环引用的问题，Java采用了一种全新的算法——可达性分析算法。这个算法的核心思想是，</div><div class="line"></div><div class="line">通过一系列称为“GC Roots”的对象作为起始点，从这些结点开始向下搜索，搜索所走过的路径成为“引用链”，</div><div class="line"></div><div class="line">当一个对象到GC Roots没有一个对象相连时，则证明此对象是不可用的(不可达)。</div></pre></td></tr></table></figure>
+<p><img src="https://user-images.githubusercontent.com/11883853/70894604-4a90b680-2028-11ea-8428-72d065404617.png" alt="image"></p>
+<p>在Java语言中，可作为GC Roots的对象包括下面几种：</p>
+<ol>
+<li>上面说的JVM栈(栈帧数据中的本地变量表)中引用的对象。</li>
+<li>方法区中类静态属性引用的对象。</li>
+<li>方法区中常量引用的对象。</li>
+<li>Native方法栈中JNI引用的对象。</li>
+</ol>
+<p>需要注意一点，即使在可达性分析算法中不可达对象，也并非是“非死不可”的，要真正宣告一个对象的死亡，至少需要经历两次标记的过程：</p>
+<p>  如果一个对象在进行可达性分析之后发现没有与GC Roots相连的引用链，那么他将会第一次标记。</p>
+<p>当对象没有复写finalize()方法，或者finalize()方法已经被虚拟机调用过，虚拟机讲着两种情况都视为“没有必要执行finalize()方法”。</p>
+<p>  如果这个对象被判定为有必要执行finalize()方法，那么这个对象会被加入一个“F-Queue”队列中，并在稍后由一个虚拟机建立的、优先级低的Finalize线程，去触发这个方法，但并不承诺会等待他运行结束。</p>
+<p>  finalize()方法是对象逃脱死亡厄运的最后一次机会，稍后的GC会对在“F-Queue”队列中的对象进行第二次小规模的标记；</p>
+<p>  如果对象要在finalize()中拯救自己，只需要重新与引用链上的对象就行关联即可，那么在第二次标记时它将被移出“即将回收”的集合；</p>
+<p>  如果对象这个时候还是没有逃脱，那基本上他就真的被回收了。</p>
+<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a><strong>引用</strong></h4><p>无论是引用计数法还是可达性分析算法，判断对象的存活与否都与“引用”有关。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">在JDK1.2之前，“引用”的解释为：</div><div class="line"></div><div class="line">如果reference类型的数据中储存的数值代表的是另外一块内存的起始地址，就称这个数据代表着一个引用。</div><div class="line"></div><div class="line">在JDK1.2之后，Java对引用的概念进行了扩充，将引用分为强引用、软引用、弱引用、虚引用。</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>强引用：就是指在程序代码之中普遍存在的，类似于“Object obj = new Object();”这样的引用，只要强引用还存在，垃圾回收器永远不会回收掉被引用的对象。</p>
+</li>
+<li><p>软引用：用来描述一些还有用但并非必须的对象。对于软引用关联的对象，在系统将要发生内存溢出异常之前，将会把这些对象列进回收的范围，进行第二次回收——如果这次回收还没有腾出足够的内存，才会内存溢出抛出异常。在JDK1.2之后，提供了SoftReference来实现软引用。</p>
+</li>
+<li><p>弱引用：也是用来描述非必须对象的，但是他的强度比软引用更弱一些。被弱引用引用的对象，只能生存到下一次GC之前，当GC发生时，无论无论当前内存是否足够，都会回收掉被弱引用关联的对象。JDK1.2之后，提供了WeakRefernce类来实现弱引用。</p>
+</li>
+<li><p>虚引用：是最弱的一种引用，一个对象有虚引用的存在，完全不会对其生存时间构成影响，也无法通过虚引用来获得一个对象的实例。为一个对象设置一个虚引用关联的唯一目的就是能够在这个对象呗收集器回收的的时候收到一个系统的通知。</p>
+</li>
+</ul>
+<h3 id="如何回收"><a href="#如何回收" class="headerlink" title="如何回收"></a><strong>如何回收</strong></h3><ul>
+<li>标记清除算法 (Mark-Sweep)<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">标记-清除算法分为两个阶段：标记阶段和清除阶段。</div><div class="line"></div><div class="line">标记阶段的任务是标记出所有需要被回收的对象，</div><div class="line"></div><div class="line">清除阶段就是回收被标记的对象所占用的空间。</div><div class="line"></div><div class="line">  这种算法的缺点是容易产生内存碎片，碎片太多可能会导致后续过程中需要为大对象分配空间时无法找到足够的空间而提前触发新的一次垃圾收集动作。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/12/16/Q4IDD1.png" alt="Q4IDD1.png"></p>
+<ul>
+<li>复制算法 (Copying)<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">复制算法将可用内存按容量划分为大小相等的两块，每次只使用其中的一块。当这一块的内存用完了，就将还存活着的对象复制到另外一块上面，</div><div class="line"></div><div class="line">然后再把已使用的另一半内存空间中的对象一次性全部清理掉，这样一来就不容易出现内存碎片的问题。</div><div class="line"></div><div class="line">这种算法的优点就是，实现简单，运行高效且不容易产生内存碎片；缺点也显而易见：将可用内存缩小为了原来的一半，代价非常高昂。</div><div class="line"></div><div class="line">从算法原理我们可以看出Copying算法的效率跟存活对象的数目多少有很大的关系，如果存活对象很多，</div><div class="line"></div><div class="line">那么Copying算法的效率将会大大降低（要复制的对象比较多）。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/12/16/Q4Ic4O.png" alt="Q4Ic4O.png"></p>
+<ul>
+<li>标记整理算法 (Mark-Compact)<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">该算法标记阶段和Mark-Sweep一样，但是在完成标记之后，它不是直接清理可回收对象，而是将存活对象都向一端移动，然后清理掉端边界以外的内存。</div><div class="line"></div><div class="line">  这种算法特别适用于存活对象多，回收对象少的情况，因为回收的对象少，标记完了之后需要移动的对象就相对较少。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/12/16/Q4I2CD.png" alt="Q4I2CD.png"></p>
+<ul>
+<li>分代回收算法<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">当前的商业虚拟机的垃圾收集器都采用“分代收集”算法，这种算法并没有什么新的思想，</div><div class="line"></div><div class="line">只是根据对象的存活的周期不同将内存划分为几块。</div><div class="line"></div><div class="line">前面我们说过，</div><div class="line"></div><div class="line">复制算法：适用于存活对象很少，回收对象多；</div><div class="line"></div><div class="line">标记整理算法：适用于存活对象多，回收对象很少的情况。这两种算法情况正好互补！</div><div class="line"></div><div class="line">一般情况下我们把Java的对分为新生代和老年代，在新生代，每次垃圾收集时，都会有大批的对象死去，</div><div class="line"></div><div class="line">只有少量存活，因此适用复制算法；而在老年代，因为对象存活率高、没有额外的空间对它进行分配担保，</div><div class="line"></div><div class="line">就必须使用“标记-清除”或者“标记-整理”算法来进行回收。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>下面我们详细了解下分代回收：</p>
+<p>上面我们已经简略的说过Java堆和Dalvik堆的区别，这里我们复习一下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Java堆用于存放对象实例，几乎所有的对象(实例变量，数组)都</div><div class="line"></div><div class="line">在该区域分配,是内存回收的主要区域；Dalvik将堆分成了</div><div class="line"></div><div class="line">Active堆和Zygote堆，zygote堆是Zygote进程在启动时的预加</div><div class="line"></div><div class="line">载的类、资源和对象；除此之外所有的对象,包括我们在代码中创</div><div class="line"></div><div class="line">建的实例、静态域和数组，都是储存在Active堆里边。</div></pre></td></tr></table></figure></p>
+<p><img src="https://s2.ax1x.com/2019/12/16/Q4o5z4.png" alt="Q4o5z4.png"></p>
+<ul>
+<li><p>Java堆按照对象存活的时间可分为新生代和老年代</p>
+</li>
+<li><p>新生代又分为三个部分：一个内存较大的Eden区，和两个内存较小且大小相同的Survivor区，比例为8：1：1.</p>
+</li>
+<li><p>Eden区存放新生的对象</p>
+</li>
+<li><p>Survivor存放每次垃圾回收后存活的对象</p>
+</li>
+</ul>
+<h4 id="新生代又分为三个部分：一个内存较大的Eden区，和两个内存较小且大小相同的Survivor区，比例为8：1：1"><a href="#新生代又分为三个部分：一个内存较大的Eden区，和两个内存较小且大小相同的Survivor区，比例为8：1：1" class="headerlink" title="新生代又分为三个部分：一个内存较大的Eden区，和两个内存较小且大小相同的Survivor区，比例为8：1：1."></a>新生代又分为三个部分：一个内存较大的Eden区，和两个内存较小且大小相同的Survivor区，比例为8：1：1.</h4><p>对象的内存分配，主要分配在新生代的Eden(伊甸园)区上，当Eden区没有足够的空间进行分配时，虚拟机将发起一次“复制算法”的GC，在这个过程中，存活下来的对象被放到Survivor 0区；当第二次GC来临的时候，Survivor 0空间的存活对象也需要再次用复制算法，放到Survivor 1空间，二把刚刚分配对象的Survivor 0空间和Eden空间清除；第三次GC时，又把Survivor 1空间的存活对象复制到Survivor 0的空间，就这样来回倒腾。</p>
+<p>  通过上面的分析我们不难理解新生代为什么这么分配了：Eden区是对象分配的主要区域，这是很频繁的，尤其是大量的局部变量产生的临时对象，因此他占的比例为8/10，</p>
+<p>这个区域分配的对象大多数都是“朝生夕灭”，因此存活下来的对象较少，故采用“复制算法”； 至于两个Survivor的比例为什么是1:1，这个应该很好理解。</p>
+<blockquote>
+<p>注：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> GC是统计学测算出当内存使用超过98%以上时，内存就应该被minor gc时回收一次。但是实际应用中，</div><div class="line"></div><div class="line">我们不能较真的只给他们留下2%，换句话说当内存使用达到98%时才GC 就有点晚了，应该是多一些预留10%内存空间，</div><div class="line"></div><div class="line">这预留下来的空间我们称为S区（有两个s区  s1 和  s0），S区是用来存储新生代GC后存活下来的对象，</div><div class="line"></div><div class="line">而我们知道新生代GC算法使用的是复制回收算法。</div><div class="line"></div><div class="line"> 所以我们实际GC发生是在，新生代内存使用达到90%时开始进行，复制存活的对象到S1区，</div><div class="line"></div><div class="line">要知道GC结束后在S1区活下来的对象，需要放回给S0区，也就是对调(对调是指，两个S区位置互换,</div><div class="line"></div><div class="line">意味着再一次minor gc 时的区域  是eden 加，上一次存活的对象放入的S区)，既然能对调，其实就是两个区域一般大。</div><div class="line"></div><div class="line">这也是为什么会再有个10%的S0区域出来。</div><div class="line"></div><div class="line">这样比例就是8:1:1了!!（80%：s1:s0=80%:10%:10%=8:1:1）这里的eden区（80%） 和其中的一个  S区（10%） 合起来共占据90%，</div><div class="line"></div><div class="line">GC就是清理的他们，始终保持着其中一个  S  区是空留的，保证GC的时候复制存活的对象有个存储的地方。</div></pre></td></tr></table></figure>
+<h4 id="什么样的对象会被移入老生带？"><a href="#什么样的对象会被移入老生带？" class="headerlink" title="什么样的对象会被移入老生带？"></a>什么样的对象会被移入老生带？</h4><ul>
+<li><p>新生代中经历过15次GC的对象</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">虚拟机给每个对象定义了一个对象年龄计数器，如果对象在Eden出生并经过第一次GC后仍然存活，</div><div class="line"></div><div class="line">将被移动到Survivor空间中，并且对象的年龄设为1；对象在Survivor区中每“熬过”一个GC，</div><div class="line"></div><div class="line">年龄就增加1岁，当它年龄增加到一定程度(默认为15岁)，就会晋升到老年带中。</div></pre></td></tr></table></figure>
+</li>
+<li><p>大对象直接进入老年代</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">所谓大对象是指，需要连续内存空间的Java对象，最典型的大对象就是那种很长的字符串以及数组，</div><div class="line"></div><div class="line">虚拟机提供了一个PretenureSizeThreshold参数，令大于这个这个值的对象直接在老生代中分配。</div><div class="line"></div><div class="line">这样做主要是为了避免在Eden区和两个Survivor区之间复制算法执行的时候产生大量的内存复制。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="触发GC的类型"><a href="#触发GC的类型" class="headerlink" title="触发GC的类型"></a>触发GC的类型</h4><p>了解这些是为了解决实际问题，Java虚拟机会把每次触发GC的信息打印出来来帮助我们分析问题，所以掌握触发GC的类型是分析日志的基础。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">GC_FOR_MALLOC: 表示是在堆上分配对象时内存不足触发的GC。</div><div class="line"></div><div class="line">GC_CONCURRENT: 当我们应用程序的堆内存达到一定量，或者可以理解为快要满的时候，系统会自动触发GC操作来释放内存。</div><div class="line"></div><div class="line">GC_EXPLICIT: 表示是应用程序调用System.gc、</div><div class="line">VMRuntime.gc接口或者收到SIGUSR1信号时触发的GC。</div><div class="line"></div><div class="line">GC_BEFORE_OOM: 表示是在准备抛OOM异常之前进行的最后努力而触发的GC。</div></pre></td></tr></table></figure>
+<h4 id="安卓分配与回收"><a href="#安卓分配与回收" class="headerlink" title="安卓分配与回收"></a>安卓分配与回收</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Android系统并不会对Heap中空闲内存区域做碎片整理。系统仅仅会在新的内存分配之前判断Heap的尾端剩余空间是否足够，</div><div class="line"></div><div class="line">如果空间不够会触发gc操作，从而腾出更多空闲的内存空间。</div><div class="line"></div><div class="line">  在Android的高级系统版本里面针对Heap空间有一个Generational Heap Memory的模型，</div><div class="line"></div><div class="line">这个思想和JVM的逐代回收法很类似，就是最近分配的对象会存放在Young Generation区域，</div><div class="line"></div><div class="line">当这个对象在这个区域停留的时间达到一定程度，它会被移动到Old Generation，最后累积一定时间再移动到Permanent Generation区域。</div><div class="line"></div><div class="line">系统会根据内存中不同的内存数据类型分别执行不同的gc操作。</div></pre></td></tr></table></figure>
+<h2 id="内存优化意义"><a href="#内存优化意义" class="headerlink" title="内存优化意义"></a><strong>内存优化意义</strong></h2><p>通过上面的分析，可以总结出内存优化主要有以下几个意义:</p>
+<ul>
+<li><p>减少OOM，提高应用稳定性</p>
+</li>
+<li><p>减少卡顿，提高应用流畅度</p>
+</li>
+<li><p>减少内存占用，提高应用后台运行时的存活率</p>
+</li>
+<li><p>减少异常发生，减少代码逻辑隐患</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>优化</category>
+      </categories>
+      <tags>
+        <tag>性能优化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo+Github+Next+GoDaddy搭建博客</title>
+    <url>/2019/07/13/Hexo-Github-Next-GoDaddy%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p><img src="http://ww4.sinaimg.cn/large/006cL6EBjw1f5z9r5crsqj30ys0hujts.jpg" alt=""><br><a id="more"></a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><hr>
+<ul>
+<li><font size="4">Hexo 是高效的静态站点生成框架，她基于 Node.js。 通过 Hexo 你可以轻松地使用 Markdown 编写文章，除了 Markdown 本身的语法之外，还可以使用 Hexo 提供的 标签插件 来快速的插入特定形式的内容。<a href="https://github.com/hexojs/hexo" target="_blank" rel="external">hexo github链接</a><p></p></font></li>
+<li><font size="4">Github开源社区<a href="https://github.com/" target="_blank" rel="external">Github</a></font></li>
+<li><font size="4">Github Pages,用于介绍托管在GitHub的项目， 不过，由于他的空间免费稳定，用来做搭建一个博客再好不过了。<a href="https://pages.github.com/" target="_blank" rel="external">Github Pages</a></font></li>
+<li><font size="4">Hexo主题中star最多的一种<a href="http://theme-next.iissnan.com/" target="_blank" rel="external">Next</a></font></li>
+</ul>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a><strong>准备工作</strong></h2><hr>
+<ul>
+<li><p><font size="4">GitHub(创建仓库,SSH,pages关联hexo,仓库分支)<a href="http://blog.sina.com.cn/s/blog_6e572cd60101qls0.html" target="_blank" rel="external">配置教程</a>)<p><br>-注：Github Pages的Repository名字是特定的(github账号.github.io)。</p>
+<ul>
+<li><font size="4">安转Node.js(<a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js官网</a>下载相应平台的最新版本)<p></p></font></li>
+<li><font size="4">安装<a href="https://git-scm.com/download" target="_blank" rel="external">Git</a><p></p></font></li>
+<li><font size="4">Atom等MD编辑器.<h2 id="开始安装Hexo"><a href="#开始安装Hexo" class="headerlink" title="开始安装Hexo"></a><strong>开始安装Hexo</strong></h2></font></li>
+</ul>
+<hr>
+<p><font size="4">Node.js和Git都安装好后,首先创建一个文件夹,如blog,用户自定义的hexo安装文件夹,然后cd进入blog目录里安装Hexo。</font></p>
+<p><font size="4">执行如下命令安装Hexo：</font></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> cd 你的Hexo安装目录(blog) 执行</div><div class="line"></div><div class="line">sudo npm install-g hexo</div></pre></td></tr></table></figure>
+<p><font size="4">然后初始化hexo,命令:</font></p>
+<p><code>hexo init</code></p>
+<p><font size="4">OK，至此，全部安装工作已经完成！blog就是你的博客根目录，所有的操作都在里面进行.之后的操作都需要cd 到你的blog目录.</font></p>
+</font></p></li>
+</ul>
+<h2 id="静态页面"><a href="#静态页面" class="headerlink" title="静态页面"></a><strong>静态页面</strong></h2><hr>
+<p> <font size="4">上一步我们已经安装了hexo,生成了blog.<p><br> 之后在blog目录,找到_config.yml文件,这就是我们的站点配置文件,可以在此文件中修改我们的配置信息.修改配置文件的教程不多说<a href="https://hexo.io/docs/configuration.html" target="_blank" rel="external">传送门</a></p>
+<p> <font size="4">修改的差不多,就可以本地预览下我们的网站了:</font></p>
+<p> 生成静态页:</p>
+<p> <code>hexo generate</code>(简写hexo g)</p>
+<p> 本地启动:</p>
+<p> <code>hexo server</code>(简写hexo s)</p>
+<p> 浏览器输入(localhost:4000),预览我们的博客了,如果打不开,有可能端口被占用了,这时候我们可以指定端口号,命令如下:</p>
+<p> <code>hexo s -p 4001</code>(根据指定的端口号浏览博客)</p>
+<h2 id="部署到GitHub上"><a href="#部署到GitHub上" class="headerlink" title="部署到GitHub上"></a><strong>部署到GitHub上</strong></h2><hr>
+<p>上一步我们已经可以本地预览我们的blog了,当然本地看到是远远不够,现在开始关联github让我们的blog可以分享给更多的小伙伴.</p>
+<h4 id="建立GitHub仓库"><a href="#建立GitHub仓库" class="headerlink" title="建立GitHub仓库"></a>建立GitHub仓库</h4><p>进入github账号,创建与你用户名对应的仓库，仓库名必须为[your_user_name.github.io]，固定写法不可修改</p>
+<p>之后修改我们的配置文件_config.yml,翻到最下面,增加github配置:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">deploy:</div><div class="line"></div><div class="line">     type: git</div><div class="line"></div><div class="line">     repo: 你自己的仓库地址</div><div class="line"></div><div class="line">     branch: master</div></pre></td></tr></table></figure>
+<p>然后执行命令(记住所有的操作都是在你的blog目录下)：</p>
+<p><code>npm install hexo-deployer-git --save</code></p>
+<p>最后执行:</p>
+<p><code>hexo deploy</code>(博客部署,提交到仓库)</p>
+<h4 id="Hexo目录结构"><a href="#Hexo目录结构" class="headerlink" title="Hexo目录结构"></a>Hexo目录结构</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">.</div><div class="line">├── .deploy_git：#将public文件夹的内容提交到Github后生成，内容与public文件夹基本一致</div><div class="line">├── node_modules：#用来存储已安装的各类依赖包</div><div class="line">├── public  #将source文件夹里的Markdown文档，转换成index.html。再结合主题进行渲染，就是我们最终看到的博客</div><div class="line">├── scaffolds #模板文件夹,当您新建文章时，根据 scaffold生成文件,包含page，post，draft三种模板，分别对应 页面、要发布的文章、草稿</div><div class="line">├── source  #资源文件夹,用来存放图片、Markdown文档（文章、草稿）、各种页面（分类、关于页面等）</div><div class="line">|   └── _posts #博客文章目录</div><div class="line">└── themes #主题 </div><div class="line">├── _config.yml   #网站的配置信息。标题、网站名称等</div><div class="line">├── db.json：#source解析所得到的</div><div class="line">├── package.json  # 用来查看Hexo的版本以及相关依赖包的版本</div></pre></td></tr></table></figure>
+<h4 id="source-，-public-和-deploy-git"><a href="#source-，-public-和-deploy-git" class="headerlink" title="source ， public 和 .deploy_git"></a>source ， public 和 .deploy_git</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">这三者的关系大致是：source -&gt; public -&gt; .deploy_git</div><div class="line"></div><div class="line">执行hexo generate，根据source，更新 public。</div><div class="line">执行hexo deploy，根据public，更新 .deploy_git。</div></pre></td></tr></table></figure>
+<p><a href="https://hexo.io/zh-cn/docs/configuration" target="_blank" rel="external">Hexo配置</a></p>
+<h3 id="Hexo会默认安装"><a href="#Hexo会默认安装" class="headerlink" title="Hexo会默认安装"></a>Hexo会默认安装</h3><ul>
+<li>hexo：主程序</li>
+<li>hexo-deployer-git：实现git部署方式</li>
+<li>hexo-generator-archive：存档页面生成器</li>
+<li>hexo-generator-category：分类页面生成器</li>
+<li>hexo-generator-index：index生成器</li>
+<li>hexo-generator-tag：标签页面生成器</li>
+<li>hexo-renderer-ejs：支持EJS渲染</li>
+<li>hexo-renderer-marked：Markdown引擎</li>
+<li>hexo-renderer-stylus：支持stylus渲染</li>
+<li>hexo-server：支持本地预览，默认地址 localhost:4000</li>
+</ul>
+<p>之后我们就可以在浏览器输入[your_user_name.github.io],好了赶快撰写文章,分享你的blog吧.</p>
+<h2 id="Hexo常用命令"><a href="#Hexo常用命令" class="headerlink" title="Hexo常用命令"></a><strong>Hexo常用命令</strong></h2><hr>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hexo new&quot;postName&quot; #新建文章</div><div class="line"></div><div class="line">hexo new page&quot;pageName&quot; #新建页面</div></pre></td></tr></table></figure>
+<p><a href="https://segmentfault.com/a/1190000002632530" target="_blank" rel="external">传送门</a></p>
+<h2 id="Next主题"><a href="#Next主题" class="headerlink" title="Next主题"></a><strong>Next主题</strong></h2><hr>
+<p>网站部署好后,开始设置Next主题</p>
+<h4 id="安装Next主题"><a href="#安装Next主题" class="headerlink" title="安装Next主题"></a>安装Next主题</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd your-hexo-site</div><div class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
+<h4 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h4><p>和所有的主题启动一样,打开_config.yml,找到theme字段,修改为next</p>
+<p>之后我们可以hexo g ,hexo s,localhost:4000本地浏览一下</p>
+<h4 id="主题类型设置"><a href="#主题类型设置" class="headerlink" title="主题类型设置"></a>主题类型设置</h4><p>选择 Scheme</p>
+<p>Scheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。同时，几乎所有的配置都可以 在 Scheme 之间共用。目前 NexT 支持三种 Scheme，他们是：</p>
+<ul>
+<li>Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白<p></p></li>
+<li>Mist - Muse 的紧凑版本，整洁有序的单栏外观<p></p></li>
+<li>Pisces - 双栏 Scheme，小家碧玉似的清新<p></p></li>
+<li>Scheme 的切换通过更改 主题配置文件，搜索 scheme 关键字。 你会看到有三行 scheme 的配置，将你需用启用的 scheme 前面注释 # 即可</li>
+</ul>
+<p>这里我启用的是Mist</p>
+<h4 id="Next配置修改"><a href="#Next配置修改" class="headerlink" title="Next配置修改"></a>Next配置修改</h4><ul>
+<li>侧边栏头像  <code>avatar: /uploads/avatar.jpg(你头像的路径)</code><p></p></li>
+<li>菜单   <code>menu</code><p></p></li>
+<li>设置语言  <code>language: zh-Hans</code><p></p></li>
+<li>修改背景色 next-&gt;source-&gt;css-&gt;_schemes(启用哪个类型选哪个文件夹)-&gt;Mist-&gt;index.styl 最上边第一行加<code>body { background:url(/images/background.jpg)(图片路径,或者#ffffff颜色);}</code><p></p></li>
+<li>等等修改<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">官网教程</a><p></p></li>
+</ul>
+<h4 id="MarkDown语法简单介绍"><a href="#MarkDown语法简单介绍" class="headerlink" title="MarkDown语法简单介绍"></a>MarkDown语法简单介绍</h4><p><img src="https://user-images.githubusercontent.com/11883853/68834565-10fb2180-06f1-11ea-9af1-d977ac74aee7.png" alt="MarkDown"></p>
+<blockquote class="blockquote-center">参考链接</blockquote>
+
+<ul>
+<li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo中文文档</a></li>
+<li><a href="https://segmentfault.com/a/1190000002632530" target="_blank" rel="external">绑定github个人博客到GoDaddy</a></li>
+<li><a href="https://segmentfault.com/a/1190000017986794" target="_blank" rel="external">超详细Hexo+Github Page搭建技术博客教程</a></li>
+<li><a href="https://www.jianshu.com/p/0b1fccce74e0" target="_blank" rel="external">利用Hexo在多台电脑上提交和更新github pages博客</a></li>
+<li><a href="https://github.com/hexojs/hexo/wiki" target="_blank" rel="external">Themes</a></li>
+<li><a href="https://dcc.godaddy.com/manage/lzhblog.site/dns" target="_blank" rel="external">GoDaddy</a></li>
+</ul>
+</font></p>]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>GitHub</tag>
+        <tag>Next</tag>
+        <tag>Atom</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>比特币闯关东03 | 探店中国首家区块链餐厅，开启高校撩妹之旅</title>
+    <url>/2018/11/30/note/article11302/</url>
+    <content><![CDATA[<p>布链财经<br><a id="more"></a></p>
+<p> <strong>比特币闯关东03 | 探店中国首家区块链餐厅，开启高校撩妹之旅</strong><br> 镇赫啊，真担心你被妹子的男朋友暴打！<br> <img src="https://user-images.githubusercontent.com/11883853/49281293-2b7bc100-f4c7-11e8-9862-d283d4bac7a8.png" alt="1"></p>
+<p> 在辽阳市告别“上古钱币”后，二饼兄弟一路颠簸来到了辽宁省省会——沈阳市！在沈阳站的附近，有一家区块链餐厅，是国内首家区块链主题餐厅。<br> <img src="https://user-images.githubusercontent.com/11883853/49281294-2c145780-f4c7-11e8-9397-6f4300273ee5.png" alt="2"><br> 在老板和老板娘的热心帮助下，二饼兄弟成功用比特币换到了接下来所有行程的火车票，简直机智爆表。<br> <img src="https://user-images.githubusercontent.com/11883853/49281296-2c145780-f4c7-11e8-99f2-344d859b53be.png" alt="3"><br> 在区块链餐厅吃饱喝足后，两人开始开始着手完成节目组发来的刁钻任务——给至少50个人讲明白区块链、比特币是什么。<br> <img src="https://user-images.githubusercontent.com/11883853/49281297-2cacee00-f4c7-11e8-8ae9-34abdb191833.png" alt="4"><br> 显然50个人的任务难度根本不足以难住他们，他们决定，转移战地至王浩的母校——沈阳建筑大学。<br> <img src="https://user-images.githubusercontent.com/11883853/49281298-2d458480-f4c7-11e8-8ded-2e1fc115088f.png" alt="5"><br> 在沈阳建筑大学创业孵化基地中，二饼兄弟为学弟学妹们讲解了区块链与比特币，并分享了他们的创业故事。<br> <img src="https://user-images.githubusercontent.com/11883853/49281301-2d458480-f4c7-11e8-8856-24ec66e3aa91.png" alt="6"><br> 最后，在温馨的小旅店中，二饼兄弟结束了一天的疲惫，睡个美容觉，迎接明天的挑战吧~<br><img src="https://user-images.githubusercontent.com/11883853/49281293-2b7bc100-f4c7-11e8-9862-d283d4bac7a8.png" alt="1"></p>
+<p>旅程下一站是辽宁铁岭市，二饼兄弟又将遇到什么样的奇葩经历呢？<br>每周四晚20：00，锁定爱奇艺科技频道，<br>订阅“链客时间”<br>大型比特币生存挑战真人秀<br>《二饼兄弟比特币闯关东》震撼来袭！<br><img src="https://user-images.githubusercontent.com/11883853/49281068-92e54100-f4c6-11e8-9541-19ae2e9ff32c.png" alt="8"></p>
+<p>《比特币漂游记》是全球首个中韩联合出品的比特币真人秀节目，爱奇艺科技频道独家首播推荐、映客直播top10顶级资源位推荐、全球领先的去中心化社交网络ONO与95后cool girl的娱乐社区不就提供社群支持。Facebook、youtube全球同步宣发，70余家区块链媒体战略合作。<br><img src="https://user-images.githubusercontent.com/11883853/49281070-937dd780-f4c6-11e8-983a-9f15c106f865.png" alt="9"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>比特币闯关东02 | 险些饿死火车上，再遭老板娘三连惨拒</title>
+    <url>/2018/11/30/note/article1130/</url>
+    <content><![CDATA[<p>布链财经<br><a id="more"></a></p>
+<p> <strong>比特币闯关东02 | 险些饿死火车上，再遭老板娘三连惨拒</strong></p>
+<p> <img src="https://user-images.githubusercontent.com/11883853/49281061-9082e700-f4c6-11e8-9ef5-af5790b69cee.png" alt="1"></p>
+<p> 二饼兄弟继续北上，片尾有小姐姐，不要错过哦！</p>
+<p><img src="https://user-images.githubusercontent.com/11883853/49281062-911b7d80-f4c6-11e8-972f-543478376523.png" alt="2"><br> 经过了24小时的漫长旅程，二饼兄弟还是没有成功用比特币吃到饭，生无可恋的他们差点饿死在火车上……<br> <img src="https://user-images.githubusercontent.com/11883853/49281063-911b7d80-f4c6-11e8-8313-52e5f860e1de.png" alt="3"></p>
+<p> 到了辽阳市，接到了节目组发来的任务——带着比特币，到辽阳博物馆与古代钱币合影，并为镇赫讲解中国古代钱币文化。</p>
+<p> <img src="https://user-images.githubusercontent.com/11883853/49281064-91b41400-f4c6-11e8-882f-14f673f533ff.png" alt="4"></p>
+<p> 但是，他们决定，先找饭吃，去他的任务！<br> 然而现实却非常残酷，二饼兄弟遭遇了意料之中的三连拒……<br> <img src="https://user-images.githubusercontent.com/11883853/49281065-91b41400-f4c6-11e8-9033-4e25b71849ba.png" alt="5"></p>
+<p> 直到他们走进了一家试营业的餐厅，成功说服了美腻的老板娘，接受了比特币支付，并且餐厅以后也长期接受比特币支付啦！<br> <img src="https://user-images.githubusercontent.com/11883853/49281066-924caa80-f4c6-11e8-9cf2-dbfc4db81971.png" alt="6"></p>
+<p> 第二天上午，二饼兄弟来到了辽阳博物馆，成功完成了任务。“上古钱币”与比特币成功会面！<br> <img src="https://user-images.githubusercontent.com/11883853/49281067-92e54100-f4c6-11e8-9b6c-23d19cacd80e.png" alt="7"></p>
+<p> 挑战下一站是辽宁沈阳市，二饼兄弟又将遇到什么样的奇葩经历呢？</p>
+<p> <img src="https://user-images.githubusercontent.com/11883853/49281068-92e54100-f4c6-11e8-9541-19ae2e9ff32c.png" alt="8"></p>
+<p> 每周四晚20：00，锁定爱奇艺科技频道，<br> 订阅“链客时间”<br> 大型比特币生存挑战真人秀<br> 《二饼兄弟比特币闯关东》震撼来袭！</p>
+<p> 《比特币漂游记》是全球首个中韩联合出品的比特币真人秀节目，爱奇艺科技频道独家首播推荐、映客直播top10顶级资源位推荐、全球领先的去中心化社交网络ONO与95后cool girl的娱乐社区不就提供社群支持。Facebook、youtube全球同步宣发，70余家区块链媒体战略合作。<br> <img src="https://user-images.githubusercontent.com/11883853/49281070-937dd780-f4c6-11e8-983a-9f15c106f865.png" alt="9"></p>
+<p> 更多区块链视频，欢迎关注链客时间</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>比特币闯关东01 | 大连老司机：比特币谁不知道啊？</title>
+    <url>/2018/11/09/note/article1109/</url>
+    <content><![CDATA[<p>布链财经<br><a id="more"></a></p>
+<p> <strong>比特币闯关东01 | 大连老司机：比特币谁不知道啊？</strong></p>
+ <iframe height="498" width="510" src="http://player.youku.com/embed/XMzkxMDg4ODc0NA==" frameborder="0" 'allowfullscreen'=""></iframe>
+
+<p> 《二饼兄弟比特币漂游记第一季—比特币闯关东》正式开播啦！10月23日，二饼兄弟王浩与李振赫分别从北京与韩国出发，到达了中国东北大连市，开始一场长达11天的比特币闯关东之旅。</p>
+<p>一位94年的中国区块链媒体创始人，和一位精通中、韩、英三语的清华大学韩国留学生，一个搞笑担当，一个卖萌担当，就这么擦出了友（ji）谊（qing）的火花！</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/N4SA3B9NqNjkXrRlemYUiaqDCTmwkRb9wAr2QqJxmBicX4IJK3ahcKVU4h0htV4gUnn0A9CvqIQibMQNWibOFMa0nw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="9"> <img src="https://mmbiz.qpic.cn/mmbiz_png/N4SA3B9NqNjkXrRlemYUiaqDCTmwkRb9wiaEgdeUCBgRMUeicSxtLITU6AzkXK6hYicicxxWQec4wFw4B3Xl2ckEnpA/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="9"><br>在大连市，二饼兄弟不仅成功用比特币打到了出租车，而且还偶遇了一位从天而降的“东北活雷锋”，顺利完成了大连市的挑战任务——利用比特币解决住宿问题。<br><img src="https://mmbiz.qpic.cn/mmbiz_png/N4SA3B9NqNjkXrRlemYUiaqDCTmwkRb9w8iaWbbScyTPkhFsiavYcoD5EstDVdjZPvDrSDic9un3kjVf0u1YiaN2uTw/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="1"><br><img src="https://mmbiz.qpic.cn/mmbiz_png/N4SA3B9NqNjkXrRlemYUiaqDCTmwkRb9wibickEpXos6FMhbBUldQT4LYDyhF7JP5qRFWFOnQIaPibyUmic8Y6XGxvQ/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="2"><br>挑战下一站是东北辽阳市，二饼兄弟又将遇到什么样的奇葩经历呢？</p>
+<p>每周四晚20：00，锁定爱奇艺科技频道，订阅“链客时间”</p>
+<p>大型比特币生存挑战真人秀</p>
+<p>《二饼兄弟比特币闯关东》震撼来袭！</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/N4SA3B9NqNhCgKouKjthnSiaiaVwcjasNialjB6XqFKns2dOrU2w1z7rsTE0235M1g3TPhYX2g73pspnwPuyNnTvA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="3"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>每家交易所都有一个扭转熊市的梦想，币贝能实现吗</title>
+    <url>/2018/10/31/note/article1031/</url>
+    <content><![CDATA[<p>布链财经<br><a id="more"></a></p>
+<p> <strong>每家交易所都有一个扭转熊市的梦想，币贝能实现吗</strong></p>
+<p> 今年数字货币的风口换得很快，一波接着一波: 在2017年的时候，很多人觉得发币很赚钱，于是开始疯狂发币。等各家的项目人气攒得差不多时，准备上市; 然而面对交易所的高门槛，他们又想自己开交易所。于是一帮提着钱的非正规金融人，造就了今年的交易所遍地开花的空前盛事。</p>
+<p>随后很多交易所快速膨胀，潮落后则销声匿迹。交易所也从之前的野蛮生长衰落到现在的纷纷歇业。交易所本来处于整个行业的上游，为何大部分交易所落得如此田地？说明这些交易所根本不具备核心竞争力。</p>
+<p>然而在交易所市场热度下降的时候，有一个叫币贝(ExShell)的交易所逆势而为，还没上线就狂撒美金，团队阵容颇有气魄，所以，他们必然有自己的杀手锏，让我们来一起看看币贝交易所的核心竞争力吧！</p>
+<p>一、币圈金融交易所，综合素质有待提高</p>
+<p>全球数字货币交易所千家以上，但真正能够让人们脱口而出的交易所却是凤毛麟角，OKEX，币安，火币，Bithumb。据调查，他们普遍处于拓展版图阶段，靠交易抽佣和期货合约为交易所造血：</p>
+<p>然而从金融服务的角度上来说，这些远远不够。 从金融衍生品和交易需求的层面的角度来说，有些交易所的功能已经跟不上用户的需要了，从商业价值来说，似乎这些老牌的一线交易所也没有更好的商业模式出现。</p>
+<p>因此，交易所为了增加活跃用户，会接受一些质量不佳的项目方，以谋取高额上币费用。比如OKEX集团投资的WFEE项目，跑路前公然挑衅投资者，对交易所的品牌口碑和投资人带来了双向的伤害。</p>
+<p>（嚣张的项目方）</p>
+<p>现货市场行情不好，很多小伙伴开始玩起了合约，不知道你有没有听过这个段子“一买合约深似海，一买OK就爆仓。”</p>
+<p>这不仅仅是段子，更是血淋淋的事实。据悉，大部分人是在做合约时，因人为因素被爆仓（比如在止损的瞬间突然黑屏闪退，无法交易）。“徐明星”和“OKEX交易所北京总部维权”等关键词一度成为热搜。</p>
+<p>像OKex这样的交易所尚且有很多这样的事情出现，其他小的交易所更不用多说，在目前行情低迷的情况下他们如何谋生？每个月都要拿出高额的费用来维护，在寒冬中这些交易所能支撑多久？最终会不会被黑客攻破最终破产？</p>
+<p>这些问题真的能够让投资人安心把钱放到这个交易所吗？很难!</p>
+<p>二、币贝底层核心：三大保障，安全为王<br>很多新上线的交易所到底怎么样才能在没有行情、没有技术团队、没有风控下的情况下运营好一个交易所？当下，投资人一定是要找一个安全、可靠、有保障的交易所进行投资。</p>
+<p>币贝交易所的注册地在塞舌尔，是全球首家数字金融交易所。旗下拥有两个科研公司。在服务器硬件、金融交易系统以及私钥管理和其它开发需求有着强有力的支持：</p>
+<p>世界顶级的安全团队，并设立硅谷安全实验室，自主研发出单向传输光闸、冷热分离，币贝交易所采用了顶级安全加固的交易所系统+国家金融安全级冷钱包确保交易所资产的绝对安全。</p>
+<p>（单项传输光闸）</p>
+<p>（系统及硬件安全）</p>
+<p>而对于软件方面，币贝拥有高效的金融交易系统，能够有效迎接海量用户同时交易：每秒超过百万级的高效撮合系统，具备无限制的横向扩展能力；基于内存数据库的实时处理能力，随时提供最佳的交易体验；Hadoop、Elastic Search等大数据系统的分析能力，全面保障实时风控和交易所业务决策。</p>
+<p>除此之外，私钥的保护也很关键。每一个区块链账户都有一个私钥，这个私钥决定了整个账户的资产安全，就连头部交易所币安也有频繁的被盗事件。</p>
+<p>（交易所成为黑客的眼里的肥肉）</p>
+<p>币贝针对于黑客频繁攻击交易所的痛点，设计了一套防御方案：光电隔离技术，黑客没有办法通过网路手段访问系统的服务端口，而节点之间传输通过非对称密钥加密，可信任公钥通过离线方式配置进入离线签名机。机房则有着安全防护的设施，密码操作都在安全屋固定电脑上操作。同时机房有视频监控。</p>
+<p>有了物理的安全与较为完善的金融操作系统，交易所和交易所内的其它金融产品也变得更加可靠。这些都是由币贝世界级精英团队开发的。币贝的管理团队来自华尔街、硅谷、伦敦证券交易所、港交所、IBM、BAT、汤森路透、火币等知名企业，在金融行业有着丰富的经验与行业资源。</p>
+<p>（币贝将对标全球前五大金融交易所）</p>
+<p>三、逆势杀手锏: 金融服务和社会使命</p>
+<p>现在币圈的交易所产品线还较为单一，为了让金融交易所走向更为正规的发展方向，币贝开发了丰富的金融产品，包括币币交易、法币交易、贝壳宝、机构账户、量化云、期货合约、多倍杠杆、指数、数据服务、数字资产借贷、数字资产理财……满足全球投资者丰富的投资需求。</p>
+<p>但是，一个真正能运作良好且正规的金融交易所，只维系好投资人关系还远远不够。币贝旗下有两个与金融强相关的公司，让币贝在资产管理方面更有理由做得更好。</p>
+<p>新加坡的金融服务公司Global Linking服务全球区块链企业，为全球交易所提供运营、市场、金融、合规等服务；以及新加坡注册的ExShell Fund全球投资管理公司，在全球范围内甄选具备行业竞争力的企业进行投资，提供通证融资、上市和市值管理服务。这样一来，就能解决部分项目方因为只有科研能力，没有资产管理和维护的经验导致退市的问题。</p>
+<p>由于币贝团队在金融领域颇有建树，因此也更容易定向邀约到一些机构投资者：如美国、中国、德国、日本、法国、英国、迪拜、阿联酋、瑞士、新加坡等国家投资基金以及美国的桥水联合基金、英国3i集团、巴菲特基金、索罗斯量子基金、软银集团愿景基金等投资型基金，高盛集团、摩根士丹利、花旗银行、摩根大通、蚂蚁金服等公司旗下投资基金。</p>
+<p>（专业视角，专业建议）</p>
+<p>对于股东管理方面，币贝采用 “弱中心化”管理模式，币贝每季度召开全球股东大会，核心管理团队拥有20%的决策权，特许邀约股东、全球社群股东和革新委员会（暂定）拥有80％的决策权。币贝由全球数十个知名投资机构与数百个社群共同投资，并作为币贝的股东参与核心经营决策。</p>
+<p>币贝获得顶级资本的信任和全球社群资源的支持，股东们的专业态度和全球资源将最大程度地帮助币贝快速成长。币贝也会将交易所产生的大数据整理，定期发布币贝经营报告和财报，为全球机构用户提供全方位的数字金融投资服务。</p>
+<p>投资人的每一次交易都能获得金融数字化的技术的帮助，投资决策会更加精准，并且通过足量咨询实时可以了解项目近况，真正做到投资心中有数，持币心中不慌的理性决策，形成良性的交易生态。</p>
+<p>前段时间我的朋友和我说某某交易所跑路了，它里面还有几十个ETH，现在欲哭无泪。在我看来，不论你是新人也好老人也罢，选择交易所最重要的就是安全，其次才是盈利，而币贝这四把锁牢牢地锁住了安全。</p>
+<p>币贝交易所的体系决定了它能在科技研发、资产管理、金融服务都有杰出表现，成为 “传统金融向数字金融” 进化的推动者。币贝对标全球前五大金融交易所的商业模式和金融产品，运用成熟的金融数字化技术，为全球价值投资者提供更加前沿、高效的数字金融产品服务。</p>
+<p>币贝交易所将于11月1日正式面向全球用户，正值上线之际，币贝发起了一个充值即送美金的活动：<br>10月25日-10月31日期间，充值用户每人送100美金ET，并且可以额外瓜分666万美金ET。<br>10月25日-10月31日期间，充值价值超过20美金任一币种的，累计达到10万及以上充值用户，则共同瓜分价值100万美金等额的ET；累计达到20万及以上充值用户，共同瓜分价值300万美金等额的ET；累计达到30万及以上充值用户，共同瓜分价值666万美金等额的ET。目前公测阶段，需要在电脑端操作，后期APP上线可手机端操作。金融大玩家和币圈小白都适用，值得一看！网址：www.exshell.com</p>
+<p>在行业鼎盛的时候做得好那是踩上风口，猪都可以起飞。在目前整个交易市场萎缩且交易所纷纷歇业的时间里，币贝交易所却逆势而为，币贝的团队对自己交易所的信心可见一斑。乱世出英豪，币贝数字金融交易所能否在交易所红海中杀出重围最终登顶？让我们拭目以待。</p>
+]]></content>
+      <tags>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数字金融交易服务或成交易所发展的最终道路</title>
+    <url>/2018/10/30/note/article1030/</url>
+    <content><![CDATA[<p>布链财经<br><a id="more"></a></p>
+<p> <strong>数字金融交易服务或成交易所发展的最终道路</strong></p>
+<p> 世界正在悄悄改变——“币贝ExShell：对标全球前五大金融交易所的商业模式和金融产品的交易所”</p>
+<p>在一次金融界的聚会中，和硅谷朋友聊到了“全球化”这个概念——如今的我们，置身于一个数据、科技、 市场与产品急速迭代、个性化交易与市场大混乱的时代，立足“交易所比项目方还多”的新形势下看待未来的交易，应该有什么改变？</p>
+<p>交易所需要捕捉哪些正确的交易点？哪些布局，是一个优秀的交易所必须提前考虑的？哪些服务，目前看来无法盈利，其实未来会散发万丈光芒？</p>
+<p>朋友们达成的最大共识就是，无论未来区块链的命运如何，优秀区块链企业的共性和想法都是近乎一致的。</p>
+<p>无非几点：<br>定位<br>使命<br>价值观<br>文化<br>工作标准<br>行动优先级</p>
+<p>区块链企业中，当然包括数字货币交易平台，因为单调枯燥的交易方式，相对于传统金融和股票行业，现有的数字货币交易平台的交易方式被戏谑为“跑得快”式交易平台。唯有解决目前多而杂的交易所暴露出的缺点，才能做出一个成熟、完美、稳健的交易平台。</p>
+<p>许多交易平台产品如飞蛾扑火般贡献了自己的短暂生命，币贝（ExShell）交易所的出现将逐步扭转这样的颓势。</p>
+<p>因为币贝一开始就不同于其他对行业认知度不高的“入场者”，他对交易对象行为有着高度的理解。</p>
+<p>怎么说呢？</p>
+<p>任何“交易所”都应该是一家大数据公司，本质上说更应该是数据分析公司。</p>
+<p>他必须了解用户是在什么时空、什么驱动力、什么交易频次、什么预期、什么路径获得信息决定交易。交易所不能简单地像目前这样对用户的交易行为一无所知。</p>
+<p>币贝是一家大数据技术交易所，它为市场提供金融级别的数据服务，甚至有计划以此盈利。这样的数据能力，面对小打小闹的波动，完全可以无所畏惧。</p>
+<p>这也就是我为什么特别偏爱他的原因。</p>
+<p>当然，数据服务只是币贝对标全球前五大金融交易所的商业模式和金融产品的冰山一角。未来币贝将向市场提供包括但不限于币币交易，法币交易，贝壳宝、机构账户、量化云、期货合约，多倍杠杆，指数，数字资产借贷，数字资产理财等服务，从广度和深度满足不同投资者的个性化投资需求。</p>
+<p>为币贝的业务内容提供强有力支撑的，是币贝</p>
+<p>高效的金融交易系统</p>
+<pre><code>每秒超过百万级的高效撮合系统；
+基于内存数据库的实时处理能力，提供最佳的交易体验；
+金融级别的数据接入发布系统，支持量化交易策略；
+Hadoop、Elastic Search等大数据系统的分析能力，全面保障实时风控和交易所业务决策；
+交易系统具备无限制的横向扩展能力。
+</code></pre><p>全球精英团队</p>
+<pre><code>管理团队来自华尔街、硅谷、伦敦证券交易所、港交所、IBM、BAT、汤森路透、火币等知名企业。
+</code></pre><p>弱中心化管理模式</p>
+<pre><code>全球数十个知名投资机构和数百个社群共同投资币贝，并作为币贝的股东参与核心经营决策。核心管理团队拥有20%的决策权，特许邀约股东、全球社群股东和革新委员会（暂定）拥有80％的决策权。
+</code></pre><p>与“跑得快”交易平台往往无安全团队或者安全意识差，服务器处于易被攻击的裸奔状态不同的是，币贝研发了高效的金融交易系统，每秒超过百万级的高效撮合系统，具备无限制的横向扩展能力；基于内存数据库的实时处理能力，随时提供最佳的交易体验；Hadoop、Elastic Search等大数据系统的分析能力，全面保障实时风控和交易所业务决策。</p>
+<p>对投资者来说，区块链是一个有充分红利的市场。别看现在人人心有戚戚，其实大家都明白，目前的市场，处于去泡沫的过程中，所有人都在经历这一价值重估的阵痛期，但面对引领人类未来的科技发展趋势，我只想每天都劝你入场，因为每一天都是入场的最好时机。</p>
+<p><img src="https://user-images.githubusercontent.com/11883853/47692343-417c3480-dc30-11e8-83b9-e5fdd2070ecf.png" alt="9"></p>
+<p>2013年6月排名Top20的数字货币，只剩两个还留在2017年6月的Top20行列，也就是说除了比特币和莱特币，绝大部分都已经归零。</p>
+<p>但是幸存下来的都成了这个时期的王者。</p>
+<p>所以你会发现，区块链和互联网的投资逻辑实际是一致的——都是穿越牛熊，成为浪潮中的幸存者。</p>
+<p>入场从币贝这样的区块链企业下手就很好。币贝获得了顶级资本的信任和全球社群资源的支持，股东们的专业态度和全球资源将最大程度地帮助币贝快速成长。成长的红利，有一份是你的。</p>
+<p>币贝正把看似失控的东西，做得井井有条、有条不紊。</p>
+<p>币贝还给新朋友们准备了一些福利：<br>10月25日-10月31日期间，充值用户每人送100美金ET，并且可以额外瓜分666万美金ET。<br>10月25日-10月31日期间，充值价值超过20美金任一币种的，累计达到10万及以上充值用户，则共同瓜分价值100万美金等额的ET；累计达到20万及以上充值用户，共同瓜分价值300万美金等额的ET；累计达到30万及以上充值用户，共同瓜分价值666万美金等额的ET。</p>
+<p>目前公测阶段，需要在电脑端操作，后期APP上线可手机端操作。金融大玩家和币圈小白都适用，值得一看！网址：www.exshell.com</p>
+]]></content>
+      <tags>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>交易所获利固然重要，但是安全才是0前边的那个1</title>
+    <url>/2018/10/29/note/article10291/</url>
+    <content><![CDATA[<p>布链财经<br><a id="more"></a></p>
+<p> <strong>交易所获利固然重要，但是安全才是0前边的那个1</strong></p>
+<p> 从去年的ICO大混战，到平台币大混战，在到现在交易所大混战，我们看到了太多的故事、热点和新闻。<br>项目方跑路，平台币破发再到现在的交易所跑路，早期币圈的共识已经是一地鸡毛，在这样混沌的区块链空间中，在人性的斗争中，有多少人能够恪守本心？有多少项目方能够恪守本心？有多少交易所能恪守本心？<br>最近让人痛心的是某头部交易所竟然偷拔网线，导致众多投资人资金亏损，难道带钱进来的投资人不应该受到交易所的保护吗，交易所反倒成了收割投资人的帮凶？<br>在如此混沌的市场，什么样的交易所才能够真正的做到“公平，公正，公开”？什么样的交易所能够守护客户资金安全？其实，在如此熊市的情况下，交易所更应该做到苦修内功、厚积薄发。</p>
+<p>无照经营<br>从年初到现在大家看到上万的项目和上千家的交易所都如雨后春笋般出现，很多交易所都说在海外有执照，注册在某地，属于合法合规的交易所，随后开始兜售平台币。当你真的想看一下他们执照的时候，他们却总是支支吾吾，说自己是代运营中心。</p>
+<p>空气项目大本营<br>很多小的交易所为了流量和现金流，只要看到有意愿上币的项目方就可以免费挂牌，也不需要严格的审核，不管项目是否真的有落地和应用场景。</p>
+<p>币市的代币只有字母的缩写和LOGO，导致很多对市场不熟悉的投资人巨额亏损。这就好比菜市场买菜，不懂行的消费者容易买到质量不好的菜(假设蔬菜外观良好)。</p>
+<p>交易所运营不善<br>很多交易所的老板和投资人对区块链不了解，投资的初心也是为了盈利。因为大家都知道“赌场最赚钱”。当交易所系统搭建好之后，没有审核项目的团队或是没有专业的招商人员，有引进劣质项目的风险。</p>
+<p>运营不善的交易所往往不了解怎么样去运营金融产品，到最后常常由于客户量少，没有交易深度，砸盘现象严重，客户失去信心而陷入僵局，要么就是没有防范羊毛党的机制，导致整个交易所关停。</p>
+<p>风控不严谨<br>很多小交易所初心都是希望能够做得和一线交易所一样规范，他们也扎实去做运营，但是到最后为什么整个交易所还是走向了关闭？<br>主要就是整个风控没有跟上，导致整个资金流断裂，或者因为部分运营的风险未能及时发现。</p>
+<p>外包带来的巨大隐患<br>很多交易所自己没有钱去开发自己的交易软件，更多的是把软件开发外包给外面的技术开发公司。一些公司图省事，交易所代码也是买来的，再找几个临时的开发人员修修改改，一个交易所就上线了。</p>
+<p>而客户端方面，就连头部交易所的APP，也经常出现闪退，用户体验极差，一到关键时刻系统就出现bug。</p>
+<p>于是，很多小的交易所运营了半年之后，纷纷关停服务器，交易所带着投资人的血汗钱消身匿迹。在这里也就不吐槽这些小的交易所。我们一起盘点一下现在的币圈“头部”的交易所，到底他们的运营状况如何。</p>
+<p>二．大交易所鲜为人知的秘密</p>
+<p>既是裁判员又是运动员，着急就拔电源的OKEX<br>OKEX交易所的徐明星最近又被送上热搜，部分投资人每天都情绪激动地堵在OK总部门口。</p>
+<p><img src="https://user-images.githubusercontent.com/11883853/47631742-32d74400-db82-11e8-887b-77f6e7ecb224.png" alt="4"></p>
+<p>因为OKCoin拔电源太厉害了，在没有监管的币市里，期货合约成为了庄家大肆清洗散户的手段，根本没有任何规矩可言。操纵币价、穿针、滑点、定点爆破，散户只能沦为这些非法操作的鱼肉，而交易所“配合性的瘫痪”令灾难更加不可抗拒。把投资人耍的团团转。造成投资人巨额亏损。</p>
+<p>试问：一个既做运动员又做裁判员的交易所怎么样能够做到公平公正公开呢？</p>
+<p>被盗，BTC被砸穿的币安<br>3月7号很多人都在睡梦中，早上起床一看BTC在币安暴跌了，随后漫天的帖子就传开了，曾经象征权威，交易额最大的币安被盗币了。<br>虽然币安官方并没有承认，但是最终K线是不会骗人的。有不少用户发现自己币安账户中持有的各种数字货币被市价即时币币交易成了 BTC。因为大量代币被市价抛售，导致绝大部分币种开始下跌，市场中不明真相的散户也纷纷加入了恐慌性抛售。当然，也出现了反向爆拉的币种——在上涨的币种里，VIA（维尔币）成为了黑客影响市场的新目标。黑客操纵的账号在1小时内用1万个比特币拉爆了VIA，市场一片哗然。</p>
+<p>7月初，币安再度出现系统问题，网传币安被黑客再度光临，损失了7000个BTC，随后紧急维护。</p>
+<p>币安在整个数字货币交易市场中举足轻重，为何频频被黑客光临？可见在币安客户的资产安全性并没有想象中那么高。</p>
+<p>USDT的独立行情，火币PRO强制平仓</p>
+<p>火币相对来说基本上负面的新闻相对较少，但是在今年5月12日，火币的USDT交易区发生了奇怪的事情：数字货币全线大幅下挫，当日下午2时许，火币Pro上的ONT、IOST、BTM、DTA等多个币种对USDT出现快速下跌，其中IOST在15分钟内暴跌超50%。</p>
+<p>火币Pro上的异常暴跌，导致该平台上大量以USDT做现货杠杆交易的用户被强制爆仓，有投资者瞬间损失了价值35万元的USDT。<br><img src="https://user-images.githubusercontent.com/11883853/47631743-336fda80-db82-11e8-9fa5-d19944e8d693.png" alt="5"></p>
+<p>“根本来不及操作，连打开电脑的时间都没有。”他说，他在火币Pro上只用了不到2倍的现货杠杆，但没想到这么低的杠杆都会被爆仓。</p>
+<p>正常涨跌导致爆仓没啥说的，但这次四个币种同一时间段快速暴跌，很多人连提示短信都没收到，即使收到短信的也来不及操作，平台难辞其咎。</p>
+<p>所以，在行情不佳的情况下，投资人应该考虑如何保本。而由于没有选对交易所导致人为事故，更是雪上加霜。如果把一些币放到来路不明的交易所，更可能会导致您血本无归。没有数字资产的安全这个1，后边有再多的0也是0。</p>
+<p>三．逆势暖冬——币贝交易所</p>
+<p>在整个行情趋熊的行情下，很多区块链企业都在缩减开支，投资人也更加保守，但币贝交易所却在资本寒冬中逆势而上，看来准备充分，信心十足，根据官方透露的信息，我们可以来看看币贝交易所的优势：<br>硬件——支撑交易的安全稳定<br><img src="https://user-images.githubusercontent.com/11883853/47631744-336fda80-db82-11e8-8d98-6b20300179e6.png" alt="6"><br>（单项传输关闸）<br>币贝组建了世界顶级的安全团队，并设立硅谷安全实验室，自主研发出单向传输光闸、意味着想要拔网线这样的操作也将无济于事，这样会让投资人的交易更安全。<br>简单说如果再拔网线电源线，你的交易一样会生成，OK只要敢用这样的设备基本上徐明星就要哭啦。</p>
+<p>冷热分离——双重保障<br><img src="https://user-images.githubusercontent.com/11883853/47631747-34087100-db82-11e8-8576-84c03baf7ba1.png" alt="7"><br>币贝交易所采用了顶级安全加固的交易所系统+国家金融安全级别的冷钱包，确保交易所资产的绝对安全。这样能更好地保护客户的资产，投资人再也不用担心黑客入侵。</p>
+<p>私钥安全保护措施——光电隔离<br>每一个区块链账户都有一个私钥，这个私钥决定了整个账户的资产安全。币贝针对于黑客频繁攻击交易所的痛点，设计了一套防御方案：光电隔离技术，黑客没有办法通过网路手段访问系统的服务端口；节点之间传输通过非对称密钥加密，可信任公钥通过离线方式配置进入离线签名机。机房则有着安全防护的设施，密码操作都在安全屋固定电脑上操作。同时机房配有视频监控。</p>
+<p><img src="https://user-images.githubusercontent.com/11883853/47631751-34087100-db82-11e8-8909-36f6e29c612e.png" alt="8"></p>
+<p>（系统架构）<br>有了物理的安全，也需要配套的社群激励机制和管理方案，才能保证用户在使用过程中体验最佳，同时在市场还未成熟时，团队核心人员需要对行业极其理解，而币贝的团队就满足这个条件。<br>币贝拥有世界级精英团队，管理团队来自华尔街、硅谷、伦敦证券交易所、港交所、IBM、BAT、汤森路透、火币等知名企业。作为“传统金融向数字金融” 进化的推动者，秉承公平、公正的原则，为全球价值投资者提供安全、稳定、高效、透明的数字金融服务。</p>
+<p>合规合法——交易有保障<br>币贝交易所的注册地在塞舌尔，全球领先的数字金融交易所，旗下拥有两个科研公司。在服务器硬件、金融交易系统以及私钥管理和其它开发需求有着强有力的支持。</p>
+<p>在目前熊市下，很多交易所纷纷倒闭，投资人不单单要看到眼前的利益，也要看到背后的风险，找一个正规的交易所保证交易所数字资产的安全，才有机会在牛市来临的时候乘风破浪。</p>
+<p>币贝交易所可谓是全球最安全的交易所，为了让客户更好地享受到币贝交易所的服务，币贝推出了很多重磅福利：<br>10月25日-10月31日期间，充值用户每人赠送100美金ET；<br>10月25日-10月31日期间，充值价值超过20美金任一币种的，累计达到10万及以上充值用户，则共同瓜分价值100万美金等额的ET；<br>累计达到20万及以上充值用户，共同瓜分价值300万美金等额的ET；<br>累计达到30万及以上充值用户，共同瓜分价值666万美金等额的ET。<br>目前公测阶段，需要在电脑端操作，后期APP上线可手机端操作。金融大玩家和币圈小白都适用，值得一看！网址：www.exshell.com</p>
+<p>四、币贝的社会使命感<br>除了对投资人友好，币贝也将用高科技整合大数据，对行业做出贡献。真正做到交易安全、私钥保存安全、数据安全。在服务和金融产品研发中，对标全球前五大金融交易所，运用成熟的金融数字化技术，为全球价值投资者提供更加前沿、高效的数字金融产品服务。</p>
+<p>币贝未来将与全球数万家顶级的投资机构建立合作，定期发布币贝的经营报告和财报，为全球机构用户提供全方位的数字金融投资服务，让我们拭目以待吧！</p>
+]]></content>
+      <tags>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>全球首家数字金融交易所币贝（ExShell）高调上线 行业再掀风浪</title>
+    <url>/2018/10/29/note/article1029/</url>
+    <content><![CDATA[<p>布链财经<br><a id="more"></a></p>
+<p> <strong>全球首家数字金融交易所币贝（ExShell）高调上线 行业再掀风浪</strong></p>
+<p> 据悉，新加坡时间11月1日10:30，全球首家数字金融交易所币贝（ExShell）即将上线。10月25日-10月31日期间，用户充值即送100美金ET，累计达到10万及以上充值用户，则共同瓜分价值100万美金等额的ET；累计达到20万及以上充值用户，共同瓜分价值300万美金等额的ET；累计达到30万及以上充值用户，共同瓜分价值666万美金等额的ET。除此之外，币贝还将接连推出更多用户激励活动，包括：充值送ET、返还手续费、抽奖送ET等。</p>
+<p><img src="https://user-images.githubusercontent.com/11883853/47600247-ced14600-d9f0-11e8-8cc0-3bb0089ec3c4.png" alt="1"></p>
+<p>数字金融是世界关注的焦点，全球大部分国家都在借助区块链技术实现金融创新，为数据价值流通创造新的突破。区块链技术让资本市场嗅到了猎物的味道，数字金融交易所应运而生。<br>熊市行情低迷，交易所也面临着极大的考验，陷入了狼多肉少的困局。虽说币圈迎来了寒冬，区块链热度依然不减，交易所也处在机遇的风口。币贝上线就送千万美金，并选择在熊市入局，显然是有备而来。币贝此举无异于给低迷的市场打入一剂强心针，给万千韭菜重燃了梦想。<br>据了解，币贝是一家“弱中心化”管理模式的交易所，由全球数十个知名投资机构与数百个社群共同投资，公开透明。币贝拥有世界顶级的安全团队，并设立了硅谷安全实验室，自主研发出了单向传输光闸、加密二维码等交易技术，其金融安全防护系统具备国家级金融安全防护能力。<br>   币贝狂撒美金的背后是实力在支撑，从10月25日开始的充值即送100美金ET活动，足以说明诚意。早起的鸟儿有虫吃，先进场先得利，这个市场从来都是这样。<br>  从行业角度来看，币贝开发了丰富的金融产品，包括币币交易、法币交易、贝壳宝、机构账户、量化云、期货合约、多倍杠杆、指数、数据服务、数字资产借贷、数字资产理财……满足全球价值投资者不同投资需求。<br>在优胜劣汰、竞争激烈的交易所行业中，自带光环、集众多优势上线的全球首家数字金融交易所币贝，势必会拔得头筹，引领“传统金融转向数字金融”的未来大趋势。www.exshell.com</p>
+]]></content>
+      <tags>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>千万美金任性送 全球首家数字金融交易所——“币贝”即将上线</title>
+    <url>/2018/10/27/note/article1027/</url>
+    <content><![CDATA[<p>布链财经<br><a id="more"></a></p>
+<p> <strong>千万美金任性送 全球首家数字金融交易所——“币贝”即将上线</strong></p>
+<p> 币贝（ExShell）是全球领先的数字金融交易所，作为“传统金融向数字金融” 进化的推动者，秉承公平、公正的原则，为全球价值投资者提供安全、稳定、高效、透明的数字金融服务。</p>
+<p><img src="https://user-images.githubusercontent.com/11883853/47600247-ced14600-d9f0-11e8-8cc0-3bb0089ec3c4.png" alt="1"></p>
+<p>币贝开创了全新交易模式，对标全球前五大金融交易所的商业模式和金融产品，运用成熟的金融数字化技术，为全球价值投资者提供更加前沿、高效的数字金融产品服务；未来将与全球数万家顶级的投资机构建立合作，定期发布币贝经营报告和财报，为全球机构用户提供全方位的数字金融投资服务，包括美国、德国、日本、法国、英国、瑞士、新加坡等国家投资基金，以及桥水基金、3i集团、巴菲特基金、索罗斯量子基金、软银集团、高盛集团、摩根士丹利、花旗银行、摩根大通等公司旗下投资机构。</p>
+<p><img src="https://user-images.githubusercontent.com/11883853/47600248-ced14600-d9f0-11e8-802d-664b87a260cc.png" alt="2"></p>
+<p>币贝组建了世界顶级的安全团队，并设立硅谷安全实验室，自主研发出单向传输光闸、加密二维码等交易技术，其金融安全防护系统具备国家级金融安全防护能力。<br>币贝研发了高效的金融交易系统，每秒超过百万级的高效撮合系统，具备无限制的横向扩展能力；基于内存数据库的实时处理能力，随时提供最佳的交易体验；Hadoop、Elastic Search等大数据系统的分析能力，全面保障实时风控和交易所业务决策。</p>
+<p><img src="https://user-images.githubusercontent.com/11883853/47600249-cf69dc80-d9f0-11e8-9397-65c05c595d7a.png" alt="3"></p>
+<p>币贝是一家“弱中心化”管理模式的交易所，由全球数十个知名投资机构与数百个社群共同投资，并作为币贝的股东参与核心经营决策。币贝每季度召开全球股东大会，核心管理团队拥有20%的决策权，特许邀约股东、全球社群股东和独立董事会拥有80％的决策权。币贝获得顶级资本的信任和全球社群资源的支持，股东们的专业态度和全球资源将最大程度地帮助币贝快速成长。<br>币贝开发了丰富的金融产品，包括币币交易、法币交易、期货合约、多倍杠杆、指数、数据服务、数字资产借贷、数字资产理财……满足全球投资者丰富的投资需求。<br>币贝拥有世界级精英团队，管理团队来自华尔街、硅谷、伦敦证券交易所、港交所、IBM、BAT、汤森路透、火币等知名企业。<br>币贝坚持以“金融更高效，财富更自由”为使命，服务全球价值投资者，提供安全、稳定、高效、透明的数字金融服务。<br>新加坡时间11月1日，币贝即将在全球同步上线，10月25日开始，币贝将持续推出重磅福利活动，包括充值送100美金ET、用户最多可瓜分666万美金ET、开放交易24小时狂欢充值瓜分900万美金ET等超级奖励。更多惊喜，敬请期待。www.exshell.com</p>
+]]></content>
+      <tags>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>全民瓜分666万美金ET，全球首家数字金融交易所币贝今日开放充值</title>
+    <url>/2018/10/25/note/article1025/</url>
+    <content><![CDATA[<p>布链财经<br><a id="more"></a></p>
+<p> <strong>全民瓜分666万美金ET，全球首家数字金融交易所币贝今日开放充值</strong></p>
+<p> 据悉，全球首家数字金融交易所币贝（ExShell）在今日（10月25日）10:30开放充值功能，11月1日10：30全球同步上线。10月25日-10月31日期间，充值用户每人送100美金ET，再额外瓜分666万美金ET。近期将上线APP版，目前公测中，注册充值请在电脑端操作www.exshell.com</p>
+<p><img src="https://user-images.githubusercontent.com/11883853/47600250-cf69dc80-d9f0-11e8-92c7-a3b4bc7a7c5b.png" alt="asdasd"><br>（全球首家数字金融交易所币贝（ExShell）今日开放充值）</p>
+<p>币贝（ExShell）是全球领先的数字金融交易所，作为“传统金融向数字金融” 进化的推动者，秉承公平、公正的原则，为全球价值投资者提供安全、稳定、高效、透明的数字金融服务。<br>币贝开创了全新交易模式，对标全球前五大金融交易所的商业模式和金融产品，运用成熟的金融数字化技术，为全球价值投资者提供更加前沿、高效的数字金融产品服务；未来将与全球数万家顶级的投资机构建立合作，定期发布币贝经营报告和财报，为全球机构用户提供全方位的数字金融投资服务，包括美国、德国、日本、法国、英国、瑞士、新加坡等国家投资基金，以及桥水基金、3i集团、巴菲特基金、索罗斯量子基金、软银集团、高盛集团、摩根士丹利、花旗银行、摩根大通等公司旗下投资机构。</p>
+<p><img src="https://user-images.githubusercontent.com/11883853/47600251-cf69dc80-d9f0-11e8-87cd-231ef03bbd20.png" alt="asdasdfff"><br>（全球首家数字金融交易所币贝（ExShell）即将全球同步上线）</p>
+<p>币贝组建了世界顶级的安全团队，并设立硅谷安全实验室，自主研发出单向传输光闸、加密二维码等交易技术，其金融安全防护系统具备国家级金融安全防护能力。<br>币贝研发了高效的金融交易系统，每秒超过百万级的高效撮合系统，具备无限制的横向扩展能力；基于内存数据库的实时处理能力，随时提供最佳的交易体验；Hadoop、Elastic Search等大数据系统的分析能力，全面保障实时风控和交易所业务决策。<br>币贝是一家“弱中心化”管理模式的交易所，由全球数十个知名投资机构与数百个社群共同投资，并作为币贝的股东参与核心经营决策。币贝获得顶级资本的信任和全球社群资源的支持，股东们的专业态度和全球资源将最大程度地帮助币贝快速成长。<br>币贝开发了丰富的金融产品，包括币币交易、法币交易、期货合约、多倍杠杆、指数、数据服务、数字资产借贷、数字资产理财……满足全球投资者丰富的投资需求。<br>币贝拥有世界级精英团队，管理团队来自华尔街、硅谷、伦敦证券交易所、港交所、IBM、BAT、汤森路透、火币等知名企业。<br>币贝坚持以“金融更高效，财富更自由”为使命，服务全球价值投资者，提供安全、稳定、高效、透明的数字金融服务。</p>
+]]></content>
+      <tags>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ONO资本投资全球首档中韩区块链真人秀《比特币漂游记》</title>
+    <url>/2018/10/19/ONO%E8%B5%84%E6%9C%AC%E6%8A%95%E8%B5%84%E5%85%A8%E7%90%83%E9%A6%96%E6%A1%A3%E4%B8%AD%E9%9F%A9%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9C%9F%E4%BA%BA%E7%A7%80%E3%80%8A%E6%AF%94%E7%89%B9%E5%B8%81%E6%BC%82%E6%B8%B8%E8%AE%B0%E3%80%8B/</url>
+    <content><![CDATA[<p>布链财经<br>2018-10-19<br><a id="more"></a></p>
+<p> <strong>ONO资本投资全球首档中韩区块链真人秀《比特币漂游记》</strong></p>
+<p>韩媒BlockDaily 10月18日发布消息，ONO资本已投资全球首档中韩区块链真人秀微综艺《比特币漂游记》，11月爱奇艺全球首播、10月映客独家直播支持、ONO独家社群支持，全球100余家平台联合宣发。<br>该节目尚属全球首档中韩区块链真人秀微综艺，宣发集合全网各平台头部资源，千万顶级垂直流量曝光，成2018全网最大流量、最强曝光的区块链综艺节目。<br>据报道，《比特币漂游记》由BlockDaily联合区块链视频媒体链客时间共同担纲策划，爱奇艺金牌合作团队参与拍摄制作，Mixin钱包独家冠名。讲述分别来自中、韩两国的两位年轻小哥用比特币环游世界的爆笑囧途，第一季将在中国东北三省7大城市完成生存段位挑战。<br>接受采访时，诺舟集团董事长徐可女士被问到为什么投资该节目时表示：“《比特币漂游记》的策划和制作团队非常有意思，这档节目是媒体行业转型大众娱乐化的一次很好尝试。”</p>
+]]></content>
+      <tags>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>初心决定高度</title>
+    <url>/2018/07/15/hexo%E7%AC%AC%E4%B8%80%E6%AD%A5/</url>
+    <content><![CDATA[<p>布链财经<br>2018.07.15<br><a id="more"></a></p>
+<p>区块链的风口滋生的创业者数不胜数，根据初心大体可以归为2类。一类的初心是：干任何事情以自身利益出发，然后套个做事的幌子。而另一类的初心是：认真做事，然后顺便挣点钱。</p>
+<p>这个环境下有太多太多的创业者标榜自己的第二类初心，确疯狂敛财。多到我都不敢统计，想起这种嘴脸尤其让人可恶，比之一锥子买卖，只割一次韭菜的创业者犹有过之而无所不及。</p>
+<p>区块链的热风还在继续，昨晚喜欢软中华的男人频频刷屏。李老师的一席录音被广为传播，不得不让狂热币民深刻反思，币圈有所谓的价值投资吗 ？5月的公链之争随着EOS上线的跌跌撞撞，也淡出了人们的视线。整个熊市市场，加之从无所谓的价值投资，只要有流量，网红效应，共识的人多了 ，空气币也成为了价值币的环境下，币民改如何是从 ？</p>
+<p>在这个浮躁的行业里面，大佬的初心决定行业的高度，群众的初心决定行业的热度。越是熊市的背景下，越能区分出2类创业者 。某些敛财创业者更是处处贬低别的数字货币进而获取热度，声称半个月研究透了EOS，得出EOS史上最大传销币的结论。然而这些创业者确基于EOS代码去做公链，去发币，且不说EOS到底是不是空气币，不得不说他们获得了热度，进入了人们的眼球。可是确也暴露出了丑恶的嘴脸，这类创业者类比老师教会了学生知识，学生学了点皮毛之后，就觉得老师不过如此，一文不值。</p>
+<p>然而也有以真正做事为初心的创业者。Fcoin撬动整个区块链大蛋糕的交易所应运而生。它的具体模式不需要再过多介绍了。我们分析什么情况下能产出这种伟大构想，以自身利益为前提么？那必然不是，第一步让利的观念就不会出现在一类创业者脑海中，所以必然是二类创业者的杰作。有人说Fcoin”你想要分红，人家想要你的本金”。我们抛开FT分红属性，它就是一个平台币，与许许多多平台币一样目前就是个积分，就是个概念。各大平台币会暴涨暴跌，你的本金实时变化，你的本金不会因为你买了某个平台币而只赚不亏，每个有点热度的币都会有神秘资金控制走向，股市也不例外。小散无不时刻面临被割的风险。而有分红的平台币，你起码在暴跌的时候能挽回一点损失，长期持有或许会回本，加之各种透明属性，团队持有地址公示，锁仓三年。试问是平台要你的本金吗 ？哪家平台团队持币敢于公示，并在三年内不动一币？想要你本金的只是击鼓传花被吸引进来，幻想一夜暴富神话的贪性和不满足而已。或许FC也没预料到模式会这么火爆，前期给与私募比例，导致抛盘压力。没人能守得住十倍百倍的利润而不为所动。或许没有私募FT会是另一种表现吧。</p>
+<p>越是熊市，市场趋于理性的时候，币民更多的去价值选择，明辨是非 。而非别人说它有价值，很多人说他有价值，自己就觉得有价值，被这种类比传销的手段所影响。回归回正初心，币民自己选择价值，大佬做事为始，区块链方能让人如沐春风。</p>
+]]></content>
+      <categories>
+        <category>原创</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+</search>

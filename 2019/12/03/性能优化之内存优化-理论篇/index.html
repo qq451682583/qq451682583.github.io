@@ -1,0 +1,1097 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="性能优化," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZHBlog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="[TOC]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="性能优化之内存优化-理论篇">
+<meta property="og:url" content="http://qq451682583.github.io/2019/12/03/性能优化之内存优化-理论篇/index.html">
+<meta property="og:site_name" content="ZHBlog">
+<meta property="og:description" content="[TOC]">
+<meta property="og:image" content="https://user-images.githubusercontent.com/11883853/70790060-3b62fc00-1dcf-11ea-912f-9eeea722bf96.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/11883853/70894604-4a90b680-2028-11ea-8428-72d065404617.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/16/Q4IDD1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/16/Q4Ic4O.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/16/Q4I2CD.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/16/Q4o5z4.png">
+<meta property="og:updated_time" content="2020-03-09T13:45:06.992Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="性能优化之内存优化-理论篇">
+<meta name="twitter:description" content="[TOC]">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/11883853/70790060-3b62fc00-1dcf-11ea-912f-9eeea722bf96.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'BLCJ'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://qq451682583.github.io/2019/12/03/性能优化之内存优化-理论篇/"/>
+
+  <title> 性能优化之内存优化-理论篇 | ZHBlog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZHBlog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                性能优化之内存优化-理论篇
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-12-03T19:23:08+08:00" content="2019-12-03">
+              2019-12-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/优化/" itemprop="url" rel="index">
+                    <span itemprop="name">优化</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2019/12/03/性能优化之内存优化-理论篇/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/12/03/性能优化之内存优化-理论篇/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]<br><a id="more"></a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><p>Android应用都是在Android的虚拟机上运行，应用程序的内存分配与垃圾回收都是有虚拟机完成的。在Android系统，虚拟机有两种运行模式:Dalvik和ART。</p>
+<p>这里简单介绍下Dalvik和ART在垃圾回收机制上的区别:</p>
+<h3 id="首先介绍下dalvik的GC的过程。主要有有四个过程"><a href="#首先介绍下dalvik的GC的过程。主要有有四个过程" class="headerlink" title="首先介绍下dalvik的GC的过程。主要有有四个过程:"></a>首先介绍下dalvik的GC的过程。主要有有四个过程:</h3><ul>
+<li><p>当gc被触发时候，其会去查找所有活动的对象，这个时候整个程序与虚拟机内部的所有线程就会挂起，这样目的是在较少的堆栈里找到所引用的对象；注意：这个回收动作和应用程序非并发；</p>
+</li>
+<li><p>gc对符合条件的对象进行标记；</p>
+</li>
+<li><p>gc对标记的对象进行回收；</p>
+</li>
+<li><p>恢复所有线程的执行现场继续运行。</p>
+</li>
+</ul>
+<p>dalvik这么做的好处是，当pause了之后，GC势必是相当快速的。但是如果出现GC频繁并且内存吃紧势必会导致UI卡顿、掉帧、操作不流畅等。</p>
+<h3 id="ART改善了这种GC方式，-主要的改善点在将其非并发过程改成了部分并发，还有就是对内存的重新分配管理。"><a href="#ART改善了这种GC方式，-主要的改善点在将其非并发过程改成了部分并发，还有就是对内存的重新分配管理。" class="headerlink" title="ART改善了这种GC方式， 主要的改善点在将其非并发过程改成了部分并发，还有就是对内存的重新分配管理。"></a>ART改善了这种GC方式， 主要的改善点在将其非并发过程改成了部分并发，还有就是对内存的重新分配管理。</h3><p>当ART GC发生时:</p>
+<ul>
+<li><p>GC将会锁住Java堆，扫描并进行标记；</p>
+</li>
+<li><p>标记完毕释放掉Java堆的锁，并且挂起所有线程；</p>
+</li>
+<li><p>GC对标记的对象进行回收；</p>
+</li>
+<li><p>恢复所有线程的执行现场继续运行；</p>
+</li>
+<li><p>重复2-4直到结束。</p>
+</li>
+</ul>
+<p>可以看出整个过程做到了部分并发使得时间缩短。据官方测试数据说GC效率提高2倍。</p>
+<p>虽然ART做了很多优化，但是如果出现GC频繁并且内存吃紧势必会导致UI卡顿、掉帧、操作不流畅等。</p>
+<p>另一方面大量的内存消耗，最后也会导致OOM，这里我们以dalvik虚拟机描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">我们知道，Heap(堆)内存是由程序员控制的，用C/C++申请的内存空间在native heap中，</div><div class="line"></div><div class="line">而java申请的内存空间则在dalvik heap中.</div><div class="line"></div><div class="line">那么为什么会出现OOM的情况呢？</div><div class="line"></div><div class="line">这个是因为Android系统对dalvik虚拟机的heap大小作了硬性限制，当java进程申请的空间超过这个阈值时，就会抛出OOM异（这个阈值可以是48M、24M、16M等，视机型而定）。</div><div class="line"></div><div class="line">也就是说，程序发生OMM并不表示RAM不足，而是因为程序申请的java heap对象超过了dalvik vm heapgrowthlimit。也就是说，在RAM充足的情况下，也可能发生OOM。</div><div class="line"></div><div class="line">这样设计的目的是为了让Android系统能同时让比较多的进程常驻内存(RAM)，这样程序启动时就不用每次都重新加载到内存，能够给用户更快的响应。</div><div class="line"></div><div class="line">迫使每个应用程序使用较小的内存，移动设备非常有限的RAM就能使比较多的app常驻其中。</div><div class="line"></div><div class="line">java程序发生OMM并不是表示RAM不足，如果RAM真的不足，Android的memory killer会起作用，当RAM所剩不多时，</div><div class="line"></div><div class="line">memory killer会杀死一些优先级比较低的进程来释放物理内存，让高优先级程序得到更多的内存。</div></pre></td></tr></table></figure></p>
+<h3 id="注-不同版本dalvik虚拟机对堆内存的区别"><a href="#注-不同版本dalvik虚拟机对堆内存的区别" class="headerlink" title="注: 不同版本dalvik虚拟机对堆内存的区别"></a>注: 不同版本dalvik虚拟机对堆内存的区别</h3><ul>
+<li><p>ActivityManager.getMemoryClass()可以查询当前APP的Heap Size阈值，单位是MB。</p>
+</li>
+<li><p>在3.x以前，Bitmap分配在Native heap中，而在4.x之后，Bitmap分配在Dalvik或ART的Java heap中。</p>
+</li>
+<li><p>Android 2.x系统，当dalvik allocated + native allocated + 新分配的大小 &gt;= dalvik heap 最大值时候就会发生OOM，也就是说在2.x系统中，考虑native heap对每个进程的内存限制。</p>
+</li>
+<li><p>Android 4.x系统，废除了native的计数器，类似bitmap的分配改到dalvik的java heap中申请，只要allocated + 新分配的内存 &gt;= dalvik heap 最大值的时候就会发生OOM（art运行环境的统计规则还是和dalvik保持一致），也就是说在4.x系统中，不考虑native heap对每个进程的内存限制，native heap只会收到本机总内存（包括RAM以及SWAP区或分页文件）的限制。</p>
+</li>
+</ul>
+<p>基于这两方面，内存优化在我们平时的开发中是非常值得重视的。</p>
+<p>下面首先我们先了解一下Java对象的生命周期。</p>
+<h2 id="Java对象生命周期"><a href="#Java对象生命周期" class="headerlink" title="Java对象生命周期"></a><strong>Java对象生命周期</strong></h2><p>在Android应用程序中，大部分是Java程序，而Java对象被创建的Java类字节码(编译后的.class文件)需要从文件系统加载到虚拟机。Java对象在虚拟机上运行有7个阶段，也就是对象的生命周期:</p>
+<ul>
+<li><p>创建阶段(Created)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">创建Java对象阶段的具体步骤如下：</div><div class="line"></div><div class="line">1. 为对象分配存储空间</div><div class="line"></div><div class="line">2. 构造对象</div><div class="line"></div><div class="line">3. 从父类到子类对static成员进行初始化，类的static成员的初始化再ClassLoader加载该类时进行。</div><div class="line"></div><div class="line">4. 父类成员变量按顺序初始化，递归调用父类的构造方法。</div><div class="line"></div><div class="line">5. 子类成员变量按顺序初始化，一旦对象被创建，子类构造方法就调用该对象并为某些变量赋值，完成后这个对象的状态就切换到了应用阶段</div></pre></td></tr></table></figure>
+</li>
+<li><p>应用阶段(InUse)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">对象至少被一个强引用(Strong Reference)持有，除非在系统中显示地使用了</div><div class="line"></div><div class="line">软引用(Soft Reference)、弱引用(Weak Reference)或虚引用(Phantom Reference).</div></pre></td></tr></table></figure>
+</li>
+<li><p>不可见阶段(Invisible)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">处于不可见阶段的对象在虚拟机的对象引用根集合中再也找不到直接或间接的强引用，</div><div class="line"></div><div class="line">这些对象一般是所有线程栈中的临时变量。所有已经装载的静态变量或者是对本地代码接口的引用。</div><div class="line"></div><div class="line">当一个对象处于不可见阶段时，说明程序本身不再持有该对象的任何强引用，虽然对象仍然是存在的。</div><div class="line"></div><div class="line">简单的例子就是程序的执行已经超出了该对象的作用域了，改对象仍有可能被虚拟机下的某些已经装载的</div><div class="line"></div><div class="line">静态变量线程或JNI等强引用持有，这些特殊强引用称为Gc Root。存在这些GC Root会导致对象的内存泄漏，无法被回收。</div></pre></td></tr></table></figure>
+</li>
+<li><p>不可达阶段(Unreadchable)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">对象处于不可达阶段是指该对象不再被任何强引用持有，回收器发现该对象已经不可达。</div></pre></td></tr></table></figure>
+</li>
+<li><p>收集阶段(Collected)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">当垃圾回收器发现该对象已经处于&quot;不可达阶段&quot;并且垃圾回收器已经对该对象的内存空间重新分配做好准备时，对象进入&quot;收集阶段&quot;。</div><div class="line"></div><div class="line">如果该对象已经重写了finalize()方法,则执行该方法的操作。</div></pre></td></tr></table></figure>
+</li>
+<li><p>终结阶段(Finalized)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">当对象执行完成finalized()方法后仍然处于不可达状态时，该对象进入终结阶段，等待垃圾回收器回收该对象空间。</div></pre></td></tr></table></figure>
+</li>
+<li><p>对象空间重新分配阶段(Deallocated)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">若垃圾回收器对该对象占用的内存空间进行回收或者再分配，则该对象彻底消失，这个阶段称为&quot;对象重新分配阶段&quot;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意：</p>
+<p>创建对象后，在确定不需要使用对象时，使对象置空，这样更符号垃圾回收标准。比如Object = null，</p>
+<p>可以提高内存使用效率，并且不要采用过深的继承层次。访问本地变量优于访问类中的变量。</p>
+<h2 id="JVM内存分配"><a href="#JVM内存分配" class="headerlink" title="JVM内存分配"></a><strong>JVM内存分配</strong></h2><p>平时我们对于Java内存都有一个比较粗略的概念，就是分堆和栈，但实际上还是复杂得多，以下给出完整内存模型：</p>
+<p><img src="https://user-images.githubusercontent.com/11883853/70790060-3b62fc00-1dcf-11ea-912f-9eeea722bf96.png" alt="image"></p>
+<h3 id="程序计数器PC"><a href="#程序计数器PC" class="headerlink" title="程序计数器PC"></a>程序计数器PC</h3><ul>
+<li><p>这一区域不会出现OOM（Out Of Memory）错误的情况</p>
+</li>
+<li><p>属于线程私有，因为每一个线程都有自己的一个程序计数器，来表示当前线程执行的字节码行号</p>
+</li>
+<li><p>标识Java方法的字节码地址，而不是Native方法</p>
+</li>
+<li><p>处于CPU上，我们无法直接操作这块区域</p>
+</li>
+</ul>
+<h3 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h3><p>这个区域也是我们平时口中说的堆栈的栈，关于这个块区域有如下要点：</p>
+<ul>
+<li><p>属于线程私有，与线程的生命周期相同</p>
+</li>
+<li><p>每一个java方法被执行的时候，这个区域会生成一个栈帧</p>
+</li>
+<li><p>栈帧中存放的局部变量有8种基本数据类型，以及引用类型（对象的内存地址）</p>
+</li>
+<li><p>java方法的运行过程就是栈帧在虚拟机栈中入栈和出栈的过程</p>
+</li>
+<li><p>当线程请求的栈的深度超出了虚拟机栈允许的深度时，会抛出StackOverFlow的错误</p>
+</li>
+<li><p>当Java虚拟机动态扩展到无法申请足够内存时会抛出OutOfMemory的错误</p>
+</li>
+</ul>
+<h3 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h3><ul>
+<li><p>这个区域，属于线程私有，顾名思义，区别于虚拟机栈，这里是用来处理Native方法（Java本地方法）的，而虚拟机栈是处理Java方法的。对于Native方法，Object中就有不少的Native的方法，hashCode,wait等，这些方法的执行很多时候都是借助于操作系统。</p>
+</li>
+<li><p>这一区域也有可能抛出StackOverFlowError 和 OutOfMemoryError</p>
+</li>
+</ul>
+<h3 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h3><p>我们平时说得最多，关注得最多的一个区域，就是他了。我们后期进行的性能优化主要针对这部分内存，GC的主战场，这个地方存放的几乎所有的对象实例和数组数据。这里我大概进行了如下概括：</p>
+<ul>
+<li><p>Java堆属于线程共享区域，所有的线程共享这一块内存区域</p>
+</li>
+<li><p>从内存回收角度，Java堆可被分为新生代和老年代，这样分能够更快的回收内存</p>
+</li>
+<li><p>从内存分配角度，Java堆可划分出线程私有的分配缓存区（Thread Local Allocation Buffer,TLAB）,这样能够更快的分配内存</p>
+</li>
+<li><p>当Java虚拟机动态扩展到无法申请足够内存时会抛出OutOfMemory的错误</p>
+</li>
+</ul>
+<blockquote>
+<p>新生代<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">新生代存储新创建的对象。新生代由Eden和两块大小相同的Survivor space组成（又叫S0、S1或者From、To）构成，Eden和S0、S1的比例一般为8：1，具体大小细节以及分配原因，将在后面的垃圾回收机制里面介绍。</div></pre></td></tr></table></figure></p>
+<p>老年代<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">老年代一般存储经历了多次新生代GC还未被回收的对象。老年代的内存区域一般都比较大，主要是为了减少老年代的GC（major GC）的次数（该种类型的GC比较耗时），同时为了防止OOM。</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>方法区主要存放的是已被虚拟机加载的类信息、常量、静态变量、编译器编译后的代码等数据。GC在该区域出现的比较少。概括如下：</p>
+<ul>
+<li><p>也称为“永久代”</p>
+</li>
+<li><p>方法区属于线程共享区域</p>
+</li>
+<li><p>垃圾回收很少光顾这个区域，不过也是需要回收的，主要针对常量池回收，类型卸载</p>
+</li>
+<li><p>常量池用于存放编译期生成的各种字节码和符号引用，常量池具有一定的动态性，里面可以存放编译期生成的常量</p>
+</li>
+<li><p>运行期间的常量也可以添加进入常量池中，比如string的intern()方法。</p>
+</li>
+</ul>
+<h3 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h3><p>运行时常量池也是方法区的一部分，用于存放编译器生成的各种字面量和符号引用。单独拿出来说明一下，是因为我们平时使用String比较多，涉及到这一块的知识，但这一块区域不会抛出OutOfMemoryError</p>
+<h3 id="Dalvik堆"><a href="#Dalvik堆" class="headerlink" title="Dalvik堆"></a>Dalvik堆</h3><p>Dalvik VM的堆结构相对于JVM的堆结构有所区别，只而主要体现在Dalvik将堆分成了Active堆和Zygote堆。</p>
+<p>Zygote是一个虚拟机进程，同时也是一个虚拟机实例的孵化器——那么同样的，zygote堆是Zygote进程在启动时的预加载的类、资源和对象；除此之外所有的对象,包括我们在代码中创建的实例、静态域和数组，都是储存在Active堆里边的。
+  </p>
+<p>为什么要把Dalvik堆分成Zygote堆和Active堆？</p>
+<p>这主要是因为Android通过fork方法创建一个新的zygote进程，为了尽可能的避免父进程和子进程之间的数据拷贝，fork方法使用写时拷贝技术，简单讲就是fork的时候不立即拷贝父进程的数据到子进程中，而是在子进程或者父进程对内存进行写操作时才对内容进行复制。
+  </p>
+<p>Dalvik的Zygote堆存放的预加载类都是Android核心类和Java运行时库，这部分很少被修改，大多数情况下父进程和子进程共享这块区域，因此没有必要对这部分类进行垃圾回收之类的修改，直接复制即可。而Active堆作为我们程序代码中创建实例对象的存放堆，是垃圾回收的重点区域，因此将两个堆分开。</p>
+<h2 id="内存回收"><a href="#内存回收" class="headerlink" title="内存回收"></a><strong>内存回收</strong></h2><p>说起内存回收，我们考虑以下几件事情。</p>
+<ol>
+<li>内存回收的区域?</li>
+<li>哪些内存需要回收?</li>
+<li>如何回收?</li>
+</ol>
+<h3 id="内存回收的区域"><a href="#内存回收的区域" class="headerlink" title="内存回收的区域"></a>内存回收的区域</h3><ul>
+<li><p>程序计数器、本地方法栈、虚拟机栈：这几块内存都是随线程而生，随线程而灭。栈中的栈帧，随着方法的调用入栈和出栈，栈帧的内存大小在编译器就已经可知了，因此内存的分配和回收是确定的，故不需要参加GC。</p>
+</li>
+<li><p>堆：内存回收的主力区域，对象和数组都保存在此区域。</p>
+</li>
+<li><p>方法区 ：无用的类型信息以及常量都是回收的目标，但是一般进行GC的概率不大，主要是性价比不高。</p>
+</li>
+</ul>
+<h3 id="哪些内存需要回收"><a href="#哪些内存需要回收" class="headerlink" title="哪些内存需要回收"></a>哪些内存需要回收</h3><p>要确定哪些内存需要回收，目前有以下几种判定方案:</p>
+<h4 id="引用计数算法"><a href="#引用计数算法" class="headerlink" title="引用计数算法"></a><strong>引用计数算法</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">给对象添加一个引用计数器，每当有一个地方引用它的时候，</div><div class="line"></div><div class="line">计数器的值就加1；当引用失效的时候，计数器的值就减1；任何时刻计数器为0的对象是不可能再被引用的。</div><div class="line"></div><div class="line">  这种方法实现简单，判断效率也很高；但是该算法有一个致命的缺点就是难以解决对象相互引用的问题：</div><div class="line"></div><div class="line">试想有两个对象，相互持有对方的引用，而没有别的对象引用到这两者，那么这两个对象就是无用的对象，</div><div class="line"></div><div class="line">理应被回收，但是由于他们互相持有对方的引用，因此他们的引用计数器不为0，因此他们不能被回收。</div></pre></td></tr></table></figure>
+<h4 id="可达性分析算法"><a href="#可达性分析算法" class="headerlink" title="可达性分析算法"></a><strong>可达性分析算法</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">为了解决上面循环引用的问题，Java采用了一种全新的算法——可达性分析算法。这个算法的核心思想是，</div><div class="line"></div><div class="line">通过一系列称为“GC Roots”的对象作为起始点，从这些结点开始向下搜索，搜索所走过的路径成为“引用链”，</div><div class="line"></div><div class="line">当一个对象到GC Roots没有一个对象相连时，则证明此对象是不可用的(不可达)。</div></pre></td></tr></table></figure>
+<p><img src="https://user-images.githubusercontent.com/11883853/70894604-4a90b680-2028-11ea-8428-72d065404617.png" alt="image"></p>
+<p>在Java语言中，可作为GC Roots的对象包括下面几种：</p>
+<ol>
+<li>上面说的JVM栈(栈帧数据中的本地变量表)中引用的对象。</li>
+<li>方法区中类静态属性引用的对象。</li>
+<li>方法区中常量引用的对象。</li>
+<li>Native方法栈中JNI引用的对象。</li>
+</ol>
+<p>需要注意一点，即使在可达性分析算法中不可达对象，也并非是“非死不可”的，要真正宣告一个对象的死亡，至少需要经历两次标记的过程：</p>
+<p>  如果一个对象在进行可达性分析之后发现没有与GC Roots相连的引用链，那么他将会第一次标记。</p>
+<p>当对象没有复写finalize()方法，或者finalize()方法已经被虚拟机调用过，虚拟机讲着两种情况都视为“没有必要执行finalize()方法”。</p>
+<p>  如果这个对象被判定为有必要执行finalize()方法，那么这个对象会被加入一个“F-Queue”队列中，并在稍后由一个虚拟机建立的、优先级低的Finalize线程，去触发这个方法，但并不承诺会等待他运行结束。</p>
+<p>  finalize()方法是对象逃脱死亡厄运的最后一次机会，稍后的GC会对在“F-Queue”队列中的对象进行第二次小规模的标记；</p>
+<p>  如果对象要在finalize()中拯救自己，只需要重新与引用链上的对象就行关联即可，那么在第二次标记时它将被移出“即将回收”的集合；</p>
+<p>  如果对象这个时候还是没有逃脱，那基本上他就真的被回收了。</p>
+<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a><strong>引用</strong></h4><p>无论是引用计数法还是可达性分析算法，判断对象的存活与否都与“引用”有关。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">在JDK1.2之前，“引用”的解释为：</div><div class="line"></div><div class="line">如果reference类型的数据中储存的数值代表的是另外一块内存的起始地址，就称这个数据代表着一个引用。</div><div class="line"></div><div class="line">在JDK1.2之后，Java对引用的概念进行了扩充，将引用分为强引用、软引用、弱引用、虚引用。</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>强引用：就是指在程序代码之中普遍存在的，类似于“Object obj = new Object();”这样的引用，只要强引用还存在，垃圾回收器永远不会回收掉被引用的对象。</p>
+</li>
+<li><p>软引用：用来描述一些还有用但并非必须的对象。对于软引用关联的对象，在系统将要发生内存溢出异常之前，将会把这些对象列进回收的范围，进行第二次回收——如果这次回收还没有腾出足够的内存，才会内存溢出抛出异常。在JDK1.2之后，提供了SoftReference来实现软引用。</p>
+</li>
+<li><p>弱引用：也是用来描述非必须对象的，但是他的强度比软引用更弱一些。被弱引用引用的对象，只能生存到下一次GC之前，当GC发生时，无论无论当前内存是否足够，都会回收掉被弱引用关联的对象。JDK1.2之后，提供了WeakRefernce类来实现弱引用。</p>
+</li>
+<li><p>虚引用：是最弱的一种引用，一个对象有虚引用的存在，完全不会对其生存时间构成影响，也无法通过虚引用来获得一个对象的实例。为一个对象设置一个虚引用关联的唯一目的就是能够在这个对象呗收集器回收的的时候收到一个系统的通知。</p>
+</li>
+</ul>
+<h3 id="如何回收"><a href="#如何回收" class="headerlink" title="如何回收"></a><strong>如何回收</strong></h3><ul>
+<li>标记清除算法 (Mark-Sweep)<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">标记-清除算法分为两个阶段：标记阶段和清除阶段。</div><div class="line"></div><div class="line">标记阶段的任务是标记出所有需要被回收的对象，</div><div class="line"></div><div class="line">清除阶段就是回收被标记的对象所占用的空间。</div><div class="line"></div><div class="line">  这种算法的缺点是容易产生内存碎片，碎片太多可能会导致后续过程中需要为大对象分配空间时无法找到足够的空间而提前触发新的一次垃圾收集动作。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/12/16/Q4IDD1.png" alt="Q4IDD1.png"></p>
+<ul>
+<li>复制算法 (Copying)<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">复制算法将可用内存按容量划分为大小相等的两块，每次只使用其中的一块。当这一块的内存用完了，就将还存活着的对象复制到另外一块上面，</div><div class="line"></div><div class="line">然后再把已使用的另一半内存空间中的对象一次性全部清理掉，这样一来就不容易出现内存碎片的问题。</div><div class="line"></div><div class="line">这种算法的优点就是，实现简单，运行高效且不容易产生内存碎片；缺点也显而易见：将可用内存缩小为了原来的一半，代价非常高昂。</div><div class="line"></div><div class="line">从算法原理我们可以看出Copying算法的效率跟存活对象的数目多少有很大的关系，如果存活对象很多，</div><div class="line"></div><div class="line">那么Copying算法的效率将会大大降低（要复制的对象比较多）。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/12/16/Q4Ic4O.png" alt="Q4Ic4O.png"></p>
+<ul>
+<li>标记整理算法 (Mark-Compact)<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">该算法标记阶段和Mark-Sweep一样，但是在完成标记之后，它不是直接清理可回收对象，而是将存活对象都向一端移动，然后清理掉端边界以外的内存。</div><div class="line"></div><div class="line">  这种算法特别适用于存活对象多，回收对象少的情况，因为回收的对象少，标记完了之后需要移动的对象就相对较少。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://s2.ax1x.com/2019/12/16/Q4I2CD.png" alt="Q4I2CD.png"></p>
+<ul>
+<li>分代回收算法<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">当前的商业虚拟机的垃圾收集器都采用“分代收集”算法，这种算法并没有什么新的思想，</div><div class="line"></div><div class="line">只是根据对象的存活的周期不同将内存划分为几块。</div><div class="line"></div><div class="line">前面我们说过，</div><div class="line"></div><div class="line">复制算法：适用于存活对象很少，回收对象多；</div><div class="line"></div><div class="line">标记整理算法：适用于存活对象多，回收对象很少的情况。这两种算法情况正好互补！</div><div class="line"></div><div class="line">一般情况下我们把Java的对分为新生代和老年代，在新生代，每次垃圾收集时，都会有大批的对象死去，</div><div class="line"></div><div class="line">只有少量存活，因此适用复制算法；而在老年代，因为对象存活率高、没有额外的空间对它进行分配担保，</div><div class="line"></div><div class="line">就必须使用“标记-清除”或者“标记-整理”算法来进行回收。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>下面我们详细了解下分代回收：</p>
+<p>上面我们已经简略的说过Java堆和Dalvik堆的区别，这里我们复习一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Java堆用于存放对象实例，几乎所有的对象(实例变量，数组)都</div><div class="line"></div><div class="line">在该区域分配,是内存回收的主要区域；Dalvik将堆分成了</div><div class="line"></div><div class="line">Active堆和Zygote堆，zygote堆是Zygote进程在启动时的预加</div><div class="line"></div><div class="line">载的类、资源和对象；除此之外所有的对象,包括我们在代码中创</div><div class="line"></div><div class="line">建的实例、静态域和数组，都是储存在Active堆里边。</div></pre></td></tr></table></figure></p>
+<p><img src="https://s2.ax1x.com/2019/12/16/Q4o5z4.png" alt="Q4o5z4.png"></p>
+<ul>
+<li><p>Java堆按照对象存活的时间可分为新生代和老年代</p>
+</li>
+<li><p>新生代又分为三个部分：一个内存较大的Eden区，和两个内存较小且大小相同的Survivor区，比例为8：1：1.</p>
+</li>
+<li><p>Eden区存放新生的对象</p>
+</li>
+<li><p>Survivor存放每次垃圾回收后存活的对象</p>
+</li>
+</ul>
+<h4 id="新生代又分为三个部分：一个内存较大的Eden区，和两个内存较小且大小相同的Survivor区，比例为8：1：1"><a href="#新生代又分为三个部分：一个内存较大的Eden区，和两个内存较小且大小相同的Survivor区，比例为8：1：1" class="headerlink" title="新生代又分为三个部分：一个内存较大的Eden区，和两个内存较小且大小相同的Survivor区，比例为8：1：1."></a>新生代又分为三个部分：一个内存较大的Eden区，和两个内存较小且大小相同的Survivor区，比例为8：1：1.</h4><p>对象的内存分配，主要分配在新生代的Eden(伊甸园)区上，当Eden区没有足够的空间进行分配时，虚拟机将发起一次“复制算法”的GC，在这个过程中，存活下来的对象被放到Survivor 0区；当第二次GC来临的时候，Survivor 0空间的存活对象也需要再次用复制算法，放到Survivor 1空间，二把刚刚分配对象的Survivor 0空间和Eden空间清除；第三次GC时，又把Survivor 1空间的存活对象复制到Survivor 0的空间，就这样来回倒腾。</p>
+<p>  通过上面的分析我们不难理解新生代为什么这么分配了：Eden区是对象分配的主要区域，这是很频繁的，尤其是大量的局部变量产生的临时对象，因此他占的比例为8/10，</p>
+<p>这个区域分配的对象大多数都是“朝生夕灭”，因此存活下来的对象较少，故采用“复制算法”； 至于两个Survivor的比例为什么是1:1，这个应该很好理解。</p>
+<blockquote>
+<p>注：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"> GC是统计学测算出当内存使用超过98%以上时，内存就应该被minor gc时回收一次。但是实际应用中，</div><div class="line"></div><div class="line">我们不能较真的只给他们留下2%，换句话说当内存使用达到98%时才GC 就有点晚了，应该是多一些预留10%内存空间，</div><div class="line"></div><div class="line">这预留下来的空间我们称为S区（有两个s区  s1 和  s0），S区是用来存储新生代GC后存活下来的对象，</div><div class="line"></div><div class="line">而我们知道新生代GC算法使用的是复制回收算法。</div><div class="line"></div><div class="line"> 所以我们实际GC发生是在，新生代内存使用达到90%时开始进行，复制存活的对象到S1区，</div><div class="line"></div><div class="line">要知道GC结束后在S1区活下来的对象，需要放回给S0区，也就是对调(对调是指，两个S区位置互换,</div><div class="line"></div><div class="line">意味着再一次minor gc 时的区域  是eden 加，上一次存活的对象放入的S区)，既然能对调，其实就是两个区域一般大。</div><div class="line"></div><div class="line">这也是为什么会再有个10%的S0区域出来。</div><div class="line"></div><div class="line">这样比例就是8:1:1了!!（80%：s1:s0=80%:10%:10%=8:1:1）这里的eden区（80%） 和其中的一个  S区（10%） 合起来共占据90%，</div><div class="line"></div><div class="line">GC就是清理的他们，始终保持着其中一个  S  区是空留的，保证GC的时候复制存活的对象有个存储的地方。</div></pre></td></tr></table></figure>
+<h4 id="什么样的对象会被移入老生带？"><a href="#什么样的对象会被移入老生带？" class="headerlink" title="什么样的对象会被移入老生带？"></a>什么样的对象会被移入老生带？</h4><ul>
+<li><p>新生代中经历过15次GC的对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">虚拟机给每个对象定义了一个对象年龄计数器，如果对象在Eden出生并经过第一次GC后仍然存活，</div><div class="line"></div><div class="line">将被移动到Survivor空间中，并且对象的年龄设为1；对象在Survivor区中每“熬过”一个GC，</div><div class="line"></div><div class="line">年龄就增加1岁，当它年龄增加到一定程度(默认为15岁)，就会晋升到老年带中。</div></pre></td></tr></table></figure>
+</li>
+<li><p>大对象直接进入老年代</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">所谓大对象是指，需要连续内存空间的Java对象，最典型的大对象就是那种很长的字符串以及数组，</div><div class="line"></div><div class="line">虚拟机提供了一个PretenureSizeThreshold参数，令大于这个这个值的对象直接在老生代中分配。</div><div class="line"></div><div class="line">这样做主要是为了避免在Eden区和两个Survivor区之间复制算法执行的时候产生大量的内存复制。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="触发GC的类型"><a href="#触发GC的类型" class="headerlink" title="触发GC的类型"></a>触发GC的类型</h4><p>了解这些是为了解决实际问题，Java虚拟机会把每次触发GC的信息打印出来来帮助我们分析问题，所以掌握触发GC的类型是分析日志的基础。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">GC_FOR_MALLOC: 表示是在堆上分配对象时内存不足触发的GC。</div><div class="line"></div><div class="line">GC_CONCURRENT: 当我们应用程序的堆内存达到一定量，或者可以理解为快要满的时候，系统会自动触发GC操作来释放内存。</div><div class="line"></div><div class="line">GC_EXPLICIT: 表示是应用程序调用System.gc、</div><div class="line">VMRuntime.gc接口或者收到SIGUSR1信号时触发的GC。</div><div class="line"></div><div class="line">GC_BEFORE_OOM: 表示是在准备抛OOM异常之前进行的最后努力而触发的GC。</div></pre></td></tr></table></figure>
+<h4 id="安卓分配与回收"><a href="#安卓分配与回收" class="headerlink" title="安卓分配与回收"></a>安卓分配与回收</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Android系统并不会对Heap中空闲内存区域做碎片整理。系统仅仅会在新的内存分配之前判断Heap的尾端剩余空间是否足够，</div><div class="line"></div><div class="line">如果空间不够会触发gc操作，从而腾出更多空闲的内存空间。</div><div class="line"></div><div class="line">  在Android的高级系统版本里面针对Heap空间有一个Generational Heap Memory的模型，</div><div class="line"></div><div class="line">这个思想和JVM的逐代回收法很类似，就是最近分配的对象会存放在Young Generation区域，</div><div class="line"></div><div class="line">当这个对象在这个区域停留的时间达到一定程度，它会被移动到Old Generation，最后累积一定时间再移动到Permanent Generation区域。</div><div class="line"></div><div class="line">系统会根据内存中不同的内存数据类型分别执行不同的gc操作。</div></pre></td></tr></table></figure>
+<h2 id="内存优化意义"><a href="#内存优化意义" class="headerlink" title="内存优化意义"></a><strong>内存优化意义</strong></h2><p>通过上面的分析，可以总结出内存优化主要有以下几个意义:</p>
+<ul>
+<li><p>减少OOM，提高应用稳定性</p>
+</li>
+<li><p>减少卡顿，提高应用流畅度</p>
+</li>
+<li><p>减少内存占用，提高应用后台运行时的存活率</p>
+</li>
+<li><p>减少异常发生，减少代码逻辑隐患</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/性能优化/" rel="tag">#性能优化</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/13/Hexo-Github-Next-GoDaddy搭建博客/" rel="next" title="Hexo+Github+Next+GoDaddy搭建博客">
+                <i class="fa fa-chevron-left"></i> Hexo+Github+Next+GoDaddy搭建博客
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/04/性能优化之内存优化-实践篇/" rel="prev" title="性能优化之内存优化-实践篇">
+                性能优化之内存优化-实践篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2019/12/03/性能优化之内存优化-理论篇/"
+           data-title="性能优化之内存优化-理论篇" data-url="http://qq451682583.github.io/2019/12/03/性能优化之内存优化-理论篇/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/site.png"
+               alt="LZH" />
+          <p class="site-author-name" itemprop="name">LZH</p>
+          <p class="site-description motion-element" itemprop="description">ZHBlog</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qq451682583" target="_blank" title="GitHub">
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/your-user-name" target="_blank" title="Twitter">
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/5446495923/home?wvr=5" target="_blank" title="微博">
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/your-user-name" target="_blank" title="豆瓣">
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/your-user-name" target="_blank" title="知乎">
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LZH</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ZHBlog"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

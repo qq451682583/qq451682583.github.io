@@ -1,0 +1,1050 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="性能优化," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="ZHBlog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="[TOC]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="性能优化之内存优化-实践篇">
+<meta property="og:url" content="http://qq451682583.github.io/2019/12/04/性能优化之内存优化-实践篇/index.html">
+<meta property="og:site_name" content="ZHBlog">
+<meta property="og:description" content="[TOC]">
+<meta property="og:updated_time" content="2020-03-09T13:45:06.992Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="性能优化之内存优化-实践篇">
+<meta name="twitter:description" content="[TOC]">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'BLCJ'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://qq451682583.github.io/2019/12/04/性能优化之内存优化-实践篇/"/>
+
+  <title> 性能优化之内存优化-实践篇 | ZHBlog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">ZHBlog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                性能优化之内存优化-实践篇
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-12-04T19:39:55+08:00" content="2019-12-04">
+              2019-12-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/优化/" itemprop="url" rel="index">
+                    <span itemprop="name">优化</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2019/12/04/性能优化之内存优化-实践篇/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/12/04/性能优化之内存优化-实践篇/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]<br><a id="more"></a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><p>如果在内存泄漏发生后再去找原因并修复会增加开发成本，最好是在编写代码时就能够很好地考虑到内存问题，写出更高质量的代码。内存优化主要包含两个方面:</p>
+<ul>
+<li>避免内存泄漏</li>
+<li>优化内存空间</li>
+</ul>
+<h2 id="避免内存泄漏"><a href="#避免内存泄漏" class="headerlink" title="避免内存泄漏"></a><strong>避免内存泄漏</strong></h2><h3 id="资源对象未关闭"><a href="#资源对象未关闭" class="headerlink" title="资源对象未关闭"></a><strong>资源对象未关闭</strong></h3><hr>
+<p>对于使用了BraodcastReceiver，ContentObserver，File，Cursor，Stream，Bitmap等资源的代码，应该在Activity销毁时及时关闭或者注销，否则这些资源将不会被回收，造成内存泄漏。</p>
+<h3 id="监听器没有注销造成的内存泄漏"><a href="#监听器没有注销造成的内存泄漏" class="headerlink" title="监听器没有注销造成的内存泄漏"></a><strong>监听器没有注销造成的内存泄漏</strong></h3><hr>
+<p>在Android程序里面存在很多需要register与unregister的监听器，我们需要确保及时unregister监听器。</p>
+<h3 id="监听器没有注销造成的内存泄漏-1"><a href="#监听器没有注销造成的内存泄漏-1" class="headerlink" title="监听器没有注销造成的内存泄漏"></a><strong>监听器没有注销造成的内存泄漏</strong></h3><hr>
+<p>我们通常把一些对象的引用加入到了集合容器（比如ArrayList）中，当我们不需要该对象时，<br>并没有把它的引用从集合中清理掉，这样这个集合就会越来越大。如果这个集合是static的话，那情况就更严重了。<br>所以要在退出程序之前，将集合里的东西clear，然后置为null，再退出程序。</p>
+<h3 id="持有Context造成的内存泄漏"><a href="#持有Context造成的内存泄漏" class="headerlink" title="持有Context造成的内存泄漏"></a><strong>持有Context造成的内存泄漏</strong></h3><hr>
+<p>在Android中有两种context对象:Activity和Application.当我们给一个类传递context的时候经常使用第一种,而这样就导致了改类持有对Activity的全部引用,当Activity关闭的时候因为被其他类持有,而导致无法正常被回收,而导致内存泄漏</p>
+<p><strong>解决方案:</strong></p>
+<p>在给其他给传递context的时候使用Application对象,这个对象的生命周期和共存亡,而不依赖activity的声明周期.<br>而对context的引用不要超过他本身的生命周期,谨慎对context使用static关键字.</p>
+<h3 id="使用单利模式造成的内存泄漏"><a href="#使用单利模式造成的内存泄漏" class="headerlink" title="使用单利模式造成的内存泄漏"></a><strong>使用单利模式造成的内存泄漏</strong></h3><hr>
+<p>在我们使用单利模式的时候如果使用不当也会造成内存泄漏.因为单利模式的静态特征使得单利模式的生命周期和应用一样的长,这说明了当一个对象不需要使用了,而单利对象还存在该对象的引用,那么这个对象就不能正常的被回收,就造成了内存泄漏</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//这句代码默认传入的是Activity的Context,而Activity是间接继承自Context的,当Activity退出之后,单例对象还持有他的引用</span></div><div class="line">XXUtils.getInstance(<span class="keyword">this</span>);</div></pre></td></tr></table></figure>
+<p><strong>解决方案:</strong><br>在单例中通过传入的context获取到全局的上下文对象,而不使用Activity的Context就解决了这个问题.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="title">XXUtils</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        mContext = context.getApplicationContext();</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="类的静态变量持有大数据对象"><a href="#类的静态变量持有大数据对象" class="headerlink" title="类的静态变量持有大数据对象"></a><strong>类的静态变量持有大数据对象</strong></h3><hr>
+<p>静态变量长期维持对象的引用，阻止垃圾回收，如果静态变量持有大的数据对象，如Bitmap等，就很容易引起内存不足的问题。</p>
+<h3 id="WebView内存泄漏"><a href="#WebView内存泄漏" class="headerlink" title="WebView内存泄漏"></a><strong>WebView内存泄漏</strong></h3><hr>
+<p>Android中的WebView不仅仅存在很大的兼容性问题，不同Android系统版本中的WebView会有较大的差异，加上不同厂商定制的ROM中的WebView也存在差异，更严重的是WebView都存在内存泄漏的问题，在应用中只要使用一个WebView，内存就不会被释放掉。通常解决这个问题的办法就是为WebView开启独立的一个进程，使用AIDL与应用的主进程进行通信，WebView所在的进程可以更具业务的需要选择合适的时机进行销毁，达到正常释放内存的目的。</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/aa5a99b565e7" target="_blank" rel="external">webview内存泄漏终极解决方案</a></p>
+</blockquote>
+<h3 id="内部类造成的内存泄漏"><a href="#内部类造成的内存泄漏" class="headerlink" title="内部类造成的内存泄漏"></a><strong>内部类造成的内存泄漏</strong></h3><hr>
+<ul>
+<li>举个例子<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> str = <span class="string">"hello"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methed1</span><span class="params">()</span></span>&#123;</div><div class="line">            System.out.println(str);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  <span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methed1</span><span class="params">()</span></span>&#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>同样这是一个简单的内部类，B为静态的内部类，使用jad反编译后可以看到如下代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span></span></div><div class="line">    &#123;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methed1</span><span class="params">()</span></span></div><div class="line">        &#123;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">B</span><span class="params">()</span></span></div><div class="line">        &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span></div><div class="line">    &#123;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methed1</span><span class="params">()</span></span></div><div class="line">        &#123;</div><div class="line">            System.out.println(str);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">final</span> MyClass <span class="keyword">this</span>$<span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">A</span><span class="params">()</span></span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">this</span>$<span class="number">0</span> = MyClass.<span class="keyword">this</span>;</div><div class="line">            <span class="keyword">super</span>();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyClass</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        str = <span class="string">"hello"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String str;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到非静态的内部类会默认持有外部类的引用，这也是为什么内部类可以访问外部类的私有成员，而静态的内部类ClassB则不会有外部类的引用，所以不会造成内存泄漏。</p>
+<h4 id="同样的原理，类似的问题还会发生在"><a href="#同样的原理，类似的问题还会发生在" class="headerlink" title="同样的原理，类似的问题还会发生在:"></a>同样的原理，类似的问题还会发生在:</h4><ul>
+<li>Runnable</li>
+<li>Handler</li>
+<li>TimerTask</li>
+<li>AsyncTask</li>
+</ul>
+<p>等类似的情况，所以我们平常使用的时候一定要在避免直接使用内部类，推荐的做法是使用静态内部类+弱应用去处理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> MESSAGECODE = <span class="number">1</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Handler handler;<span class="comment">//静态</span></div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        <span class="comment">/** 创建Handler */</span></div><div class="line">        handler = <span class="keyword">new</span> MyHandler(<span class="keyword">this</span>);</div><div class="line">        <span class="comment">/** 创建线程并且启动线程 */</span></div><div class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> MyRunnable()).start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment">/** 1、避免Handler引用activity造成的内存泄漏：使用静态内部类+ 使用弱引用 */</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">        WeakReference&lt;MyActivity&gt; weakReference;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyHandler</span><span class="params">(MyActivity activity)</span> </span>&#123;</div><div class="line">            weakReference = <span class="keyword">new</span> WeakReference&lt;MyActivity&gt;(activity);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>.handleMessage(msg);</div><div class="line">            <span class="keyword">if</span> (weakReference.get() != <span class="keyword">null</span>) &#123;</div><div class="line">                <span class="comment">// update android ui</span></div><div class="line">                Log.d(<span class="string">"GLog"</span>, <span class="string">"handler "</span> + msg.what);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/** 2、避免非静态Runnable内部类引用activity造成的内存泄漏 */</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            handler.sendEmptyMessage(MESSAGECODE);</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                Thread.sleep(<span class="number">8000</span>);</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">            handler.sendEmptyMessage(MESSAGECODE);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onDestroy();</div><div class="line">        <span class="comment">/** 3、如果参数为null的话，会将所有的Callbacks和Messages全部清除掉。 */</span></div><div class="line">        handler.removeCallbacksAndMessages(<span class="keyword">null</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="如何找到项目中存在的内存泄漏"><a href="#如何找到项目中存在的内存泄漏" class="headerlink" title="如何找到项目中存在的内存泄漏"></a>如何找到项目中存在的内存泄漏</h4><p>1、确定是否存在内存泄漏</p>
+<ul>
+<li><p>Android Monitors分析内存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">记录动作发生之前GC完的内存大小，然后记录动作发生之后GC完后的内存大小，两个比较大小，如果内存变大的话，则可能存在内存泄漏。</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用MAT内存分析工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">MAT分析heap的总内存占用大小来初步判断是否存在内存泄漏</div><div class="line">Heap视图中有一个Type叫data object,即数据对象，也就是我们程序中大量存在的类型的对象。</div><div class="line">在data object中有一项“Total Size”，其值就是当前进程中所有Java数据对象的内存总来过。</div><div class="line">进行操作前和操作后的内存的大小比较。正常情况下Total Size值都会稳定在一个有限的范围内，</div><div class="line">也就是没有内存泄漏。如果值不断增大，则可以初步判断这个操作导致了内存泄漏。</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>2、先找到怀疑对象（哪些对象属于泄漏的）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MAT对比操作前后的hprof来定位内存泄漏了什么数据对象。（这样做可以排除一些对象，不用后面去查看所有被引用的对象是否有嫌疑）。</div><div class="line">快速定位到操作前后所持有的对象哪些是增加了的（GC后还是比之前多出来的对象就可能是内存泄漏的源头）。</div><div class="line">技巧：Histogram中还可以对对象进行Grpup By Package更方便查看自己包里的对象信息。</div></pre></td></tr></table></figure></p>
+<p>3、MAT分析hprof来定位内存泄漏的原因（哪个对象持有了上面怀疑出来的发生泄漏的对象）</p>
+<ul>
+<li><p>Dump出内存泄露“当时”的内存镜像hprof，分析怀疑泄露的类；</p>
+</li>
+<li><p>把上面2得出的这些嫌疑犯一个一个排查个遍。</p>
+</li>
+<li><p>hprof-conv D:\before.hprof D:\after.hprof</p>
+</li>
+</ul>
+<h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><ol>
+<li><p>进入Histogram，过滤出某一个嫌疑对象类</p>
+</li>
+<li><p>然后分析持有此类对象引用的外部对象（在该类上面点击右键List Objects—&gt;with incoming references）</p>
+</li>
+<li><p>再过滤掉一些弱引用、软引用、虚引用，因为它们迟早可以被GC干掉不属于内存泄露(在类上面点击右键Merge Shortest Paths to GC Roots—&gt;exclude all phantom/soft etc.references)</p>
+</li>
+<li><p>逐个分析每个对象的GC路径是否正常</p>
+</li>
+</ol>
+<h4 id="退出app后，GC后，产看系统进程里的所有的View和Activity对象是否为0"><a href="#退出app后，GC后，产看系统进程里的所有的View和Activity对象是否为0" class="headerlink" title="退出app后，GC后，产看系统进程里的所有的View和Activity对象是否为0"></a>退出app后，GC后，产看系统进程里的所有的View和Activity对象是否为0</h4><p>Android Monitors–System Information–Memory Usage查看</p>
+<h2 id="优化内存空间"><a href="#优化内存空间" class="headerlink" title="优化内存空间"></a><strong>优化内存空间</strong></h2><p>没有内存泄漏，并不意味着内存就不需要优化了，再移动设备上，由于物理设备的存储空间有限，Android系统对每个应用进程也都分配了有限的堆内存，因此使用最小内存的对象或者资源可以减少内存开销，同时让GC能更高效的回收不在需要使用的对象，让应用堆内存保持充足的可用内存，使应用更稳定高效的运行。</p>
+<h3 id="对象引用"><a href="#对象引用" class="headerlink" title="对象引用"></a><strong>对象引用</strong></h3><hr>
+<p>在JDK1.2之前，“引用”的解释为：如果reference类型的数据中储存的数值代表的是另外一块内存的起始地址，就称这个数据代表着一个引用。在JDK1.2之后，Java对引用的概念进行了扩充，将引用分为强引用、软引用、弱引用、虚引用。</p>
+<p>无论是引用计数法还是可达性分析算法，判断对象的存活与否都与“引用”有关。</p>
+<p>从以上我们知道不同的引用类型，在GC时的策略是不同的，因此根据业务需求合理使用不同引用，以提高内存的使用效率。</p>
+<h3 id="注解代替枚举"><a href="#注解代替枚举" class="headerlink" title="注解代替枚举"></a><strong>注解代替枚举</strong></h3><hr>
+<ul>
+<li>举个例子</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Number &#123;</div><div class="line">    One,</div><div class="line">    Two,</div><div class="line">    Three,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这是一个简单的枚举类，javac编译Number后生成字节码， 我们看看Numbers.class到底有什么，因为字节码比较晦涩难懂，我们用jad反编译成Java来看看<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.</span></div><div class="line"><span class="comment">// Jad home page: http://www.kpdus.com/jad.html</span></div><div class="line"><span class="comment">// Decompiler options: packimports(3) </span></div><div class="line"><span class="comment">// Source File Name:   Number.java</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Number</span> <span class="keyword">extends</span> <span class="title">Enum</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Number[] values()</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> (Number[])$VALUES.clone();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Number <span class="title">valueOf</span><span class="params">(String s)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> (Number)Enum.valueOf(Number, s);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Number</span><span class="params">(String s, <span class="keyword">int</span> i)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">super</span>(s, i);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Number One;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Number Two;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Number Three;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Number $VALUES[];</div><div class="line"></div><div class="line">    <span class="keyword">static</span> </div><div class="line">    &#123;</div><div class="line">        One = <span class="keyword">new</span> Number(<span class="string">"One"</span>, <span class="number">0</span>);</div><div class="line">        Two = <span class="keyword">new</span> Number(<span class="string">"Two"</span>, <span class="number">1</span>);</div><div class="line">        Three = <span class="keyword">new</span> Number(<span class="string">"Three"</span>, <span class="number">2</span>);</div><div class="line">        $VALUES = (<span class="keyword">new</span> Number[] &#123;</div><div class="line">            One, Two, Three</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>从上面得到如下结论：</p>
+<ul>
+<li><p>枚举类是继承于java.lang.Enum的类。</p>
+</li>
+<li><p>枚举值是类对象， 且是静态常量(被static final修饰)。</p>
+</li>
+<li><p>静态代码块内实例化枚举值，由于静态代码块的语法特性，该代码块只执行一次；</p>
+</li>
+<li><p>默认值0、1、2是在编译时生成的。</p>
+</li>
+<li><p>枚举类比常量更占内存， 因为一个Java对象至少占16个字节，  而Number包含了3个Java对象；而使用3个整型替换的话，只占用4 * 3即12个字节。</p>
+</li>
+<li><p>枚举的构造函数是私有的， 防止new出对象。</p>
+</li>
+</ul>
+<p>下面改用注解实现， Android提供了IntDef和StringDef注解，用于编译期的类型检查。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Number</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> ONE = <span class="number">1</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TWO = <span class="number">2</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> THREE = <span class="number">3</span>;</div><div class="line"> </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String STR_ONE = <span class="string">"ONE"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String STR_TWO = <span class="string">"TWO"</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String STR_THREE = <span class="string">"THREE"</span>;</div><div class="line"> </div><div class="line">    <span class="meta">@IntDef</span>(&#123;ONE, TWO, THREE&#125;)</div><div class="line">    <span class="meta">@Retention</span>(RetentionPolicy.SOURCE)</div><div class="line">    <span class="keyword">public</span> <span class="meta">@interface</span> NumberInt &#123;</div><div class="line"> </div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="meta">@StringDef</span>(&#123;STR_ONE, STR_TWO, STR_THREE&#125;)</div><div class="line">    <span class="meta">@Retention</span>(RetentionPolicy.SOURCE)</div><div class="line">    <span class="keyword">public</span> <span class="meta">@interface</span> NumberString &#123;</div><div class="line"> </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="减少不必要的内存开销"><a href="#减少不必要的内存开销" class="headerlink" title="减少不必要的内存开销"></a><strong>减少不必要的内存开销</strong></h3><hr>
+<h4 id="AutoBoxing-自动装箱"><a href="#AutoBoxing-自动装箱" class="headerlink" title="AutoBoxing(自动装箱)"></a>AutoBoxing(自动装箱)</h4><p>Java 中的变量分为两种：原始型与引用型。</p>
+<p>为了在泛型集合中使用基础类型的功能，Java 提供了对应的对象版本，提供了与基础整型相同的功能，但可以使用于泛型集合。</p>
+<p>一共存在8个原始型变量以及与各个原始变量对应的8个引用变量(包装类)。</p>
+<p>自动拆装箱的目的就是自动地将基础类型与它们的对象版本相互转化，这样你就不用操心你代码中的这些转化了。例如 Integer value = 0 当中，将整型的 0 自动的转化为 Integer 的对象。</p>
+<p>举个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Integer total = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">  total += i;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看起来不需要写多余的代码就把事情完成了，事实上，第二个版本是这样子的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Integer total = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">  total += <span class="keyword">new</span> Integer(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到每次加上之前都要创建新的整数对象，将这个和第一个基础版本相比有着双重影响。</p>
+<ul>
+<li><p>第一，这占用更多的内存，因为整形只有 4 字节，整数对象有 16 字节；</p>
+</li>
+<li><p>第二，创建对象需要耗费更多性能。不仅在循环中会出现这样的问题，当你在集合中使用基础类型时，也会出现这样的问题，特别地，对于 HashMap 这样的容器，只要你使用了基础类型，在进行插入、编辑或检索时就会产生一个基础类型和装箱对象。</p>
+</li>
+</ul>
+<p>为了避免 HashMap 的自动装箱行为，Android 系统提供了 SparseBoolArray，SparseIntArray，SparseLongArray，LongSparseArray 等容器，可减少运行时间开支，减少内存使用。</p>
+<h4 id="内存复用"><a href="#内存复用" class="headerlink" title="内存复用"></a>内存复用</h4><ul>
+<li><p>有效利用系统自带的资源。<br>Android系统本身内置了大量的资源，比如一些通用的字符串、颜色定义、常用Icon图片，还有些动画和页面的样式以及简单布局。</p>
+</li>
+<li><p>视图复用。<br>出现大量重复子组件，而子组件是大量重复的，可以使用ViewHolder实现ConvertView复用，这基本上是所有容器控件的处理方式，如ListView、RecycleView、GridView等。</p>
+</li>
+<li><p>对象池。<br>可以在设计程序时显示地在程序中创建对象池，然后实现复用逻辑，对相同的类型数据使用同一块内存空间，也可以利用系统框架既有的具有复用特性的组件减少对象的重复创建，从而减少内存的分配与回收。</p>
+<ul>
+<li>SynchronizedPool</li>
+<li><p>Message</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</div><div class="line"></div><div class="line"><span class="keyword">public</span> String id;</div><div class="line"></div><div class="line">  <span class="keyword">public</span> String name;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> SynchronizedPool&lt;User&gt; sPool = <span class="keyword">new</span> SynchronizedPool&lt;User&gt;(</div><div class="line">      <span class="number">10</span>);</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> User <span class="title">obtain</span><span class="params">()</span> </span>&#123;</div><div class="line">  User instance = sPool.acquire();</div><div class="line">  <span class="keyword">return</span> (instance != <span class="keyword">null</span>) ? instance : <span class="keyword">new</span> User();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">recycle</span><span class="params">()</span> </span>&#123;</div><div class="line">      sPool.release(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们在申请实例化时调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//从对象池中获取，第一次对象池没有，会直接new一个,如果有会复用</span></div><div class="line">User user = User.obtain();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Bitmap对象的复用。<br>利用Bitmap中的inBitmap的高级特性，提高Android系统在Bitmap的分配与释放效率，不仅可以达到内存复用，还提高了读写速度。</p>
+</li>
+</ul>
+<p>使用inBitmap属性可以告知Bitmap解码器去尝试使用已经存在的内存区域，新解码的Bitmap会尝试去使用之前那张Bitmap在Heap中所 占据的pixel data内存区域，而不是去问内存重新申请一块区域来存放Bitmap。利用这种特性，即使是上千张的图片，也只会仅仅只需要占用屏幕所能够显示的图片数量的内存大小</p>
+<h3 id="图片内存优化"><a href="#图片内存优化" class="headerlink" title="图片内存优化"></a><strong>图片内存优化</strong></h3><hr>
+<ul>
+<li><p>设置位图规格</p>
+<p>  |  Format    | Bit Per Pixel  |<br>  |  :—-:    | :—-:         |<br>  | ARGB_8888  | 32             |<br>  | RGB_565    | 16             |<br>  | ARGB_4444  | 16             |<br>  | ALPHA_8    | 8              |</p>
+<p>  除了大图模式，一般都可以使用，并且几乎看不出差别。只要满足以下其中一点就可以考虑使用RGB_565：</p>
+<ul>
+<li><p>显示局部图片，比如列表中的小图片</p>
+</li>
+<li><p>小屏幕手机或者对图片质量要求不高，不需要Alpha通道的场景，可以使用RGB_565。</p>
+<p>如果需要更小的格式，但又需要透明通道，可以尝试ARGB_444图像格式。它减少了一半的数据，但保留了透明通道，视觉差异变化较大，一般用于用户头像，特别是圆角的头像，可以尝试使用ARGB_4444看看效果。</p>
+<p>Alpha_8格式主要用于Alpha通道模板，相当于做一个染色。图像要渲染两次，虽然减少内存，但增加了绘制的开销。</p>
+<p>在Android的基本文件结构中不支持PNG、JPEG、WEBP格式，因此，需要解码后的位图功能，通过设置inPreferredConfig参数来实现不同的位图规格，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">BitmapFactory.Options options = <span class="keyword">new</span> BitmapFactory.Options();</div><div class="line">options.inPreferredConfig = Bitmap.Config.RGB_565;</div><div class="line">BitmapFactory.decodeStream(is, <span class="keyword">null</span>, options);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>inSampleSize</p>
+</li>
+</ul>
+<p>如果内存中的图片大于屏幕显示出的图片大小，或者大于指定屏幕区域的大小，这些高分辨率图片会占用内存堆中的大量空间，使应用空间变小，然后重置这些图片大小，让它们符合实际显示的大小，既能减少内存的开销，也能提高显示的效率，这样载入内存的图片规格符合实际显示规格，而不是完整的分辨率。位图功能对象中的inSampleSize属性实现了位图的缩放功能，<br>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">BitmapFactory.Options options = <span class="keyword">new</span> BitmapFactory.Options();</div><div class="line">options.inSampleSize = <span class="number">4</span>;</div><div class="line">BitmapFactory.decodeStream(is, <span class="keyword">null</span>, options);</div></pre></td></tr></table></figure>
+<p>将这个属性设置为1时，可以在不加载完整大小的前提下，生成一张只有原始图片部分大小的新图片，如inSampleSize为2时获得只有1/2大小的图片，同理设置为4就是1/4大小的图片。</p>
+<ul>
+<li>inScaled，inDensity和inTargetDensity</li>
+</ul>
+<p>虽然inSampleSize可以实现图片的缩放，都是指数幂的缩放，如果想更细地缩放图片，就需要使用位图的inScaled、inDensity和inTargetDensity功能，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">BitmapFactory.Options options = <span class="keyword">new</span> BitmapFactory.Options();</div><div class="line">options.inScaled = <span class="keyword">true</span>;</div><div class="line">options.inDensity = srcWidth; <span class="comment">//inDensity为资源文件夹对应的像素密度</span></div><div class="line">options.inTargetDensity = dstWidth; <span class="comment">//inTargetDensity为设备的像素密度</span></div><div class="line">BitmapFactory.decodeStream(is, <span class="keyword">null</span>, options);</div><div class="line"><span class="comment">//目标设备上图片的像素数的计算公式：(pixWidth / inDensity * inTargetDensity) * (pixHeight / inDensity * inTargetDensity)</span></div></pre></td></tr></table></figure>
+<ul>
+<li>inBitmap</li>
+</ul>
+<p>Android 3.0（API level 11）引进了BitmapFactory.Options.inBitmap字段，如果设置了该属性，那么当使用了带有该Options参数的decode方法加载内容时，decode方法会尝试重用一个已经存在的位图。这就意味着位图内存已经被重用了，从而改善了性能，并且没有内存的分配和释放过程。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//首先以原尺寸加载图片a，这里图片a和图片b的尺寸相同</span></div><div class="line">BitmapFactory.Options options = <span class="keyword">new</span> BitmapFactory.Options();</div><div class="line">options.inMutable = <span class="keyword">true</span>;</div><div class="line">options.inDensity = <span class="number">160</span>;</div><div class="line">options.inTargetDensity = <span class="number">160</span>;</div><div class="line">Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.a, options);</div><div class="line">Log.i(TAG, <span class="string">"bitmap = "</span> + bitmap);</div><div class="line">Log.i(TAG, <span class="string">"bitmap.size = "</span> + bitmap.getByteCount());</div><div class="line">Log.i(TAG, <span class="string">"bitmap.allocSize = "</span> + bitmap.getAllocationByteCount());</div><div class="line"></div><div class="line"><span class="comment">//然后复用a图片，解码b图片。</span></div><div class="line">options.inBitmap = bitmap;</div><div class="line"><span class="comment">//注意这里解码得到的图片宽高为原始尺寸的一半</span></div><div class="line">options.inDensity = <span class="number">160</span>;</div><div class="line">options.inTargetDensity = <span class="number">80</span>;</div><div class="line">options.inMutable = <span class="keyword">true</span>;</div><div class="line">options.inSampleSize = <span class="number">1</span>;</div><div class="line">Bitmap bitmapAIO = BitmapFactory.decodeResource(getResources(), R.drawable.b, options);</div><div class="line">Log.i(TAG, <span class="string">"bitmapAIO = "</span> + bitmapAIO);</div><div class="line">Log.i(TAG, <span class="string">"bitmap.size = "</span> + bitmap.getByteCount());</div><div class="line">Log.i(TAG, <span class="string">"bitmap.allocSize = "</span> + bitmap.getAllocationByteCount());</div><div class="line">Log.i(TAG, <span class="string">"bitmapAIO.size = "</span> + bitmapAIO.getByteCount());</div><div class="line">Log.i(TAG, <span class="string">"bitmapAIO.allocSize = "</span> + bitmapAIO.getAllocationByteCount());</div><div class="line"></div><div class="line">输出：</div><div class="line">bitmap = android.graphics.Bitmap@<span class="number">9f</span>b5d09</div><div class="line">bitmap.size = <span class="number">8294400</span></div><div class="line">bitmap.allocSize = <span class="number">8294400</span></div><div class="line"></div><div class="line">bitmapAIO = android.graphics.Bitmap@<span class="number">9f</span>b5d09</div><div class="line">bitmap.size = <span class="number">2073600</span></div><div class="line">bitmap.allocSize = <span class="number">8294400</span></div><div class="line">bitmapAIO.size = <span class="number">2073600</span></div><div class="line">bitmapAIO.allocSize = <span class="number">8294400</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://blog.csdn.net/showdy/article/details/54378637" target="_blank" rel="external">浅谈BitmapFactory.Options</a></p>
+</blockquote>
+<h3 id="使用最优的数据类型"><a href="#使用最优的数据类型" class="headerlink" title="使用最优的数据类型"></a><strong>使用最优的数据类型</strong></h3><hr>
+<p>使用ArrayMap/SparseArray来代替HashMap，ArrayMap/SparseArray是专门为移动设备设计的高效的数据结构。</p>
+<ul>
+<li><p>HashMap缺点</p>
+<ul>
+<li><p>HashMap内部使用一个默认容量为16的数组来存储数据，采用拉链法解决hash冲突（数组+链表），就算没有数据，也需要分配默认16个元素的数组</p>
+</li>
+<li><p>一旦数据量达到Hashmap限定容量的75%，就将按两倍扩容</p>
+</li>
+</ul>
+</li>
+<li><p>SparseArray</p>
+<ul>
+<li>支持int类型，避免自动装箱，但是也只支持int类型的key</li>
+<li>内部通过两个数组来进行数据存储的，一个存储key，另外一个存储value</li>
+<li>因为key是int，在查找时，采用二分查找，效率高，SparseArray存储的元素都是按元素的key值从小到大排列好的。 （Hashmap通过遍历Entry数组来获取对象）</li>
+<li>默认初始size为0，每次增加元素，size++</li>
+</ul>
+</li>
+<li><p>ArrayMap</p>
+<ul>
+<li><p>跟SparseArray一样，内部两个数组，但是第一个存key的hash值，一个存value，对象按照key的hash值排序，二分查找也是按照hash</p>
+</li>
+<li><p>查找index时，传入key，计算出hash，通过二分查找hash数组，确定index</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="避免在onDraw方法里面执行对象的创建"><a href="#避免在onDraw方法里面执行对象的创建" class="headerlink" title="避免在onDraw方法里面执行对象的创建"></a><strong>避免在onDraw方法里面执行对象的创建</strong></h3><hr>
+<p>类似onDraw等频繁调用的方法，一定需要注意避免在这里做创建对象的操作，因为他会迅速增加内存的使用，而且很容易引起频繁的gc，甚至是内存抖动。</p>
+<h3 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a><strong>StringBuilder</strong></h3><hr>
+<p>在有些时候，代码中会需要使用到大量的字符串拼接的操作，这种时候有必要考虑使用StringBuilder来替代频繁的“+”。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/性能优化/" rel="tag">#性能优化</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/03/性能优化之内存优化-理论篇/" rel="next" title="性能优化之内存优化-理论篇">
+                <i class="fa fa-chevron-left"></i> 性能优化之内存优化-理论篇
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/30/性能优化之内存优化-操作篇/" rel="prev" title="性能优化之内存优化-操作篇">
+                性能优化之内存优化-操作篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2019/12/04/性能优化之内存优化-实践篇/"
+           data-title="性能优化之内存优化-实践篇" data-url="http://qq451682583.github.io/2019/12/04/性能优化之内存优化-实践篇/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/site.png"
+               alt="LZH" />
+          <p class="site-author-name" itemprop="name">LZH</p>
+          <p class="site-description motion-element" itemprop="description">ZHBlog</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qq451682583" target="_blank" title="GitHub">
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/your-user-name" target="_blank" title="Twitter">
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/5446495923/home?wvr=5" target="_blank" title="微博">
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://douban.com/people/your-user-name" target="_blank" title="豆瓣">
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/your-user-name" target="_blank" title="知乎">
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LZH</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ZHBlog"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
