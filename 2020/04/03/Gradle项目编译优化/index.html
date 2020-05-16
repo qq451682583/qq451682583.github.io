@@ -6,15 +6,15 @@
 
 
 <html class="theme-next mist use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -37,23 +37,23 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="gradle," />
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="ZHBlog" type="application/atom+xml" />
+  <meta name="keywords" content="gradle,">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1" />
+
+  <link rel="alternate" href="/atom.xml" title="ZHBlog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1">
 
 
 
@@ -61,13 +61,15 @@
 
 
 <meta name="description" content="[TOC]">
+<meta name="keywords" content="gradle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gradle项目编译优化">
 <meta property="og:url" content="http://qq451682583.github.io/2020/04/03/Gradle项目编译优化/index.html">
 <meta property="og:site_name" content="ZHBlog">
 <meta property="og:description" content="[TOC]">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://wanghaoxun.com/img/Gradle 执行流程.jpg">
-<meta property="og:updated_time" content="2020-04-03T14:26:26.784Z">
+<meta property="og:updated_time" content="2020-04-03T14:26:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gradle项目编译优化">
 <meta name="twitter:description" content="[TOC]">
@@ -92,12 +94,12 @@
 
 
 
-  <link rel="canonical" href="http://qq451682583.github.io/2020/04/03/Gradle项目编译优化/"/>
+  <link rel="canonical" href="http://qq451682583.github.io/2020/04/03/Gradle项目编译优化/">
 
   <title> Gradle项目编译优化 | ZHBlog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -118,12 +120,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">ZHBlog</span>
       <span class="logo-line-after"><i></i></span>
@@ -150,7 +152,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -160,7 +162,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -170,7 +172,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -180,7 +182,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -190,7 +192,7 @@
         <li class="menu-item menu-item-guestbook">
           <a href="/guestbook" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             留言
           </a>
@@ -200,7 +202,7 @@
         <li class="menu-item menu-item-commonweal">
           <a href="/404.html" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
             
             公益404
           </a>
@@ -213,7 +215,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -256,7 +258,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -285,14 +287,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/Gradle/" itemprop="url" rel="index">
                     <span itemprop="name">Gradle</span>
                   </a>
@@ -345,7 +347,7 @@
 <li>这三个是不一样滴</li>
 </ol>
 <p>gradle &amp; gradlew &amp; android plugin gradlew </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Makefile - C/C++ 组织动态链接库和文件</div><div class="line"># Java 简单点</div><div class="line">javac HelloWorld.java</div><div class="line">java HelloWorld</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Makefile - C/C++ 组织动态链接库和文件</span><br><span class="line"># Java 简单点</span><br><span class="line">javac HelloWorld.java</span><br><span class="line">java HelloWorld</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Eclipse-Ant 编译，没准备让人看懂</li>
 <li>Maven-XML，编译 XML 大几千行，像 Spring 项目，基本没法编辑</li>
@@ -366,7 +368,7 @@
 <ul>
 <li>AGP-Android Gradle Plugin</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">classpath &apos;com.android.tools.build:gradle:3.5.0&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">classpath &apos;com.android.tools.build:gradle:3.5.0&apos;</span><br></pre></td></tr></table></figure>
 <p>AGP 代码也是个 jar包，用了就会生成很多 Task</p>
 <p>TODO3：gradle-agp-souce.jpg</p>
 <p>Android 和 Java 不一样，它有 Resource 文件，要生成 resource id-R.id 文件，还有 Manifest，AIDL 等等，AGP 添加了很多 Task，最后生成 module aar 包。AGP 就是帮你在 Android 中把包打出来。</p>
@@ -440,7 +442,7 @@
 <h2 id="3-1-gradle-的问题（APT、ABI、Version）"><a href="#3-1-gradle-的问题（APT、ABI、Version）" class="headerlink" title="3.1 gradle 的问题（APT、ABI、Version）"></a>3.1 gradle 的问题（APT、ABI、Version）</h2><ul>
 <li>如果想知道 compile 执行过程，可以执行如下 command:</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 会把 gradle 执行结果上传到服务器，帮助我们更加精细化的分析编译中遇到的问题</div><div class="line">./gradlew run --scan</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 会把 gradle 执行结果上传到服务器，帮助我们更加精细化的分析编译中遇到的问题</span><br><span class="line">./gradlew run --scan</span><br></pre></td></tr></table></figure>
 <p>TODO8：gradle-task-run-scan.jpg</p>
 <ul>
 <li>改一行底层 core 模块，一个八竿子打不着的模块产生了编译？</li>
@@ -466,18 +468,18 @@
 <p>apt 修复好了，但是和 core 模块相关的，增量编译时会产生一次全量编译。</p>
 <p>TODO13：gradle-apt-processor-path.jpg</p>
 <p>要使用 apt，需要告诉 gradle apt 文件在哪里？扫描 apt，在扫描文件看有没有变化。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">javaCompileOptions &#123;</div><div class="line">    annotationProcessorOptions &#123;</div><div class="line">        // compile 项目模块的源文件</div><div class="line">        includeCompileClasspath = true</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">javaCompileOptions &#123;</span><br><span class="line">    annotationProcessorOptions &#123;</span><br><span class="line">        // compile 项目模块的源文件</span><br><span class="line">        includeCompileClasspath = true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>由于 includeCompileClasspath 为 true，当你修改模块一行代码，会造成 apt 重新全量编译，整个模块全量编译，天呐！</p>
 <p>TODO14：gradle-apt-processor-path-fix.jpg</p>
 <ul>
 <li>APT 增量编译</li>
 </ul>
-<p>gradle 5.x 之后 APT 支持增量编译，官方文档：<a href="https://blog.gradle.org/incremental-compiler-avoidance" target="_blank" rel="external">https://blog.gradle.org/incremental-compiler-avoidance</a></p>
+<p>gradle 5.x 之后 APT 支持增量编译，官方文档：<a href="https://blog.gradle.org/incremental-compiler-avoidance" target="_blank" rel="noopener">https://blog.gradle.org/incremental-compiler-avoidance</a></p>
 <p>TODO15：gradle-apt-increment.jpg</p>
 <ul>
 <li>RenderScript Src 设置错误导致 core 重复编译</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">renderscript.srcDirs = [&apos;src&apos;]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">renderscript.srcDirs = [&apos;src&apos;]</span><br></pre></td></tr></table></figure>
 <p>renderscript 编译造成了 resource 重新编译，引起了 R 文件重新编译，于是我们项目又开始了重新编译，很可怕！可以算工伤。</p>
 <h3 id="3-1-3-AGP-amp-Gradle-version"><a href="#3-1-3-AGP-amp-Gradle-version" class="headerlink" title="3.1.3 AGP &amp; Gradle version"></a>3.1.3 AGP &amp; Gradle version</h3><ul>
 <li>升级 AGP 与 Gradle </li>
@@ -499,7 +501,7 @@
 </ul>
 <p>TODO19: gradle-apg-transform-dex.jpg</p>
 <p>分为 DirInput 和 JarInput 2 种情况，顶层项目 CRMApp （apply andorid plugin）生成 dir，其它所有 module 都会变成 jar 包，传进去 transform 里。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">* DirInput</div><div class="line">* Jar -&gt; 解压 -&gt; class -&gt; D8/DX(脱糖) -&gt; class -&gt; 合并 -&gt; dex</div><div class="line"></div><div class="line">java 1.8 ，Android 真正可以执行 1.6，需要进行处理。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* DirInput</span><br><span class="line">* Jar -&gt; 解压 -&gt; class -&gt; D8/DX(脱糖) -&gt; class -&gt; 合并 -&gt; dex</span><br><span class="line"></span><br><span class="line">java 1.8 ，Android 真正可以执行 1.6，需要进行处理。</span><br></pre></td></tr></table></figure>
 <p>如果在 module 中改了一行代码，造成了 class 修改，transform 只知道 jar 包变了，不知道哪个 class 变了，只能解压，编译以下，合并到一个 dex 中，就这么可怕！</p>
 <h3 id="3-2-2-Transform-增量优化"><a href="#3-2-2-Transform-增量优化" class="headerlink" title="3.2.2 Transform 增量优化"></a>3.2.2 Transform 增量优化</h3><ul>
 <li>Transform-Incremental-Build</li>
@@ -512,13 +514,13 @@
 <p>问题：怎么知道哪个 class 增量编译下？</p>
 <p>只能解压出来，计算下 diff，看哪些变化了，哪些被删除了。我们需要算每个文件的 md5 值，要哪个是加的哪个是减的哪个是删的，很慢！</p>
 <p>所有的 task 利用线程池并行执行，比如解压计算 CRC32-类似 MD5，好多都是同步执行，这里利用协程并行解压 Diff</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">所有 Module 全量解压 20s -&gt; 2s</div><div class="line">Core 增量解压 2s -&gt; 600ms</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">所有 Module 全量解压 20s -&gt; 2s</span><br><span class="line">Core 增量解压 2s -&gt; 600ms</span><br></pre></td></tr></table></figure>
 <p>结果：DexBuilder: 30s -&gt; 5s</p>
 <ol>
 <li>DexMerger</li>
 </ol>
 <p>暂时没有好的办法 :(</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. API 21 以上，每个 JarInput 作为一个dex，每个Dir 作为一个Dex</div><div class="line">2. 21、22 有 100 个 dex 的限制</div><div class="line">3. 设置 minSdk 23 能加快 10s</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. API 21 以上，每个 JarInput 作为一个dex，每个Dir 作为一个Dex</span><br><span class="line">2. 21、22 有 100 个 dex 的限制</span><br><span class="line">3. 设置 minSdk 23 能加快 10s</span><br></pre></td></tr></table></figure>
 <p>5.0,6.0 有个 bug，如果 dex 超过 100个的话，会把所有 dex 合起来再打个大的 dex，打到一起很慢~</p>
 <p>可以升级 minSdk 23 来解决，但是升级后，打出来的 dex 数量超多，2000 多个，安装很慢~</p>
 <h2 id="3-3-Avoid-Compile"><a href="#3-3-Avoid-Compile" class="headerlink" title="3.3 Avoid Compile"></a>3.3 Avoid Compile</h2><p>APT 加速后，9m -&gt; 5m -&gt; 3:30m 还是太慢</p>
@@ -535,10 +537,10 @@
 <p>TODO23：gradle-apt-seperate.jpg</p>
 <p>目前关联 Core 的模块不用编译了，但是 Core 里面使用了 APT 还是很慢。</p>
 <p>假如 Core 模块是纯 Java 代码，不是 KAPT，APT 和 Compile 都是由 JavacCompile Task 执行的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// Google 提供的 API，但有个风险，会造成不拷贝资源文件</div><div class="line">android.enableSeparateAnnotationProcessing=true</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// Google 提供的 API，但有个风险，会造成不拷贝资源文件</span><br><span class="line">android.enableSeparateAnnotationProcessing=true</span><br></pre></td></tr></table></figure>
 <p>经常造成 Singleton.getxxx，找不到资源的问题。</p>
 <p>修复分离后没有 copy res</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">## 3.4 我们还做了很多</div><div class="line"></div><div class="line">1. 增强 InvokerPlugin，修复 Class 重复或 Jar 包找不到</div><div class="line"></div><div class="line">解决 duplicate class 问题，虽然你可以快速编译，但是来个这个幺蛾子错误，又得重新编译，10m 又过去了。省的时间又还给你们了。</div><div class="line"></div><div class="line">2. 兼容处理 AS 和 Shell混编，不需要频繁 clean</div><div class="line">3. AnnotationWrap 分离，减少 APT 扫描耗时</div><div class="line">4. 等等等</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">## 3.4 我们还做了很多</span><br><span class="line"></span><br><span class="line">1. 增强 InvokerPlugin，修复 Class 重复或 Jar 包找不到</span><br><span class="line"></span><br><span class="line">解决 duplicate class 问题，虽然你可以快速编译，但是来个这个幺蛾子错误，又得重新编译，10m 又过去了。省的时间又还给你们了。</span><br><span class="line"></span><br><span class="line">2. 兼容处理 AS 和 Shell混编，不需要频繁 clean</span><br><span class="line">3. AnnotationWrap 分离，减少 APT 扫描耗时</span><br><span class="line">4. 等等等</span><br></pre></td></tr></table></figure>
 <h2 id="3-4-我们还能做什么"><a href="#3-4-我们还能做什么" class="headerlink" title="3.4 我们还能做什么"></a>3.4 我们还能做什么</h2><ol>
 <li>AS 3.5 apply change &amp; InstantRun</li>
 <li>类似 Freeline class 和 res 增量</li>
@@ -579,13 +581,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay"/>
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay"/>
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -648,7 +650,7 @@
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -668,8 +670,7 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2020/04/03/Gradle项目编译优化/"
-           data-title="Gradle项目编译优化" data-url="http://qq451682583.github.io/2020/04/03/Gradle项目编译优化/">
+      <div class="ds-thread" data-thread-key="2020/04/03/Gradle项目编译优化/" data-title="Gradle项目编译优化" data-url="http://qq451682583.github.io/2020/04/03/Gradle项目编译优化/">
       </div>
     
   </div>
@@ -695,17 +696,15 @@
       
 
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/img/site.png"
-               alt="LZH" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/img/site.png" alt="LZH">
           <p class="site-author-name" itemprop="name">LZH</p>
           <p class="site-description motion-element" itemprop="description">ZHBlog</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -784,7 +783,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -806,7 +805,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2020</span>

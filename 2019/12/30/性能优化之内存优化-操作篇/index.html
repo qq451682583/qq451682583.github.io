@@ -6,15 +6,15 @@
 
 
 <html class="theme-next mist use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -37,23 +37,23 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="性能优化," />
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="ZHBlog" type="application/atom+xml" />
+  <meta name="keywords" content="性能优化,">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1" />
+
+  <link rel="alternate" href="/atom.xml" title="ZHBlog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1">
 
 
 
@@ -61,11 +61,13 @@
 
 
 <meta name="description" content="[TOC]">
+<meta name="keywords" content="性能优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="性能优化之内存优化-操作篇">
 <meta property="og:url" content="http://qq451682583.github.io/2019/12/30/性能优化之内存优化-操作篇/index.html">
 <meta property="og:site_name" content="ZHBlog">
 <meta property="og:description" content="[TOC]">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s2.ax1x.com/2020/01/06/lsU8iD.md.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2020/01/06/lsUJRH.md.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2020/01/06/lsUGJe.md.jpg">
@@ -80,7 +82,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2020/01/08/l2HExf.md.jpg">
 <meta property="og:image" content="https://s2.ax1x.com/2020/01/09/lWGWdI.md.png">
 <meta property="og:image" content="https://s2.ax1x.com/2020/01/09/lWG4FP.md.png">
-<meta property="og:updated_time" content="2020-03-09T13:45:06.992Z">
+<meta property="og:updated_time" content="2020-03-09T13:45:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="性能优化之内存优化-操作篇">
 <meta name="twitter:description" content="[TOC]">
@@ -105,12 +107,12 @@
 
 
 
-  <link rel="canonical" href="http://qq451682583.github.io/2019/12/30/性能优化之内存优化-操作篇/"/>
+  <link rel="canonical" href="http://qq451682583.github.io/2019/12/30/性能优化之内存优化-操作篇/">
 
   <title> 性能优化之内存优化-操作篇 | ZHBlog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -131,12 +133,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">ZHBlog</span>
       <span class="logo-line-after"><i></i></span>
@@ -163,7 +165,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -173,7 +175,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -183,7 +185,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -193,7 +195,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -203,7 +205,7 @@
         <li class="menu-item menu-item-guestbook">
           <a href="/guestbook" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             留言
           </a>
@@ -213,7 +215,7 @@
         <li class="menu-item menu-item-commonweal">
           <a href="/404.html" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
             
             公益404
           </a>
@@ -226,7 +228,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -269,7 +271,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -298,14 +300,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/优化/" itemprop="url" rel="index">
                     <span itemprop="name">优化</span>
                   </a>
@@ -350,18 +352,18 @@
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h2><p>内存泄漏的排查我们主要结合以下两个工具:</p>
 <ul>
 <li>Memory Profiler</li>
-<li><a href="https://github.com/Tencent/matrix" target="_blank" rel="external">Matrix</a> &amp; <a href="https://www.eclipse.org/downloads/download.php?file=/mat/1.9.1/rcp/MemoryAnalyzer-1.9.1.20190826-macosx.cocoa.x86_64.zip" target="_blank" rel="external">MAT</a></li>
+<li><a href="https://github.com/Tencent/matrix" target="_blank" rel="noopener">Matrix</a> &amp; <a href="https://www.eclipse.org/downloads/download.php?file=/mat/1.9.1/rcp/MemoryAnalyzer-1.9.1.20190826-macosx.cocoa.x86_64.zip" target="_blank" rel="noopener">MAT</a></li>
 </ul>
 <h2 id="Memory-Profiler使用"><a href="#Memory-Profiler使用" class="headerlink" title="Memory Profiler使用"></a><strong>Memory Profiler使用</strong></h2><ul>
 <li><p>如何打开Memory Profiler？</p>
 <p>  Android Studio -&gt; View -&gt; Tool Windows -&gt; Profiler</p>
-<p>  <a href="https://imgchr.com/i/lsU8iD" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/06/lsU8iD.md.jpg" alt="lsU8iD.md.jpg"></a></p>
+<p>  <a href="https://imgchr.com/i/lsU8iD" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/06/lsU8iD.md.jpg" alt="lsU8iD.md.jpg"></a></p>
 <p>  最后进入Memory Profiler</p>
-<p>  <a href="https://imgchr.com/i/lsUJRH" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/06/lsUJRH.md.jpg" alt="lsUJRH.md.jpg"></a></p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">为什么要去观察应用内存的使用情况？</div><div class="line"></div><div class="line">之前也提到了内存泄漏和抖动,会触发频繁的GC，导致应用卡顿，anr，oom问题</div><div class="line"></div><div class="line">在Android系统内存管理上，它是提供一套内存回收机制去</div><div class="line"></div><div class="line">回收无用的对象，其实就是Dalvik虚拟机的垃圾回收器，</div><div class="line"></div><div class="line">当垃圾回收器启动回收机制的时候，其实会对应用的运行产</div><div class="line"></div><div class="line">生一点影响，但是这种影响来说一般微乎其微，察觉不到。</div><div class="line"></div><div class="line">但是如果你的内存分配比垃圾回收快很多，这种情况可能导</div><div class="line"></div><div class="line">致垃圾回收器回收内存不及时，从而导致应用出现卡顿的现</div><div class="line"></div><div class="line">象.(这其实就是内存抖动所产生的影响). 另外一个问题就</div><div class="line"></div><div class="line">是内存泄漏，内存的持续泄漏可能导致内存溢出，从而app</div><div class="line"></div><div class="line">运行出现outofmem异常。</div><div class="line"></div><div class="line">Memory Profiler通过以下方面防治上面出现的问题：</div><div class="line"></div><div class="line"><span class="number">1</span>，观察不必要的内存分配。（这种内存分配导致效率降低）</div><div class="line"></div><div class="line"><span class="number">2</span>，Dump the Java heap 去观察指定时间对象的在内存中</div><div class="line"></div><div class="line">的分配情况，若干次Dump能够帮助你发现内存泄漏</div><div class="line"></div><div class="line"><span class="number">3</span>，测试极端的用户交互情况下的内存分配（比如说狂点某个</div><div class="line"></div><div class="line">请求按钮），看看内存使用情况如何，是否出现内存抖动.</div></pre></td></tr></table></figure>
+<p>  <a href="https://imgchr.com/i/lsUJRH" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/06/lsUJRH.md.jpg" alt="lsUJRH.md.jpg"></a></p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">为什么要去观察应用内存的使用情况？</span><br><span class="line"></span><br><span class="line">之前也提到了内存泄漏和抖动,会触发频繁的GC，导致应用卡顿，anr，oom问题</span><br><span class="line"></span><br><span class="line">在Android系统内存管理上，它是提供一套内存回收机制去</span><br><span class="line"></span><br><span class="line">回收无用的对象，其实就是Dalvik虚拟机的垃圾回收器，</span><br><span class="line"></span><br><span class="line">当垃圾回收器启动回收机制的时候，其实会对应用的运行产</span><br><span class="line"></span><br><span class="line">生一点影响，但是这种影响来说一般微乎其微，察觉不到。</span><br><span class="line"></span><br><span class="line">但是如果你的内存分配比垃圾回收快很多，这种情况可能导</span><br><span class="line"></span><br><span class="line">致垃圾回收器回收内存不及时，从而导致应用出现卡顿的现</span><br><span class="line"></span><br><span class="line">象.(这其实就是内存抖动所产生的影响). 另外一个问题就</span><br><span class="line"></span><br><span class="line">是内存泄漏，内存的持续泄漏可能导致内存溢出，从而app</span><br><span class="line"></span><br><span class="line">运行出现outofmem异常。</span><br><span class="line"></span><br><span class="line">Memory Profiler通过以下方面防治上面出现的问题：</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>，观察不必要的内存分配。（这种内存分配导致效率降低）</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>，Dump the Java heap 去观察指定时间对象的在内存中</span><br><span class="line"></span><br><span class="line">的分配情况，若干次Dump能够帮助你发现内存泄漏</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>，测试极端的用户交互情况下的内存分配（比如说狂点某个</span><br><span class="line"></span><br><span class="line">请求按钮），看看内存使用情况如何，是否出现内存抖动.</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Memory Profiler主面板介绍</p>
-<p>  <a href="https://imgchr.com/i/lsUGJe" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/06/lsUGJe.md.jpg" alt="lsUGJe.md.jpg"></a></p>
+<p>  <a href="https://imgchr.com/i/lsUGJe" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/06/lsUGJe.md.jpg" alt="lsUGJe.md.jpg"></a></p>
 <ol>
 <li><p>添加需要观察的线程</p>
 </li>
@@ -373,7 +375,7 @@
 <li>实时播放内存分配情况（这个按钮点下试试便清楚了）</li>
 <li>发生一些事件的记录(如Activity的跳转，事件的输入，屏幕的旋转)</li>
 <li><p>内存使用时间线包含多少内存被使用（左边的y轴），还有顶上的颜色标记内存的类型，<br>右边的y轴表明分配对象的个数,另外出现垃圾回收事件会有一个小图标.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">关于顶部的几种内存类型介绍：</div><div class="line"></div><div class="line">Java : java代码分配的内存</div><div class="line"></div><div class="line">Native:c/c++代码分配的内存(有时候其实并没有使用到c/c++代码,但还是会有Native的内存分配，因为Android Framework会去通过java代码访问一些需要使用Native的资源，如图像资源Bitmap)</div><div class="line"></div><div class="line">Graphics:图像缓存等，包括GL surfaces, GL textures等.</div><div class="line"></div><div class="line">Stack:栈内存（包括java和c/c++）</div><div class="line"></div><div class="line">Code:代码的内存分配（例如代码，资源，libs等等）</div><div class="line"></div><div class="line">Other:这个是连系统都不知道是什么类型的内存，放在这里.</div><div class="line"></div><div class="line">Allocated: java分配的对象个数 (在Android7.1和以下的设备，这个计数是在设备连接后开始，所以并不是app启动时候的计数。Android8.0或更高，在系统里面内置的Profiler工具，所以无论什么时候连接，都是app启动时候的计数)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">关于顶部的几种内存类型介绍：</span><br><span class="line"></span><br><span class="line">Java : java代码分配的内存</span><br><span class="line"></span><br><span class="line">Native:c/c++代码分配的内存(有时候其实并没有使用到c/c++代码,但还是会有Native的内存分配，因为Android Framework会去通过java代码访问一些需要使用Native的资源，如图像资源Bitmap)</span><br><span class="line"></span><br><span class="line">Graphics:图像缓存等，包括GL surfaces, GL textures等.</span><br><span class="line"></span><br><span class="line">Stack:栈内存（包括java和c/c++）</span><br><span class="line"></span><br><span class="line">Code:代码的内存分配（例如代码，资源，libs等等）</span><br><span class="line"></span><br><span class="line">Other:这个是连系统都不知道是什么类型的内存，放在这里.</span><br><span class="line"></span><br><span class="line">Allocated: java分配的对象个数 (在Android7.1和以下的设备，这个计数是在设备连接后开始，所以并不是app启动时候的计数。Android8.0或更高，在系统里面内置的Profiler工具，所以无论什么时候连接，都是app启动时候的计数)</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
@@ -385,7 +387,7 @@
 <li><p>对象分配的栈调用，是在哪个线程中调用的</p>
 </li>
 <li><p>对象的释放时间</p>
-<p><a href="https://imgchr.com/i/lsyHpV" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/06/lsyHpV.md.jpg" alt="lsyHpV.md.jpg"></a></p>
+<p><a href="https://imgchr.com/i/lsyHpV" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/06/lsyHpV.md.jpg" alt="lsyHpV.md.jpg"></a></p>
 <p>下面是重头戏，查看对象分配情况，也就是我们前面提到需要关注什么类型对象被分配，分配了多大的空间。</p>
 <ol>
 <li>在Class Name列看一下有没有异常分配的对象，个数很多，占用内存比较大。点击头部Class Name进行一个按字母排序操作，点击Class Name面板下面的类名可以看到Instance View面板详细的对象信息.</li>
@@ -406,22 +408,22 @@
 <li>每个对象在代码中的使用位置</li>
 <li><p>对象分配的调用栈情况</p>
 <p>捕获一个heap dump在工具栏中点击之前面板介绍中的按钮<br>4，稍等一会儿便能够看到类似于之前记录内存分配后的面板弹出。</p>
-<p><a href="https://imgchr.com/i/lsWU6P" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/06/lsWU6P.md.png" alt="lsWU6P.md.png"></a></p>
+<p><a href="https://imgchr.com/i/lsWU6P" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/06/lsWU6P.md.png" alt="lsWU6P.md.png"></a></p>
 <p>在上面图片中可以看到如下列：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Class Name : 这个很好理解，就是类名</div><div class="line"></div><div class="line">Alloc Count : 对象个数</div><div class="line"></div><div class="line">Native Size : c/c++层内存大小(bytes)</div><div class="line"></div><div class="line">Shallow Size : java层内存大小(bytes)</div><div class="line"></div><div class="line">Retained Size : 这个是这个类中所引用到的对象的总大小 * 该类对象的个数</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Class Name : 这个很好理解，就是类名</span><br><span class="line"></span><br><span class="line">Alloc Count : 对象个数</span><br><span class="line"></span><br><span class="line">Native Size : c/c++层内存大小(bytes)</span><br><span class="line"></span><br><span class="line">Shallow Size : java层内存大小(bytes)</span><br><span class="line"></span><br><span class="line">Retained Size : 这个是这个类中所引用到的对象的总大小 * 该类对象的个数</span><br></pre></td></tr></table></figure>
 <p>当点击app heap下拉列表会出现3个选项</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Default heap: 默认堆</div><div class="line"></div><div class="line">App heap: app中的堆分配</div><div class="line"></div><div class="line">Image heap: 图像的堆分配</div><div class="line"></div><div class="line">Zygote heap: 这个按照官方的解释是来自安卓系统fork进程的地方产生的写数据备份</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Default heap: 默认堆</span><br><span class="line"></span><br><span class="line">App heap: app中的堆分配</span><br><span class="line"></span><br><span class="line">Image heap: 图像的堆分配</span><br><span class="line"></span><br><span class="line">Zygote heap: 这个按照官方的解释是来自安卓系统fork进程的地方产生的写数据备份</span><br></pre></td></tr></table></figure>
 <p>当点击Arrange by class下拉列表会出现3个选项</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Arrange by class:根据类名进行分组</div><div class="line"></div><div class="line">Arrange by package:根据包名进行分组</div><div class="line"></div><div class="line">Arrange by callstack:根据调用栈进行分配</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Arrange by class:根据类名进行分组</span><br><span class="line"></span><br><span class="line">Arrange by package:根据包名进行分组</span><br><span class="line"></span><br><span class="line">Arrange by callstack:根据调用栈进行分配</span><br></pre></td></tr></table></figure>
 <p>当我们点击其中一个类的时候会弹出一个新的Instance View面板，见上图:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">每列中包括以下：</div><div class="line"></div><div class="line">Depth: GC root到达该实例的最短跳数.</div><div class="line"></div><div class="line">Native Size: c/c++层中内存的大小(bytes)</div><div class="line"></div><div class="line">Shallow Size:java层内存大小(bytes)</div><div class="line"></div><div class="line">Retained Size:这个类中所引用到的对象的总大小(bytes)</div><div class="line"></div><div class="line">另外补充一下，heap dump是看不到调用栈信息的.也就是时间段图中的Call Stack面板.</div><div class="line"></div><div class="line">分析你的heap,按照一下步骤.</div><div class="line"></div><div class="line">1,浏览Class Name列表,看看有没有大量对象存在，并且</div><div class="line">这些对象你认为是不应该存在的，可能存在内存泄漏的情况. 点击类名可以看到详细的对象信息.</div><div class="line"></div><div class="line">2,在这个Instance View面板中，点击一个实例References面板就会显示出来，里面都是使用该Instance的Reference，点击剪头可以看到引用它的所有区域。点击鼠标右键可以选择go to instance去看到引用该引用的引用，或者jump to source去看调用的源代码.</div><div class="line"></div><div class="line">另外heap dump也是可以保存成为HPROF文件的,点击上图左侧Heap Dump按钮即可保存起来，用于以后分析，或用作其它工具分析(MAT).</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">每列中包括以下：</span><br><span class="line"></span><br><span class="line">Depth: GC root到达该实例的最短跳数.</span><br><span class="line"></span><br><span class="line">Native Size: c/c++层中内存的大小(bytes)</span><br><span class="line"></span><br><span class="line">Shallow Size:java层内存大小(bytes)</span><br><span class="line"></span><br><span class="line">Retained Size:这个类中所引用到的对象的总大小(bytes)</span><br><span class="line"></span><br><span class="line">另外补充一下，heap dump是看不到调用栈信息的.也就是时间段图中的Call Stack面板.</span><br><span class="line"></span><br><span class="line">分析你的heap,按照一下步骤.</span><br><span class="line"></span><br><span class="line">1,浏览Class Name列表,看看有没有大量对象存在，并且</span><br><span class="line">这些对象你认为是不应该存在的，可能存在内存泄漏的情况. 点击类名可以看到详细的对象信息.</span><br><span class="line"></span><br><span class="line">2,在这个Instance View面板中，点击一个实例References面板就会显示出来，里面都是使用该Instance的Reference，点击剪头可以看到引用它的所有区域。点击鼠标右键可以选择go to instance去看到引用该引用的引用，或者jump to source去看调用的源代码.</span><br><span class="line"></span><br><span class="line">另外heap dump也是可以保存成为HPROF文件的,点击上图左侧Heap Dump按钮即可保存起来，用于以后分析，或用作其它工具分析(MAT).</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
 </ul>
 <h2 id="MAT的使用"><a href="#MAT的使用" class="headerlink" title="MAT的使用"></a><strong>MAT的使用</strong></h2><p>heap dump生成的hprof文件并不是标准的，还需要将它转换为标<br>准的hprof文件，这样才会被MAT识别从而进行分析，可以使用<br>SDK自带的hprof-conv进行转换，它的路径在sdk/<br>platform-tools中，进入到该路径执行以下语句即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hprof-conv before.hprof after.hprof</div></pre></td></tr></table></figure>
-<p><a href="https://imgchr.com/i/lc3nFe" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/07/lc3nFe.md.jpg" alt="lc3nFe.md.jpg"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hprof-conv before.hprof after.hprof</span><br></pre></td></tr></table></figure>
+<p><a href="https://imgchr.com/i/lc3nFe" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/07/lc3nFe.md.jpg" alt="lc3nFe.md.jpg"></a></p>
 <p>Histogram</p>
 <ul>
 <li>列出内存中的对象，对象的个数以及大小，并支持正则表达式查找</li>
@@ -447,22 +449,22 @@
 <li>是当前对象大小与当前对象可直接或间接引用到的对象大小总和，包括被递归释放的。也可以理解为，Retained Size就是当前对象被GC后，从Heap上总共能释放掉的内存大小。</li>
 </ul>
 <p>我们常用Histogram来分析内存，点击Histogram:</p>
-<p><a href="https://imgchr.com/i/lcJvc9" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/07/lcJvc9.md.png" alt="lcJvc9.md.png"></a></p>
+<p><a href="https://imgchr.com/i/lcJvc9" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/07/lcJvc9.md.png" alt="lcJvc9.md.png"></a></p>
 <p>然后输入您需要定位的Activity页面的名字，查看该Activity所发生的内存泄漏的源头页面</p>
 <p>选中并作这样的操作，就能够看到具体发生内存泄漏的位置，<br>查看GC引用链，显示距GC Roots最短的路径，并排除虚引用，<br>弱引用及软引用</p>
-<p><a href="https://imgchr.com/i/lcNbAP" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/07/lcNbAP.md.png" alt="lcNbAP.md.png"></a></p>
+<p><a href="https://imgchr.com/i/lcNbAP" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/07/lcNbAP.md.png" alt="lcNbAP.md.png"></a></p>
 <p>最后得到这样的结果</p>
-<p><a href="https://imgchr.com/i/lcaeG8" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/07/lcaeG8.md.png" alt="lcaeG8.md.png"></a></p>
+<p><a href="https://imgchr.com/i/lcaeG8" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/07/lcaeG8.md.png" alt="lcaeG8.md.png"></a></p>
 <p>然后结合代码分析并解决问题。</p>
-<h2 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a><strong>案例分析</strong></h2><p><a href="https://imgchr.com/i/lcdbA1" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/07/lcdbA1.md.jpg" alt="lcdbA1.md.jpg"></a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//com.cars.crm.tech.cache.util.FileUtil</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getStringFromLocal</span><span class="params">(File cache)</span> </span>&#123;</div><div class="line">        ObjectInputStream ois;</div><div class="line">        FileInputStream fis;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            fis = <span class="keyword">new</span> FileInputStream(cache);</div><div class="line">            ois = <span class="keyword">new</span> ObjectInputStream(fis);</div><div class="line">            Object mObject = ois.readObject();</div><div class="line">            <span class="keyword">if</span> (mObject != <span class="keyword">null</span> &amp;&amp; mObject <span class="keyword">instanceof</span> String) &#123;</div><div class="line">                <span class="keyword">return</span> (String) mObject;</div><div class="line">            &#125;</div><div class="line">            ois.close();</div><div class="line">            fis.close();</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="comment">//修改</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getStringFromLocal</span><span class="params">(File cache)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> (FileInputStream fis = <span class="keyword">new</span> FileInputStream(cache);</div><div class="line">             ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(fis)) &#123;</div><div class="line">            Object mObject = ois.readObject();</div><div class="line">            <span class="keyword">if</span> (mObject != <span class="keyword">null</span> &amp;&amp; mObject <span class="keyword">instanceof</span> String) &#123;</div><div class="line">                <span class="keyword">return</span> (String) mObject;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//com.cars.crm.scaffold.webview.ResourceManager(72)</span></div><div class="line"><span class="function">WebResourceResponse <span class="title">fetchResource</span><span class="params">(<span class="keyword">final</span> String mime, <span class="keyword">final</span> String code, String url)</span> </span>&#123;</div><div class="line">        Request request = <span class="keyword">new</span> Request.Builder().get().url(url).build();</div><div class="line">        <span class="keyword">final</span> Call call = mHttpClient.newCall(request);</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            Callable&lt;WebResourceResponse&gt; mCallable = <span class="keyword">new</span> Callable&lt;WebResourceResponse&gt;() &#123;</div><div class="line">                <span class="meta">@Override</span></div><div class="line">                <span class="function"><span class="keyword">public</span> WebResourceResponse <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">                    Response rep = call.execute();</div><div class="line">                    <span class="keyword">if</span> (rep.isSuccessful() &amp;&amp; rep.body() != <span class="keyword">null</span>) &#123;</div><div class="line">                        InputStream is = rep.body().byteStream();</div><div class="line">                        <span class="keyword">return</span> <span class="keyword">new</span> WebResourceResponse(mime, code, is);</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;;</div><div class="line">            Future&lt;WebResourceResponse&gt; future = mExecutorService.submit(mCallable);</div><div class="line">            WebResourceResponse webRes = future.get(RESOURCE_WAIT_TIME, TimeUnit.MILLISECONDS);</div><div class="line">            Log.d(<span class="string">"ResourceManager"</span>, <span class="string">"load success url:"</span> + url);</div><div class="line">            <span class="keyword">return</span> webRes;</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        Log.d(<span class="string">"ResourceManager"</span>, <span class="string">"load fail url:"</span> + url);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p><a href="https://imgchr.com/i/lcDiNR" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/07/lcDiNR.md.png" alt="lcDiNR.md.png"></a></p>
+<h2 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a><strong>案例分析</strong></h2><p><a href="https://imgchr.com/i/lcdbA1" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/07/lcdbA1.md.jpg" alt="lcdbA1.md.jpg"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//com.cars.crm.tech.cache.util.FileUtil</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getStringFromLocal</span><span class="params">(File cache)</span> </span>&#123;</span><br><span class="line">        ObjectInputStream ois;</span><br><span class="line">        FileInputStream fis;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            fis = <span class="keyword">new</span> FileInputStream(cache);</span><br><span class="line">            ois = <span class="keyword">new</span> ObjectInputStream(fis);</span><br><span class="line">            Object mObject = ois.readObject();</span><br><span class="line">            <span class="keyword">if</span> (mObject != <span class="keyword">null</span> &amp;&amp; mObject <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">                <span class="keyword">return</span> (String) mObject;</span><br><span class="line">            &#125;</span><br><span class="line">            ois.close();</span><br><span class="line">            fis.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//修改</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getStringFromLocal</span><span class="params">(File cache)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> (FileInputStream fis = <span class="keyword">new</span> FileInputStream(cache);</span><br><span class="line">             ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(fis)) &#123;</span><br><span class="line">            Object mObject = ois.readObject();</span><br><span class="line">            <span class="keyword">if</span> (mObject != <span class="keyword">null</span> &amp;&amp; mObject <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">                <span class="keyword">return</span> (String) mObject;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//com.cars.crm.scaffold.webview.ResourceManager(72)</span></span><br><span class="line"><span class="function">WebResourceResponse <span class="title">fetchResource</span><span class="params">(<span class="keyword">final</span> String mime, <span class="keyword">final</span> String code, String url)</span> </span>&#123;</span><br><span class="line">        Request request = <span class="keyword">new</span> Request.Builder().get().url(url).build();</span><br><span class="line">        <span class="keyword">final</span> Call call = mHttpClient.newCall(request);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Callable&lt;WebResourceResponse&gt; mCallable = <span class="keyword">new</span> Callable&lt;WebResourceResponse&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> WebResourceResponse <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">                    Response rep = call.execute();</span><br><span class="line">                    <span class="keyword">if</span> (rep.isSuccessful() &amp;&amp; rep.body() != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        InputStream is = rep.body().byteStream();</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">new</span> WebResourceResponse(mime, code, is);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">            Future&lt;WebResourceResponse&gt; future = mExecutorService.submit(mCallable);</span><br><span class="line">            WebResourceResponse webRes = future.get(RESOURCE_WAIT_TIME, TimeUnit.MILLISECONDS);</span><br><span class="line">            Log.d(<span class="string">"ResourceManager"</span>, <span class="string">"load success url:"</span> + url);</span><br><span class="line">            <span class="keyword">return</span> webRes;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        Log.d(<span class="string">"ResourceManager"</span>, <span class="string">"load fail url:"</span> + url);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://imgchr.com/i/lcDiNR" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/07/lcDiNR.md.png" alt="lcDiNR.md.png"></a></p>
 <p>利用didi工具，在沙盒中找到cache-&gt;matrix_resource目录中找到泄漏的文件，导入到电脑后转换为MAT识别的标注格式分析。</p>
-<p><a href="https://imgchr.com/i/l2HExf" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/08/l2HExf.md.jpg" alt="l2HExf.md.jpg"></a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//VMRecycleAdapterHelp.registerItemLisenter </span></div><div class="line"><span class="comment">//注册adapter持有外部引用</span></div><div class="line">mVMRecycleAdapterHelp.registerItemLisenter(<span class="keyword">new</span> VMRecycleAdapterHelp.ListViewEventListener() &#123;&#125;</div><div class="line"></div><div class="line"><span class="comment">//解决</span></div><div class="line"><span class="comment">//ItemViewModel中释放</span></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onViewDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">    unregisterItemLisenter();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="https://imgchr.com/i/lWGWdI" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/09/lWGWdI.md.png" alt="lWGWdI.md.png"></a></p>
-<p><a href="https://imgchr.com/i/lWG4FP" target="_blank" rel="external"><img src="https://s2.ax1x.com/2020/01/09/lWG4FP.md.png" alt="lWG4FP.md.png"></a></p>
+<p><a href="https://imgchr.com/i/l2HExf" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/08/l2HExf.md.jpg" alt="l2HExf.md.jpg"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//VMRecycleAdapterHelp.registerItemLisenter </span></span><br><span class="line"><span class="comment">//注册adapter持有外部引用</span></span><br><span class="line">mVMRecycleAdapterHelp.registerItemLisenter(<span class="keyword">new</span> VMRecycleAdapterHelp.ListViewEventListener() &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//解决</span></span><br><span class="line"><span class="comment">//ItemViewModel中释放</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onViewDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    unregisterItemLisenter();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://imgchr.com/i/lWGWdI" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/09/lWGWdI.md.png" alt="lWGWdI.md.png"></a></p>
+<p><a href="https://imgchr.com/i/lWG4FP" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2020/01/09/lWG4FP.md.png" alt="lWG4FP.md.png"></a></p>
 
       
     </div>
@@ -485,13 +487,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay"/>
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay"/>
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -554,7 +556,7 @@
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -574,8 +576,7 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2019/12/30/性能优化之内存优化-操作篇/"
-           data-title="性能优化之内存优化-操作篇" data-url="http://qq451682583.github.io/2019/12/30/性能优化之内存优化-操作篇/">
+      <div class="ds-thread" data-thread-key="2019/12/30/性能优化之内存优化-操作篇/" data-title="性能优化之内存优化-操作篇" data-url="http://qq451682583.github.io/2019/12/30/性能优化之内存优化-操作篇/">
       </div>
     
   </div>
@@ -601,17 +602,15 @@
       
 
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/img/site.png"
-               alt="LZH" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/img/site.png" alt="LZH">
           <p class="site-author-name" itemprop="name">LZH</p>
           <p class="site-description motion-element" itemprop="description">ZHBlog</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -690,7 +689,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -712,7 +711,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2020</span>

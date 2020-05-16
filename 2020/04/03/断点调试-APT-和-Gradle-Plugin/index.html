@@ -6,15 +6,15 @@
 
 
 <html class="theme-next mist use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -37,23 +37,23 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="gradle," />
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="ZHBlog" type="application/atom+xml" />
+  <meta name="keywords" content="gradle,">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1" />
+
+  <link rel="alternate" href="/atom.xml" title="ZHBlog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1">
 
 
 
@@ -61,11 +61,13 @@
 
 
 <meta name="description" content="[TOC]">
+<meta name="keywords" content="gradle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="断点调试 APT 和 Gradle Plugin">
 <meta property="og:url" content="http://qq451682583.github.io/2020/04/03/断点调试-APT-和-Gradle-Plugin/index.html">
 <meta property="og:site_name" content="ZHBlog">
 <meta property="og:description" content="[TOC]">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://image1.guazistatic.com/qn1911282107012828065451f541cd5512d0dfd9bf8bf8.jpg">
 <meta property="og:image" content="https://image1.guazistatic.com/qn191128210752b85aa9396306c8838e02e502e92c7fbe.jpg">
 <meta property="og:image" content="https://image1.guazistatic.com/qn1911282059391cf902285a7c7a8fc3ef15159358051c.jpg">
@@ -73,7 +75,7 @@
 <meta property="og:image" content="https://image1.guazistatic.com/qn19112821222494af55a04963cca7187c8c9e5c659103.jpg">
 <meta property="og:image" content="https://image1.guazistatic.com/qn191128212554777807d61da6abaa9a2a0ede3c077daf.jpg">
 <meta property="og:image" content="https://image1.guazistatic.com/qn1911282129395953b4742da1182a129b4e2f00cdb5aa.jpg">
-<meta property="og:updated_time" content="2020-04-03T14:26:28.536Z">
+<meta property="og:updated_time" content="2020-04-03T14:26:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="断点调试 APT 和 Gradle Plugin">
 <meta name="twitter:description" content="[TOC]">
@@ -98,12 +100,12 @@
 
 
 
-  <link rel="canonical" href="http://qq451682583.github.io/2020/04/03/断点调试-APT-和-Gradle-Plugin/"/>
+  <link rel="canonical" href="http://qq451682583.github.io/2020/04/03/断点调试-APT-和-Gradle-Plugin/">
 
   <title> 断点调试 APT 和 Gradle Plugin | ZHBlog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -124,12 +126,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">ZHBlog</span>
       <span class="logo-line-after"><i></i></span>
@@ -156,7 +158,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -166,7 +168,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -176,7 +178,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -186,7 +188,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -196,7 +198,7 @@
         <li class="menu-item menu-item-guestbook">
           <a href="/guestbook" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             留言
           </a>
@@ -206,7 +208,7 @@
         <li class="menu-item menu-item-commonweal">
           <a href="/404.html" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
             
             公益404
           </a>
@@ -219,7 +221,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -262,7 +264,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -291,14 +293,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/Gradle/" itemprop="url" rel="index">
                     <span itemprop="name">Gradle</span>
                   </a>
@@ -355,7 +357,7 @@
 <ol>
 <li>在 IDE Terminal 下，输入如下命令：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./gradlew clean :moduleName:assembleDebug -Dorg.gradle.debug=true --no-daemon</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew clean :moduleName:assembleDebug -Dorg.gradle.debug=true --no-daemon</span><br></pre></td></tr></table></figure>
 <p>之后这个进程就会一直等待，知道我们 attach 我们的调试进程进来。执行命令后如图：</p>
 <p><img desc="执行等待命令" src="https://image1.guazistatic.com/qn1911282059391cf902285a7c7a8fc3ef15159358051c.jpg" width="80%"></p>
 <ol>
@@ -382,7 +384,7 @@
 <h2 id="遇到的错误"><a href="#遇到的错误" class="headerlink" title="遇到的错误"></a>遇到的错误</h2><ul>
 <li>Android APT 死活不能自动生成？</li>
 </ul>
-<p>由于 Android Gradle 构建版本问题引起，之前设置的是 gradle 版本 5.1.1 + android gradle 3.4.1，修改成 4.4 + 3.1.4 解决。建议 3.3.2 + 4.10.1 以下都可以。具体可以参考<a href="https://blog.csdn.net/allenli0413/article/details/90602402" target="_blank" rel="external">这篇博客</a>。</p>
+<p>由于 Android Gradle 构建版本问题引起，之前设置的是 gradle 版本 5.1.1 + android gradle 3.4.1，修改成 4.4 + 3.1.4 解决。建议 3.3.2 + 4.10.1 以下都可以。具体可以参考<a href="https://blog.csdn.net/allenli0413/article/details/90602402" target="_blank" rel="noopener">这篇博客</a>。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>调试步骤其实很简单，分如下两步即可：</p>
 <ul>
 <li>新建 remote target</li>
@@ -390,10 +392,10 @@
 <li>之后选择刚刚创建的 remote target，然后点击调试按钮即可</li>
 </ul>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://www.jianshu.com/p/cc369dca20d1" target="_blank" rel="external">调试Annotation Processor编译时注解器</a></li>
-<li><a href="https://fucknmb.com/2017/07/05/%E5%8F%88%E6%8E%8C%E6%8F%A1%E4%BA%86%E4%B8%80%E9%A1%B9%E6%96%B0%E6%8A%80%E8%83%BD-%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95Gradle%E6%8F%92%E4%BB%B6/" target="_blank" rel="external">又掌握了一项新技能 - 断点调试 Gradle 插件</a></li>
-<li><a href="https://fsilence.github.io/2017/04/11/gradle-debug/" target="_blank" rel="external">gradle调试断点</a></li>
-<li><a href="https://blog.csdn.net/allenli0413/article/details/90602402" target="_blank" rel="external">Android APT不能自动生成文件</a></li>
+<li><a href="https://www.jianshu.com/p/cc369dca20d1" target="_blank" rel="noopener">调试Annotation Processor编译时注解器</a></li>
+<li><a href="https://fucknmb.com/2017/07/05/%E5%8F%88%E6%8E%8C%E6%8F%A1%E4%BA%86%E4%B8%80%E9%A1%B9%E6%96%B0%E6%8A%80%E8%83%BD-%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95Gradle%E6%8F%92%E4%BB%B6/" target="_blank" rel="noopener">又掌握了一项新技能 - 断点调试 Gradle 插件</a></li>
+<li><a href="https://fsilence.github.io/2017/04/11/gradle-debug/" target="_blank" rel="noopener">gradle调试断点</a></li>
+<li><a href="https://blog.csdn.net/allenli0413/article/details/90602402" target="_blank" rel="noopener">Android APT不能自动生成文件</a></li>
 </ul>
 
       
@@ -417,13 +419,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay"/>
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay"/>
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -486,7 +488,7 @@
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -506,8 +508,7 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2020/04/03/断点调试-APT-和-Gradle-Plugin/"
-           data-title="断点调试 APT 和 Gradle Plugin" data-url="http://qq451682583.github.io/2020/04/03/断点调试-APT-和-Gradle-Plugin/">
+      <div class="ds-thread" data-thread-key="2020/04/03/断点调试-APT-和-Gradle-Plugin/" data-title="断点调试 APT 和 Gradle Plugin" data-url="http://qq451682583.github.io/2020/04/03/断点调试-APT-和-Gradle-Plugin/">
       </div>
     
   </div>
@@ -533,17 +534,15 @@
       
 
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/img/site.png"
-               alt="LZH" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/img/site.png" alt="LZH">
           <p class="site-author-name" itemprop="name">LZH</p>
           <p class="site-description motion-element" itemprop="description">ZHBlog</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -622,7 +621,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -644,7 +643,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2020</span>

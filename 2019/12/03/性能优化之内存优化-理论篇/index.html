@@ -6,15 +6,15 @@
 
 
 <html class="theme-next mist use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -37,23 +37,23 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="性能优化," />
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="ZHBlog" type="application/atom+xml" />
+  <meta name="keywords" content="性能优化,">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1" />
+
+  <link rel="alternate" href="/atom.xml" title="ZHBlog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1">
 
 
 
@@ -61,18 +61,20 @@
 
 
 <meta name="description" content="[TOC]">
+<meta name="keywords" content="性能优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="性能优化之内存优化-理论篇">
 <meta property="og:url" content="http://qq451682583.github.io/2019/12/03/性能优化之内存优化-理论篇/index.html">
 <meta property="og:site_name" content="ZHBlog">
 <meta property="og:description" content="[TOC]">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://user-images.githubusercontent.com/11883853/70790060-3b62fc00-1dcf-11ea-912f-9eeea722bf96.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/11883853/70894604-4a90b680-2028-11ea-8428-72d065404617.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/16/Q4IDD1.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/16/Q4Ic4O.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/16/Q4I2CD.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/16/Q4o5z4.png">
-<meta property="og:updated_time" content="2020-03-09T13:45:06.992Z">
+<meta property="og:updated_time" content="2020-03-09T13:45:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="性能优化之内存优化-理论篇">
 <meta name="twitter:description" content="[TOC]">
@@ -97,12 +99,12 @@
 
 
 
-  <link rel="canonical" href="http://qq451682583.github.io/2019/12/03/性能优化之内存优化-理论篇/"/>
+  <link rel="canonical" href="http://qq451682583.github.io/2019/12/03/性能优化之内存优化-理论篇/">
 
   <title> 性能优化之内存优化-理论篇 | ZHBlog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -123,12 +125,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">ZHBlog</span>
       <span class="logo-line-after"><i></i></span>
@@ -155,7 +157,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -165,7 +167,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -175,7 +177,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -185,7 +187,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -195,7 +197,7 @@
         <li class="menu-item menu-item-guestbook">
           <a href="/guestbook" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             留言
           </a>
@@ -205,7 +207,7 @@
         <li class="menu-item menu-item-commonweal">
           <a href="/404.html" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
             
             公益404
           </a>
@@ -218,7 +220,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -261,7 +263,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -290,14 +292,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/优化/" itemprop="url" rel="index">
                     <span itemprop="name">优化</span>
                   </a>
@@ -367,7 +369,7 @@
 </ul>
 <p>可以看出整个过程做到了部分并发使得时间缩短。据官方测试数据说GC效率提高2倍。</p>
 <p>虽然ART做了很多优化，但是如果出现GC频繁并且内存吃紧势必会导致UI卡顿、掉帧、操作不流畅等。</p>
-<p>另一方面大量的内存消耗，最后也会导致OOM，这里我们以dalvik虚拟机描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">我们知道，Heap(堆)内存是由程序员控制的，用C/C++申请的内存空间在native heap中，</div><div class="line"></div><div class="line">而java申请的内存空间则在dalvik heap中.</div><div class="line"></div><div class="line">那么为什么会出现OOM的情况呢？</div><div class="line"></div><div class="line">这个是因为Android系统对dalvik虚拟机的heap大小作了硬性限制，当java进程申请的空间超过这个阈值时，就会抛出OOM异（这个阈值可以是48M、24M、16M等，视机型而定）。</div><div class="line"></div><div class="line">也就是说，程序发生OMM并不表示RAM不足，而是因为程序申请的java heap对象超过了dalvik vm heapgrowthlimit。也就是说，在RAM充足的情况下，也可能发生OOM。</div><div class="line"></div><div class="line">这样设计的目的是为了让Android系统能同时让比较多的进程常驻内存(RAM)，这样程序启动时就不用每次都重新加载到内存，能够给用户更快的响应。</div><div class="line"></div><div class="line">迫使每个应用程序使用较小的内存，移动设备非常有限的RAM就能使比较多的app常驻其中。</div><div class="line"></div><div class="line">java程序发生OMM并不是表示RAM不足，如果RAM真的不足，Android的memory killer会起作用，当RAM所剩不多时，</div><div class="line"></div><div class="line">memory killer会杀死一些优先级比较低的进程来释放物理内存，让高优先级程序得到更多的内存。</div></pre></td></tr></table></figure></p>
+<p>另一方面大量的内存消耗，最后也会导致OOM，这里我们以dalvik虚拟机描述：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">我们知道，Heap(堆)内存是由程序员控制的，用C/C++申请的内存空间在native heap中，</span><br><span class="line"></span><br><span class="line">而java申请的内存空间则在dalvik heap中.</span><br><span class="line"></span><br><span class="line">那么为什么会出现OOM的情况呢？</span><br><span class="line"></span><br><span class="line">这个是因为Android系统对dalvik虚拟机的heap大小作了硬性限制，当java进程申请的空间超过这个阈值时，就会抛出OOM异（这个阈值可以是48M、24M、16M等，视机型而定）。</span><br><span class="line"></span><br><span class="line">也就是说，程序发生OMM并不表示RAM不足，而是因为程序申请的java heap对象超过了dalvik vm heapgrowthlimit。也就是说，在RAM充足的情况下，也可能发生OOM。</span><br><span class="line"></span><br><span class="line">这样设计的目的是为了让Android系统能同时让比较多的进程常驻内存(RAM)，这样程序启动时就不用每次都重新加载到内存，能够给用户更快的响应。</span><br><span class="line"></span><br><span class="line">迫使每个应用程序使用较小的内存，移动设备非常有限的RAM就能使比较多的app常驻其中。</span><br><span class="line"></span><br><span class="line">java程序发生OMM并不是表示RAM不足，如果RAM真的不足，Android的memory killer会起作用，当RAM所剩不多时，</span><br><span class="line"></span><br><span class="line">memory killer会杀死一些优先级比较低的进程来释放物理内存，让高优先级程序得到更多的内存。</span><br></pre></td></tr></table></figure></p>
 <h3 id="注-不同版本dalvik虚拟机对堆内存的区别"><a href="#注-不同版本dalvik虚拟机对堆内存的区别" class="headerlink" title="注: 不同版本dalvik虚拟机对堆内存的区别"></a>注: 不同版本dalvik虚拟机对堆内存的区别</h3><ul>
 <li><p>ActivityManager.getMemoryClass()可以查询当前APP的Heap Size阈值，单位是MB。</p>
 </li>
@@ -383,25 +385,25 @@
 <h2 id="Java对象生命周期"><a href="#Java对象生命周期" class="headerlink" title="Java对象生命周期"></a><strong>Java对象生命周期</strong></h2><p>在Android应用程序中，大部分是Java程序，而Java对象被创建的Java类字节码(编译后的.class文件)需要从文件系统加载到虚拟机。Java对象在虚拟机上运行有7个阶段，也就是对象的生命周期:</p>
 <ul>
 <li><p>创建阶段(Created)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">创建Java对象阶段的具体步骤如下：</div><div class="line"></div><div class="line">1. 为对象分配存储空间</div><div class="line"></div><div class="line">2. 构造对象</div><div class="line"></div><div class="line">3. 从父类到子类对static成员进行初始化，类的static成员的初始化再ClassLoader加载该类时进行。</div><div class="line"></div><div class="line">4. 父类成员变量按顺序初始化，递归调用父类的构造方法。</div><div class="line"></div><div class="line">5. 子类成员变量按顺序初始化，一旦对象被创建，子类构造方法就调用该对象并为某些变量赋值，完成后这个对象的状态就切换到了应用阶段</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">创建Java对象阶段的具体步骤如下：</span><br><span class="line"></span><br><span class="line">1. 为对象分配存储空间</span><br><span class="line"></span><br><span class="line">2. 构造对象</span><br><span class="line"></span><br><span class="line">3. 从父类到子类对static成员进行初始化，类的static成员的初始化再ClassLoader加载该类时进行。</span><br><span class="line"></span><br><span class="line">4. 父类成员变量按顺序初始化，递归调用父类的构造方法。</span><br><span class="line"></span><br><span class="line">5. 子类成员变量按顺序初始化，一旦对象被创建，子类构造方法就调用该对象并为某些变量赋值，完成后这个对象的状态就切换到了应用阶段</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>应用阶段(InUse)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">对象至少被一个强引用(Strong Reference)持有，除非在系统中显示地使用了</div><div class="line"></div><div class="line">软引用(Soft Reference)、弱引用(Weak Reference)或虚引用(Phantom Reference).</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">对象至少被一个强引用(Strong Reference)持有，除非在系统中显示地使用了</span><br><span class="line"></span><br><span class="line">软引用(Soft Reference)、弱引用(Weak Reference)或虚引用(Phantom Reference).</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>不可见阶段(Invisible)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">处于不可见阶段的对象在虚拟机的对象引用根集合中再也找不到直接或间接的强引用，</div><div class="line"></div><div class="line">这些对象一般是所有线程栈中的临时变量。所有已经装载的静态变量或者是对本地代码接口的引用。</div><div class="line"></div><div class="line">当一个对象处于不可见阶段时，说明程序本身不再持有该对象的任何强引用，虽然对象仍然是存在的。</div><div class="line"></div><div class="line">简单的例子就是程序的执行已经超出了该对象的作用域了，改对象仍有可能被虚拟机下的某些已经装载的</div><div class="line"></div><div class="line">静态变量线程或JNI等强引用持有，这些特殊强引用称为Gc Root。存在这些GC Root会导致对象的内存泄漏，无法被回收。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">处于不可见阶段的对象在虚拟机的对象引用根集合中再也找不到直接或间接的强引用，</span><br><span class="line"></span><br><span class="line">这些对象一般是所有线程栈中的临时变量。所有已经装载的静态变量或者是对本地代码接口的引用。</span><br><span class="line"></span><br><span class="line">当一个对象处于不可见阶段时，说明程序本身不再持有该对象的任何强引用，虽然对象仍然是存在的。</span><br><span class="line"></span><br><span class="line">简单的例子就是程序的执行已经超出了该对象的作用域了，改对象仍有可能被虚拟机下的某些已经装载的</span><br><span class="line"></span><br><span class="line">静态变量线程或JNI等强引用持有，这些特殊强引用称为Gc Root。存在这些GC Root会导致对象的内存泄漏，无法被回收。</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>不可达阶段(Unreadchable)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">对象处于不可达阶段是指该对象不再被任何强引用持有，回收器发现该对象已经不可达。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对象处于不可达阶段是指该对象不再被任何强引用持有，回收器发现该对象已经不可达。</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>收集阶段(Collected)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">当垃圾回收器发现该对象已经处于&quot;不可达阶段&quot;并且垃圾回收器已经对该对象的内存空间重新分配做好准备时，对象进入&quot;收集阶段&quot;。</div><div class="line"></div><div class="line">如果该对象已经重写了finalize()方法,则执行该方法的操作。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">当垃圾回收器发现该对象已经处于&quot;不可达阶段&quot;并且垃圾回收器已经对该对象的内存空间重新分配做好准备时，对象进入&quot;收集阶段&quot;。</span><br><span class="line"></span><br><span class="line">如果该对象已经重写了finalize()方法,则执行该方法的操作。</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>终结阶段(Finalized)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">当对象执行完成finalized()方法后仍然处于不可达状态时，该对象进入终结阶段，等待垃圾回收器回收该对象空间。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当对象执行完成finalized()方法后仍然处于不可达状态时，该对象进入终结阶段，等待垃圾回收器回收该对象空间。</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>对象空间重新分配阶段(Deallocated)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">若垃圾回收器对该对象占用的内存空间进行回收或者再分配，则该对象彻底消失，这个阶段称为&quot;对象重新分配阶段&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">若垃圾回收器对该对象占用的内存空间进行回收或者再分配，则该对象彻底消失，这个阶段称为&quot;对象重新分配阶段&quot;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>注意：</p>
@@ -452,8 +454,8 @@
 </li>
 </ul>
 <blockquote>
-<p>新生代<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">新生代存储新创建的对象。新生代由Eden和两块大小相同的Survivor space组成（又叫S0、S1或者From、To）构成，Eden和S0、S1的比例一般为8：1，具体大小细节以及分配原因，将在后面的垃圾回收机制里面介绍。</div></pre></td></tr></table></figure></p>
-<p>老年代<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">老年代一般存储经历了多次新生代GC还未被回收的对象。老年代的内存区域一般都比较大，主要是为了减少老年代的GC（major GC）的次数（该种类型的GC比较耗时），同时为了防止OOM。</div></pre></td></tr></table></figure></p>
+<p>新生代<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">新生代存储新创建的对象。新生代由Eden和两块大小相同的Survivor space组成（又叫S0、S1或者From、To）构成，Eden和S0、S1的比例一般为8：1，具体大小细节以及分配原因，将在后面的垃圾回收机制里面介绍。</span><br></pre></td></tr></table></figure></p>
+<p>老年代<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">老年代一般存储经历了多次新生代GC还未被回收的对象。老年代的内存区域一般都比较大，主要是为了减少老年代的GC（major GC）的次数（该种类型的GC比较耗时），同时为了防止OOM。</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>方法区主要存放的是已被虚拟机加载的类信息、常量、静态变量、编译器编译后的代码等数据。GC在该区域出现的比较少。概括如下：</p>
 <ul>
@@ -491,8 +493,8 @@
 </li>
 </ul>
 <h3 id="哪些内存需要回收"><a href="#哪些内存需要回收" class="headerlink" title="哪些内存需要回收"></a>哪些内存需要回收</h3><p>要确定哪些内存需要回收，目前有以下几种判定方案:</p>
-<h4 id="引用计数算法"><a href="#引用计数算法" class="headerlink" title="引用计数算法"></a><strong>引用计数算法</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">给对象添加一个引用计数器，每当有一个地方引用它的时候，</div><div class="line"></div><div class="line">计数器的值就加1；当引用失效的时候，计数器的值就减1；任何时刻计数器为0的对象是不可能再被引用的。</div><div class="line"></div><div class="line">  这种方法实现简单，判断效率也很高；但是该算法有一个致命的缺点就是难以解决对象相互引用的问题：</div><div class="line"></div><div class="line">试想有两个对象，相互持有对方的引用，而没有别的对象引用到这两者，那么这两个对象就是无用的对象，</div><div class="line"></div><div class="line">理应被回收，但是由于他们互相持有对方的引用，因此他们的引用计数器不为0，因此他们不能被回收。</div></pre></td></tr></table></figure>
-<h4 id="可达性分析算法"><a href="#可达性分析算法" class="headerlink" title="可达性分析算法"></a><strong>可达性分析算法</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">为了解决上面循环引用的问题，Java采用了一种全新的算法——可达性分析算法。这个算法的核心思想是，</div><div class="line"></div><div class="line">通过一系列称为“GC Roots”的对象作为起始点，从这些结点开始向下搜索，搜索所走过的路径成为“引用链”，</div><div class="line"></div><div class="line">当一个对象到GC Roots没有一个对象相连时，则证明此对象是不可用的(不可达)。</div></pre></td></tr></table></figure>
+<h4 id="引用计数算法"><a href="#引用计数算法" class="headerlink" title="引用计数算法"></a><strong>引用计数算法</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">给对象添加一个引用计数器，每当有一个地方引用它的时候，</span><br><span class="line"></span><br><span class="line">计数器的值就加1；当引用失效的时候，计数器的值就减1；任何时刻计数器为0的对象是不可能再被引用的。</span><br><span class="line"></span><br><span class="line">  这种方法实现简单，判断效率也很高；但是该算法有一个致命的缺点就是难以解决对象相互引用的问题：</span><br><span class="line"></span><br><span class="line">试想有两个对象，相互持有对方的引用，而没有别的对象引用到这两者，那么这两个对象就是无用的对象，</span><br><span class="line"></span><br><span class="line">理应被回收，但是由于他们互相持有对方的引用，因此他们的引用计数器不为0，因此他们不能被回收。</span><br></pre></td></tr></table></figure>
+<h4 id="可达性分析算法"><a href="#可达性分析算法" class="headerlink" title="可达性分析算法"></a><strong>可达性分析算法</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">为了解决上面循环引用的问题，Java采用了一种全新的算法——可达性分析算法。这个算法的核心思想是，</span><br><span class="line"></span><br><span class="line">通过一系列称为“GC Roots”的对象作为起始点，从这些结点开始向下搜索，搜索所走过的路径成为“引用链”，</span><br><span class="line"></span><br><span class="line">当一个对象到GC Roots没有一个对象相连时，则证明此对象是不可用的(不可达)。</span><br></pre></td></tr></table></figure>
 <p><img src="https://user-images.githubusercontent.com/11883853/70894604-4a90b680-2028-11ea-8428-72d065404617.png" alt="image"></p>
 <p>在Java语言中，可作为GC Roots的对象包括下面几种：</p>
 <ol>
@@ -508,7 +510,7 @@
 <p>  finalize()方法是对象逃脱死亡厄运的最后一次机会，稍后的GC会对在“F-Queue”队列中的对象进行第二次小规模的标记；</p>
 <p>  如果对象要在finalize()中拯救自己，只需要重新与引用链上的对象就行关联即可，那么在第二次标记时它将被移出“即将回收”的集合；</p>
 <p>  如果对象这个时候还是没有逃脱，那基本上他就真的被回收了。</p>
-<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a><strong>引用</strong></h4><p>无论是引用计数法还是可达性分析算法，判断对象的存活与否都与“引用”有关。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">在JDK1.2之前，“引用”的解释为：</div><div class="line"></div><div class="line">如果reference类型的数据中储存的数值代表的是另外一块内存的起始地址，就称这个数据代表着一个引用。</div><div class="line"></div><div class="line">在JDK1.2之后，Java对引用的概念进行了扩充，将引用分为强引用、软引用、弱引用、虚引用。</div></pre></td></tr></table></figure></p>
+<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a><strong>引用</strong></h4><p>无论是引用计数法还是可达性分析算法，判断对象的存活与否都与“引用”有关。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在JDK1.2之前，“引用”的解释为：</span><br><span class="line"></span><br><span class="line">如果reference类型的数据中储存的数值代表的是另外一块内存的起始地址，就称这个数据代表着一个引用。</span><br><span class="line"></span><br><span class="line">在JDK1.2之后，Java对引用的概念进行了扩充，将引用分为强引用、软引用、弱引用、虚引用。</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li><p>强引用：就是指在程序代码之中普遍存在的，类似于“Object obj = new Object();”这样的引用，只要强引用还存在，垃圾回收器永远不会回收掉被引用的对象。</p>
 </li>
@@ -520,26 +522,26 @@
 </li>
 </ul>
 <h3 id="如何回收"><a href="#如何回收" class="headerlink" title="如何回收"></a><strong>如何回收</strong></h3><ul>
-<li>标记清除算法 (Mark-Sweep)<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">标记-清除算法分为两个阶段：标记阶段和清除阶段。</div><div class="line"></div><div class="line">标记阶段的任务是标记出所有需要被回收的对象，</div><div class="line"></div><div class="line">清除阶段就是回收被标记的对象所占用的空间。</div><div class="line"></div><div class="line">  这种算法的缺点是容易产生内存碎片，碎片太多可能会导致后续过程中需要为大对象分配空间时无法找到足够的空间而提前触发新的一次垃圾收集动作。</div></pre></td></tr></table></figure>
+<li>标记清除算法 (Mark-Sweep)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">标记-清除算法分为两个阶段：标记阶段和清除阶段。</span><br><span class="line"></span><br><span class="line">标记阶段的任务是标记出所有需要被回收的对象，</span><br><span class="line"></span><br><span class="line">清除阶段就是回收被标记的对象所占用的空间。</span><br><span class="line"></span><br><span class="line">  这种算法的缺点是容易产生内存碎片，碎片太多可能会导致后续过程中需要为大对象分配空间时无法找到足够的空间而提前触发新的一次垃圾收集动作。</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><img src="https://s2.ax1x.com/2019/12/16/Q4IDD1.png" alt="Q4IDD1.png"></p>
 <ul>
-<li>复制算法 (Copying)<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">复制算法将可用内存按容量划分为大小相等的两块，每次只使用其中的一块。当这一块的内存用完了，就将还存活着的对象复制到另外一块上面，</div><div class="line"></div><div class="line">然后再把已使用的另一半内存空间中的对象一次性全部清理掉，这样一来就不容易出现内存碎片的问题。</div><div class="line"></div><div class="line">这种算法的优点就是，实现简单，运行高效且不容易产生内存碎片；缺点也显而易见：将可用内存缩小为了原来的一半，代价非常高昂。</div><div class="line"></div><div class="line">从算法原理我们可以看出Copying算法的效率跟存活对象的数目多少有很大的关系，如果存活对象很多，</div><div class="line"></div><div class="line">那么Copying算法的效率将会大大降低（要复制的对象比较多）。</div></pre></td></tr></table></figure>
+<li>复制算法 (Copying)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">复制算法将可用内存按容量划分为大小相等的两块，每次只使用其中的一块。当这一块的内存用完了，就将还存活着的对象复制到另外一块上面，</span><br><span class="line"></span><br><span class="line">然后再把已使用的另一半内存空间中的对象一次性全部清理掉，这样一来就不容易出现内存碎片的问题。</span><br><span class="line"></span><br><span class="line">这种算法的优点就是，实现简单，运行高效且不容易产生内存碎片；缺点也显而易见：将可用内存缩小为了原来的一半，代价非常高昂。</span><br><span class="line"></span><br><span class="line">从算法原理我们可以看出Copying算法的效率跟存活对象的数目多少有很大的关系，如果存活对象很多，</span><br><span class="line"></span><br><span class="line">那么Copying算法的效率将会大大降低（要复制的对象比较多）。</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><img src="https://s2.ax1x.com/2019/12/16/Q4Ic4O.png" alt="Q4Ic4O.png"></p>
 <ul>
-<li>标记整理算法 (Mark-Compact)<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">该算法标记阶段和Mark-Sweep一样，但是在完成标记之后，它不是直接清理可回收对象，而是将存活对象都向一端移动，然后清理掉端边界以外的内存。</div><div class="line"></div><div class="line">  这种算法特别适用于存活对象多，回收对象少的情况，因为回收的对象少，标记完了之后需要移动的对象就相对较少。</div></pre></td></tr></table></figure>
+<li>标记整理算法 (Mark-Compact)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">该算法标记阶段和Mark-Sweep一样，但是在完成标记之后，它不是直接清理可回收对象，而是将存活对象都向一端移动，然后清理掉端边界以外的内存。</span><br><span class="line"></span><br><span class="line">  这种算法特别适用于存活对象多，回收对象少的情况，因为回收的对象少，标记完了之后需要移动的对象就相对较少。</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><img src="https://s2.ax1x.com/2019/12/16/Q4I2CD.png" alt="Q4I2CD.png"></p>
 <ul>
-<li>分代回收算法<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">当前的商业虚拟机的垃圾收集器都采用“分代收集”算法，这种算法并没有什么新的思想，</div><div class="line"></div><div class="line">只是根据对象的存活的周期不同将内存划分为几块。</div><div class="line"></div><div class="line">前面我们说过，</div><div class="line"></div><div class="line">复制算法：适用于存活对象很少，回收对象多；</div><div class="line"></div><div class="line">标记整理算法：适用于存活对象多，回收对象很少的情况。这两种算法情况正好互补！</div><div class="line"></div><div class="line">一般情况下我们把Java的对分为新生代和老年代，在新生代，每次垃圾收集时，都会有大批的对象死去，</div><div class="line"></div><div class="line">只有少量存活，因此适用复制算法；而在老年代，因为对象存活率高、没有额外的空间对它进行分配担保，</div><div class="line"></div><div class="line">就必须使用“标记-清除”或者“标记-整理”算法来进行回收。</div></pre></td></tr></table></figure>
+<li>分代回收算法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">当前的商业虚拟机的垃圾收集器都采用“分代收集”算法，这种算法并没有什么新的思想，</span><br><span class="line"></span><br><span class="line">只是根据对象的存活的周期不同将内存划分为几块。</span><br><span class="line"></span><br><span class="line">前面我们说过，</span><br><span class="line"></span><br><span class="line">复制算法：适用于存活对象很少，回收对象多；</span><br><span class="line"></span><br><span class="line">标记整理算法：适用于存活对象多，回收对象很少的情况。这两种算法情况正好互补！</span><br><span class="line"></span><br><span class="line">一般情况下我们把Java的对分为新生代和老年代，在新生代，每次垃圾收集时，都会有大批的对象死去，</span><br><span class="line"></span><br><span class="line">只有少量存活，因此适用复制算法；而在老年代，因为对象存活率高、没有额外的空间对它进行分配担保，</span><br><span class="line"></span><br><span class="line">就必须使用“标记-清除”或者“标记-整理”算法来进行回收。</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>下面我们详细了解下分代回收：</p>
-<p>上面我们已经简略的说过Java堆和Dalvik堆的区别，这里我们复习一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Java堆用于存放对象实例，几乎所有的对象(实例变量，数组)都</div><div class="line"></div><div class="line">在该区域分配,是内存回收的主要区域；Dalvik将堆分成了</div><div class="line"></div><div class="line">Active堆和Zygote堆，zygote堆是Zygote进程在启动时的预加</div><div class="line"></div><div class="line">载的类、资源和对象；除此之外所有的对象,包括我们在代码中创</div><div class="line"></div><div class="line">建的实例、静态域和数组，都是储存在Active堆里边。</div></pre></td></tr></table></figure></p>
+<p>上面我们已经简略的说过Java堆和Dalvik堆的区别，这里我们复习一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Java堆用于存放对象实例，几乎所有的对象(实例变量，数组)都</span><br><span class="line"></span><br><span class="line">在该区域分配,是内存回收的主要区域；Dalvik将堆分成了</span><br><span class="line"></span><br><span class="line">Active堆和Zygote堆，zygote堆是Zygote进程在启动时的预加</span><br><span class="line"></span><br><span class="line">载的类、资源和对象；除此之外所有的对象,包括我们在代码中创</span><br><span class="line"></span><br><span class="line">建的实例、静态域和数组，都是储存在Active堆里边。</span><br></pre></td></tr></table></figure></p>
 <p><img src="https://s2.ax1x.com/2019/12/16/Q4o5z4.png" alt="Q4o5z4.png"></p>
 <ul>
 <li><p>Java堆按照对象存活的时间可分为新生代和老年代</p>
@@ -557,18 +559,18 @@
 <blockquote>
 <p>注：</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"> GC是统计学测算出当内存使用超过98%以上时，内存就应该被minor gc时回收一次。但是实际应用中，</div><div class="line"></div><div class="line">我们不能较真的只给他们留下2%，换句话说当内存使用达到98%时才GC 就有点晚了，应该是多一些预留10%内存空间，</div><div class="line"></div><div class="line">这预留下来的空间我们称为S区（有两个s区  s1 和  s0），S区是用来存储新生代GC后存活下来的对象，</div><div class="line"></div><div class="line">而我们知道新生代GC算法使用的是复制回收算法。</div><div class="line"></div><div class="line"> 所以我们实际GC发生是在，新生代内存使用达到90%时开始进行，复制存活的对象到S1区，</div><div class="line"></div><div class="line">要知道GC结束后在S1区活下来的对象，需要放回给S0区，也就是对调(对调是指，两个S区位置互换,</div><div class="line"></div><div class="line">意味着再一次minor gc 时的区域  是eden 加，上一次存活的对象放入的S区)，既然能对调，其实就是两个区域一般大。</div><div class="line"></div><div class="line">这也是为什么会再有个10%的S0区域出来。</div><div class="line"></div><div class="line">这样比例就是8:1:1了!!（80%：s1:s0=80%:10%:10%=8:1:1）这里的eden区（80%） 和其中的一个  S区（10%） 合起来共占据90%，</div><div class="line"></div><div class="line">GC就是清理的他们，始终保持着其中一个  S  区是空留的，保证GC的时候复制存活的对象有个存储的地方。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> GC是统计学测算出当内存使用超过98%以上时，内存就应该被minor gc时回收一次。但是实际应用中，</span><br><span class="line"></span><br><span class="line">我们不能较真的只给他们留下2%，换句话说当内存使用达到98%时才GC 就有点晚了，应该是多一些预留10%内存空间，</span><br><span class="line"></span><br><span class="line">这预留下来的空间我们称为S区（有两个s区  s1 和  s0），S区是用来存储新生代GC后存活下来的对象，</span><br><span class="line"></span><br><span class="line">而我们知道新生代GC算法使用的是复制回收算法。</span><br><span class="line"></span><br><span class="line"> 所以我们实际GC发生是在，新生代内存使用达到90%时开始进行，复制存活的对象到S1区，</span><br><span class="line"></span><br><span class="line">要知道GC结束后在S1区活下来的对象，需要放回给S0区，也就是对调(对调是指，两个S区位置互换,</span><br><span class="line"></span><br><span class="line">意味着再一次minor gc 时的区域  是eden 加，上一次存活的对象放入的S区)，既然能对调，其实就是两个区域一般大。</span><br><span class="line"></span><br><span class="line">这也是为什么会再有个10%的S0区域出来。</span><br><span class="line"></span><br><span class="line">这样比例就是8:1:1了!!（80%：s1:s0=80%:10%:10%=8:1:1）这里的eden区（80%） 和其中的一个  S区（10%） 合起来共占据90%，</span><br><span class="line"></span><br><span class="line">GC就是清理的他们，始终保持着其中一个  S  区是空留的，保证GC的时候复制存活的对象有个存储的地方。</span><br></pre></td></tr></table></figure>
 <h4 id="什么样的对象会被移入老生带？"><a href="#什么样的对象会被移入老生带？" class="headerlink" title="什么样的对象会被移入老生带？"></a>什么样的对象会被移入老生带？</h4><ul>
 <li><p>新生代中经历过15次GC的对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">虚拟机给每个对象定义了一个对象年龄计数器，如果对象在Eden出生并经过第一次GC后仍然存活，</div><div class="line"></div><div class="line">将被移动到Survivor空间中，并且对象的年龄设为1；对象在Survivor区中每“熬过”一个GC，</div><div class="line"></div><div class="line">年龄就增加1岁，当它年龄增加到一定程度(默认为15岁)，就会晋升到老年带中。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">虚拟机给每个对象定义了一个对象年龄计数器，如果对象在Eden出生并经过第一次GC后仍然存活，</span><br><span class="line"></span><br><span class="line">将被移动到Survivor空间中，并且对象的年龄设为1；对象在Survivor区中每“熬过”一个GC，</span><br><span class="line"></span><br><span class="line">年龄就增加1岁，当它年龄增加到一定程度(默认为15岁)，就会晋升到老年带中。</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>大对象直接进入老年代</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">所谓大对象是指，需要连续内存空间的Java对象，最典型的大对象就是那种很长的字符串以及数组，</div><div class="line"></div><div class="line">虚拟机提供了一个PretenureSizeThreshold参数，令大于这个这个值的对象直接在老生代中分配。</div><div class="line"></div><div class="line">这样做主要是为了避免在Eden区和两个Survivor区之间复制算法执行的时候产生大量的内存复制。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">所谓大对象是指，需要连续内存空间的Java对象，最典型的大对象就是那种很长的字符串以及数组，</span><br><span class="line"></span><br><span class="line">虚拟机提供了一个PretenureSizeThreshold参数，令大于这个这个值的对象直接在老生代中分配。</span><br><span class="line"></span><br><span class="line">这样做主要是为了避免在Eden区和两个Survivor区之间复制算法执行的时候产生大量的内存复制。</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h4 id="触发GC的类型"><a href="#触发GC的类型" class="headerlink" title="触发GC的类型"></a>触发GC的类型</h4><p>了解这些是为了解决实际问题，Java虚拟机会把每次触发GC的信息打印出来来帮助我们分析问题，所以掌握触发GC的类型是分析日志的基础。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">GC_FOR_MALLOC: 表示是在堆上分配对象时内存不足触发的GC。</div><div class="line"></div><div class="line">GC_CONCURRENT: 当我们应用程序的堆内存达到一定量，或者可以理解为快要满的时候，系统会自动触发GC操作来释放内存。</div><div class="line"></div><div class="line">GC_EXPLICIT: 表示是应用程序调用System.gc、</div><div class="line">VMRuntime.gc接口或者收到SIGUSR1信号时触发的GC。</div><div class="line"></div><div class="line">GC_BEFORE_OOM: 表示是在准备抛OOM异常之前进行的最后努力而触发的GC。</div></pre></td></tr></table></figure>
-<h4 id="安卓分配与回收"><a href="#安卓分配与回收" class="headerlink" title="安卓分配与回收"></a>安卓分配与回收</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Android系统并不会对Heap中空闲内存区域做碎片整理。系统仅仅会在新的内存分配之前判断Heap的尾端剩余空间是否足够，</div><div class="line"></div><div class="line">如果空间不够会触发gc操作，从而腾出更多空闲的内存空间。</div><div class="line"></div><div class="line">  在Android的高级系统版本里面针对Heap空间有一个Generational Heap Memory的模型，</div><div class="line"></div><div class="line">这个思想和JVM的逐代回收法很类似，就是最近分配的对象会存放在Young Generation区域，</div><div class="line"></div><div class="line">当这个对象在这个区域停留的时间达到一定程度，它会被移动到Old Generation，最后累积一定时间再移动到Permanent Generation区域。</div><div class="line"></div><div class="line">系统会根据内存中不同的内存数据类型分别执行不同的gc操作。</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GC_FOR_MALLOC: 表示是在堆上分配对象时内存不足触发的GC。</span><br><span class="line"></span><br><span class="line">GC_CONCURRENT: 当我们应用程序的堆内存达到一定量，或者可以理解为快要满的时候，系统会自动触发GC操作来释放内存。</span><br><span class="line"></span><br><span class="line">GC_EXPLICIT: 表示是应用程序调用System.gc、</span><br><span class="line">VMRuntime.gc接口或者收到SIGUSR1信号时触发的GC。</span><br><span class="line"></span><br><span class="line">GC_BEFORE_OOM: 表示是在准备抛OOM异常之前进行的最后努力而触发的GC。</span><br></pre></td></tr></table></figure>
+<h4 id="安卓分配与回收"><a href="#安卓分配与回收" class="headerlink" title="安卓分配与回收"></a>安卓分配与回收</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Android系统并不会对Heap中空闲内存区域做碎片整理。系统仅仅会在新的内存分配之前判断Heap的尾端剩余空间是否足够，</span><br><span class="line"></span><br><span class="line">如果空间不够会触发gc操作，从而腾出更多空闲的内存空间。</span><br><span class="line"></span><br><span class="line">  在Android的高级系统版本里面针对Heap空间有一个Generational Heap Memory的模型，</span><br><span class="line"></span><br><span class="line">这个思想和JVM的逐代回收法很类似，就是最近分配的对象会存放在Young Generation区域，</span><br><span class="line"></span><br><span class="line">当这个对象在这个区域停留的时间达到一定程度，它会被移动到Old Generation，最后累积一定时间再移动到Permanent Generation区域。</span><br><span class="line"></span><br><span class="line">系统会根据内存中不同的内存数据类型分别执行不同的gc操作。</span><br></pre></td></tr></table></figure>
 <h2 id="内存优化意义"><a href="#内存优化意义" class="headerlink" title="内存优化意义"></a><strong>内存优化意义</strong></h2><p>通过上面的分析，可以总结出内存优化主要有以下几个意义:</p>
 <ul>
 <li><p>减少OOM，提高应用稳定性</p>
@@ -602,13 +604,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay"/>
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay"/>
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -671,7 +673,7 @@
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -691,8 +693,7 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2019/12/03/性能优化之内存优化-理论篇/"
-           data-title="性能优化之内存优化-理论篇" data-url="http://qq451682583.github.io/2019/12/03/性能优化之内存优化-理论篇/">
+      <div class="ds-thread" data-thread-key="2019/12/03/性能优化之内存优化-理论篇/" data-title="性能优化之内存优化-理论篇" data-url="http://qq451682583.github.io/2019/12/03/性能优化之内存优化-理论篇/">
       </div>
     
   </div>
@@ -718,17 +719,15 @@
       
 
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/img/site.png"
-               alt="LZH" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/img/site.png" alt="LZH">
           <p class="site-author-name" itemprop="name">LZH</p>
           <p class="site-description motion-element" itemprop="description">ZHBlog</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -807,7 +806,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -829,7 +828,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2020</span>

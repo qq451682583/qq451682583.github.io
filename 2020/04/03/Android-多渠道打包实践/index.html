@@ -6,15 +6,15 @@
 
 
 <html class="theme-next mist use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -37,23 +37,23 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Android," />
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="ZHBlog" type="application/atom+xml" />
+  <meta name="keywords" content="Android,">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1" />
+
+  <link rel="alternate" href="/atom.xml" title="ZHBlog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1">
 
 
 
@@ -61,13 +61,15 @@
 
 
 <meta name="description" content="[TOC]">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 多渠道打包实践">
 <meta property="og:url" content="http://qq451682583.github.io/2020/04/03/Android-多渠道打包实践/index.html">
 <meta property="og:site_name" content="ZHBlog">
 <meta property="og:description" content="[TOC]">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://image1.guazistatic.com/qn191031162602f5518be1df7755c7b227b6089274af5a.jpg">
-<meta property="og:updated_time" content="2020-04-03T14:56:59.208Z">
+<meta property="og:updated_time" content="2020-04-03T14:56:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 多渠道打包实践">
 <meta name="twitter:description" content="[TOC]">
@@ -92,12 +94,12 @@
 
 
 
-  <link rel="canonical" href="http://qq451682583.github.io/2020/04/03/Android-多渠道打包实践/"/>
+  <link rel="canonical" href="http://qq451682583.github.io/2020/04/03/Android-多渠道打包实践/">
 
   <title> Android 多渠道打包实践 | ZHBlog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -118,12 +120,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">ZHBlog</span>
       <span class="logo-line-after"><i></i></span>
@@ -150,7 +152,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -160,7 +162,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -170,7 +172,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -180,7 +182,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -190,7 +192,7 @@
         <li class="menu-item menu-item-guestbook">
           <a href="/guestbook" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             留言
           </a>
@@ -200,7 +202,7 @@
         <li class="menu-item menu-item-commonweal">
           <a href="/404.html" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
             
             公益404
           </a>
@@ -213,7 +215,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -256,7 +258,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -285,14 +287,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/Android/" itemprop="url" rel="index">
                     <span itemprop="name">Android</span>
                   </a>
@@ -338,16 +340,16 @@
 <p>在这样的前提下，我们引入 Android 工程共主线差异化打包，共主线的核心其实是利用 productFlavors block 语法，差异化开发，共用主线，多渠道打包。</p>
 <p>一句话总结：productFlavors 可以差异化开发，共用主线，多渠道打包</p>
 <h2 id="差异化构建"><a href="#差异化构建" class="headerlink" title="差异化构建"></a>差异化构建</h2><p>在 Library 库的 build.gradle 文件里配置不同的 productFlavors 实现同一个库下差异化版本构建，实现两个不同的产品。例如，向日库登录模块实现2个迭代版本，分别为 full 和 lite，其中 full 为全量代码，lite 为轻量版代码向外提供 aar，配置代码如下：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    publishNonDefault <span class="literal">true</span></div><div class="line">    flavorDimensions <span class="string">"dimension"</span></div><div class="line">    productFlavors &#123;</div><div class="line">        full &#123;</div><div class="line">            dimension <span class="string">"dimension"</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        lite &#123;</div><div class="line">            dimension <span class="string">"dimension"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    publishNonDefault <span class="literal">true</span></span><br><span class="line">    flavorDimensions <span class="string">"dimension"</span></span><br><span class="line">    productFlavors &#123;</span><br><span class="line">        full &#123;</span><br><span class="line">            dimension <span class="string">"dimension"</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        lite &#123;</span><br><span class="line">            dimension <span class="string">"dimension"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="工程结构"><a href="#工程结构" class="headerlink" title="工程结构"></a>工程结构</h2><p>gradle 中有一个 source set 概念，不同产品可以设置不同的 source set，通常 src/main 目录是 IDE 自动帮我们创建的文件夹,因此我们可以在 src 目录下创建 full/lite 这样的目录,目录名需要和 productFlavors 中定义的产品名对应 。<br>在 src/main 目录下新建两个同级目录 full 与 lite，目录的名称要与 productFlavors 中设定的工程名保持一致。如下所示：</p>
 <p><img src="https://image1.guazistatic.com/qn191031162602f5518be1df7755c7b227b6089274af5a.jpg" alt="biz-shell模块多产品构建"></p>
 <p>这样 src/full/java 文件内可以放不同的代码，src/full/res 文件夹内可以放不同的资源文件，同时也可以定义不同的 AndroidManifest 文件，比如申请不同的权限之类。其中，对于 full 和 lite 来说，main 目录下的文件和资源是共享的，而 full 与 lite 下的文件和资源是对应的 product 特有的，在这里可以做一些差异化的编码，达到共主线，差异化逻辑的效果。</p>
 <h2 id="多渠道打包"><a href="#多渠道打包" class="headerlink" title="多渠道打包"></a>多渠道打包</h2><p>assemble 是和 Build Variants 一起结合使用的，而 Build Variants = Build Type(Debug/Release) + Product Flavor，其中 assembleDebug 可以简写为 aDebug 使用，为什么是aDebug，a就是assemble，至于assemble就是gradle的强大之处了。</p>
 <p>assemble 命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">./gradlew assembleDebug </div><div class="line">编译并生成 Debug 包，包含 productFlavors 下所有定义的产品或渠道包</div><div class="line">./gradlew assembleRelease </div><div class="line">编译并生成 Release 包,包含 productFlavors 下所有定义的产品或渠道包</div><div class="line">./gradlew assembleProductARelease </div><div class="line">编译并生成 Release 包,包含 ProductA 下所有定义的产品或渠道包</div><div class="line">./gradlew assembleProductADebug</div><div class="line"> 编译并生成 Debug 包,包含 ProductA 下所有定义的产品或渠道包</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">./gradlew assembleDebug </span><br><span class="line">编译并生成 Debug 包，包含 productFlavors 下所有定义的产品或渠道包</span><br><span class="line">./gradlew assembleRelease </span><br><span class="line">编译并生成 Release 包,包含 productFlavors 下所有定义的产品或渠道包</span><br><span class="line">./gradlew assembleProductARelease </span><br><span class="line">编译并生成 Release 包,包含 ProductA 下所有定义的产品或渠道包</span><br><span class="line">./gradlew assembleProductADebug</span><br><span class="line"> 编译并生成 Debug 包,包含 ProductA 下所有定义的产品或渠道包</span><br></pre></td></tr></table></figure>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/33722674" target="_blank" rel="external">使用gradle的productFlavors实现Android项目多渠道打包</a></li>
-<li><a href="https://juejin.im/entry/5a586bfaf265da3e2c3808c5" target="_blank" rel="external">Gradle中productFlavors使用详解</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/33722674" target="_blank" rel="noopener">使用gradle的productFlavors实现Android项目多渠道打包</a></li>
+<li><a href="https://juejin.im/entry/5a586bfaf265da3e2c3808c5" target="_blank" rel="noopener">Gradle中productFlavors使用详解</a></li>
 </ul>
 
       
@@ -371,13 +373,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay"/>
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay"/>
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -440,7 +442,7 @@
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -460,8 +462,7 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2020/04/03/Android-多渠道打包实践/"
-           data-title="Android 多渠道打包实践" data-url="http://qq451682583.github.io/2020/04/03/Android-多渠道打包实践/">
+      <div class="ds-thread" data-thread-key="2020/04/03/Android-多渠道打包实践/" data-title="Android 多渠道打包实践" data-url="http://qq451682583.github.io/2020/04/03/Android-多渠道打包实践/">
       </div>
     
   </div>
@@ -487,17 +488,15 @@
       
 
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/img/site.png"
-               alt="LZH" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/img/site.png" alt="LZH">
           <p class="site-author-name" itemprop="name">LZH</p>
           <p class="site-description motion-element" itemprop="description">ZHBlog</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -576,7 +575,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -598,7 +597,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2020</span>

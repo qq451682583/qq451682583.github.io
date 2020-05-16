@@ -42,7 +42,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="源码,">
+  <meta name="keywords" content="BLCJ">
 
 
 
@@ -60,18 +60,16 @@
 
 
 
-<meta name="description" content="[TOC]">
-<meta name="keywords" content="源码">
-<meta property="og:type" content="article">
-<meta property="og:title" content="事件分发">
-<meta property="og:url" content="http://qq451682583.github.io/2020/03/09/事件分发/index.html">
+<meta name="description" content="ZHBlog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ZHBlog">
+<meta property="og:url" content="http://qq451682583.github.io/archives/2020/05/index.html">
 <meta property="og:site_name" content="ZHBlog">
-<meta property="og:description" content="[TOC]">
+<meta property="og:description" content="ZHBlog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-09T14:06:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="事件分发">
-<meta name="twitter:description" content="[TOC]">
+<meta name="twitter:title" content="ZHBlog">
+<meta name="twitter:description" content="ZHBlog">
 
 
 
@@ -92,9 +90,9 @@
 
 
 
-  <link rel="canonical" href="http://qq451682583.github.io/2020/03/09/事件分发/">
+  <link rel="canonical" href="http://qq451682583.github.io/archives/2020/05/">
 
-  <title> 事件分发 | ZHBlog </title>
+  <title> 归档 | ZHBlog </title>
 </head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -115,7 +113,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -246,224 +244,63 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
+
+    <span class="archive-page-counter">
+      
+      
+       
+      
+      OK! 目前共计 33 篇日志。 继续努力。
+    </span>
+
     
 
-  
-  
+      
+      
+      
 
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
+      
         
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2020">2020</h2>
+        </div>
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
+            <a class="post-title-link" href="/2020/05/17/测试迁移/" itemprop="url">
               
-                事件分发
+                <span itemprop="name">测试迁移</span>
               
-            
-          </h1>
+            </a>
         
+      </h1>
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2020-03-09T22:03:50+08:00" content="2020-03-09">
-              2020-03-09
-            </time>
-          </span>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2020-05-17T00:06:02+08:00" content="2020-05-17">
+          05-17
+        </time>
+      </div>
 
-          
-            <span class="post-category">
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android源码/" itemprop="url" rel="index">
-                    <span itemprop="name">Android源码</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2020/03/09/事件分发/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2020/03/09/事件分发/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>[TOC]<br><a id="more"></a></p>
-<h2 id="点击事件的传递规则"><a href="#点击事件的传递规则" class="headerlink" title="点击事件的传递规则"></a>点击事件的传递规则</h2><p>当屏幕接收到用户的输入的时候，底层会把事件包装成一个MotionEvent,所谓的点击事件的分发就是系统把一个MontionEvent事件传递给一个具体的View，这个传递过程就是分发过程。</p>
-<p>分发过程由三个重要的方法来共同完成：</p>
-<ul>
-<li>dispatchTouchEvent</li>
-<li>onInterceptTouchEvent</li>
-<li>onTouchEvent</li>
-</ul>
-<p>对于一个根viewGroup来说，点击事件产生后，首先会传递给它，它的dispatchTouchEvent方法被调用，然后判断onInterceptTouchEvent的返回值，如果为true，表示事件由当前viewGroup处理，即他的onTouchEvent会被调用，如果返回false表示不拦截，则传递给它的子元素，接着子元素的dispatchTouchEvent方法会被调用，如此反复知道事件最终被处理。</p>
-<p>当一个View需要处理事件的时候，</p>
-<p>它如果设置了onTouchListener那么onTouchListener中的onTouch方法会被回调，后续如何处理还得看onTouch的返回值，返回false，view的onTouchEvent才会被调用，返回true,则不会回调onTouchevent。在onTouchEvent中如果当前有设置onClickListener，那么它的onClick方法会被调用。</p>
-<p>所以执行顺序</p>
-<p>onTouchListener-onTouch() - &gt;<br>onTouchEvent() -&gt;<br>onClickListener-onClick()</p>
-<ul>
-<li><p>viewGroup默认不拦截任何事件，android源码中ViewGroup的onInterceptTouchEvent方法默认返回false</p>
-</li>
-<li><p>view没有onInterceptTouchEvent方法，一旦事件传递给它，那么它的onTouchEvent方法就会被调用</p>
-</li>
-</ul>
-<h2 id="传递顺序"><a href="#传递顺序" class="headerlink" title="传递顺序"></a>传递顺序</h2><p>DecorView -&gt; Activity -&gt; PhoneWindow -&gt; DecorView传递事件</p>
-<p>为什么这么做：</p>
-<p>解耦! ViewRootImpl并不知道有Activity这种东西存在！它只是持有了DecorView。所以，不能直接把触摸事件送到Activity.dispatchTouchEvent()；那么，既然触摸事件已经到了Activity.dispatchTouchEvent()中了，为什么不直接分发给DecorView，而是要通过PhoneWindow来间接发送呢？因为Activity不知道有DecorView！但是，Activity持有PhoneWindow ，而PhoneWindow当然知道自己的窗口里有些什么了，所以能够把事件派发给DecorView。在Android中，Activity并不知道自己的Window中有些什么，这样耦合性就很低了。我们换一个Window试试？不管Window里面的内容如何，只要Window任然符合Activity制定的标准，那么它就能在Activity中很好的工作。当然，这就是解耦所带来的扩展性的好处。</p>
-<h2 id="滑动冲突的处理"><a href="#滑动冲突的处理" class="headerlink" title="滑动冲突的处理"></a>滑动冲突的处理</h2><p>外部拦截和内部拦截法</p>
-<p>外部拦截：父ViewGroup中的onInterceptTouchEvent()方法中去处理 ，根据手指移动的距离或者角度，或者一些业务关系来判断父View是否拦截。拦截返回true 由父控件处理</p>
-<p>内部拦截: 在子View的dispatchTouchEvent()方法中去处理，逻辑一样，不过当需要父控件处理时需要配合requestDisallowInterceptTouchEvent()方法才能正常工作。</p>
-<p>requestDisallowInterceptTouchEvent方法失效 ？</p>
-<p>因为在ViewGroup的ACTION_DOWN时，FLAG_DISALLOW_INTERCEPT标志位被置为false</p>
-<p>怎么解决这个问题呢？只有重写自己用到的View的dispatchTouchEvent方法，在其ACTION_DOWN的时候，调用父View的requestDisallowInterceptTouchEvent(true)方法设置，在ACTION_UP或者ACTION_CANCEL的时候，调用调用父View的requestDisallowInterceptTouchEvent(false)方法重置。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://wanandroid.com/wenda/show/12119" target="_blank" rel="noopener">https://wanandroid.com/wenda/show/12119</a></p>
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-    <div>坚持原创分享，您的支持将鼓励我继续创作！</div>
-    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-      <span>赏</span>
-    </button>
-    <div id="QR" style="display: none;">
-      
-        <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay">
-          <p>微信打赏</p>
-        </div>
-      
-      
-        <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay">
-          <p>支付宝打赏</p>
-        </div>
-      
-    </div>
-  </div>
-
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/源码/" rel="tag">#源码</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2020/03/09/父子仓库操作/" rel="next" title="父子仓库操作">
-                <i class="fa fa-chevron-left"></i> 父子仓库操作
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/09/git命令/" rel="prev" title="git命令">
-                git命令 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript">
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
+    
 
-      
-    </div>
-  </div>
+  </section>
+
+  
+
 
 
           </div>
@@ -471,13 +308,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2020/03/09/事件分发/" data-title="事件分发" data-url="http://qq451682583.github.io/2020/03/09/事件分发/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -692,9 +522,11 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
 
 
   

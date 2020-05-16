@@ -6,15 +6,15 @@
 
 
 <html class="theme-next mist use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -37,23 +37,23 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="性能优化," />
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="ZHBlog" type="application/atom+xml" />
+  <meta name="keywords" content="性能优化,">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1" />
+
+  <link rel="alternate" href="/atom.xml" title="ZHBlog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1">
 
 
 
@@ -61,11 +61,13 @@
 
 
 <meta name="description" content="[TOC]">
+<meta name="keywords" content="性能优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="性能优化之卡顿优化">
 <meta property="og:url" content="http://qq451682583.github.io/2020/04/04/性能优化之卡顿优化/index.html">
 <meta property="og:site_name" content="ZHBlog">
 <meta property="og:description" content="[TOC]">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://image1.guazistatic.com/qn190919122704652961c6fad0ec3086534ca4f9635097.jpg">
 <meta property="og:image" content="https://image1.guazistatic.com/qn1909191227041f49d7ed96d67ec483b751f8f758fef4.jpg">
 <meta property="og:image" content="https://image1.guazistatic.com/qn190919122810e9828814066102aabd999558dd1e959c.jpg">
@@ -93,7 +95,7 @@
 <meta property="og:image" content="https://image1.guazistatic.com/qn19091912343088c96647027b9347f0129f313fa97658.jpg">
 <meta property="og:image" content="https://image1.guazistatic.com/qn19091912343009d4bf336f3d0190aac7a4a8ffc1bb4f.jpg">
 <meta property="og:image" content="http://app.guazistatic.com/AS_Profiler.jpg">
-<meta property="og:updated_time" content="2020-04-04T11:08:38.346Z">
+<meta property="og:updated_time" content="2020-04-04T11:08:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="性能优化之卡顿优化">
 <meta name="twitter:description" content="[TOC]">
@@ -118,12 +120,12 @@
 
 
 
-  <link rel="canonical" href="http://qq451682583.github.io/2020/04/04/性能优化之卡顿优化/"/>
+  <link rel="canonical" href="http://qq451682583.github.io/2020/04/04/性能优化之卡顿优化/">
 
   <title> 性能优化之卡顿优化 | ZHBlog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -144,12 +146,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">ZHBlog</span>
       <span class="logo-line-after"><i></i></span>
@@ -176,7 +178,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -186,7 +188,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -196,7 +198,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -206,7 +208,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -216,7 +218,7 @@
         <li class="menu-item menu-item-guestbook">
           <a href="/guestbook" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             留言
           </a>
@@ -226,7 +228,7 @@
         <li class="menu-item menu-item-commonweal">
           <a href="/404.html" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
             
             公益404
           </a>
@@ -239,7 +241,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -282,7 +284,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -311,14 +313,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/性能优化/" itemprop="url" rel="index">
                     <span itemprop="name">性能优化</span>
                   </a>
@@ -364,7 +366,7 @@
 <h2 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h2><h3 id="1-1-CPU-时间"><a href="#1-1-CPU-时间" class="headerlink" title="1.1 CPU 时间"></a>1.1 CPU 时间</h3><p>造成卡顿的原因可能有千百种，不过最终都会反映到 CPU 时间上，我们可以把 CPU 时间分为两种：用户时间和系统时间。用户时间就是执行用户态应用程序代码所消耗的时间；系统时间是执行内核态系统调用所消耗的时间，包括 I/O、锁、中断以及其他系统调用的时间。</p>
 <p>评价一个 CPU 的性能，需要看主频、核心数、缓存等参数。</p>
 <p>获取设备的 CPU 信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 获取 CPU 核心数</div><div class="line">cat /sys/devices/system/cpu/possible</div><div class="line"></div><div class="line">// 获取某个 CPU 的频率</div><div class="line">cat /sys/devices/system/cpu/cpu0/cpufeq/cpuinfo_max_freq</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 获取 CPU 核心数</span><br><span class="line">cat /sys/devices/system/cpu/possible</span><br><span class="line"></span><br><span class="line">// 获取某个 CPU 的频率</span><br><span class="line">cat /sys/devices/system/cpu/cpu0/cpufeq/cpuinfo_max_freq</span><br></pre></td></tr></table></figure>
 <p><img src="https://image1.guazistatic.com/qn190919122704652961c6fad0ec3086534ca4f9635097.jpg" title="CPU信息" width="60%" height="50%"></p>
 <p>当出现卡顿问题的时候，怎么去区分究竟是我们代码的问题，还是系统的问题？用户时间和系统时间可以给我们哪些线索？这里需要两个非常重要的指标帮助我们做判断。</p>
 <ul>
@@ -375,31 +377,31 @@
 <p><img src="https://image1.guazistatic.com/qn190919122810e9828814066102aabd999558dd1e959c.jpg" title="向日葵进程CPU使用率" width="60%" height="50%"></p>
 <p>参考链接：</p>
 <ul>
-<li><a href="http://www.samirchen.com/linux-cpu-performance/" target="_blank" rel="external">《Linux 环境下进程的CPU 占有率》</a></li>
-<li><a href="http://man7.org/linux/man-pages/man5/proc.5.html" target="_blank" rel="external">Linux 文档</a></li>
+<li><a href="http://www.samirchen.com/linux-cpu-performance/" target="_blank" rel="noopener">《Linux 环境下进程的CPU 占有率》</a></li>
+<li><a href="http://man7.org/linux/man-pages/man5/proc.5.html" target="_blank" rel="noopener">Linux 文档</a></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">命令 </div><div class="line">    </div><div class="line">* top 命令</div><div class="line">帮助查看哪个进程是 CPU 的消耗大户</div><div class="line">    </div><div class="line">* vmstat 命令</div><div class="line">可以实时监控操作系统的虚拟内存和 CPU 活动；</div><div class="line">    </div><div class="line">* strace 命令</div><div class="line">    </div><div class="line">可以跟踪某个进程中所有的系统调用</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">命令 </span><br><span class="line">    </span><br><span class="line">* top 命令</span><br><span class="line">帮助查看哪个进程是 CPU 的消耗大户</span><br><span class="line">    </span><br><span class="line">* vmstat 命令</span><br><span class="line">可以实时监控操作系统的虚拟内存和 CPU 活动；</span><br><span class="line">    </span><br><span class="line">* strace 命令</span><br><span class="line">    </span><br><span class="line">可以跟踪某个进程中所有的系统调用</span><br></pre></td></tr></table></figure>
 <ul>
 <li>CPU 饱和度</li>
 </ul>
 <p>CPU 饱和度反映的是线程排队等待 CPU 的情况，也就是 CPU 的负载情况。CPU 饱和度会跟应用的线程数有关，如果启动线程过多，容易导致系统不断地切换执行的线程，把大量的时间浪费在上下文切换，每次 CPU 上下文切换都需要刷新寄存器和计数器，至少需要十几纳秒的时间。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">命令</div><div class="line">    </div><div class="line">* vmstat 命令或者 /proc/[pid]/schedstat 文件</div><div class="line"></div><div class="line">查看 CPU 上下文切换次数，需要特别注意 nr_involuntary_switches 被动切换的次数。</div><div class="line">    </div><div class="line">// TODO</div><div class="line">    </div><div class="line">* uptime 命令</div><div class="line">查看 CPU 在1分钟、5分钟和15分钟内的平均负载，例如一个4核的 CPU，如果当前平均负载是 8，这意味着每个 CPU 上有一个线程在运行，还有一个线程在等待。一般平均负载建议控制在 0.7 x 核数 以内。</div><div class="line">    </div><div class="line">// TODO</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">命令</span><br><span class="line">    </span><br><span class="line">* vmstat 命令或者 /proc/[pid]/schedstat 文件</span><br><span class="line"></span><br><span class="line">查看 CPU 上下文切换次数，需要特别注意 nr_involuntary_switches 被动切换的次数。</span><br><span class="line">    </span><br><span class="line">// TODO</span><br><span class="line">    </span><br><span class="line">* uptime 命令</span><br><span class="line">查看 CPU 在1分钟、5分钟和15分钟内的平均负载，例如一个4核的 CPU，如果当前平均负载是 8，这意味着每个 CPU 上有一个线程在运行，还有一个线程在等待。一般平均负载建议控制在 0.7 x 核数 以内。</span><br><span class="line">    </span><br><span class="line">// TODO</span><br></pre></td></tr></table></figure>
 <p>线程优先级-nice 值越低，抢占 CPU 时间片的能力越强。</p>
 <h3 id="1-2-绘制原理"><a href="#1-2-绘制原理" class="headerlink" title="1.2 绘制原理"></a>1.2 绘制原理</h3><h4 id="1-2-1-UI-渲染背景知识"><a href="#1-2-1-UI-渲染背景知识" class="headerlink" title="1.2.1 UI 渲染背景知识"></a>1.2.1 UI 渲染背景知识</h4><h5 id="屏幕适配"><a href="#屏幕适配" class="headerlink" title="屏幕适配"></a>屏幕适配</h5><p>px、ppi、dpi、dp、density</p>
 <p><img src="https://image1.guazistatic.com/qn190919110932352fb536e03597aa813ca1a5f301a706.png" title="屏幕适配概念图" width="60%" height="50%"></p>
 <p>参考链接：</p>
 <ul>
-<li><a href="https://mp.weixin.qq.com/s/oSBUA7QKMWZURm1AHMyubA" target="_blank" rel="external">一种极低成本的 Android 屏幕适配方式-今日头条适配方案</a></li>
-<li><a href="https://mp.weixin.qq.com/s?__biz=MzAxMTI4MTkwNQ==&amp;mid=2650826381&amp;idx=1&amp;sn=5b71b7f1654b04a55fca25b0e90a4433&amp;chksm=80b7b213b7c03b0598f6014bfa2f7de12e1f32ca9f7b7fc49a2cf0f96440e4a7897d45c788fb&amp;scene=21#wechat_redirect" target="_blank" rel="external">Android 目前稳定高效的 UI 适配方案-smallestWidth 限定符适配方案</a></li>
+<li><a href="https://mp.weixin.qq.com/s/oSBUA7QKMWZURm1AHMyubA" target="_blank" rel="noopener">一种极低成本的 Android 屏幕适配方式-今日头条适配方案</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzAxMTI4MTkwNQ==&amp;mid=2650826381&amp;idx=1&amp;sn=5b71b7f1654b04a55fca25b0e90a4433&amp;chksm=80b7b213b7c03b0598f6014bfa2f7de12e1f32ca9f7b7fc49a2cf0f96440e4a7897d45c788fb&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">Android 目前稳定高效的 UI 适配方案-smallestWidth 限定符适配方案</a></li>
 </ul>
 <h5 id="CPU-与-GPU"><a href="#CPU-与-GPU" class="headerlink" title="CPU 与 GPU"></a>CPU 与 GPU</h5><p>UI 渲染依赖两个核心的硬件：CPU 与 GPU。UI 组件在绘制到屏幕之前，都需要经过 Rasterization（格栅化）操作，而格栅化操作是一个耗时操作。GPU(Graphic processing Unit)也就是图形处理器，它主要用于处理图形运算，可能帮助我们加快格栅化操作。</p>
 <p>软件绘制使用的是 Skia 库，它是一款能在低端机上呈现高质量的 2D 跨平台框架，类似 Chrome、Flutter 内部使用的都是 Skia 库。</p>
 <p><img src="https://image1.guazistatic.com/qn190919111052ffeb2c38ef6bd21146e952bfa24093ba.png" title="CPU&GPU" width="60%" height="50%"></p>
-<h5 id="OpenGL-与-Vulkan"><a href="#OpenGL-与-Vulkan" class="headerlink" title="OpenGL 与 Vulkan"></a>OpenGL 与 Vulkan</h5><p>对于硬件绘制，通过调用 OpenGL ES 接口利用 GPU 完成绘制。<a href="https://developer.android.com/guide/topics/graphics/opengl" target="_blank" rel="external">OpenGL</a> 是一个跨平台的图形 API，它为 2D/3D 图形处理硬件指定了标准软件接口，而 OpenGL ES 是 OpenGL 的子集，专为嵌入式设备设计。</p>
-<p>Android 7.0 把 <a href="https://www.khronos.org/opengles/" target="_blank" rel="external">OpenGL ES</a> 升级到最新的 3.2 版本同时，还添加了对 <a href="https://developer.android.com/guide/topics/graphics/opengl" target="_blank" rel="external">Vulkan</a>的支持，Vulkan 是用于高性能 3D 图形的低开销、跨平台 API。相比 OpenGL ES，Vulkan 在改善功耗、多核优化提升绘图调用上有着非常明显的优势。</p>
+<h5 id="OpenGL-与-Vulkan"><a href="#OpenGL-与-Vulkan" class="headerlink" title="OpenGL 与 Vulkan"></a>OpenGL 与 Vulkan</h5><p>对于硬件绘制，通过调用 OpenGL ES 接口利用 GPU 完成绘制。<a href="https://developer.android.com/guide/topics/graphics/opengl" target="_blank" rel="noopener">OpenGL</a> 是一个跨平台的图形 API，它为 2D/3D 图形处理硬件指定了标准软件接口，而 OpenGL ES 是 OpenGL 的子集，专为嵌入式设备设计。</p>
+<p>Android 7.0 把 <a href="https://www.khronos.org/opengles/" target="_blank" rel="noopener">OpenGL ES</a> 升级到最新的 3.2 版本同时，还添加了对 <a href="https://developer.android.com/guide/topics/graphics/opengl" target="_blank" rel="noopener">Vulkan</a>的支持，Vulkan 是用于高性能 3D 图形的低开销、跨平台 API。相比 OpenGL ES，Vulkan 在改善功耗、多核优化提升绘图调用上有着非常明显的优势。</p>
 <p>参考资料：</p>
 <ul>
-<li><a href="https://developer.android.com/guide/topics/graphics/hardware-accel" target="_blank" rel="external">官方硬件加速文档</a></li>
+<li><a href="https://developer.android.com/guide/topics/graphics/hardware-accel" target="_blank" rel="noopener">官方硬件加速文档</a></li>
 </ul>
 <h4 id="1-2-2-Android-渲染的演进"><a href="#1-2-2-Android-渲染的演进" class="headerlink" title="1.2.2 Android 渲染的演进"></a>1.2.2 Android 渲染的演进</h4><h5 id="Android-图形系统整体架构"><a href="#Android-图形系统整体架构" class="headerlink" title="Android 图形系统整体架构"></a>Android 图形系统整体架构</h5><p><img src="https://image1.guazistatic.com/qn1909191113170c6c33689b84f89cffb7158bf39c677b.png" title="Android图形系统整体架构" width="60%" height="50%"></p>
 <ul>
@@ -410,7 +412,7 @@
 </ul>
 <p>参考资料：</p>
 <ul>
-<li><a href="https://source.android.com/devices/graphics" target="_blank" rel="external">Android图形系统整体架构</a></li>
+<li><a href="https://source.android.com/devices/graphics" target="_blank" rel="noopener">Android图形系统整体架构</a></li>
 </ul>
 <h5 id="硬件加速绘制"><a href="#硬件加速绘制" class="headerlink" title="硬件加速绘制"></a>硬件加速绘制</h5><h6 id="Android-3-0-软件绘制"><a href="#Android-3-0-软件绘制" class="headerlink" title="Android 3.0 软件绘制"></a>Android 3.0 软件绘制</h6><p>在 Android 3.0 之前，或者没有启动硬件加速时，系统都会使用软件方式来渲染 UI。</p>
 <p>整个流程如上图所示： </p>
@@ -440,18 +442,18 @@
 </ul>
 <p>在 Android 4.2，系统增加了检测绘制过度工具。</p>
 <p><img src="https://image1.guazistatic.com/qn1909191127242810c169379808a29814b4a234f76f70.png" title="检测绘制过度工具" width="50%" height="50%"></p>
-<p>参考资料：<a href="https://developer.android.com/studio/profile/inspect-gpu-rendering" target="_blank" rel="external">检查 GPU 渲染进度和绘制过度</a></p>
+<p>参考资料：<a href="https://developer.android.com/studio/profile/inspect-gpu-rendering" target="_blank" rel="noopener">检查 GPU 渲染进度和绘制过度</a></p>
 <h5 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h5><p>在 Android 6.0 的时候，Android 在 gxinfo 添加了更详细的信息；在 Android 7.0 又对 HWUI 进行了一些重构，而且支持了 Vulkan；在 Android P 支持了 Vulkun 1.1。相信在未来不久的 Android Q，更好地支持 Vulkan 将是一个必然的方向。</p>
 <p>总的来说，UI 渲染的优化必然会朝着两个方向。一个是进一步压榨硬件的性能，让 UI 可以更加流畅。一个是改进或者增加更多的分析工具，帮助我们更容易地发现以及定位问题。</p>
 <h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>虽然硬件加速绘制极大提高了 Android 系统显示和刷新的速度，但它也存在一些问题，一方面是内存消耗，另一方面是兼容性问题，部分绘制函数不支持，更可怕的是硬件加速绘制流程本身存在 Bug。</p>
 <h4 id="1-2-3-如何优化-UI-渲染？"><a href="#1-2-3-如何优化-UI-渲染？" class="headerlink" title="1.2.3 如何优化 UI 渲染？"></a>1.2.3 如何优化 UI 渲染？</h4><h5 id="adb-命令"><a href="#adb-命令" class="headerlink" title="adb 命令"></a>adb 命令</h5><ul>
 <li>gfxinfo，可以输出包含各阶段发生的动画以及帧相关的性能信息</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 渲染相关的内存和 View hierarchy 信息</div><div class="line">adb shell dumpsys gfxinfo 包名</div><div class="line"></div><div class="line">// 拿到最近 120 帧每个绘制阶段的耗时信息</div><div class="line">adb shell dumpsys gfxinfo 包名 framestats</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 渲染相关的内存和 View hierarchy 信息</span><br><span class="line">adb shell dumpsys gfxinfo 包名</span><br><span class="line"></span><br><span class="line">// 拿到最近 120 帧每个绘制阶段的耗时信息</span><br><span class="line">adb shell dumpsys gfxinfo 包名 framestats</span><br></pre></td></tr></table></figure>
 <ul>
 <li>SurfaceFlinger</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 查看 Graphic Buffer 占用的内存</div><div class="line">adb shell dumpsys SurfaceFlinger</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 查看 Graphic Buffer 占用的内存</span><br><span class="line">adb shell dumpsys SurfaceFlinger</span><br></pre></td></tr></table></figure>
 <h5 id="UI-优化常用手段"><a href="#UI-优化常用手段" class="headerlink" title="UI 优化常用手段"></a>UI 优化常用手段</h5><p><img src="https://image1.guazistatic.com/qn1909191222242370be9975cefc6f0924e6b07b0f7e28.png" title="UI 渲染阶段流程图" width="60%" height="50%"></p>
 <h6 id="尽量使用硬件加速"><a href="#尽量使用硬件加速" class="headerlink" title="尽量使用硬件加速"></a>尽量使用硬件加速</h6><p>如果使用了不支持的 API，系统就需要通过 CPU 软件模拟绘制，这也是渐变、磨砂、圆角等效果渲染性能比较低的原因。</p>
 <p>SVG 是个典型的例子，SVG 有很多指令硬件加速都不支持，我们可以用一个取巧的方法，提前将这些 SVG 转换为 Bitmap 缓存起来，这样系统就可以更好地使用硬件加速绘制。同理，对于圆角、渐变等场景，我们也可以改为 Bitmap 实现。</p>
@@ -459,7 +461,7 @@
 <h6 id="Create-View-优化"><a href="#Create-View-优化" class="headerlink" title="Create View 优化"></a>Create View 优化</h6><ul>
 <li>使用代码创建</li>
 </ul>
-<p>使用一些开源的 XML 转换为 Java 代码工具，例如 <a href="https://github.com/iReaderAndroid/X2C" target="_blank" rel="external">X2C</a>。建议在一些修改不频繁的场景下使用这种方式。</p>
+<p>使用一些开源的 XML 转换为 Java 代码工具，例如 <a href="https://github.com/iReaderAndroid/X2C" target="_blank" rel="noopener">X2C</a>。建议在一些修改不频繁的场景下使用这种方式。</p>
 <ul>
 <li>异步创建</li>
 </ul>
@@ -499,10 +501,10 @@
 <p><img src="https://image1.guazistatic.com/qn190919120509f3e132a3ffc901191b766947cf5d711c.png" title="优化RecyclerView" width="60%" height="50%"></p>
 <p>Litho 优化了 RV 中 UI 组件的缓存和回收方法，原生 RV 或者 LV 都是按照 viewType 来进行缓存和回收，但如果一个 RV/LV 中出现了 viewType 过多，会是缓存形同虚设，Litho 是按照 text、image 和 video 独立回收，可以提高缓存命中率、降低内存使用率、提高滚动帧率。</p>
 <p>缺点：Litho 实现了 measure/layout 异步化，使用了类似 react 单向数据流设计，一定程度上加大了 UI 开发的复杂度，并且 Litho 的 UI 代码是使用 java/kotlin 进行编写，无法在 AS 中预览。</p>
-<h6 id="RenderThread-与-RenderScript"><a href="#RenderThread-与-RenderScript" class="headerlink" title="RenderThread 与 RenderScript"></a>RenderThread 与 RenderScript</h6><p>在 Android 5.0，系统增加了 RenderThread，对于 ViewPropertyAnimator 和 CircularReveal 动画，我们可以使用 <a href="https://mp.weixin.qq.com/s?__biz=MzUyMDAxMjQ3Ng==&amp;mid=2247489230&amp;idx=1&amp;sn=adc193e35903ab90a4c966059933a35a&amp;source=41#wechat_redirect" target="_blank" rel="external">RenderThread:异步渲染动画</a>，当主线程阻塞的时候，普通动画会出现明显的丢帧卡顿，而使用 RenderThread 渲染的动画即使阻塞了主线程仍不受影响。</p>
+<h6 id="RenderThread-与-RenderScript"><a href="#RenderThread-与-RenderScript" class="headerlink" title="RenderThread 与 RenderScript"></a>RenderThread 与 RenderScript</h6><p>在 Android 5.0，系统增加了 RenderThread，对于 ViewPropertyAnimator 和 CircularReveal 动画，我们可以使用 <a href="https://mp.weixin.qq.com/s?__biz=MzUyMDAxMjQ3Ng==&amp;mid=2247489230&amp;idx=1&amp;sn=adc193e35903ab90a4c966059933a35a&amp;source=41#wechat_redirect" target="_blank" rel="noopener">RenderThread:异步渲染动画</a>，当主线程阻塞的时候，普通动画会出现明显的丢帧卡顿，而使用 RenderThread 渲染的动画即使阻塞了主线程仍不受影响。</p>
 <p>现在越来越多的应用会使用一些高级图片或者视频编辑功能，例如图片的高斯模糊、放大、锐化等。拿日常我们使用最多的“扫一扫”这个场景来看，这里涉及大量的图片变换操作，例如缩放、裁剪、二值化以及降噪等。</p>
 <p>图片的变换涉及大量的计算任务，这个时候使用 GPU 是更好的选择，那如何进一步压榨系统 GPU 的性能呢？</p>
-<p>我们可以通过<a href="https://developer.android.com/guide/topics/renderscript/compute" target="_blank" rel="external">RenderScript</a>，它是 Android 操作系统上的一套 API。它基于异构计算思想，专门用于密集型计算。</p>
+<p>我们可以通过<a href="https://developer.android.com/guide/topics/renderscript/compute" target="_blank" rel="noopener">RenderScript</a>，它是 Android 操作系统上的一套 API。它基于异构计算思想，专门用于密集型计算。</p>
 <h6 id="Flutter-自己的布局-渲染引擎"><a href="#Flutter-自己的布局-渲染引擎" class="headerlink" title="Flutter: 自己的布局 + 渲染引擎"></a>Flutter: 自己的布局 + 渲染引擎</h6><p><img src="https://image1.guazistatic.com/qn190919122132614a269a091e353f4745895cb8b87b85.png" title="Flutter 渲染流程" width="60%" height="50%"></p>
 <h5 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h5><ol>
 <li>在系统的框架下优化。布局优化、使用代码创建、View 缓存等都思路，减少甚至省下渲染流水线里某个阶段的耗时。</li>
@@ -518,7 +520,7 @@
 <ol>
 <li>代码调用</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="comment">// 生成traceView的起点，保存traceView的名称（路径：/mnt/sdcard/fileName）</span></div><div class="line">    Debug.startMethodTracing(<span class="string">"fileName"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</div><div class="line">    Debug.stopMethodTracing();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 生成traceView的起点，保存traceView的名称（路径：/mnt/sdcard/fileName）</span></span><br><span class="line">    Debug.startMethodTracing(<span class="string">"fileName"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Debug.stopMethodTracing();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <center class="half"><br>    <img src="https://image1.guazistatic.com/qn1909191231155fed9e563e7274b32df4349ac9f6a012.jpg" width="50%"><br>    <img src="https://image1.guazistatic.com/qn1909191231153f36511aa2721267d0f680d6873f7dcd.jpg" width="50%"><br></center>
 
 
@@ -530,20 +532,20 @@
 <p>ps：DDMS 可通过命令 monitor 直接打开，目录在 /sdk/tools 下。</p>
 <p>参考链接：</p>
 <ul>
-<li><a href="https://www.jianshu.com/p/7e9ca2c73c97" target="_blank" rel="external">Android性能优化—TraceView的使用</a></li>
-<li><a href="https://www.oschina.net/news/56500/traceview-android" target="_blank" rel="external">正确使用 Android 性能分析工具——TraceView</a></li>
+<li><a href="https://www.jianshu.com/p/7e9ca2c73c97" target="_blank" rel="noopener">Android性能优化—TraceView的使用</a></li>
+<li><a href="https://www.oschina.net/news/56500/traceview-android" target="_blank" rel="noopener">正确使用 Android 性能分析工具——TraceView</a></li>
 </ul>
 <h3 id="2-2-systrace"><a href="#2-2-systrace" class="headerlink" title="2.2 systrace"></a>2.2 systrace</h3><p>Android 4.1 新增的性能分析工具，经常使用 systrace 来跟踪系统的 I/O 操作、CPU 负载、Surface 渲染、GC 等事件。</p>
 <p>系统预留接口来监控应用程序的调用耗时，可以在可疑引起 jank 代码的地方，添加如下代码，这两个是成对出现的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Trace.beginSection(<span class="string">"tag"</span>);</div><div class="line">Trace.endSection();</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Trace.beginSection(<span class="string">"tag"</span>);</span><br><span class="line">Trace.endSection();</span><br></pre></td></tr></table></figure>
 <p><img src="https://image1.guazistatic.com/qn19091912343088c96647027b9347f0129f313fa97658.jpg" title="Trace演示代码" width="60%" height="50%"></p>
 <p><img src="https://image1.guazistatic.com/qn19091912343009d4bf336f3d0190aac7a4a8ffc1bb4f.jpg" title="systrace使用演示" width="60%" height="50%"></p>
 <p>参考资料：</p>
 <ul>
-<li><a href="https://www.cnblogs.com/blogs-of-lxl/p/10926824.html" target="_blank" rel="external">Android：通过systrace进行性能分析</a></li>
-<li><a href="https://www.jianshu.com/p/75aa88d1b575" target="_blank" rel="external">Android Systrace 使用方法</a></li>
-<li><a href="http://ddrv.cn/a/89930/" target="_blank" rel="external">Android Systrace的使用和分析</a></li>
-<li><a href="https://www.jianshu.com/p/e9e05ce5b0c9" target="_blank" rel="external">在Android Studio下使用Hierarchy Viewer</a></li>
+<li><a href="https://www.cnblogs.com/blogs-of-lxl/p/10926824.html" target="_blank" rel="noopener">Android：通过systrace进行性能分析</a></li>
+<li><a href="https://www.jianshu.com/p/75aa88d1b575" target="_blank" rel="noopener">Android Systrace 使用方法</a></li>
+<li><a href="http://ddrv.cn/a/89930/" target="_blank" rel="noopener">Android Systrace的使用和分析</a></li>
+<li><a href="https://www.jianshu.com/p/e9e05ce5b0c9" target="_blank" rel="noopener">在Android Studio下使用Hierarchy Viewer</a></li>
 </ul>
 <p>怎样在 systrace 上面自动增加应用程序的耗时分析呢？</p>
 <blockquote>
@@ -553,27 +555,27 @@
 <p><img src="http://app.guazistatic.com/AS_Profiler.jpg" title="AS-Profiler" width="60%" height="50%"></p>
 <p>参考链接：</p>
 <ul>
-<li><a href="https://developer.android.com/studio/profile/android-profiler?hl=zh-cn" target="_blank" rel="external">利用 Android Profiler 测量应用性能</a></li>
-<li><a href="https://www.jianshu.com/p/e75680772375" target="_blank" rel="external">Android Studio 3.0 Memory Profiler使用
+<li><a href="https://developer.android.com/studio/profile/android-profiler?hl=zh-cn" target="_blank" rel="noopener">利用 Android Profiler 测量应用性能</a></li>
+<li><a href="https://www.jianshu.com/p/e75680772375" target="_blank" rel="noopener">Android Studio 3.0 Memory Profiler使用
 </a></li>
 </ul>
 <h3 id="2-4-Simpleperf"><a href="#2-4-Simpleperf" class="headerlink" title="2.4 Simpleperf"></a>2.4 Simpleperf</h3><p>Android 5.0 新增了 Simpleperf 性能分析工具，分析 Native 函数的调用，它利用 CPU 的性能监控单元 （PMU）提供的硬件 perf 事件，使用 Simpleperf 可以看到所有的 Native 代码的耗时，有时候一些 Android 系统库的调用对分析问题有比较大的帮助，例如加载 dex、verify class 的耗时等。</p>
 <p>Simpleperf 同时封装了 systrace 的监控功能，现在 Simpleperf 比较友好地支持 Java 代码的性能分析。</p>
-<h3 id="其它-Nanoscope"><a href="#其它-Nanoscope" class="headerlink" title="其它 Nanoscope"></a>其它 Nanoscope</h3><p>Uber 开源的 <a href="http://github.com/uber/nanoscope" target="_blank" rel="external">Nanoscope</a>，直接修改 Android 虚拟机源码，在 ArtMethod 执行入口和执行结束位置新增埋点代码，将所有的信息先写到内存，等到 trace 结束后才统一生成结果文件。需要刷入 ROM。</p>
+<h3 id="其它-Nanoscope"><a href="#其它-Nanoscope" class="headerlink" title="其它 Nanoscope"></a>其它 Nanoscope</h3><p>Uber 开源的 <a href="http://github.com/uber/nanoscope" target="_blank" rel="noopener">Nanoscope</a>，直接修改 Android 虚拟机源码，在 ArtMethod 执行入口和执行结束位置新增埋点代码，将所有的信息先写到内存，等到 trace 结束后才统一生成结果文件。需要刷入 ROM。</p>
 <h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><p>汇总一下，如果需要分析 Native 代码的耗时，可以选择 Simpleperf；如果想分析系统调用，可以选择 systrace；如果想分析整个程序执行流程的耗时，可以选择 TraceView 或者插桩版本的 systrace。</p>
 <h2 id="三、监控应用卡顿实践"><a href="#三、监控应用卡顿实践" class="headerlink" title="三、监控应用卡顿实践"></a>三、监控应用卡顿实践</h2><h3 id="3-1-监控主线程原理"><a href="#3-1-监控主线程原理" class="headerlink" title="3.1 监控主线程原理"></a>3.1 监控主线程原理</h3><ul>
 <li>消息队列</li>
 </ul>
 <p>依赖主线程 Looper，监控每次 dispatchMessage 的执行耗时。（BlockCanary）</p>
 <p>Looper#loop 代码片段</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;</div><div class="line">    ...</div><div class="line">    <span class="keyword">for</span> (;;) &#123;</div><div class="line">        ...</div><div class="line">        <span class="comment">// This must be in a local variable, in case a UI event sets the logger</span></div><div class="line">        Printer logging = me.mLogging;</div><div class="line">        <span class="keyword">if</span> (logging != <span class="keyword">null</span>) &#123;</div><div class="line">            logging.println(<span class="string">"&gt;&gt;&gt;&gt;&gt; Dispatching to "</span> + msg.target + <span class="string">" "</span> +</div><div class="line">                    msg.callback + <span class="string">": "</span> + msg.what);</div><div class="line">        &#125;</div><div class="line">        msg.target.dispatchMessage(msg);</div><div class="line">        <span class="keyword">if</span> (logging != <span class="keyword">null</span>) &#123;</div><div class="line">            logging.println(<span class="string">"&lt;&lt;&lt;&lt;&lt; Finished to "</span> + msg.target + <span class="string">" "</span> + msg.callback);</div><div class="line">        &#125;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        ...</span><br><span class="line">        <span class="comment">// This must be in a local variable, in case a UI event sets the logger</span></span><br><span class="line">        Printer logging = me.mLogging;</span><br><span class="line">        <span class="keyword">if</span> (logging != <span class="keyword">null</span>) &#123;</span><br><span class="line">            logging.println(<span class="string">"&gt;&gt;&gt;&gt;&gt; Dispatching to "</span> + msg.target + <span class="string">" "</span> +</span><br><span class="line">                    msg.callback + <span class="string">": "</span> + msg.what);</span><br><span class="line">        &#125;</span><br><span class="line">        msg.target.dispatchMessage(msg);</span><br><span class="line">        <span class="keyword">if</span> (logging != <span class="keyword">null</span>) &#123;</span><br><span class="line">            logging.println(<span class="string">"&lt;&lt;&lt;&lt;&lt; Finished to "</span> + msg.target + <span class="string">" "</span> + msg.callback);</span><br><span class="line">        &#125;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>主线程所有执行的任务都在 dispatchMessage 方法中派发执行完成，我们通过 setMessageLogging 的方式给主线程的 Looper 设置一个 Printer ，因为 dispatchMessage 执行前后都会打印对应信息，在执行前利用另外一条线程，通过 Thread#getStackTrace 接口，以轮询的方式获取主线程执行堆栈信息并记录起来，同时统计每次 dispatchMessage 方法执行耗时，当超出阈值时，将该次获取的堆栈进行分析上报，从而来捕捉卡顿信息，否则丢弃此次记录的堆栈信息。</p>
 <ul>
 <li>Vsync 时间差</li>
 </ul>
 <p>依赖 Choreographer 模块，监控相邻两次 Vsync 事件通知的时间差。（ArgusAPM、LogMonitor）。</p>
 <p>利用系统 Choreographer 模块，向该模块注册一个 FrameCallback 监听对象，同时通过另外一条线程循环记录主线程堆栈信息，并在每次 Vsync 事件 doFrame 通知回来时，循环注册该监听对象，间接统计两次 Vsync 事件的时间间隔，当超出阈值时，取出记录的堆栈进行分析上报。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Choreographer.getInstance().postFrameCallback(<span class="keyword">new</span> Choreographer.FrameCallback() &#123;</div><div class="line">    <span class="meta">@Override</span>    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFrame</span><span class="params">(<span class="keyword">long</span> frameTimeNanos)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(frameTimeNanos - mLastFrameNanos &gt; <span class="number">100</span>) &#123;</div><div class="line">            ...</div><div class="line">        &#125;</div><div class="line">        mLastFrameNanos = frameTimeNanos;</div><div class="line">        Choreographer.getInstance().postFrameCallback(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Choreographer.getInstance().postFrameCallback(<span class="keyword">new</span> Choreographer.FrameCallback() &#123;</span><br><span class="line">    <span class="meta">@Override</span>    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFrame</span><span class="params">(<span class="keyword">long</span> frameTimeNanos)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(frameTimeNanos - mLastFrameNanos &gt; <span class="number">100</span>) &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">        mLastFrameNanos = frameTimeNanos;</span><br><span class="line">        Choreographer.getInstance().postFrameCallback(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>这两种方案，可以较方便的捕捉到卡顿的堆栈，但其最大的不足在于，无法获取到各个函数的执行耗时，对于稍微复杂一点的堆栈，很难找出可能耗时的函数，也就很难找到卡顿的原因。另外，通过其他线程循环获取主线程的堆栈，如果稍微处理不及时，很容易导致获取的堆栈有所偏移，不够准确，加上没有耗时信息，卡顿也就不好定位。</p>
 <p>所以我们希望寻求一种可以在线上准确地捕捉卡顿堆栈，又能计算出各个函数执行耗时的方案。 而要计算函数的执行耗时，最关键的点在于如何对执行过程中的函数进行打点监控。</p>
 <h3 id="3-2-插桩"><a href="#3-2-插桩" class="headerlink" title="3.2 插桩"></a>3.2 插桩</h3><ul>
@@ -586,8 +588,8 @@
 <p>第二种方案，利用 Java 字节码修改工具（如 BCEL、ASM、Javassis等），在编译期间收集所有生成的 class 文件，扫描文件内的方法指令进行统一的打点插桩，同样也可以高效的记录函数执行过程中的信息，相比第一种方案，除了无法统计系统内执行的函数，其它应用内实现的函数都可以覆盖到。而往往造成卡顿的函数并不是系统内执行的函数，一般都是我们应用开发实现的函数，所以这里无法统计系统内执行的函数对卡顿的定位影响不大。此方案无需 hook 任何函数，所以在兼容性方面会比第一个方案更可靠。</p>
 <p>在这考虑上，我们最终选择了修改字节码的方案，来实现 Matrix-TraceCannary 模块，解决其它方案中卡顿堆栈无耗时信息的主要问题，来帮助开发者发现及定位卡顿问题。</p>
 <p>参考链接：</p>
-<p><a href="https://github.com/Tencent/matrix/wiki/Matrix-Android-TraceCanary" target="_blank" rel="external">Matrix Android TraceCanary</a></p>
-<h3 id="3-3-Profilo"><a href="#3-3-Profilo" class="headerlink" title="3.3 Profilo"></a>3.3 Profilo</h3><p>2018 年 3 月，Facebook 开源了一个 <a href="http://github.com/facebookincubator/profilo" target="_blank" rel="external">Profilo</a> 库，它收集了各大方案的优点。</p>
+<p><a href="https://github.com/Tencent/matrix/wiki/Matrix-Android-TraceCanary" target="_blank" rel="noopener">Matrix Android TraceCanary</a></p>
+<h3 id="3-3-Profilo"><a href="#3-3-Profilo" class="headerlink" title="3.3 Profilo"></a>3.3 Profilo</h3><p>2018 年 3 月，Facebook 开源了一个 <a href="http://github.com/facebookincubator/profilo" target="_blank" rel="noopener">Profilo</a> 库，它收集了各大方案的优点。</p>
 <ul>
 <li>集成了 atrace 功能，ftrace（Linux 的ftrace 调试工具，相当于在系统各个关键位置都添加了一些性能探针，也就是在代码里添加了一些性能监控的埋点。Android 在 ftrace 基础上封装了 atrace，并增加了更多特有的探针，例如 Graphics、Activity Manager、Dalvik VM、System Server 等。），Profilo 通过 PLT Hook 拦截了写入操作，选择部分关心事件，例如四大组件生命周期、锁等待时间、类校验、GC 时间等。</li>
 <li>快速获取 Java 堆栈，拿到当前执行的 Thread，通过 Thread 对象获取当前线程的 ManagedStack，ManagedStack 是一个单链表，保存了当前的 ShadowFrame 或 QuickFrame 栈指针，它依次遍历 ManagedStack 链表，然后遍历内部的 ShadowFrame 或 QuickFrame 还原一个可读的调用栈，从而 unwind 出当前的 Java 堆栈。通过这种方式可以实现一边继续跑步，还可以帮它做检查，而且耗时基本忽略不计。</li>
@@ -614,9 +616,9 @@
 <li>线程监控，监控全局线程创建</li>
 </ul>
 <h2 id="五、参考"><a href="#五、参考" class="headerlink" title="五、参考"></a>五、参考</h2><ul>
-<li><a href="https://time.geekbang.org/column/article/71982" target="_blank" rel="external">Android 开发高手课-卡顿优化</a></li>
-<li><a href="https://time.geekbang.org/column/article/80921" target="_blank" rel="external">Android 开发高手课-渲染优化</a></li>
-<li><a href="https://mp.weixin.qq.com/s?__biz=MzI2OTQxMTM4OQ==&amp;mid=2247490024&amp;idx=2&amp;sn=3b8a42d0e9aae286984c03a5ac0b3389&amp;chksm=eae1ecbadd9665ace47c2ce20487852a38dfe3735a0ee74d38096af7f7d38c862373a83e90a9" target="_blank" rel="external">不敢相信？System.currentTimeMillis() 居然存在性能问题</a></li>
+<li><a href="https://time.geekbang.org/column/article/71982" target="_blank" rel="noopener">Android 开发高手课-卡顿优化</a></li>
+<li><a href="https://time.geekbang.org/column/article/80921" target="_blank" rel="noopener">Android 开发高手课-渲染优化</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzI2OTQxMTM4OQ==&amp;mid=2247490024&amp;idx=2&amp;sn=3b8a42d0e9aae286984c03a5ac0b3389&amp;chksm=eae1ecbadd9665ace47c2ce20487852a38dfe3735a0ee74d38096af7f7d38c862373a83e90a9" target="_blank" rel="noopener">不敢相信？System.currentTimeMillis() 居然存在性能问题</a></li>
 </ul>
 
       
@@ -640,13 +642,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay"/>
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay"/>
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -709,7 +711,7 @@
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -729,8 +731,7 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2020/04/04/性能优化之卡顿优化/"
-           data-title="性能优化之卡顿优化" data-url="http://qq451682583.github.io/2020/04/04/性能优化之卡顿优化/">
+      <div class="ds-thread" data-thread-key="2020/04/04/性能优化之卡顿优化/" data-title="性能优化之卡顿优化" data-url="http://qq451682583.github.io/2020/04/04/性能优化之卡顿优化/">
       </div>
     
   </div>
@@ -756,17 +757,15 @@
       
 
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/img/site.png"
-               alt="LZH" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/img/site.png" alt="LZH">
           <p class="site-author-name" itemprop="name">LZH</p>
           <p class="site-description motion-element" itemprop="description">ZHBlog</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -845,7 +844,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -867,7 +866,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2020</span>

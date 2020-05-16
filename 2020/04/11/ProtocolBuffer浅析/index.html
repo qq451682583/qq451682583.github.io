@@ -6,15 +6,15 @@
 
 
 <html class="theme-next mist use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -37,23 +37,23 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="BLCJ" />
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-  <link rel="alternate" href="/atom.xml" title="ZHBlog" type="application/atom+xml" />
+  <meta name="keywords" content="BLCJ">
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1" />
+
+  <link rel="alternate" href="/atom.xml" title="ZHBlog" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/site.png?v=5.0.1">
 
 
 
@@ -66,6 +66,7 @@
 <meta property="og:url" content="http://qq451682583.github.io/2020/04/11/ProtocolBuffer浅析/index.html">
 <meta property="og:site_name" content="ZHBlog">
 <meta property="og:description" content="[TOC]">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/11/9/16e4e03d98a97d18?imageslim">
 <meta property="og:image" content="https://i.postimg.cc/CKJzqfwJ/a-HR0c-Dov-L3-Vwb-G9h-ZC1pb-WFn-ZXMuamlhbn-Nod-S5pby91c-Gxv-YWRfa-W1h-Z2-Vz-Lzk0.png">
 <meta property="og:image" content="https://i.postimg.cc/BvtX2nt0/16e69876dd1d471a-imageslim.png">
@@ -78,7 +79,7 @@
 <meta property="og:image" content="https://i.postimg.cc/PfLfy7tm/16e69d3c5893f001-imageslim.png">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1967392-8335feea68acc6a2.png">
 <meta property="og:image" content="https://i.postimg.cc/3wgmkwqx/1920px-HTTP-pipelining.png">
-<meta property="og:updated_time" content="2020-04-11T12:08:49.540Z">
+<meta property="og:updated_time" content="2020-04-11T12:08:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ProtocolBuffer浅析">
 <meta name="twitter:description" content="[TOC]">
@@ -103,12 +104,12 @@
 
 
 
-  <link rel="canonical" href="http://qq451682583.github.io/2020/04/11/ProtocolBuffer浅析/"/>
+  <link rel="canonical" href="http://qq451682583.github.io/2020/04/11/ProtocolBuffer浅析/">
 
   <title> ProtocolBuffer浅析 | ZHBlog </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -129,12 +130,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">ZHBlog</span>
       <span class="logo-line-after"><i></i></span>
@@ -161,7 +162,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -171,7 +172,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -181,7 +182,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -191,7 +192,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -201,7 +202,7 @@
         <li class="menu-item menu-item-guestbook">
           <a href="/guestbook" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             留言
           </a>
@@ -211,7 +212,7 @@
         <li class="menu-item menu-item-commonweal">
           <a href="/404.html" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
             
             公益404
           </a>
@@ -224,7 +225,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
             
             搜索
           </a>
@@ -267,7 +268,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -353,26 +354,26 @@
 </ol>
 <h4 id="Android中使用"><a href="#Android中使用" class="headerlink" title="Android中使用"></a>Android中使用</h4><ol>
 <li><p>在项目根目录的build.gradle中添加依赖：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dependencies &#123;</div><div class="line">    classpath <span class="string">'com.google.protobuf:protobuf-gradle-plugin:0.8.8'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    classpath <span class="string">'com.google.protobuf:protobuf-gradle-plugin:0.8.8'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在app的gradle中添加插件</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apply <span class="string">plugin:</span> <span class="string">'com.google.protobuf'</span><span class="comment">//添加插件</span></div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'com.google.protobuf'</span><span class="comment">//添加插件</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在app的build.gradle添加如下代码</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">protobuf &#123;</div><div class="line">    protoc &#123;</div><div class="line">        artifact = <span class="string">'com.google.protobuf:protoc:3.7.1'</span> <span class="comment">// 也可以配置本地编译器路径</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    generateProtoTasks &#123;</div><div class="line">        all().each &#123; task -&gt;</div><div class="line">            task.builtins &#123;</div><div class="line">                java &#123;&#125;<span class="comment">// 生产java源码</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">protobuf &#123;</span><br><span class="line">    protoc &#123;</span><br><span class="line">        artifact = <span class="string">'com.google.protobuf:protoc:3.7.1'</span> <span class="comment">// 也可以配置本地编译器路径</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    generateProtoTasks &#123;</span><br><span class="line">        all().each &#123; task -&gt;</span><br><span class="line">            task.builtins &#123;</span><br><span class="line">                java &#123;&#125;<span class="comment">// 生产java源码</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>添加proto文件的路径</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">sourceSets &#123;</div><div class="line">    main &#123;</div><div class="line">        proto &#123;</div><div class="line">            srcDir <span class="string">'src/main/proto'</span></div><div class="line">        &#125;</div><div class="line">        java &#123;</div><div class="line">            srcDir <span class="string">'src/main/java'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sourceSets &#123;</span><br><span class="line">    main &#123;</span><br><span class="line">        proto &#123;</span><br><span class="line">            srcDir <span class="string">'src/main/proto'</span></span><br><span class="line">        &#125;</span><br><span class="line">        java &#123;</span><br><span class="line">            srcDir <span class="string">'src/main/java'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>添加protobuf-java和protoc的依赖，其中protoc的依赖很重要，lite版中不需要添加</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">implementation <span class="string">'com.google.protobuf:protobuf-java:3.7.1'</span></div><div class="line">implementation <span class="string">'com.google.protobuf:protoc:3.7.1'</span></div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'com.google.protobuf:protobuf-java:3.7.1'</span></span><br><span class="line">implementation <span class="string">'com.google.protobuf:protoc:3.7.1'</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>google推荐在Android项目中使用lite版，lite版本生成的java文件更加轻量，其配置如下：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">protobuf &#123;</div><div class="line">    <span class="comment">//配置protoc编译器</span></div><div class="line">    protoc &#123;</div><div class="line">        artifact = <span class="string">'com.google.protobuf:protoc:3.8.0'</span></div><div class="line">    &#125;</div><div class="line">    <span class="comment">//这里配置生成目录，编译后会在build的目录下生成对应的java文件</span></div><div class="line">    generateProtoTasks &#123;</div><div class="line">        all().each &#123; task -&gt;</div><div class="line">            task.builtins &#123;</div><div class="line">                java &#123;</div><div class="line">                    option <span class="string">"lite"</span></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">dependencies &#123;</div><div class="line">  implementation <span class="string">'com.google.protobuf:protobuf-javalite:3.8.0'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">protobuf &#123;</span><br><span class="line">    <span class="comment">//配置protoc编译器</span></span><br><span class="line">    protoc &#123;</span><br><span class="line">        artifact = <span class="string">'com.google.protobuf:protoc:3.8.0'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//这里配置生成目录，编译后会在build的目录下生成对应的java文件</span></span><br><span class="line">    generateProtoTasks &#123;</span><br><span class="line">        all().each &#123; task -&gt;</span><br><span class="line">            task.builtins &#123;</span><br><span class="line">                java &#123;</span><br><span class="line">                    option <span class="string">"lite"</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">dependencies &#123;</span><br><span class="line">  implementation <span class="string">'com.google.protobuf:protobuf-javalite:3.8.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="语法解析"><a href="#语法解析" class="headerlink" title="语法解析"></a>语法解析</h2><hr>
 <h4 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h4><p>首先创建一个.proto文件，并且在文件中声明如下内容:</p>
-<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">syntax = <span class="string">"proto3"</span>;		<span class="comment">//标明当前proto使用的版本为proto3</span></div><div class="line"></div><div class="line"><span class="keyword">option</span> java_package = <span class="string">"com.jon.protocol.protobuf"</span>;  <span class="comment">//输出的java文件包名</span></div><div class="line"><span class="keyword">option</span> java_outer_classname = <span class="string">"Test"</span>;               <span class="comment">//输出的java文件名称</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">message</span> <span class="title">TestRequest</span></span>&#123;</div><div class="line">    <span class="built_in">string</span> name = <span class="number">1</span>;    <span class="comment">//名称</span></div><div class="line">    <span class="built_in">int32</span> count = <span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">syntax = <span class="string">"proto3"</span>;		<span class="comment">//标明当前proto使用的版本为proto3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">option</span> java_package = <span class="string">"com.jon.protocol.protobuf"</span>;  <span class="comment">//输出的java文件包名</span></span><br><span class="line"><span class="keyword">option</span> java_outer_classname = <span class="string">"Test"</span>;               <span class="comment">//输出的java文件名称</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">message</span> <span class="title">TestRequest</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> name = <span class="number">1</span>;    <span class="comment">//名称</span></span><br><span class="line">    <span class="built_in">int32</span> count = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="字段解析"><a href="#字段解析" class="headerlink" title="字段解析"></a>字段解析</h4><p>在整个proto文件中数据类型分为基本类型和结构类型，其中结构类型主要为:</p>
 <ul>
 <li>message</li>
@@ -381,14 +382,14 @@
 </ul>
 <p>下面分别介绍一下不同结构的作用及规定：</p>
 <h5 id="message"><a href="#message" class="headerlink" title="message"></a>message</h5><p>message表示一个结构，类似于java中类，一个proto文件中可以声明多个message结构：</p>
-<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">message</span> <span class="title">SearchRequest</span> </span>&#123;</div><div class="line">  <span class="built_in">string</span> query = <span class="number">1</span>;</div><div class="line">  <span class="built_in">int32</span> page_number = <span class="number">2</span>;</div><div class="line">  <span class="built_in">int32</span> result_per_page = <span class="number">3</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">message</span> <span class="title">SearchResponse</span> </span>&#123;</div><div class="line"> ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">message</span> <span class="title">SearchRequest</span> </span>&#123;</span><br><span class="line">  <span class="built_in">string</span> query = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">int32</span> page_number = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">int32</span> result_per_page = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">message</span> <span class="title">SearchResponse</span> </span>&#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="import"><a href="#import" class="headerlink" title="import"></a>import</h5><p>message可以引用不同proto文件中的message，只要在proto文件中的最上面声明import即可，如下所示：</p>
-<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> <span class="string">"test.proto"</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"test.proto"</span>;</span><br></pre></td></tr></table></figure>
 <h4 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h4><p>enum使用很简单，直接在message中声明enum结构体并且将属性声明为对应的enum即可：</p>
-<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">message</span> <span class="title">EnumRequest</span> </span>&#123;</div><div class="line">    Corpus corpus = <span class="number">1</span>;</div><div class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Corpus</span> </span>&#123;</div><div class="line">        UNIVERSAL = <span class="number">0</span>;</div><div class="line">        WEB = <span class="number">1</span>;</div><div class="line">        IMAGES = <span class="number">2</span>;</div><div class="line">        LOCAL = <span class="number">3</span>;</div><div class="line">        NEWS = <span class="number">4</span>;</div><div class="line">        PRODUCTS = <span class="number">5</span>;</div><div class="line">        VIDEO = <span class="number">6</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">message</span> <span class="title">EnumRequest</span> </span>&#123;</span><br><span class="line">    Corpus corpus = <span class="number">1</span>;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Corpus</span> </span>&#123;</span><br><span class="line">        UNIVERSAL = <span class="number">0</span>;</span><br><span class="line">        WEB = <span class="number">1</span>;</span><br><span class="line">        IMAGES = <span class="number">2</span>;</span><br><span class="line">        LOCAL = <span class="number">3</span>;</span><br><span class="line">        NEWS = <span class="number">4</span>;</span><br><span class="line">        PRODUCTS = <span class="number">5</span>;</span><br><span class="line">        VIDEO = <span class="number">6</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在proto3中，enum第一个值必须为0，主要是为了和基础类型的默认值保持一致</p>
 <h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><p>map是proto3新加的，使用也很简单：</p>
-<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">map&lt;key_type, value_type&gt; map_field = N;</div><div class="line"><span class="comment">//示例如下</span></div><div class="line"><span class="class"><span class="keyword">message</span> <span class="title">MapRequest</span> </span>&#123;</div><div class="line">    map&lt;<span class="built_in">string</span>, TestRequest&gt; map = <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">map&lt;key_type, value_type&gt; map_field = N;</span><br><span class="line"><span class="comment">//示例如下</span></span><br><span class="line"><span class="class"><span class="keyword">message</span> <span class="title">MapRequest</span> </span>&#123;</span><br><span class="line">    map&lt;<span class="built_in">string</span>, TestRequest&gt; map = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="基础类型"><a href="#基础类型" class="headerlink" title="基础类型"></a>基础类型</h4><p>如下</p>
 <table>
 <thead>
@@ -595,7 +596,7 @@
 <li>enum：默认值是第一个元素，且值必须为0</li>
 </ul>
 <h4 id="repeated"><a href="#repeated" class="headerlink" title="repeated"></a>repeated</h4><p>repeated修饰的属性类似于jsonArray,也类似于java中的List，该修饰符在格式正确的消息中可以重复任意次（包括0次）</p>
-<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">message</span> <span class="title">RepeatRequest</span> </span>&#123;</div><div class="line">    <span class="keyword">repeated</span> TestRequest requests = <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">message</span> <span class="title">RepeatRequest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">repeated</span> TestRequest requests = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="字段编号"><a href="#字段编号" class="headerlink" title="字段编号"></a>字段编号</h4><ol>
 <li>字段编号从1开始，不可重复定义</li>
 <li>字段编号1-15尽量保持经常访问的字段使用，因为1-15编号在传输的过程中只占用1个字节</li>
@@ -606,7 +607,7 @@
 <li><p>不要修改已经存在的字段标号</p>
 </li>
 <li><p>不用的字段，可以删除，但是编号一定不可以再次使用，建议将字段标为废弃，如加前缀：”OBSOLETE_”, 或者标记该字段为reserved</p>
-<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reserved <span class="number">2</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reserved <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>只要记住上述规则，就能完成字段扩充且老版本也能兼容</p>
@@ -615,7 +616,7 @@
 <li>数据在序列化的时候不会传输字段名，只会传输字段标号，并且没有被设置值的字段是不会序列化和传输</li>
 <li>采用可变长度编码，优化数据占用</li>
 </ol>
-<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">message</span> <span class="title">TestRequest</span></span>&#123;</div><div class="line">    <span class="built_in">string</span> name = <span class="number">1</span>;    <span class="comment">//名称</span></div><div class="line">    <span class="built_in">int32</span> count = <span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">message</span> <span class="title">TestRequest</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> name = <span class="number">1</span>;    <span class="comment">//名称</span></span><br><span class="line">    <span class="built_in">int32</span> count = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面这个例子中，在序列化时，”name” 、”count”的key值不会参与，由编号1、2代替，这样在反序列化的时候直接通过编号找到对应的key就可以。需要注意的是编号一旦确定就不可以更改，服务端和客户端通过proto通信的时候需要提前定义号数据格式。</p>
 <ul>
 <li>没有赋值的key，不参与序列化<br> 序列化时只会对赋值的key进行序列化，没有赋值的不参与，在反序列化的时候直接给默认值即可</li>
@@ -667,7 +668,7 @@
 </tbody>
 </table>
 <h4 id="Tag"><a href="#Tag" class="headerlink" title="Tag"></a>Tag</h4><p>上面已经介绍了Protocol Buffer的数据结构及Tag的类型，但是Tag块并不是只表示数据类型，其中数据编号也在Tag块中，Tag的生成规则如下：</p>
-<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(field_number &lt;&lt; <span class="number">3</span>) | wire_type</div></pre></td></tr></table></figure>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(field_number &lt;&lt; <span class="number">3</span>) | wire_type</span><br></pre></td></tr></table></figure>
 <p>其中Tag块的后3位表示数据类型，其他位表示数据编号</p>
 <h3 id="可变长度编码"><a href="#可变长度编码" class="headerlink" title="可变长度编码"></a>可变长度编码</h3><p>Java中整数类型的长度都是确定的，如int类型的长度为4个字节，可表示的整数范围为-2^31——2^31-1，但是实际开发中用到的数字均比较小，会造成字节浪费，可变长度编码就能很好的解决这个问题，可变长度编码规则如下：</p>
 <ul>
@@ -680,7 +681,7 @@
 <p>10000001 00000011 ——&gt; 00000110000001 表示的10进制数为：2^0 + 2^7 + 2^8 = 385<br> 通过上面的例子可以知道一个字节表示的数的范围0-128，上面介绍的Tag生成算法中由于后3位表示数据类型，所以Tag中1-15编号只占用1个字节，所以确保编号中1-15为常用的，减少数据大小。</p>
 <p>可变长度编码唯一的缺点就是当数很大的时候int32需要占用5个字节，但是从统计学角度来说，一般不会有这么大的数.</p>
 <h3 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h3><p>上面介绍了Protocol Buffer的原理，现在通过实例来展示分析过程，我们定义的proto文件如下：</p>
-<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">message</span> <span class="title">TestRequest</span></span>&#123;</div><div class="line">    <span class="built_in">string</span> name = <span class="number">1</span>;    <span class="comment">//名称</span></div><div class="line">    <span class="built_in">int32</span> count = <span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">message</span> <span class="title">TestRequest</span></span>&#123;</span><br><span class="line">    <span class="built_in">string</span> name = <span class="number">1</span>;    <span class="comment">//名称</span></span><br><span class="line">    <span class="built_in">int32</span> count = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其序列化后的字节数据如下：</p>
 <p><img src="https://i.postimg.cc/QCpV0ttL/testproto.png" alt="testproto.png"></p>
 <p>前面介绍过Protocol Buffer的<strong>数据结构为TLV，其中L不是必须的，根据T的类型来确定</strong><br>先看下第一个字节：</p>
@@ -706,7 +707,7 @@
 <li>可变长度编码，减小字节占用</li>
 <li>TLV编码，去除没有的符号，使数据更加紧凑</li>
 </ol>
-<h2 id="长链接相关浅析"><a href="#长链接相关浅析" class="headerlink" title="长链接相关浅析"></a>长链接相关浅析</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>长连接，指在一个连接上可以连续发送多个<a href="https://baike.baidu.com/item/数据包/489739" target="_blank" rel="external">数据包</a>，在连接保持期间，如果没有数据包发送，需要双方发链路检测包。</p>
+<h2 id="长链接相关浅析"><a href="#长链接相关浅析" class="headerlink" title="长链接相关浅析"></a>长链接相关浅析</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>长连接，指在一个连接上可以连续发送多个<a href="https://baike.baidu.com/item/数据包/489739" target="_blank" rel="noopener">数据包</a>，在连接保持期间，如果没有数据包发送，需要双方发链路检测包。</p>
 <h3 id="http长链接"><a href="#http长链接" class="headerlink" title="http长链接"></a>http长链接</h3><p>HTTP协议本身是应用层协议，其长连接和短连接本质上是TCP长连接和短连接。 HTTP1.1规定了默认保持长连接（HTTP persistent connection ，也有翻译为持久连接），数据传输完成了保持TCP连接不断开（不发RST包、不四次握手），等待在同域名下继续用这个通道传输数据。</p>
 <h3 id="http协议里的keep-alive"><a href="#http协议里的keep-alive" class="headerlink" title="http协议里的keep-alive"></a>http协议里的keep-alive</h3><p>http1.1 协议里增加了 keepalive的支持， 并且默认开启。</p>
 <p>客户端和服务端在建立连接并完成request后并不会立即断开TCP连接，而是在下次request来临时复用这次TCP连接。但是这里也必须要有TCP连接的timeout时间限制。不然会造成服务端端口被长期占用释放不了。</p>
@@ -728,7 +729,7 @@
 <p>以上两种机制都治标不治本，所以，HTML5推出了WebSocket标准，让浏览器和服务器之间可以建立无限制的全双工通信，任何一方都可以主动发消息给对方。</p>
 <h3 id="WebSocket协议"><a href="#WebSocket协议" class="headerlink" title="WebSocket协议"></a>WebSocket协议</h3><p>WebSocket并不是全新的协议，而是利用了HTTP协议来建立连接。我们来看看WebSocket连接是如何创建的。</p>
 <p>首先，WebSocket连接必须由浏览器发起，因为请求协议是一个标准的HTTP请求，格式如下：</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GET</span> <span class="string">ws://localhost:3000/ws/chat</span> HTTP/1.1</div><div class="line"><span class="attribute">Host</span>: localhost</div><div class="line"><span class="attribute">Upgrade</span>: websocket</div><div class="line"><span class="attribute">Connection</span>: Upgrade</div><div class="line"><span class="attribute">Origin</span>: http://localhost:3000</div><div class="line"><span class="attribute">Sec-WebSocket-Key</span>: client-random-string</div><div class="line"><span class="attribute">Sec-WebSocket-Version</span>: 13</div></pre></td></tr></table></figure>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">ws://localhost:3000/ws/chat</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: localhost</span><br><span class="line"><span class="attribute">Upgrade</span>: websocket</span><br><span class="line"><span class="attribute">Connection</span>: Upgrade</span><br><span class="line"><span class="attribute">Origin</span>: http://localhost:3000</span><br><span class="line"><span class="attribute">Sec-WebSocket-Key</span>: client-random-string</span><br><span class="line"><span class="attribute">Sec-WebSocket-Version</span>: 13</span><br></pre></td></tr></table></figure>
 <p>该请求和普通的HTTP请求有几点不同：</p>
 <ol>
 <li>GET请求的地址不是类似<code>/path/</code>，而是以<code>ws://</code>开头的地址；</li>
@@ -737,18 +738,18 @@
 <li><code>Sec-WebSocket-Version</code>指定了WebSocket的协议版本。</li>
 </ol>
 <p>随后，服务器如果接受该请求，就会返回如下响应：</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 <span class="number">101</span> Switching Protocols</div><div class="line"><span class="attribute">Upgrade</span>: websocket</div><div class="line"><span class="attribute">Connection</span>: Upgrade</div><div class="line"><span class="attribute">Sec-WebSocket-Accept</span>: server-random-string</div></pre></td></tr></table></figure>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 <span class="number">101</span> Switching Protocols</span><br><span class="line"><span class="attribute">Upgrade</span>: websocket</span><br><span class="line"><span class="attribute">Connection</span>: Upgrade</span><br><span class="line"><span class="attribute">Sec-WebSocket-Accept</span>: server-random-string</span><br></pre></td></tr></table></figure>
 <p>该响应代码<code>101</code>表示本次连接的HTTP协议即将被更改，更改后的协议就是<code>Upgrade: websocket</code>指定的WebSocket协议。</p>
 <p>版本号和子协议规定了双方能理解的数据格式，以及是否支持压缩等等。如果仅使用WebSocket的API，就不需要关心这些。</p>
 <p>现在，一个WebSocket连接就建立成功，浏览器和服务器就可以随时主动发送消息给对方。消息有两种，一种是文本，一种是二进制数据。通常，我们可以发送JSON格式的文本，这样，在浏览器处理起来就十分容易。</p>
 <p>为什么WebSocket连接可以实现全双工通信而HTTP连接不行呢？实际上HTTP协议是建立在TCP协议之上的，TCP协议本身就实现了全双工通信，但是HTTP协议的请求－应答机制限制了全双工通信。WebSocket连接建立以后，其实只是简单规定了一下：接下来，咱们通信就不使用HTTP协议了，直接互相发数据吧。</p>
 <p>安全的WebSocket连接机制和HTTPS类似。首先，浏览器用<code>wss://xxx</code>创建WebSocket连接时，会先通过HTTPS创建安全的连接，然后，该HTTPS连接升级为WebSocket连接，底层通信走的仍然是安全的SSL/TLS协议。</p>
 <p>参考资料：</p>
-<p>proto3官网指南：<a href="https://developers.google.com/protocol-buffers/docs/proto3" target="_blank" rel="external">https://developers.google.com/protocol-buffers/docs/proto3</a></p>
-<p>protobuf-gradle-plugin：<a href="https://github.com/google/protobuf-gradle-plugin" target="_blank" rel="external">https://github.com/google/protobuf-gradle-plugin</a></p>
-<p>图床：<a href="https://postimages.org/" target="_blank" rel="external">https://postimages.org/</a></p>
-<p>博客：<a href="https://juejin.im/post/5dcbf630e51d451bfe5bb21b" target="_blank" rel="external">https://juejin.im/post/5dcbf630e51d451bfe5bb21b</a></p>
-<p>廖雪峰websocket：<a href="https://www.liaoxuefeng.com/wiki/1022910821149312/1103303693824096" target="_blank" rel="external">https://www.liaoxuefeng.com/wiki/1022910821149312/1103303693824096</a></p>
+<p>proto3官网指南：<a href="https://developers.google.com/protocol-buffers/docs/proto3" target="_blank" rel="noopener">https://developers.google.com/protocol-buffers/docs/proto3</a></p>
+<p>protobuf-gradle-plugin：<a href="https://github.com/google/protobuf-gradle-plugin" target="_blank" rel="noopener">https://github.com/google/protobuf-gradle-plugin</a></p>
+<p>图床：<a href="https://postimages.org/" target="_blank" rel="noopener">https://postimages.org/</a></p>
+<p>博客：<a href="https://juejin.im/post/5dcbf630e51d451bfe5bb21b" target="_blank" rel="noopener">https://juejin.im/post/5dcbf630e51d451bfe5bb21b</a></p>
+<p>廖雪峰websocket：<a href="https://www.liaoxuefeng.com/wiki/1022910821149312/1103303693824096" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1022910821149312/1103303693824096</a></p>
 
       
     </div>
@@ -771,13 +772,13 @@
     <div id="QR" style="display: none;">
       
         <div id="wechat" style="display: inline-block">
-          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay"/>
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="LZH WeChat Pay">
           <p>微信打赏</p>
         </div>
       
       
         <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay"/>
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="LZH Alipay">
           <p>支付宝打赏</p>
         </div>
       
@@ -802,6 +803,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/17/测试迁移/" rel="prev" title="测试迁移">
+                测试迁移 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -830,7 +835,7 @@
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -850,8 +855,7 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2020/04/11/ProtocolBuffer浅析/"
-           data-title="ProtocolBuffer浅析" data-url="http://qq451682583.github.io/2020/04/11/ProtocolBuffer浅析/">
+      <div class="ds-thread" data-thread-key="2020/04/11/ProtocolBuffer浅析/" data-title="ProtocolBuffer浅析" data-url="http://qq451682583.github.io/2020/04/11/ProtocolBuffer浅析/">
       </div>
     
   </div>
@@ -877,17 +881,15 @@
       
 
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/img/site.png"
-               alt="LZH" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/img/site.png" alt="LZH">
           <p class="site-author-name" itemprop="name">LZH</p>
           <p class="site-description motion-element" itemprop="description">ZHBlog</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -966,7 +968,7 @@
         
           <div class="cc-license motion-element" itemprop="license">
             <a href="http://creativecommons.org/licenses/by-nc/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-nc.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-nc.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -988,7 +990,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2020</span>
