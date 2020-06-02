@@ -1686,61 +1686,6 @@
       </tags>
   </entry>
   <entry>
-    <title>个人简历</title>
-    <url>/2020/03/15/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/</url>
-    <content><![CDATA[<p>[TOC]<br><a id="more"></a></p>
-<h1 id="雷志辉"><a href="#雷志辉" class="headerlink" title="雷志辉"></a><strong>雷志辉</strong></h1><ul>
-<li>男/1992-03-15</li>
-<li>本科/中北大学/软件工程</li>
-<li>工作年限：5年</li>
-<li>山西省/吕梁市/孝义市</li>
-<li>技术博客：<a href="http://lzhblog.site/" target="_blank" rel="noopener">http://lzhblog.site/</a></li>
-<li>Github：<a href="https://github.com/qq451682583" target="_blank" rel="noopener">https://github.com/qq451682583</a></li>
-<li>期望职位：Android高级程序员</li>
-<li>期望城市：北京<h1 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a><strong>联系方式</strong></h1></li>
-<li>WeChat：18235139300     <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- Email：hy04150829gmail.com</span><br><span class="line">- Phone: 17610769559</span><br><span class="line"># **个人优势**</span><br><span class="line">- 5年Android开发经验，完成多款App的开发到上线</span><br><span class="line">- 丰富的架构设计和SDK开发能力</span><br><span class="line">- 丰富的卡顿优化/内存优化/APK大小优化相关经验</span><br><span class="line">- 熟悉的代码设计原则和常见设计模式设计和实现</span><br><span class="line">- 熟悉 Android Framework 源码,四大组件/消息传递/事件分发/View绘制/应用启动流程/进程间通信等相关知识</span><br><span class="line">- 熟悉常见开源框架 Glide/Arouter/Okhttp/EventBus/Rxjava 的原理和使用</span><br><span class="line">- 熟悉Android动画和各大UI组件，以及JectPack组件开发</span><br><span class="line">- 熟悉 Gradle 构建工具/gradle plugin 开发</span><br><span class="line">- 熟悉 APT/AOP/Transform 相关原理及开发</span><br><span class="line">- 熟悉组件化，插件化，热修复的原理和实践</span><br><span class="line">- 熟悉android ndk开发以及基本数据结构和算法</span><br><span class="line">- 熟悉Java/Kotlin/Dart/Groovy，并发编程，多线程开发等</span><br><span class="line">- 熟悉Http/Https/Tcp/Socket网络协议</span><br><span class="line">- 熟练掌握Git版本控制协作开发</span><br><span class="line">- 热爱技术，自学能力强</span><br><span class="line"># **工作经历**</span><br><span class="line">&lt;style&gt;</span><br><span class="line">table th:first-of-type &#123;</span><br><span class="line">	width: 80px;</span><br><span class="line">&#125;</span><br><span class="line">table th:nth-of-type(2) &#123;</span><br><span class="line">	width: 80px;</span><br><span class="line">&#125;</span><br><span class="line">table th:nth-of-type(3) &#123;</span><br><span class="line">	width: 80px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">|时间|公司|职位|工作内容|</span><br><span class="line">|:----:|:----:|:----:|:--------|</span><br><span class="line">|2019年4月~至今|瓜子二手车|高级Android开发工程师|负责瓜子二手车CRM平台型应用```向日葵```的开发和维护，在整个二手车售车交易环节中，您都看到```向日葵```的身影。```向日葵```作为平台型应用，为二手车各业线的销售铁军提供了强有力的线上化支持，也为一线管理者提供了强有力的抓手，为公司业绩保驾护航。使用场景覆盖了从工单、带看、客户维护、搓合交易、合同签署、支付、预约过户、办理过户、已售提交等整个交易流程所有节点，同时也为其它业务绩做了强有力的赋能，车务产品营销售卖、保卖收车任务、直播在线化等。|</span><br><span class="line">|2016年4月~2019年4月|北京秒啊科技有限公司|Android开发工程师|负责公司移动端技术选型，调研和Android端开发，与产品对接需求，和后台开发人员对接输出API文档，其中主要的工作有三部分：1.  Android端架构设计开发等相关工作 2. 后台部分API编写，Spring Boot部分模块开发 3. 项目协调，工作内容分布，已经进度把控相关工作|</span><br><span class="line">|2014年11月~2016年4月|北京融易通信息技术有限公司|Android开发工程师|期间主要负责EMP产品 Android SDK 功能开发，模块设计和维护，emp是所在公司客户端框架，emp客户端组件从平台伊始就致力于Native和Web的结合，通过将一部分HTML和CSS子集映射到Native UI的实现，比React Native更早的跨平台公司自用框架。|</span><br><span class="line"></span><br><span class="line"># **项目经历**</span><br><span class="line">### 向日葵```瓜子二手车</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>向日葵——集团to b方向平台型应用，覆盖整个二手车交易环节。 </p>
-<p>我参与的工作内容:</p>
-<p> 主要负责交付履约，过户，合同签署相关环节的业务需求的开发，售前售后过户，手续快递，全国购车辆物流，GPS管理监控，任务工单处理，等业务。 </p>
-<p>期间负责一些技术需求的开发:</p>
-<ol>
-<li>gradle plugin+transform实现组件之间的解偶 </li>
-<li>适配组件化接入sonar监控项目代码质量并输出报告 </li>
-<li>利用apt技术实现自动生成recycleview adapter，代码更简洁 </li>
-<li>结合matrix监控项目FPS，慢方法以及内存泄露，使用Profiler，MAT工具解决和监控项目的卡顿和内存并优化</li>
-<li>matrix-apkChecker分析APK包大小并优化，引入andResguard资源混淆，gradle插件去除R文件优化包体积 </li>
-<li>利用aop技术统计jsAction使用量以及项目流量统计 </li>
-<li>基于replugin实现过户模块插件化，配合公司自研插件下发后台线上使用</li>
-</ol>
-<h3 id="秒啊-时间交易平台"><a href="#秒啊-时间交易平台" class="headerlink" title="秒啊(时间交易平台)"></a>秒啊(时间交易平台)<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">秒啊是一款全球首创的时间交易平台，从创投大咖，当红明星艺人到网红牛人，挖掘有潜力的人，售卖自己的时间，吸引粉丝和需求用户购买。用户通过购买名人时间（以秒为单位），兑换行权服务，例如线上聊天、线下共同进餐等。 在“秒啊”，行权最低只需1秒钟，内容包括在线聊天、语音、社交媒体回复转发、录制视频等；用户也可通过行权更多的时间，预约名人喝茶、吃饭、踢球、唱歌等互动形式，也可包含演出等商业活动。</span><br><span class="line"></span><br><span class="line">独立设计开发Android客户端，组件化和MVP方式构建代码框架，主要完成的内容包括：</span><br><span class="line"></span><br><span class="line">1. 公共的网络模块封装，Rxjava+Retrofit二次封装，拦截器封装公共参数，token认证，返回值统一封装，请求数据使用NDK方式加密，打包SO库等处理</span><br><span class="line">2. 封装公共的三级缓存处理，支持不同框架的图片加载模块封装，线程池的封装处理，权限处理封装，屏幕适配，主题切换等基础库</span><br><span class="line">3. Android5.0及以上新控件的学习及使用包括提示条，协调布局，导航视图，悬浮按钮，底部弹窗，应用栏和可折叠工具栏布局等</span><br><span class="line">4. 组件化相关构建脚本编写，Manifest和Application分解和整合，组件间通信的路由配置等</span><br><span class="line">5. 使用tinker热修复，达到用户无感的BUG修复和功能更新</span><br><span class="line">6. 进一步熟悉研究Android SDK 源码，Binder机制及AIDL使用，四大组件，消息机制，事件分发机制，View源码，dalvik虚拟机及编译过程等</span><br><span class="line">7. git, svn协作开发，git下新功能新建分支，合并主干，解决merge冲突，组员代码review等</span><br><span class="line">7. 基于GitHub,Hexo驱动加Next主题，GoDaddy搭建个人博客,输出技术积累</span><br><span class="line"></span><br><span class="line">### MiaoA(数字货币交易平台)```秒啊</span><br></pre></td></tr></table></figure></h3><p>MiaoA是一款ETH erc20智能合约代币TNB的落地Dapp。您可以使用TNB购买秒，TNB是专门为跨越国际边界的MiaoA交易所开发的一种新货币。这意味着，无论你身在何处，你都可以在没有国际货币壁垒的情况下，交易你最喜爱的名人的秒数。</p>
-<p>期间完成的工作主要有:</p>
-<ol>
-<li>基于Web3J ETH规范，完成代币的钱包管理，充提币transaction的功能</li>
-<li>mvvm+jetpack代码重构和解耦，组件的进一步封装和解耦</li>
-<li>封装下沉UI组件和公共中间件</li>
-<li>应用的各种持续优化工作</li>
-</ol>
-<h3 id="emp研发-交通银行，农业银行内核-融易通"><a href="#emp研发-交通银行，农业银行内核-融易通" class="headerlink" title="emp研发(交通银行，农业银行内核)融易通"></a>emp研发(交通银行，农业银行内核)<code>融易通</code></h3><p>emp是所在公司客户端框架，emp客户端组件从平台伊始就致力于Native和Web的结合，通过将一部分HTML和CSS子集映射到Native UI的实现，EMP客户端组件实现了一个跨平台的Web规范解析和渲染框架。具体来说，emp是一个简易的webKit，emp组件相当于浏览器，界面为传统的前端界面或者H5网页，以及lua脚本，emp框架负责解析html标签和lua脚本，再翻译成具体的android组件，经过一系列的渲染，布局，最后展示到客户端。</p>
-<p>参与的工作主要有：</p>
-<ul>
-<li>emp editor(Atom插件)Android端支持</li>
-<li>离线资源开发（提供Http/Tcp/WebSocket下载方式，支持插件下载，增量更新，大文件分段下载，webView加载离线H5资源）</li>
-<li>Android SDK定制开发，自定义控件</li>
-<li>Jni/Android NDK开发，封装C++加密库和网络库以及Lua脚本库</li>
-<li>基于TLS1.1的信道重连机制，防重放机制开发。</li>
-<li>APP防篡改功能开发</li>
-<li>全局异常捕获机制开发<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1>感谢您花时间阅读我的简历，期待能有机会和您公事</li>
-</ul>
-]]></content>
-      <categories>
-        <category>简历</category>
-      </categories>
-      <tags>
-        <tag>简历</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTTPS双向认证</title>
     <url>/2020/03/10/HTTPS%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81/</url>
     <content><![CDATA[<p>[TOC]<br><a id="more"></a></p>
